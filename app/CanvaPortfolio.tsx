@@ -65,6 +65,7 @@ export default function CanvaPortfolio() {
   const root = useRef<HTMLElement>(null);
   const menu = useRef<HTMLDialogElement>(null);
   const careerTrigger = useRef<ScrollTrigger | null>(null);
+  const careerMove = useRef<((next: number) => void) | null>(null);
   const expertiseTimeline = useRef<gsap.core.Timeline | null>(null);
   const syncExpertise = useRef<(() => void) | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -201,31 +202,66 @@ export default function CanvaPortfolio() {
         gsap.utils.toArray<HTMLElement>(".c-project-image .c-crop").forEach((image) => gsap.fromTo(image, { yPercent: 7 }, { yPercent: -7, ease: "none", scrollTrigger: { trigger: image, start: "top bottom", end: "bottom top", scrub: 1 } }));
         gsap.to(".c-people-photo img", { yPercent: -6, ease: "none", scrollTrigger: { trigger: ".c-people", start: "top bottom", end: "bottom top", scrub: 1.2 } });
         gsap.to(".c-trophy img", { yPercent: -9, ease: "none", scrollTrigger: { trigger: ".c-awards", start: "top bottom", end: "bottom top", scrub: 1.2 } });
+        // Career Journey is step-locked, not continuously scrubbed: one wheel/trackpad
+        // gesture advances exactly one stage, the section ignores every further scroll
+        // command until that transition finishes, and only then does it accept the next
+        // one. This is what makes it immune to fast or "bursty" trackpad input — a whole
+        // inertial swipe collapses into a single step instead of racing through several.
         let visibleCareer = 0;
+        let locked = false;
         const careerCards = gsap.utils.toArray<HTMLElement>(".c-career-stage");
         let careerTween: gsap.core.Timeline | null = null;
-        const moveCareer = (next: number) => {
-          if (next === visibleCareer) return;
+        const moveCareer = (next: number, onSettled?: () => void) => {
+          if (next === visibleCareer) { onSettled?.(); return; }
           const previous = visibleCareer;
           visibleCareer = next;
           setActiveCareer(next);
-          // Fast/inertial trackpad scrolling can fire several of these calls within one
-          // frame, sometimes skipping a step entirely. Always kill the in-flight timeline
-          // outright and force every card that is neither the old nor the new state to
-          // fully hidden first, so a burst of calls can never leave two cards fading at
-          // once or strand one mid-transition — every call resolves to a clean, correct
-          // pair regardless of how it was interrupted.
           careerTween?.kill();
           careerCards.forEach((card, index) => { if (index !== previous && index !== next) gsap.set(card, { autoAlpha: 0, clipPath: "inset(0)" }); });
-          careerTween = gsap.timeline();
+          careerTween = gsap.timeline({ onComplete: onSettled });
           careerTween.set([careerCards[previous], careerCards[next]], { clipPath: "inset(0)" })
             .to(careerCards[previous], { autoAlpha: 0, duration: .55, ease: "power2.out" }, 0)
             .fromTo(careerCards[next], { autoAlpha: 0 }, { autoAlpha: 1, duration: .85, ease: "power2.out" }, 0);
         };
-        const trigger = ScrollTrigger.create({ trigger: ".c-career", pin: ".c-career-inner", start: "top top", end: "+=120%", invalidateOnRefresh: true,
-          onUpdate: (self) => moveCareer(Math.min(2, Math.floor(self.progress * 3))) });
+        // Assigned once below, after the handlers that close over it are declared
+        // (they reference it circularly), so it can't be a const at this point.
+        // eslint-disable-next-line prefer-const
+        let trigger: ScrollTrigger;
+        // Inset the first/last checkpoint slightly from the trigger's exact start/end:
+        // landing scroll precisely on either boundary reads to ScrollTrigger as having
+        // already left the pin, firing onLeave/onLeaveBack and tearing down the wheel
+        // listener a step early — stranding stage 3 unable to scroll back up, for one.
+        const checkpoint = (index: number) => {
+          const span = trigger.end - trigger.start;
+          return [trigger.start + span * .02, trigger.start + span * .5, trigger.end - span * .02][index];
+        };
+        const lockAndMove = (next: number) => {
+          if (locked || next === visibleCareer) return;
+          locked = true;
+          moveCareer(next, () => { trigger.scroll(checkpoint(next)); locked = false; });
+        };
+        careerMove.current = lockAndMove;
+        const handleWheel = (event: WheelEvent) => {
+          if (!trigger.isActive) return;
+          if (locked) { event.preventDefault(); return; }
+          if (event.deltaY > 0) {
+            if (visibleCareer >= 2) return; // at the last stage: let the page scroll on past the section
+            event.preventDefault();
+            lockAndMove(visibleCareer + 1);
+          } else if (event.deltaY < 0) {
+            if (visibleCareer <= 0) return; // at the first stage: let the page scroll back up
+            event.preventDefault();
+            lockAndMove(visibleCareer - 1);
+          }
+        };
+        trigger = ScrollTrigger.create({ trigger: ".c-career", pin: ".c-career-inner", start: "top top", end: "+=120%", invalidateOnRefresh: true,
+          onEnter: () => { moveCareer(0); window.addEventListener("wheel", handleWheel, { passive: false }); },
+          onEnterBack: () => { moveCareer(2); window.addEventListener("wheel", handleWheel, { passive: false }); },
+          onLeave: () => { window.removeEventListener("wheel", handleWheel); locked = false; },
+          onLeaveBack: () => { window.removeEventListener("wheel", handleWheel); locked = false; },
+        });
         careerTrigger.current = trigger;
-        return () => { trigger.kill(); careerTrigger.current = null; };
+        return () => { window.removeEventListener("wheel", handleWheel); trigger.kill(); careerTrigger.current = null; careerMove.current = null; };
       });
     }, root);
     // Font metrics and desktop pin spacing can move an initially requested anchor.
@@ -242,8 +278,9 @@ export default function CanvaPortfolio() {
   function closeMenu() { menu.current?.close(); setMenuOpen(false); }
   function goToCareer(index: number) {
     const next = Math.max(0, Math.min(2, index));
-    const trigger = careerTrigger.current;
-    if (trigger) window.scrollTo({ top: trigger.start + (trigger.end - trigger.start) * ((next + .35) / 3), behavior: "smooth" });
+    // Same locked, one-step-at-a-time move the wheel handler uses, so a button click
+    // mid-transition is safely ignored rather than fighting the running animation.
+    if (careerMove.current) careerMove.current(next);
     else setActiveCareer(next);
   }
 
