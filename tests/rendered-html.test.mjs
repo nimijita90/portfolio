@@ -49,7 +49,7 @@ test("keeps FAQ, navigation and motion fallbacks accessible", async () => {
   assert.ok(!html.includes("Recording pending"));
   const source = await readFile(new URL("../app/CanvaPortfolio.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/canva-portfolio.css", import.meta.url), "utf8");
-  for (const part of ["prefers-reduced-motion: no-preference", "min-width: 1024px", "observer.unobserve(entry.target)", "media.revert()", "context.revert()", "history.scrollRestoration = \"manual\"", "userScrolled", "const hold = 3.6", "document.hidden", ".c-faq-list > article", ".c-quotes"]) assert.ok(source.includes(part), part);
+  for (const part of ["prefers-reduced-motion: no-preference", "min-width: 1024px", "observer.unobserve(entry.target)", "media.revert()", "context.revert()", "history.scrollRestoration = \"manual\"", "userScrolled", "const hold = 2.5", "document.hidden", ".c-faq-list > article", ".c-quotes"]) assert.ok(source.includes(part), part);
   for (const part of ["@media(max-width:767px)", "@media(prefers-reduced-motion:reduce)", "grid-template-rows:0fr", "grid-template-rows:1fr"]) assert.ok(css.includes(part), part);
 });
 
@@ -109,7 +109,7 @@ test("renders the complete Canva-led WAND case study and local production assets
   assert.ok(hostingConfig.project_id === null || typeof hostingConfig.project_id === "string");
   assert.equal(hostingConfig.d1, null);
   assert.equal(hostingConfig.r2, null);
-  for (const path of ["og.png", "portfolio/assets/maria-logo-white.svg", "portfolio/assets/wand-hero-banner-v2.png", "portfolio/assets/wand-canva-complete.png", "portfolio/assets/wand-canva-configure.png", "portfolio/assets/wand-canva-cashier.png", "portfolio/assets/wand-canva-connect.png", "portfolio/assets/wand-navigation-models.png", "portfolio/assets/wand-dark-mode.png", "portfolio/assets/wand-sweepstakes.png", "portfolio/assets/LA3A7408-portrait-768.avif", "portfolio/canva/hero-photo.jpg", "portfolio/canva/faq-photo.jpg", "portfolio/canva/work.jpg", "portfolio/canva/people.jpg", "portfolio/canva/awards.jpg", "portfolio/canva/beyond.jpg", "portfolio/canva/highlights.jpg", "portfolio/fonts/Silk Serif Regular.woff2", "portfolio/fonts/Silk Serif Regular Italic.woff2"]) await access(new URL(`../public/${path}`, import.meta.url));
+  for (const path of ["og.png", "portfolio/assets/maria-logo-white.svg", "portfolio/assets/wand-hero-banner-v2.png", "portfolio/assets/wand-canva-complete.png", "portfolio/assets/wand-canva-configure.png", "portfolio/assets/wand-canva-cashier.png", "portfolio/assets/wand-canva-connect.png", "portfolio/assets/wand-navigation-models.png", "portfolio/assets/wand-dark-mode.png", "portfolio/assets/wand-sweepstakes.png", "portfolio/assets/LA3A7408-portrait-768.avif", "portfolio/canva/hero-photo.jpg", "portfolio/canva/faq-photo.jpg", "portfolio/canva/work.jpg", "portfolio/canva/people.jpg", "portfolio/canva/people-bg.jpg", "portfolio/canva/awards.jpg", "portfolio/canva/beyond.jpg", "portfolio/canva/highlights.jpg", "portfolio/fonts/Silk Serif Regular.woff2", "portfolio/fonts/Silk Serif Regular Italic.woff2"]) await access(new URL(`../public/${path}`, import.meta.url));
 });
 
 test("renders the Demo Casino Customiser case study without inventing metrics or imagery", async () => {

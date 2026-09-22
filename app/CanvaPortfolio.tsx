@@ -154,7 +154,11 @@ export default function CanvaPortfolio() {
         });
         enter(root.current!.querySelector(".c-metrics")!, metrics);
         enter(root.current!.querySelector(".c-operators")!, gsap.from(".c-operators", { clipPath: "inset(0 100% 0 0)", x: -50, duration: 1.4, paused: true, ease: "power3.inOut" }));
-        enter(root.current!.querySelector(".c-people-photo")!, gsap.from(".c-people-photo", { clipPath: "inset(0 0 0 100%)", xPercent: 14, scale: 1.05, duration: 1.45, paused: true, ease: "power3.out" }));
+        // No entrance reveal here: it's a full-bleed section background now, not a
+        // framed photo, and the old clip/scale entrance relied on the same
+        // IntersectionObserver reveal that could get stuck unplayed (see the
+        // .c-career-controls fix above) — leaving the photo visibly mis-scaled
+        // and overflowing the section's edges when it never fired.
         enter(root.current!.querySelector(".c-quotes")!, gsap.from(".c-quotes", { opacity: 0, x: 70, clipPath: "inset(0 0 0 45%)", duration: 1.25, paused: true, ease: "power3.out" }));
         enter(root.current!.querySelector(".c-trophy")!, gsap.from(".c-trophy", { opacity: 0, y: 100, clipPath: "inset(100% 0 0 0)", scale: .96, duration: 1.4, paused: true, ease: "power3.out" }));
         gsap.utils.toArray<HTMLElement>(".c-award-list article").forEach((element, index) => enter(element, gsap.from(element, { opacity: 0, x: 70, duration: 1.1, delay: index * .09, paused: true, ease: "power2.out" })));
@@ -172,8 +176,8 @@ export default function CanvaPortfolio() {
         gsap.set(words, { y: 0, yPercent: 110, opacity: 0 });
         gsap.set(words[0], { y: 0, yPercent: 0, opacity: 1 });
         const rotation = gsap.timeline({ repeat: -1, paused: true });
-        const hold = 3.6;
-        const transition = .95;
+        const hold = 2.5;
+        const transition = .7;
         words.forEach((word, index) => {
           const next = words[(index + 1) % words.length];
           const at = index * (hold + transition) + hold;
@@ -195,22 +199,28 @@ export default function CanvaPortfolio() {
         gsap.from(".c-years-number", { scale: .3, transformOrigin: "left top", y: 120, opacity: .35,
           scrollTrigger: { trigger: ".c-highlights", start: "top 92%", end: "top 28%", scrub: .9 } });
         gsap.utils.toArray<HTMLElement>(".c-project-image .c-crop").forEach((image) => gsap.fromTo(image, { yPercent: 7 }, { yPercent: -7, ease: "none", scrollTrigger: { trigger: image, start: "top bottom", end: "bottom top", scrub: 1 } }));
-        gsap.to(".c-people-photo .c-crop", { yPercent: -10, ease: "none", scrollTrigger: { trigger: ".c-people", start: "top bottom", end: "bottom top", scrub: 1.2 } });
+        gsap.to(".c-people-photo img", { yPercent: -6, ease: "none", scrollTrigger: { trigger: ".c-people", start: "top bottom", end: "bottom top", scrub: 1.2 } });
         gsap.to(".c-trophy img", { yPercent: -9, ease: "none", scrollTrigger: { trigger: ".c-awards", start: "top bottom", end: "bottom top", scrub: 1.2 } });
         let visibleCareer = 0;
         const careerCards = gsap.utils.toArray<HTMLElement>(".c-career-stage");
+        let careerTween: gsap.core.Timeline | null = null;
         const moveCareer = (next: number) => {
           if (next === visibleCareer) return;
-          const previous = careerCards[visibleCareer];
-          const incoming = careerCards[next];
-          gsap.killTweensOf([previous, incoming]);
-          // A plain opacity crossfade, both cards pinned at rest position throughout —
-          // no wipe, no drift — so outgoing and incoming text never sit at different
-          // heights mid-transition the way a directional wipe or y-offset slide would.
-          gsap.to(previous, { autoAlpha: 0, clipPath: "inset(0)", duration: .55, ease: "power2.out" });
-          gsap.fromTo(incoming, { autoAlpha: 0, clipPath: "inset(0)" }, { autoAlpha: 1, duration: .85, ease: "power2.out" });
+          const previous = visibleCareer;
           visibleCareer = next;
           setActiveCareer(next);
+          // Fast/inertial trackpad scrolling can fire several of these calls within one
+          // frame, sometimes skipping a step entirely. Always kill the in-flight timeline
+          // outright and force every card that is neither the old nor the new state to
+          // fully hidden first, so a burst of calls can never leave two cards fading at
+          // once or strand one mid-transition — every call resolves to a clean, correct
+          // pair regardless of how it was interrupted.
+          careerTween?.kill();
+          careerCards.forEach((card, index) => { if (index !== previous && index !== next) gsap.set(card, { autoAlpha: 0, clipPath: "inset(0)" }); });
+          careerTween = gsap.timeline();
+          careerTween.set([careerCards[previous], careerCards[next]], { clipPath: "inset(0)" })
+            .to(careerCards[previous], { autoAlpha: 0, duration: .55, ease: "power2.out" }, 0)
+            .fromTo(careerCards[next], { autoAlpha: 0 }, { autoAlpha: 1, duration: .85, ease: "power2.out" }, 0);
         };
         const trigger = ScrollTrigger.create({ trigger: ".c-career", pin: ".c-career-inner", start: "top top", end: "+=120%", invalidateOnRefresh: true,
           onUpdate: (self) => moveCareer(Math.min(2, Math.floor(self.progress * 3))) });
@@ -292,7 +302,10 @@ export default function CanvaPortfolio() {
     </div></section>
 
     <section className="c-people c-section" id="portfolio-people" aria-labelledby="people-title">
-      <div className="c-people-photo" aria-hidden="true"><Photo src="/portfolio/canva/people.jpg" width={1280} height={1600} position="50% 22%" alt="" /></div>
+      <div className="c-people-photo" aria-hidden="true">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/portfolio/canva/people-bg.jpg" width={2560} height={1440} alt="" loading="lazy" decoding="async" />
+      </div>
       <header><div><Caption>People</Caption><Heading id="people-title">In their <em>words.</em></Heading></div><a className="c-recommendations-link" href="mailto:moragarciamaria@gmail.com?subject=Full%20recommendations">View all recommendations <Arrow direction="up" /></a></header>
       <div className="c-quotes" aria-live="polite">{recommendations.map((quote, index) => <figure key={quote.name} className={index === activeQuote ? "is-active" : ""} aria-hidden={index !== activeQuote}><blockquote>{quote.quote}</blockquote><figcaption><strong>{quote.name}</strong><span>{quote.role}</span></figcaption></figure>)}</div>
       <div className="c-quote-controls"><span>{String(activeQuote + 1).padStart(2, "0")} <span>/ {String(recommendations.length).padStart(2, "0")}</span></span><i /><button aria-label="Previous recommendation" onClick={() => setActiveQuote((current) => (current + recommendations.length - 1) % recommendations.length)}><Arrow direction="left" /></button><button aria-label="Next recommendation" onClick={() => setActiveQuote((current) => (current + 1) % recommendations.length)}><Arrow /></button></div>
