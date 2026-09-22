@@ -11,6 +11,8 @@
 .xs-nav a:hover svg{transform:translateX(-6px)}
 
 .xs-hero{padding:100px var(--xs-pad) 9vw;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.xs-wip{display:inline-flex;align-items:center;gap:9px;width:max-content;margin-bottom:clamp(20px,2vw,32px);font:450 11px/1 var(--xs-sans);letter-spacing:.14em;text-transform:uppercase;color:#d1af49;background:#1a160a;border:1px solid #3a3115;padding:9px 15px;border-radius:999px}
+.xs-wip i{width:6px;height:6px;border-radius:50%;background:#e8c04a;flex-shrink:0}
 .xs-hero__band{position:relative;width:100%;max-width:920px;border-radius:5px;overflow:hidden}
 .xs-hero h1{font:400 clamp(54px,5.45vw,92px)/.98 var(--xs-serif);letter-spacing:-.035em;margin-top:4vw}
 .xs-hero h1 span{display:block;overflow:hidden;padding-bottom:.08em}
@@ -38,7 +40,10 @@
 }
 
 .xs-vision{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden}
-.xs-vision>span{position:absolute;font:400 min(30vw,500px)/1 var(--xs-serif);color:rgba(245,244,241,.09);letter-spacing:-.07em}
+/* Georgia, not Silk Serif: at this size Silk Serif's "T" glyph renders with a
+   stray mark above the crossbar (font hinting bug, only visible this large —
+   WAND's own watermarks, BUILD/EVOLVE, happen to have no T to expose it). */
+.xs-vision>span{position:absolute;font:400 min(30vw,500px)/1 Georgia,serif;color:rgba(245,244,241,.09);letter-spacing:-.07em}
 .xs-vision>div{position:relative;max-width:1020px}
 .xs-vision h2{font:400 clamp(48px,5vw,80px)/1.1 var(--xs-serif);letter-spacing:-.03em;margin:clamp(24px,3.5vw,54px) 0}
 .xs-vision div>p:not(.xs-label){font-size:clamp(17px,1.5vw,23px);margin-top:28px}

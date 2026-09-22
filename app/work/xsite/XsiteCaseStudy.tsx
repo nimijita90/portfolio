@@ -99,6 +99,7 @@ export default function XsiteCaseStudy() {
     <header className="xs-nav"><Link href="/" aria-label="Back to María Mora portfolio"><img src={`${A}maria-logo-white.svg`} alt="" width="402" height="324" /></Link><Link className="xs-nav__back" href="/"><ArrowLeft /><span>Back to home</span></Link></header>
 
     <section className="xs-hero" aria-labelledby="xs-title">
+      <p className="xs-wip"><i aria-hidden="true" />Work in progress — content and visuals are provisional</p>
       <div className="xs-hero__band"><CasinoMockup mode="casino" device="desktop" /></div>
       <h1 id="xs-title"><span>Reimagining a casino platform</span>{" "}<span>from the <em>ground</em> up.</span></h1>
       <div className="xs-hero__meta"><div><small>Scope</small><p>Design System · Multi-brand Customisation ·<br />Native Sportsbook · Mobile</p></div><div><small>Role</small><p>Design Leadership</p></div><div><small>Started</small><p>2024 — Ongoing</p></div></div>

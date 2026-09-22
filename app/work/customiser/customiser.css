@@ -11,6 +11,8 @@
 .cust-nav a:hover svg{transform:translateX(-6px)}
 
 .cust-hero{padding:100px var(--cu-pad) 9vw;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.cust-wip{display:inline-flex;align-items:center;gap:9px;width:max-content;margin-bottom:clamp(20px,2vw,32px);font:450 11px/1 var(--cu-sans);letter-spacing:.14em;text-transform:uppercase;color:#d1af49;background:#1a160a;border:1px solid #3a3115;padding:9px 15px;border-radius:999px}
+.cust-wip i{width:6px;height:6px;border-radius:50%;background:#e8c04a;flex-shrink:0}
 .cust-hero__band{position:relative;width:100%;aspect-ratio:21/7;border-radius:5px;overflow:hidden;background:#080808}
 .cust-hero__band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
 .cust-hero h1{font:400 clamp(54px,5.45vw,92px)/.98 var(--cu-serif);letter-spacing:-.035em;margin-top:4vw}

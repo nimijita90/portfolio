@@ -104,6 +104,7 @@ export default function CustomiserCaseStudy() {
     <header className="cust-nav"><Link href="/" aria-label="Back to María Mora portfolio"><img src={`${A}maria-logo-white.svg`} alt="" width="402" height="324" /></Link><Link className="cust-nav__back" href="/"><ArrowLeft /><span>Back to home</span></Link></header>
 
     <section className="cust-hero" aria-labelledby="cust-title">
+      <p className="cust-wip"><i aria-hidden="true" />Work in progress — content and visuals are provisional</p>
       <div className="cust-hero__band">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/portfolio/assets/customiser-card.jpg" width={482} height={510} alt="Demo Casino Customiser" fetchPriority="high" />
