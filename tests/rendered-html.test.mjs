@@ -121,25 +121,45 @@ test("renders the Demo Casino Customiser case study without inventing metrics or
   const response = await render("/work/customiser");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything the client", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "cust-behind__portrait", "cust-hero__divider"]) assert.ok(html.includes(text), text);
+  for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything a client", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "cust-behind__portrait", "cust-hero__divider"]) assert.ok(html.includes(text), text);
   assert.ok(!html.includes("Return to selected work"));
-  for (const asset of ["customiser-gallery-colours.jpg", "customiser-gallery-tonal.jpg", "customiser-gallery-templates.jpg", "customiser-gallery-mode.jpg", "customiser-gallery-variants.jpg", "customiser-gallery-mobile.jpg", "customiser-summary.jpg"]) assert.ok(html.includes(asset), asset);
+  const customiserAssets = ["customiser-desk.webp", "customiser-modules.webp", "customiser-colour.webp", "customiser-templates.webp", "customiser-modes.webp", "customiser-imac-red.webp", "customiser-imac-shop.webp", "customiser-phone.webp", "customiser-summary.webp"];
+  for (const asset of customiserAssets) assert.ok(html.includes(asset), asset);
+  assert.ok(html.includes("ck-next") && html.includes('href="/work/xsite"'), "links on to the next case study");
   for (const capability of ["Colours &amp; tonal variations", "Light, dark &amp; hybrid themes", "Top bar &amp; sidebar navigation", "Sportsbook on or off", "Component variants"]) assert.ok(html.includes(capability), capability);
   // No fabricated dates, quantified results or product screenshots for a project with none supplied.
   for (const fabricated of ["2019", "2020", "2021", "2022", "2023", "days →", "wand-canva", "wand-visual"]) assert.ok(!html.includes(fabricated), fabricated);
   assert.ok(html.includes('href="/"'));
-  for (const path of ["portfolio/assets/customiser-gallery-colours.jpg", "portfolio/assets/customiser-gallery-tonal.jpg", "portfolio/assets/customiser-gallery-templates.jpg", "portfolio/assets/customiser-gallery-mode.jpg", "portfolio/assets/customiser-gallery-variants.jpg", "portfolio/assets/customiser-gallery-mobile.jpg", "portfolio/assets/customiser-summary.jpg"]) await access(new URL(`../public/${path}`, import.meta.url));
+  for (const asset of customiserAssets) await access(new URL(`../public/portfolio/assets/${asset}`, import.meta.url));
 });
 
 test("renders the XSITE case study with real product screenshots and a work-in-progress note", async () => {
   const response = await render("/work/xsite");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing, without engineering", "Where it stands", "Behind the work", "xs-behind__portrait", "xs-hero__divider", "2024 — Ongoing", "Work in progress"]) assert.ok(html.includes(text), text);
+  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing,", "Where it stands", "Behind the work", "xs-behind__portrait", "xs-hero__divider", "2024 — Ongoing", "Content and visuals are provisional"]) assert.ok(html.includes(text), text);
   assert.ok(!html.includes("Return to selected work"));
-  for (const asset of ["xsite-visual-devices.jpg", "xsite-visual-mobile.jpg", "xsite-visual-gamification.jpg"]) assert.ok(html.includes(asset), asset);
+  const xsiteAssets = ["xsite-visual-devices.jpg", "xsite-m-loyalty.webp", "xsite-m-promotions.webp", "xsite-m-shop.webp", "xsite-visual-gamification.jpg"];
+  for (const asset of xsiteAssets) assert.ok(html.includes(asset), asset);
+  assert.ok(html.includes("ck-next") && html.includes('href="/work/wand"'), "links on to the next case study");
   // No fabricated quantified results invented on top of the real screenshots.
   for (const fabricated of ["days →", "wand-canva", "wand-visual", "43 brands", "22 launched"]) assert.ok(!html.includes(fabricated), fabricated);
   assert.ok(html.includes('href="/"'));
-  for (const path of ["portfolio/assets/xsite-visual-devices.jpg", "portfolio/assets/xsite-visual-mobile.jpg", "portfolio/assets/xsite-visual-gamification.jpg"]) await access(new URL(`../public/${path}`, import.meta.url));
+  for (const asset of xsiteAssets) await access(new URL(`../public/portfolio/assets/${asset}`, import.meta.url));
+});
+
+test("shows every operator logo as a local white asset, and the new Beyond photos", async () => {
+  const html = await (await render()).text();
+  const files = ["williamhill.png", "rizk.svg", "dunder.svg", "netbet.svg", "thepools.svg", "slotbox.svg", "kingbilly.png", "kirgo.png", "eleven.svg", "jugadon.png", "solaire.svg"];
+  for (const file of files) {
+    assert.ok(html.includes(`/portfolio/operators/${file}`), file);
+    await access(new URL(`../public/portfolio/operators/${file}`, import.meta.url));
+  }
+  // Brands she did not work on must not be claimed.
+  for (const brand of ["Betsson", "LeoVegas", "Thrills"]) assert.ok(!html.includes(brand), brand);
+  for (const photo of ["beyond-children", "beyond-coffee", "beyond-garden", "beyond-cat"]) {
+    assert.ok(html.includes(`/portfolio/canva/${photo}.webp`), photo);
+    await access(new URL(`../public/portfolio/canva/${photo}.webp`, import.meta.url));
+  }
+  assert.ok(html.indexOf("beyond-children") < html.indexOf("beyond-coffee") && html.indexOf("beyond-coffee") < html.indexOf("beyond-garden") && html.indexOf("beyond-garden") < html.indexOf("beyond-cat"), "children, coffee / garden, cat");
 });

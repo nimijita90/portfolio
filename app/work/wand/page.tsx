@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import WandCaseStudy from "./WandCaseStudy";
+import "../case-kit.css";
 import "./wand.css";
 
 export const metadata: Metadata = {

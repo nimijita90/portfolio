@@ -117,6 +117,22 @@ export const awards = [
   { year: "2022", place: "Europe", result: "Finalist", description: "Design and User Experience Award in the iGaming industry.", mark: "iGaming\nIdol" },
 ] as const;
 
+/** Operators María designed for (live or in development — proposals excluded), as white logos
+ *  in /public/portfolio/operators. `ratio` is width / height, used to balance optical size. */
+export const operators = [
+  { name: "William Hill", file: "williamhill.png", ratio: 4.88 },
+  { name: "Rizk", file: "rizk.svg", ratio: 3.24 },
+  { name: "Dunder", file: "dunder.svg", ratio: 5.84 },
+  { name: "NetBet", file: "netbet.svg", ratio: 5.7 },
+  { name: "The Pools", file: "thepools.svg", ratio: 2.25 },
+  { name: "Slotbox", file: "slotbox.svg", ratio: 2.38 },
+  { name: "King Billy", file: "kingbilly.png", ratio: 4.77 },
+  { name: "Kirgo", file: "kirgo.png", ratio: 7.58 },
+  { name: "11.lv", file: "eleven.svg", ratio: 2.23 },
+  { name: "Jugadón", file: "jugadon.png", ratio: 4.1 },
+  { name: "Solaire", file: "solaire.svg", ratio: 1.8 },
+] as const;
+
 export const brandNames = ["William Hill", "Mr Green", "Rizk", "SkyCity", "Dunder", "Thrills"] as const;
 
 export const faqItems = [

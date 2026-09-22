@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode }
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { awards, expertise, faqItems, highlights, recommendations } from "./content";
+import { awards, expertise, faqItems, highlights, operators, recommendations } from "./content";
 
 const nav = [["Work", "work"], ["About", "about"], ["Contact", "contact"]] as const;
 
@@ -311,7 +311,12 @@ export default function CanvaPortfolio() {
       <h2 id="highlights-title" className="c-years"><span className="c-years-number">10+</span><span data-reveal>years of experience</span><span data-reveal>in the <em>iGaming industry.</em></span></h2>
       <div className="c-metrics">{highlights.map(([value, label]) => <div key={label} aria-label={`${value} ${label}`}><strong aria-hidden="true"><span data-counter={parseInt(value)}>{parseInt(value)}</span>{value.includes("+") && <span>+</span>}</strong><p>{label}</p></div>)}</div>
 
-      <div id="portfolio-operators" className="c-operators" role="img" aria-label="Selected operators: William Hill, Mr Green, RIZK, SkyCity, Dunder, Thrills, Betsson and LeoVegas"><div className="c-logo-track">{[0, 1].map((i) => <ReferenceImage key={i} sheet="highlights" sourceWidth={1024} sourceHeight={1536} x={0} y={566} width={1024} height={70} alt="" />)}</div></div>
+      <div id="portfolio-operators" className="c-operators" role="region" aria-label="Operators I have designed for">
+        <ul className="c-logo-track">{[...operators, ...operators].map((operator, index) => <li key={`${operator.file}-${index}`} aria-hidden={index >= operators.length || undefined} style={{ "--logo-h": (1 / Math.sqrt(operator.ratio)).toFixed(3) } as CSSProperties}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={`/portfolio/operators/${operator.file}`} alt={index < operators.length ? operator.name : ""} loading="lazy" decoding="async" />
+        </li>)}</ul>
+      </div>
     </section>
 
     <section className="c-expertise c-section" id="portfolio-expertise" aria-labelledby="expertise-title">
@@ -360,7 +365,7 @@ export default function CanvaPortfolio() {
       <div className="c-faq-list">{faqItems.map((item, index) => <article key={item.question} className={index === activeFaq ? "is-open" : ""}><h3><button id={`faq-question-${index}`} aria-expanded={index === activeFaq} aria-controls={`faq-panel-${index}`} onClick={() => setActiveFaq(index === activeFaq ? null : index)}><span className="c-faq-number">{String(index + 1).padStart(2, "0")}</span><span>{item.question}</span><span className="c-plus" aria-hidden="true" /></button></h3><div className="c-faq-panel" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-question-${index}`} inert={index !== activeFaq}><div><p className="c-faq-answer">{item.answer}</p></div></div></article>)}</div>
     </section>
 
-    <section className="c-beyond c-section" id="portfolio-playground" aria-labelledby="beyond-title"><div className="c-beyond-grid">{[{ x: 299, y: 295, alt: "A child exploring a colourful outdoor staircase" }, { x: 508, y: 295, alt: "A cat resting on a soft blanket" }, { x: 299, y: 496, alt: "Freshly brewed coffee" }, { x: 508, y: 496, alt: "Tomatoes in the vegetable garden" }].map((photo) => <div key={photo.alt} data-reveal><ReferenceImage sheet="beyond" x={photo.x} y={photo.y} width={191} height={184} alt={photo.alt} /></div>)}</div><header><Caption>Beyond design</Caption><Heading id="beyond-title">There’s more<br />to <em>life</em> than<br />pixels.</Heading><p data-reveal>The things that inspire me,<br />keep me grounded and<br />make life beautiful.</p></header></section>
+    <section className="c-beyond c-section" id="portfolio-playground" aria-labelledby="beyond-title"><div className="c-beyond-grid">{[{ src: "beyond-children", alt: "Two young children sitting by a colourful bead curtain" }, { src: "beyond-coffee", alt: "A cup of coffee with a biscuit on the saucer" }, { src: "beyond-garden", alt: "Rows of young plants in the vegetable garden" }, { src: "beyond-cat", alt: "A snowshoe cat looking at the camera" }].map((photo) => <div key={photo.src} data-reveal><Photo src={`/portfolio/canva/${photo.src}.webp`} width={900} height={900} alt={photo.alt} /></div>)}</div><header><Caption>Beyond design</Caption><Heading id="beyond-title">There’s more<br />to <em>life</em> than<br />pixels.</Heading><p data-reveal>The things that inspire me,<br />keep me grounded and<br />make life beautiful.</p></header></section>
 
     <footer className="c-contact c-section" id="portfolio-contact" aria-labelledby="contact-title"><Caption>Contact</Caption><Heading id="contact-title">Let’s make something<br /><em>exceptional.</em></Heading><a className="c-email" href="mailto:moragarciamaria@gmail.com" data-reveal><span>moragarciamaria@gmail.com</span><Arrow direction="up" /></a><div className="c-footer-meta" data-reveal><p>María Mora · Design Leader<br />Marbella · Worldwide</p><span>© 2026</span></div></footer>
   </main>;

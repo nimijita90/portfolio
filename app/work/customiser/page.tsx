@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import CustomiserCaseStudy from "./CustomiserCaseStudy";
-import "../../casino-mockup.css";
+import "../case-kit.css";
 import "./customiser.css";
 
 export const metadata: Metadata = {

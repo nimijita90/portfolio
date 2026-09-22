@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { NextCase, Stats, animateKit } from "../CaseKit";
 
 const A = "/portfolio/assets/";
 const milestones = [
@@ -127,12 +128,7 @@ export default function WandCaseStudy() {
           if (visual) timeline.from(visual, { clipPath: visualMask, x: visualX, y: visualY, scale: 1.05, duration: 1.5, ease: "power2.out" }, .32);
         });
 
-        gsap.timeline({ scrollTrigger: { trigger: ".wand-next", start: "clamp(top 86%)", toggleActions: "play none none none", invalidateOnRefresh: true } })
-          .from(".wand-next", { opacity: 0, duration: 1.2, ease: "power1.out" })
-          .from(".wand-next .wand-label", { x: -60, opacity: 0, duration: .9, ease: "power2.out" }, .1)
-          .from(".wand-next h2", { y: 100, opacity: 0, clipPath: "inset(0 0 82% 0)", duration: 1.4, ease: "power2.out" }, .2)
-          .from(".wand-next > p:not(.wand-label)", { y: 40, opacity: 0, duration: .95, ease: "power2.out" }, .72)
-          .from(".wand-next a", { x: -50, opacity: 0, duration: 1, ease: "power2.out" }, .92);
+        animateKit(gsap, window.matchMedia("(min-width: 1024px)").matches);
       });
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.fromTo(".wand-approach > span", { scale: .7, xPercent: -4, opacity: .3 }, { scale: 1.08, xPercent: 4, opacity: 1, ease: "none", scrollTrigger: { trigger: ".wand-approach", start: "top bottom", end: "bottom top", scrub: 1.1 } });
@@ -141,7 +137,7 @@ export default function WandCaseStudy() {
         gsap.fromTo(".wand-visual--navigation img", { xPercent: -3.5 }, { xPercent: 2.5, ease: "none", scrollTrigger: { trigger: ".wand-feature--navigation", start: "top bottom", end: "bottom top", scrub: 1.15 } });
         gsap.fromTo(".wand-visual--dark-mode img", { yPercent: 4.5 }, { yPercent: -3.5, ease: "none", scrollTrigger: { trigger: ".wand-feature--dark-mode", start: "top bottom", end: "bottom top", scrub: 1.15 } });
         gsap.fromTo(".wand-visual--sweepstakes img", { yPercent: 5, rotate: -.35 }, { yPercent: -4, rotate: .35, ease: "none", scrollTrigger: { trigger: ".wand-feature--sweepstakes", start: "top bottom", end: "bottom top", scrub: 1.15 } });
-        gsap.fromTo(".wand-behind__portrait img", { scale: 1.18, yPercent: 6 }, { scale: 1.03, yPercent: -4, ease: "none", scrollTrigger: { trigger: ".wand-behind", start: "top bottom", end: "bottom top", scrub: 1.15 } });
+        gsap.fromTo(".wand-behind__portrait img", { scale: 1.12 }, { scale: 1, ease: "none", scrollTrigger: { trigger: ".wand-behind", start: "top bottom", end: "bottom top", scrub: 1.15 } });
         const cards = gsap.utils.toArray<HTMLElement>(".wand-milestone");
         gsap.set(cards, { yPercent: 120, opacity: 0 });
         gsap.set(cards[0], { yPercent: 0, opacity: 1 });
@@ -198,7 +194,7 @@ export default function WandCaseStudy() {
 
     <section className="wand-interlude wand-section" aria-labelledby="problems-title"><span aria-hidden="true">EVOLVE</span><div><p className="wand-label">The expansion</p><h2 id="problems-title">As WAND grew, new problems emerged.</h2><footer>UX problems <i /> Client needs <i /> System limitations <i /> New business models</footer></div></section>
 
-    <section className="wand-feature wand-feature--cashier wand-section" aria-labelledby="cashier-title"><div data-wand-reveal><p className="wand-label">01 · Cashier</p><h2 id="cashier-title">Improving usability<br />without rebuilding<br />the experience.</h2><div className="wand-feature__copy"><p>The Cashier evolved across several parts of the experience, from bonus discovery to payment methods and key flows.</p><p>I improved hierarchy and interactions while working within the existing architecture.</p></div></div><VisualCrop src="wand-visual-cashier-v2.png" className="wand-visual--cashier" alt="WAND mobile Cashier journey from deposit to confirmation" /></section>
+    <section className="wand-feature wand-feature--cashier wand-section" aria-labelledby="cashier-title"><div data-wand-reveal><p className="wand-label">01 · Cashier</p><h2 id="cashier-title">Improving usability without rebuilding the experience.</h2><div className="wand-feature__copy"><p>The Cashier evolved across several parts of the experience, from bonus discovery to payment methods and key flows.</p><p>I improved hierarchy and interactions while working within the existing architecture.</p></div></div><VisualCrop src="wand-visual-cashier-v2.png" className="wand-visual--cashier" alt="WAND mobile Cashier journey from deposit to confirmation" /></section>
 
     <section className="wand-feature wand-feature--navigation wand-section" aria-labelledby="navigation-title"><VisualCrop src="wand-navigation-models.png" className="wand-visual--navigation" alt="Top, sidebar and bottom navigation models built from the same WAND foundation" width={960} height={760} /><div data-wand-reveal><p className="wand-label">02 · Navigation Models</p><h2 id="navigation-title">Different navigation.<br />Same foundation.</h2><div className="wand-feature__copy"><p>The original sidebar remained unchanged, while we introduced top navigation as an alternative. This gave us the opportunity to improve the top bar and design a more modern secondary sidebar, accessible through the burger menu.</p><p>Using Figma Variables, we built both navigation models into the same system, allowing us to switch between them quickly without updating every page manually.</p></div></div></section>
 
@@ -207,9 +203,10 @@ export default function WandCaseStudy() {
     <section className="wand-feature wand-feature--sweepstakes wand-section" aria-labelledby="sweepstakes-title"><div data-wand-reveal><p className="wand-label">04 · Sweepstakes</p><h2 id="sweepstakes-title">Extending the system to support a new business model.</h2><div className="wand-feature__copy"><p>When Sweepstakes became a new business requirement, creating a separate design foundation wasn’t an option. I integrated it into the existing Real Money Casino system, adapting flows and components.</p><p>I worked on key areas such as the Cashier and coin switcher, while creating the new pages needed to support the model, primarily for US clients.</p></div></div><VisualCrop src="wand-sweepstakes.png" className="wand-visual--sweepstakes" alt="WAND Sweepstakes purchase experience with gold and sweep coins" width={760} height={690} /></section>
 
     <section className="wand-brands wand-section" aria-labelledby="brands-title">
-      <header data-wand-reveal><p className="wand-label">Brand customisation</p><h2 id="brands-title">One system.<br />Many <em>brands.</em></h2><p>43 brands designed or pitched, 22 launched — each one customised from the same foundation.</p></header>
-      {/* Awaiting the approved laptop mock-up showing the customised brands; no placeholder imagery is invented. */}
-      <figure className="wand-brands__stage" data-wand-visual role="img" aria-label="Laptop showing the brands customised on WAND — image pending"><figcaption>Laptop mock-up with customised brands<span>Image pending</span></figcaption></figure>
+      <header data-wand-reveal><p className="wand-label">Brand customisation</p><h2 id="brands-title">One system.<br />Many <em>brands.</em></h2><p>Every one of them customised from the same foundation — without a separate design source per client.</p></header>
+      {/* The approved laptop mock-up of the customised brands is still pending; until it arrives the
+          section leads with the numbers themselves rather than a placeholder frame. */}
+      <Stats items={[{ value: "43", label: "Brands designed or pitched" }, { value: "22", label: "Brands launched" }]} />
     </section>
 
     <section className="wand-results wand-section" aria-labelledby="results-title">
@@ -221,8 +218,8 @@ export default function WandCaseStudy() {
       </div>
     </section>
 
-    <section className="wand-behind wand-section" aria-labelledby="behind-title"><p className="wand-label">Behind the work</p><figure className="wand-behind__portrait"><img src={`${A}maria-portrait.jpg`} alt="María Mora" width="700" height="700" /></figure><h2 id="behind-title">Want to see how it <em>really</em> works?</h2><div className="wand-behind__copy"><p>Due to confidentiality and intellectual property restrictions,<br />I can’t share WAND’s full Design System publicly.</p><p>I’d be happy to walk you through its Figma architecture,<br />components and key design decisions in an interview,<br />and answer any questions you may have.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=WAND%20Design%20System">Let’s talk <Arrow /></a></section>
+    <section className="wand-behind wand-section" aria-labelledby="behind-title"><p className="wand-label">Behind the work</p><figure className="wand-behind__portrait"><img src={`${A}maria-portrait.jpg`} alt="María Mora" width="600" height="600" /></figure><h2 id="behind-title">Want to see how it <em>really</em> works?</h2><div className="wand-behind__copy"><p>Due to confidentiality and intellectual property restrictions,<br />I can’t share WAND’s full Design System publicly.</p><p>I’d be happy to walk you through its Figma architecture,<br />components and key design decisions in an interview,<br />and answer any questions you may have.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=WAND%20Design%20System">Let’s talk <Arrow /></a></section>
 
-    <footer className="wand-next"><p className="wand-label">Next case study</p><h2>Demo Casino<br />Customiser.</h2><p>Would you like to know how we solve one of the product’s biggest commercial problems?</p><Link href="/work/customiser">View the case study <Arrow /></Link><Link className="wand-next__home" href="/"><ArrowLeft /> Back to home</Link></footer>
+    <NextCase href="/work/customiser" title={<>Demo Casino<br />Customiser.</>} lede="Would you like to know how we solve one of the product’s biggest commercial problems?" banner="customiser-hero-banner.jpg" bannerWidth={2171} bannerHeight={406} />
   </main>;
 }
