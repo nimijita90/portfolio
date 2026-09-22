@@ -102,11 +102,11 @@ export default function WandCaseStudy() {
         });
 
         gsap.timeline({ scrollTrigger: { trigger: ".wand-behind", start: "clamp(top 80%)", once: true, invalidateOnRefresh: true } })
-          .from(".wand-behind .wand-label", { y: 34, opacity: 0, duration: .6, ease: "power3.out" })
-          .from(".wand-behind__portrait", { scale: .55, opacity: 0, clipPath: "circle(0% at 50% 50%)", duration: 1.05, ease: "power4.out" }, .05)
-          .from(".wand-behind h2", { y: 118, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.08, ease: "power4.out" }, .22)
-          .from(".wand-behind__copy p", { y: 42, opacity: 0, duration: .72, stagger: .11, ease: "power3.out" }, .58)
-          .from(".wand-behind a", { y: 30, opacity: 0, "--behind-line": 0, duration: .72, ease: "power3.out" }, .84);
+          .from(".wand-behind .wand-label", { y: 26, opacity: 0, duration: .8, ease: "power2.out" })
+          .from(".wand-behind__portrait", { scale: .65, opacity: 0, clipPath: "circle(0% at 50% 50%)", duration: 1.3, ease: "power2.out" }, .1)
+          .from(".wand-behind h2", { y: 90, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.35, ease: "power2.out" }, .3)
+          .from(".wand-behind__copy p", { y: 32, opacity: 0, duration: .9, stagger: .13, ease: "power2.out" }, .7)
+          .from(".wand-behind a", { y: 22, opacity: 0, duration: .9, ease: "power2.out" }, 1);
 
         gsap.utils.toArray<HTMLElement>(".wand-feature").forEach((section, index) => {
           const visual = section.querySelector<HTMLElement>(".wand-visual");
@@ -117,47 +117,47 @@ export default function WandCaseStudy() {
           const isNavigation = section.classList.contains("wand-feature--navigation");
           const isDarkMode = section.classList.contains("wand-feature--dark-mode");
           const isSweepstakes = section.classList.contains("wand-feature--sweepstakes");
-          const visualX = isNavigation ? -120 : isSweepstakes ? 120 : index === 1 ? -120 : index === 2 ? 120 : 0;
-          const visualY = isDarkMode ? 130 : index === 0 ? 150 : 0;
+          const visualX = isNavigation ? -90 : isSweepstakes ? 90 : index === 1 ? -90 : index === 2 ? 90 : 0;
+          const visualY = isDarkMode ? 100 : index === 0 ? 110 : 0;
           const visualMask = isNavigation ? "inset(0 100% 0 0)" : isDarkMode ? "inset(100% 0 0 0)" : isSweepstakes ? "inset(0 0 0 100%)" : masks[index % masks.length];
           const timeline = gsap.timeline({ scrollTrigger: { trigger: section, start: "clamp(top 82%)", once: true, invalidateOnRefresh: true } });
-          if (label) timeline.from(label, { x: -58, opacity: 0, duration: .68, ease: "power3.out" });
-          if (heading) timeline.from(heading, { y: 108, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.08, ease: "power4.out" }, .06);
-          if (paragraphs.length) timeline.from(paragraphs, { y: 46, opacity: 0, duration: .72, stagger: .09, ease: "power3.out" }, .42);
-          if (visual) timeline.from(visual, { clipPath: visualMask, x: visualX, y: visualY, scale: 1.08, duration: 1.28, ease: "power4.out" }, .28);
+          if (label) timeline.from(label, { x: -46, opacity: 0, duration: .85, ease: "power2.out" });
+          if (heading) timeline.from(heading, { y: 84, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.3, ease: "power2.out" }, .1);
+          if (paragraphs.length) timeline.from(paragraphs, { y: 36, opacity: 0, duration: .9, stagger: .1, ease: "power2.out" }, .5);
+          if (visual) timeline.from(visual, { clipPath: visualMask, x: visualX, y: visualY, scale: 1.05, duration: 1.5, ease: "power2.out" }, .32);
         });
 
         gsap.timeline({ scrollTrigger: { trigger: ".wand-next", start: "clamp(top 86%)", toggleActions: "play none none none", invalidateOnRefresh: true } })
-          .from(".wand-next", { "--next-divider": 0, duration: 1.05, ease: "power3.inOut" })
-          .from(".wand-next .wand-label", { x: -82, opacity: 0, duration: .72 }, .05)
-          .from(".wand-next h2", { y: 138, opacity: 0, clipPath: "inset(0 0 82% 0)", duration: 1.16, ease: "power4.out" }, .12)
-          .from(".wand-next > p:not(.wand-label)", { y: 54, opacity: 0, duration: .78 }, .62)
-          .from(".wand-next a", { x: -72, opacity: 0, "--next-line": 0, duration: .82, ease: "power3.out" }, .78);
+          .from(".wand-next", { opacity: 0, duration: 1.2, ease: "power1.out" })
+          .from(".wand-next .wand-label", { x: -60, opacity: 0, duration: .9, ease: "power2.out" }, .1)
+          .from(".wand-next h2", { y: 100, opacity: 0, clipPath: "inset(0 0 82% 0)", duration: 1.4, ease: "power2.out" }, .2)
+          .from(".wand-next > p:not(.wand-label)", { y: 40, opacity: 0, duration: .95, ease: "power2.out" }, .72)
+          .from(".wand-next a", { x: -50, opacity: 0, duration: 1, ease: "power2.out" }, .92);
       });
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
-        gsap.fromTo(".wand-approach > span", { scale: .7, xPercent: -4, opacity: .3 }, { scale: 1.08, xPercent: 4, opacity: 1, ease: "none", scrollTrigger: { trigger: ".wand-approach", start: "top bottom", end: "bottom top", scrub: .8 } });
-        gsap.fromTo(".wand-interlude > span", { scale: .72, xPercent: -5, opacity: .28 }, { scale: 1.08, xPercent: 5, opacity: 1, ease: "none", scrollTrigger: { trigger: ".wand-interlude", start: "top bottom", end: "bottom top", scrub: .8 } });
-        gsap.utils.toArray<HTMLElement>(".wand-visual img").forEach((image) => gsap.fromTo(image, { scale: 1.08 }, { scale: 1, ease: "none", scrollTrigger: { trigger: image.parentElement, start: "top bottom", end: "bottom top", scrub: .8 } }));
-        gsap.fromTo(".wand-visual--navigation img", { xPercent: -3.5 }, { xPercent: 2.5, ease: "none", scrollTrigger: { trigger: ".wand-feature--navigation", start: "top bottom", end: "bottom top", scrub: .9 } });
-        gsap.fromTo(".wand-visual--dark-mode img", { yPercent: 4.5 }, { yPercent: -3.5, ease: "none", scrollTrigger: { trigger: ".wand-feature--dark-mode", start: "top bottom", end: "bottom top", scrub: .9 } });
-        gsap.fromTo(".wand-visual--sweepstakes img", { yPercent: 5, rotate: -.35 }, { yPercent: -4, rotate: .35, ease: "none", scrollTrigger: { trigger: ".wand-feature--sweepstakes", start: "top bottom", end: "bottom top", scrub: .9 } });
-        gsap.fromTo(".wand-behind__portrait img", { scale: 1.18, yPercent: 6 }, { scale: 1.03, yPercent: -4, ease: "none", scrollTrigger: { trigger: ".wand-behind", start: "top bottom", end: "bottom top", scrub: .9 } });
+        gsap.fromTo(".wand-approach > span", { scale: .7, xPercent: -4, opacity: .3 }, { scale: 1.08, xPercent: 4, opacity: 1, ease: "none", scrollTrigger: { trigger: ".wand-approach", start: "top bottom", end: "bottom top", scrub: 1.1 } });
+        gsap.fromTo(".wand-interlude > span", { scale: .72, xPercent: -5, opacity: .28 }, { scale: 1.08, xPercent: 5, opacity: 1, ease: "none", scrollTrigger: { trigger: ".wand-interlude", start: "top bottom", end: "bottom top", scrub: 1.1 } });
+        gsap.utils.toArray<HTMLElement>(".wand-visual img").forEach((image) => gsap.fromTo(image, { scale: 1.08 }, { scale: 1, ease: "none", scrollTrigger: { trigger: image.parentElement, start: "top bottom", end: "bottom top", scrub: 1 } }));
+        gsap.fromTo(".wand-visual--navigation img", { xPercent: -3.5 }, { xPercent: 2.5, ease: "none", scrollTrigger: { trigger: ".wand-feature--navigation", start: "top bottom", end: "bottom top", scrub: 1.15 } });
+        gsap.fromTo(".wand-visual--dark-mode img", { yPercent: 4.5 }, { yPercent: -3.5, ease: "none", scrollTrigger: { trigger: ".wand-feature--dark-mode", start: "top bottom", end: "bottom top", scrub: 1.15 } });
+        gsap.fromTo(".wand-visual--sweepstakes img", { yPercent: 5, rotate: -.35 }, { yPercent: -4, rotate: .35, ease: "none", scrollTrigger: { trigger: ".wand-feature--sweepstakes", start: "top bottom", end: "bottom top", scrub: 1.15 } });
+        gsap.fromTo(".wand-behind__portrait img", { scale: 1.18, yPercent: 6 }, { scale: 1.03, yPercent: -4, ease: "none", scrollTrigger: { trigger: ".wand-behind", start: "top bottom", end: "bottom top", scrub: 1.15 } });
         const cards = gsap.utils.toArray<HTMLElement>(".wand-milestone");
         const bodies = cards.map((card) => card.querySelectorAll(".wand-milestone__body, .wand-milestone__tags"));
-        gsap.set(cards, { yPercent: 135, opacity: 0 });
+        gsap.set(cards, { yPercent: 120, opacity: 0 });
         gsap.set(cards[0], { yPercent: 0, opacity: 1 });
-        gsap.set(cards[1], { yPercent: 115, opacity: .28 });
+        gsap.set(cards[1], { yPercent: 108, opacity: .28 });
         bodies.slice(1).forEach((body) => gsap.set(body, { opacity: 0, clipPath: "inset(0 0 100% 0)" }));
-        const timeline = gsap.timeline({ scrollTrigger: { trigger: ".wand-evolution", start: "top top", end: "+=430%", pin: ".wand-evolution__stage", scrub: .65, invalidateOnRefresh: true } });
+        const timeline = gsap.timeline({ scrollTrigger: { trigger: ".wand-evolution", start: "top top", end: "+=430%", pin: ".wand-evolution__stage", scrub: .9, invalidateOnRefresh: true } });
         milestones.forEach((milestone, index) => {
           timeline.to({}, { duration: milestone.hold });
           if (index === milestones.length - 1) return;
           const at = timeline.duration();
-          timeline.to(cards[index], { yPercent: -115, opacity: 0, duration: .9, ease: "power2.inOut" }, at)
-            .to(cards[index + 1], { yPercent: 0, opacity: 1, duration: .95, ease: "power3.inOut" }, at)
-            .to(bodies[index + 1], { opacity: 1, clipPath: "inset(0 0 0% 0)", duration: .28, ease: "power2.out" }, at + .78)
-            .to(".wand-timeline__progress", { scaleY: (index + 1) / (milestones.length - 1), duration: .9, ease: "none" }, at);
-          if (cards[index + 2]) timeline.to(cards[index + 2], { yPercent: 115, opacity: .28, duration: .3, ease: "power2.out" }, at + .82);
+          timeline.to(cards[index], { yPercent: -108, opacity: 0, duration: 1.05, ease: "power2.out" }, at)
+            .to(cards[index + 1], { yPercent: 0, opacity: 1, duration: 1.1, ease: "power2.out" }, at)
+            .to(bodies[index + 1], { opacity: 1, clipPath: "inset(0 0 0% 0)", duration: .35, ease: "power2.out" }, at + .78)
+            .to(".wand-timeline__progress", { scaleY: (index + 1) / (milestones.length - 1), duration: 1, ease: "none" }, at);
+          if (cards[index + 2]) timeline.to(cards[index + 2], { yPercent: 108, opacity: .28, duration: .35, ease: "power2.out" }, at + .82);
         });
       });
       return () => mm.revert();
@@ -227,6 +227,6 @@ export default function WandCaseStudy() {
 
     <section className="wand-behind wand-section" aria-labelledby="behind-title"><p className="wand-label">Behind the work</p><figure className="wand-behind__portrait"><img src="/portfolio/canva/faq-photo.jpg" alt="María Mora" width="1983" height="793" /></figure><h2 id="behind-title">Want to see how it <em>really</em> works?</h2><div className="wand-behind__copy"><p>Due to confidentiality and intellectual property restrictions,<br />I can’t share WAND’s full Design System publicly.</p><p>I’d be happy to walk you through its Figma architecture,<br />components and key design decisions in an interview,<br />and answer any questions you may have.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=WAND%20Design%20System">Let’s talk <Arrow /></a></section>
 
-    <footer className="wand-next"><p className="wand-label">Next case study</p><h2>Demo Casino<br />Customiser.</h2><p>Would you like to know how we solve one of the product’s biggest commercial problems?</p><a href="mailto:moragarciamaria@gmail.com?subject=Demo%20Casino%20Customiser">Request the case study <Arrow /></a><Link className="wand-next__home" href="/"><ArrowLeft /> Back to home</Link></footer>
+    <footer className="wand-next"><p className="wand-label">Next case study</p><h2>Demo Casino<br />Customiser.</h2><p>Would you like to know how we solve one of the product’s biggest commercial problems?</p><Link href="/work/customiser">View the case study <Arrow /></Link><Link className="wand-next__home" href="/"><ArrowLeft /> Back to home</Link></footer>
   </main>;
 }

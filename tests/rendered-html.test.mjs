@@ -6,7 +6,7 @@ import test from "node:test";
 // HTML under .next/server/app. Reading that file is equivalent to fetching
 // the route from any host that serves the Next.js build output (including
 // Netlify's Next.js runtime), without needing a running server in tests.
-const prerendered = { "/": "index.html", "/work/wand": "work/wand.html" };
+const prerendered = { "/": "index.html", "/work/wand": "work/wand.html", "/work/customiser": "work/customiser.html" };
 async function render(pathname = "/") {
   const filePath = new URL(`../.next/server/app/${prerendered[pathname]}`, import.meta.url);
   const html = await readFile(filePath, "utf8");
@@ -30,6 +30,7 @@ test("renders the Canva section map with real content", async () => {
   assert.equal((html.match(/<main\b/g) ?? []).length, 1);
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
   assert.ok(html.includes('href="/work/wand"'));
+  assert.ok(html.includes('href="/work/customiser"'));
   assert.ok(!html.includes('href="/work/xsite"'));
   assert.ok(html.includes("case study not yet published"));
   for (const fabricated of ["Astra One", "Pulse Live", "Core 43", "Concept case"]) assert.ok(!html.includes(fabricated));
@@ -86,7 +87,7 @@ test("renders all eleven selected testimonials with complete copy and closing qu
   assert.ok(css.includes('blockquote:after{content:"”"}'));
   assert.ok(css.includes('height:100svh;min-height:0'));
   assert.ok(!css.includes('.c-work .c-caption{'));
-  assert.ok(css.includes('.c-career-company{font:400 clamp(22px,1.85vw,30px)/1.5 var(--c-sans)'));
+  assert.ok(css.includes('.c-career-company{font:400 clamp(15px,1.1vw,19px)/1.5 var(--c-sans)'));
 });
 
 test("renders the complete Canva-led WAND case study and local production assets", async () => {
@@ -99,6 +100,8 @@ test("renders the complete Canva-led WAND case study and local production assets
   assert.ok(html.includes("Eventually, evolution wasn’t enough."));
   assert.ok(!html.includes("hello@mariamora.design"));
   assert.ok(!html.includes("Return to selected work"));
+  assert.ok(html.includes('href="/work/customiser"'));
+  assert.ok(html.includes("View the case study"));
   const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
   assert.ok(layout.includes("/og.png"));
   const hosting = await readFile(new URL("../.openai/hosting.json", import.meta.url), "utf8");
@@ -107,4 +110,15 @@ test("renders the complete Canva-led WAND case study and local production assets
   assert.equal(hostingConfig.d1, null);
   assert.equal(hostingConfig.r2, null);
   for (const path of ["og.png", "portfolio/assets/maria-logo-white.svg", "portfolio/assets/wand-hero-banner-v2.png", "portfolio/assets/wand-canva-complete.png", "portfolio/assets/wand-canva-configure.png", "portfolio/assets/wand-canva-cashier.png", "portfolio/assets/wand-canva-connect.png", "portfolio/assets/wand-navigation-models.png", "portfolio/assets/wand-dark-mode.png", "portfolio/assets/wand-sweepstakes.png", "portfolio/assets/LA3A7408-portrait-768.avif", "portfolio/canva/hero-photo.jpg", "portfolio/canva/faq-photo.jpg", "portfolio/canva/work.jpg", "portfolio/canva/people.jpg", "portfolio/canva/awards.jpg", "portfolio/canva/beyond.jpg", "portfolio/canva/highlights.jpg", "portfolio/fonts/Silk Serif Regular.woff2", "portfolio/fonts/Silk Serif Regular Italic.woff2"]) await access(new URL(`../public/${path}`, import.meta.url));
+});
+
+test("renders the Demo Casino Customiser case study without inventing metrics or imagery", async () => {
+  const response = await render("/work/customiser");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything the client", "Image pending", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "Return to selected work"]) assert.ok(html.includes(text), text);
+  for (const capability of ["Colours &amp; tonal variations", "Light, dark &amp; hybrid themes", "Top bar &amp; sidebar navigation", "Sportsbook on or off", "Component variants"]) assert.ok(html.includes(capability), capability);
+  // No fabricated dates, quantified results or product screenshots for a project with none supplied.
+  for (const fabricated of ["2019", "2020", "2021", "2022", "2023", "days →", "wand-canva", "wand-visual"]) assert.ok(!html.includes(fabricated), fabricated);
+  assert.ok(html.includes('href="/"'));
 });

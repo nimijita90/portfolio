@@ -46,7 +46,7 @@ const stages = [
 const projects = [
   { name: "WAND", x: 30, width: 482, copy: <>Scaling a legacy platform <br />across brands and markets.</>, href: "/work/wand" },
   { name: "XSITE", x: 527, width: 482, copy: <>Reimagining a casino platform <br />from the ground up.</>, href: null },
-  { name: "Demo Casino Customiser", x: 1023, width: 482, copy: <>Turning a complex sales workflow <br />into a live experience.</>, href: null },
+  { name: "Demo Casino Customiser", x: 1023, width: 482, copy: <>Turning a complex sales workflow <br />into a live experience.</>, href: "/work/customiser" },
 ];
 
 // A dedicated, already-cropped photo shown full-bleed via object-fit, as opposed
@@ -122,7 +122,9 @@ export default function CanvaPortfolio() {
           entrances.set(element, animation);
           whenReady(() => observer.observe(element));
         };
-        const revealSelectors = ".c-caption, .c-heading, .c-expertise-frame, .c-career-content, .c-career-controls, .c-quote-controls, .c-recommendations-link, .c-faq header > p, .c-beyond header > p, .c-footer-meta";
+        // .c-career-controls is excluded: it holds the "scroll to explore" hint, which must
+        // be visible as soon as the pinned section is entered, not gated behind a reveal.
+        const revealSelectors = ".c-caption, .c-heading, .c-expertise-frame, .c-career-content, .c-quote-controls, .c-recommendations-link, .c-faq header > p, .c-beyond header > p, .c-footer-meta";
         gsap.utils.toArray<HTMLElement>(revealSelectors).forEach((element) => {
           if (element.closest(".c-work")) return;
           const headline = element.classList.contains("c-heading");
@@ -208,7 +210,7 @@ export default function CanvaPortfolio() {
           visibleCareer = next;
           setActiveCareer(next);
         };
-        const trigger = ScrollTrigger.create({ trigger: ".c-career", pin: ".c-career-inner", start: "top top", end: "+=280%", invalidateOnRefresh: true,
+        const trigger = ScrollTrigger.create({ trigger: ".c-career", pin: ".c-career-inner", start: "top top", end: "+=120%", invalidateOnRefresh: true,
           onUpdate: (self) => moveCareer(Math.min(2, Math.floor(self.progress * 3))) });
         careerTrigger.current = trigger;
         return () => { trigger.kill(); careerTrigger.current = null; };
@@ -284,7 +286,7 @@ export default function CanvaPortfolio() {
       <div className="c-career-content"><nav className="c-career-tabs" aria-label="Career stages">{stages.map((stage, index) => <button key={stage.role} aria-label={`Show ${stage.role}`} aria-current={activeCareer === index ? "step" : undefined} onClick={() => goToCareer(index)}>{String(index + 1).padStart(2, "0")}</button>)}</nav>
         <div className="c-career-stages">{stages.map((stage, index) => <article key={stage.role} className={`c-career-stage ${index === activeCareer ? "is-active" : ""}`}><div><p className="c-career-date">{stage.date}</p><h3>{stage.role}</h3><p className="c-career-company">{stage.company}</p></div><div><h4>{stage.title}</h4><p className="c-career-body">{stage.body}</p></div></article>)}</div>
       </div>
-      <div className="c-career-controls"><span>Scroll to explore</span><div><button aria-label="Previous career stage" disabled={activeCareer === 0} onClick={() => goToCareer(activeCareer - 1)}><Arrow direction="left" /></button><button aria-label="Next career stage" disabled={activeCareer === 2} onClick={() => goToCareer(activeCareer + 1)}><Arrow /></button></div></div>
+      <div className="c-career-controls"><span className="c-scroll-hint"><i className="c-mouse" aria-hidden="true"><i className="c-mouse__wheel" /></i>Scroll to explore</span><div><button aria-label="Previous career stage" disabled={activeCareer === 0} onClick={() => goToCareer(activeCareer - 1)}><Arrow direction="left" /></button><button aria-label="Next career stage" disabled={activeCareer === 2} onClick={() => goToCareer(activeCareer + 1)}><Arrow /></button></div></div>
     </div></section>
 
     <section className="c-people c-section" id="portfolio-people" aria-labelledby="people-title">
