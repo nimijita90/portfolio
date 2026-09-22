@@ -17,7 +17,7 @@ test("renders the Canva section map with real content", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = (await response.text()).replace(/<!--[\s\S]*?-->/g, "");
-  for (const text of ["María Mora", "Highlights", "10+", "Expertise in product platforms", "Casino Platform", "Career journey", "Graphic Design", "Product Design", "Design Leadership", "WAND", "XSITE", "Demo Casino Customiser", "Yana Azzopardi", "Matyas Farkas", "Javier Ortiz Almagro", "Romain Sarda", "Alina Medvid", "Esteban Saiz", "View all recommendations", "Recording pending", "moragarciamaria@gmail.com", "Marbella · Worldwide", "Let’s make something", "In their", "Ask me directly", "© 2026"]) {
+  for (const text of ["María Mora", "Highlights", "10+", "Expertise in product platforms", "Casino Platform", "Career journey", "Graphic Design", "Product Design", "Design Leadership", "WAND", "XSITE", "Demo Casino Customiser", "Yana Azzopardi", "Matyas Farkas", "Javier Ortiz Almagro", "Romain Sarda", "Alina Medvid", "Esteban Saiz", "View all recommendations", "moragarciamaria@gmail.com", "Marbella · Worldwide", "Let’s make something", "In their", "© 2026"]) {
     assert.ok(html.includes(text), `Missing content: ${text}`);
   }
   const order = ["highlights", "operators", "expertise", "work", "about", "people", "recognition", "faq", "playground", "contact"];
@@ -37,13 +37,15 @@ test("renders the Canva section map with real content", async () => {
 
 test("keeps FAQ, navigation and motion fallbacks accessible", async () => {
   const html = await (await render()).text();
-  for (const part of ['Skip to content', '<dialog', 'id="portfolio-menu"', 'aria-controls="portfolio-menu"', 'aria-live="polite"', '<noscript>', 'faq-photo.jpg']) assert.ok(html.includes(part), part);
+  for (const part of ['Skip to content', '<dialog', 'id="portfolio-menu"', 'aria-controls="portfolio-menu"', 'aria-live="polite"', '<noscript>']) assert.ok(html.includes(part), part);
   assert.ok(!html.includes("<video"));
   for (let i = 0; i < 6; i++) {
     assert.ok(html.includes(`aria-controls="faq-panel-${i}"`));
     assert.ok(html.includes(`aria-labelledby="faq-question-${i}"`));
   }
-  for (const question of ["How do you use AI", "What makes a great Product Designer", "How do you handle disagreement", "How do you lead without micromanaging", "What have 10 years in iGaming", "What are you looking for"]) assert.ok(html.includes(question));
+  for (const question of ["What does good design leadership look like to you?", "How do you bring clarity to complex projects?", "What do you think makes you different?", "How do you use AI in your design process?", "What role should Design have in product decisions?", "What have 10+ years in Design taught you?"]) assert.ok(html.includes(question));
+  for (const answer of ["giving people clarity and trust", "Complexity doesn’t scare me", "That combination has been really valuable", "not the decision-maker", "connecting user needs, business goals", "start focusing on what the product actually needs"]) assert.ok(html.includes(answer), answer);
+  assert.ok(!html.includes("Recording pending"));
   const source = await readFile(new URL("../app/CanvaPortfolio.tsx", import.meta.url), "utf8");
   const css = await readFile(new URL("../app/canva-portfolio.css", import.meta.url), "utf8");
   for (const part of ["prefers-reduced-motion: no-preference", "min-width: 1024px", "observer.unobserve(entry.target)", "media.revert()", "context.revert()", "history.scrollRestoration = \"manual\"", "userScrolled", "const hold = 3.6", "document.hidden", ".c-faq-list > article", ".c-quotes"]) assert.ok(source.includes(part), part);

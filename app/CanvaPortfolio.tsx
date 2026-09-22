@@ -48,14 +48,6 @@ const projects = [
   { name: "XSITE", x: 527, width: 482, copy: <>Reimagining a casino platform <br />from the ground up.</>, href: null },
   { name: "Demo Casino Customiser", x: 1023, width: 482, copy: <>Turning a complex sales workflow <br />into a live experience.</>, href: null },
 ];
-const questions = [
-  { question: "How do you use AI in your design process?", answer: faqItems[3].answer },
-  { question: "What makes a great Product Designer?", answer: null },
-  { question: "How do you handle disagreement with stakeholders?", answer: null },
-  { question: "How do you lead without micromanaging your team?", answer: faqItems[0].answer },
-  { question: "What have 10 years in iGaming taught you?", answer: faqItems[5].answer },
-  { question: "What are you looking for in your next opportunity?", answer: null },
-];
 
 // A dedicated, already-cropped photo shown full-bleed via object-fit, as opposed
 // to ReferenceImage's extraction of one region from a larger shared Canva sheet.
@@ -67,12 +59,6 @@ function Photo({ src, alt, width, height, position = "center", className = "" }:
     <img src={src} width={width} height={height} alt={alt} loading="lazy" decoding="async"
       style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: position }} />
   </div>;
-}
-
-function VideoPoster() {
-  // No play affordance until an actual recording is supplied.
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img className="c-video-still" src="/portfolio/canva/faq-photo.jpg" alt="María in the studio for her video answers" width="1984" height="800" loading="lazy" decoding="async" />;
 }
 
 export default function CanvaPortfolio() {
@@ -315,7 +301,7 @@ export default function CanvaPortfolio() {
 
     <section className="c-faq c-section" id="portfolio-faq" aria-labelledby="faq-title">
       <header><Caption>FAQ</Caption><Heading id="faq-title">Questions<br />I get <em>asked.</em></Heading><p data-reveal>A few answers to the questions that come up most often about my work, process and experience.</p></header>
-      <div className="c-faq-list">{questions.map((item, index) => <article key={item.question} className={index === activeFaq ? "is-open" : ""}><h3><button id={`faq-question-${index}`} aria-expanded={index === activeFaq} aria-controls={`faq-panel-${index}`} onClick={() => setActiveFaq(index === activeFaq ? null : index)}><span className="c-faq-number">{String(index + 1).padStart(2, "0")}</span><span>{item.question}</span><span className="c-plus" aria-hidden="true" /></button></h3><div className="c-faq-panel" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-question-${index}`} inert={index !== activeFaq}><div><div className="c-video-preview"><VideoPoster /><span>Recording pending</span></div>{item.answer && <p className="c-faq-answer">{item.answer}</p>}{!item.answer && <><p className="c-faq-answer">This video answer is on its way.</p><a className="c-project-link c-faq-link" href="mailto:moragarciamaria@gmail.com">Ask me directly <Arrow direction="up" /></a></>}</div></div></article>)}</div>
+      <div className="c-faq-list">{faqItems.map((item, index) => <article key={item.question} className={index === activeFaq ? "is-open" : ""}><h3><button id={`faq-question-${index}`} aria-expanded={index === activeFaq} aria-controls={`faq-panel-${index}`} onClick={() => setActiveFaq(index === activeFaq ? null : index)}><span className="c-faq-number">{String(index + 1).padStart(2, "0")}</span><span>{item.question}</span><span className="c-plus" aria-hidden="true" /></button></h3><div className="c-faq-panel" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-question-${index}`} inert={index !== activeFaq}><div><p className="c-faq-answer">{item.answer}</p></div></div></article>)}</div>
     </section>
 
     <section className="c-beyond c-section" id="portfolio-playground" aria-labelledby="beyond-title"><div className="c-beyond-grid">{[{ x: 299, y: 295, alt: "A child exploring a colourful outdoor staircase" }, { x: 508, y: 295, alt: "A cat resting on a soft blanket" }, { x: 299, y: 496, alt: "Freshly brewed coffee" }, { x: 508, y: 496, alt: "Tomatoes in the vegetable garden" }].map((photo) => <div key={photo.alt} data-reveal><ReferenceImage sheet="beyond" x={photo.x} y={photo.y} width={191} height={184} alt={photo.alt} /></div>)}</div><header><Caption>Beyond design</Caption><Heading id="beyond-title">There’s more<br />to <em>life</em> than<br />pixels.</Heading><p data-reveal>The things that inspire me,<br />keep me grounded and<br />make life beautiful.</p></header></section>
