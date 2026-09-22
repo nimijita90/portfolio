@@ -1,0 +1,17 @@
+{
+  "handoff_name": "Maria Mora portfolio — Claude handoff",
+  "generated_at": "2026-09-21T12:26:51.227Z",
+  "frozen_production_version": 34,
+  "frozen_production_url": "https://maria-lopez-design-portfolio.malapipa.chatgpt.site",
+  "frozen_product_snapshot_commit": "914dce0fc692425788b9afc9708e32d158904dde",
+  "handoff_preparation_commit": "3ce284af514ad65b864a4365e00a15f730cead0a",
+  "package_role": "Independent clone. Not authorised to modify or deploy the frozen production Site.",
+  "excluded": [
+    ".git and repository credentials",
+    "node_modules and package-manager stores",
+    "dist, .next, .vinext and other generated build output",
+    ".wrangler state and local environment files",
+    "Codex-only .agents skills and skills-lock.json",
+    "local recovery archives and OS metadata"
+  ]
+}
