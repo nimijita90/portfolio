@@ -40,8 +40,8 @@ function ReferenceImage({ sheet, x, y, width, height, alt, sourceWidth = 1536, s
 
 const stages = [
   { role: "Graphic Design", date: "2009 — 2014", company: "Gaming Innovation Group", title: "Building a strong visual foundation.", body: "I started in brand and visual design, creating identities, campaigns and digital experiences across multiple channels." },
-  { role: "Product Design", date: "Product & platforms", company: "Gaming Innovation Group", title: "A new discipline. A bigger challenge.", body: "I moved from graphic design to product design, connecting user needs, business goals and the experience we wanted to create." },
-  { role: "Design Leadership", date: "People & strategy", company: "Gaming Innovation Group", title: "From creating the work to shaping the direction.", body: "I moved from designing products to leading the people and strategy behind them, giving teams clarity, trust and room to do their best work." },
+  { role: "Product Design", date: "2020 — 2024", company: "Gaming Innovation Group", title: "A new discipline. A bigger challenge.", body: "I moved from graphic design to product design, connecting user needs, business goals and the experience we wanted to create." },
+  { role: "Design Leadership", date: "2024 — 2026", company: "Gaming Innovation Group", title: "From creating the work to shaping the direction.", body: "I moved from designing products to leading the people and strategy behind them, giving teams clarity, trust and room to do their best work." },
 ];
 const projects = [
   { name: "WAND", x: 30, width: 482, copy: <>Scaling a legacy platform <br />across brands and markets.</>, href: "/work/wand" },
@@ -201,12 +201,14 @@ export default function CanvaPortfolio() {
         const careerCards = gsap.utils.toArray<HTMLElement>(".c-career-stage");
         const moveCareer = (next: number) => {
           if (next === visibleCareer) return;
-          const direction = next > visibleCareer ? 1 : -1;
           const previous = careerCards[visibleCareer];
           const incoming = careerCards[next];
           gsap.killTweensOf([previous, incoming]);
-          gsap.to(previous, { autoAlpha: 0, x: -direction * 70, clipPath: direction > 0 ? "inset(0 100% 0 0)" : "inset(0 0 0 100%)", duration: .62, ease: "power1.in" });
-          gsap.fromTo(incoming, { autoAlpha: 0, x: direction * 90, clipPath: direction > 0 ? "inset(0 0 0 55%)" : "inset(0 55% 0 0)" }, { autoAlpha: 1, x: 0, clipPath: "inset(0 0 0 0)", duration: .9, delay: .12, ease: "power3.out" });
+          // A plain opacity crossfade, both cards pinned at rest position throughout —
+          // no wipe, no drift — so outgoing and incoming text never sit at different
+          // heights mid-transition the way a directional wipe or y-offset slide would.
+          gsap.to(previous, { autoAlpha: 0, clipPath: "inset(0)", duration: .55, ease: "power2.out" });
+          gsap.fromTo(incoming, { autoAlpha: 0, clipPath: "inset(0)" }, { autoAlpha: 1, duration: .85, ease: "power2.out" });
           visibleCareer = next;
           setActiveCareer(next);
         };

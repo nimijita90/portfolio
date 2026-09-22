@@ -11,9 +11,9 @@
 .cust-nav a:hover svg{transform:translateX(-6px)}
 
 .cust-hero{padding:100px var(--cu-pad) 9vw;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
-.cust-hero__band{position:relative;width:100%;aspect-ratio:1550/285;overflow:hidden;border-radius:5px;display:flex;align-items:center;justify-content:center;background:linear-gradient(115deg,#0a0a12 0%,#241653 32%,#5b3df5 55%,#8f5bff 68%,#120a2e 100%)}
-.cust-hero__band span{position:relative;z-index:1;font:700 clamp(26px,4vw,52px)/1 var(--cu-sans);letter-spacing:.16em;color:#f5f4f1;text-transform:uppercase;opacity:.94}
-.cust-hero__glint{position:absolute;inset:-30% auto -30% -35%;width:28%;transform:skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);mix-blend-mode:screen;pointer-events:none}
+.cust-hero__band{position:relative;width:min(440px,52vw);border-radius:5px;overflow:hidden}
+.cust-crop{position:relative;overflow:hidden;isolation:isolate;width:100%;background:#080808}
+.cust-crop>img{position:absolute;width:var(--cu-crop-width);max-width:none;height:auto;left:var(--cu-crop-left);top:var(--cu-crop-top)}
 .cust-hero h1{font:400 clamp(54px,5.45vw,92px)/.98 var(--cu-serif);letter-spacing:-.035em;margin-top:4vw}
 .cust-hero h1 span{display:block;overflow:hidden;padding-bottom:.08em}
 .cust-hero h1 em{font-style:italic}
@@ -92,7 +92,7 @@
  .cust-nav>a:last-child{font-size:12px}
  .cust-nav>a:last-child svg{width:24px;height:24px}
  .cust-hero{padding-top:88px;padding-bottom:40px;min-height:auto}
- .cust-hero__band{aspect-ratio:auto;height:34vw;min-height:126px}
+ .cust-hero__band{width:min(320px,70vw)}
  .cust-hero h1{font-size:clamp(38px,8vw,60px);margin-top:36px}
  .cust-hero__meta{grid-template-columns:1fr 1fr;margin-top:36px;row-gap:22px}
  .cust-hero__meta>div:first-child{grid-column:1/-1}
@@ -111,7 +111,6 @@
  .cust-behind{padding-block:72px;min-height:auto}
 }
 @media(max-width:680px){
- .cust-hero__band span{font-size:clamp(18px,7vw,26px)}
  .cust-hero h1{font-size:clamp(34px,10vw,44px);line-height:1.06}
  .cust-hero__meta{display:block}
  .cust-hero__meta>div+div{margin-top:22px}

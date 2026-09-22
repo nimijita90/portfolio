@@ -1,11 +1,28 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, type CSSProperties } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const A = "/portfolio/assets/";
+
+// Reuses the exact homepage crop of the Customiser card (same sheet, same
+// region) so the hero photo and colours match the Selected Work preview
+// instead of introducing a new, invented visual.
+function WorkCrop() {
+  const x = 1023, y = 296, width = 482, height = 510, sourceWidth = 1536, sourceHeight = 1024;
+  const style = {
+    aspectRatio: `${width} / ${height}`,
+    "--cu-crop-width": `${(sourceWidth / width) * 100}%`,
+    "--cu-crop-left": `${(-x / width) * 100}%`,
+    "--cu-crop-top": `${(-y / height) * 100}%`,
+  } as CSSProperties;
+  return <div className="cust-crop" style={style}>
+    {/* eslint-disable-next-line @next/next/no-img-element */}
+    <img src="/portfolio/canva/work.jpg" width={sourceWidth} height={sourceHeight} alt="Demo Casino Customiser" fetchPriority="high" />
+  </div>;
+}
 
 const capabilities = [
   "Colours & tonal variations",
@@ -45,10 +62,9 @@ export default function CustomiserCaseStudy() {
       mm.add("(prefers-reduced-motion: no-preference)", () => {
         gsap.timeline({ defaults: { ease: "power3.out" } })
           .from(".cust-hero", { opacity: 0, duration: 1.3, ease: "power1.out" }, 0)
-          .from(".cust-hero__band", { clipPath: "inset(0 0 100% 0)", duration: 1.5 }, .15)
-          .fromTo(".cust-hero__glint", { xPercent: -120 }, { xPercent: 220, duration: 1.4, ease: "power2.inOut" }, .3)
-          .from(".cust-hero h1 span", { yPercent: 105, duration: 1.2, stagger: .1 }, .6)
-          .from(".cust-hero__meta > div", { y: 34, opacity: 0, duration: .9, stagger: .14 }, 1.15);
+          .from(".cust-hero__band", { clipPath: "inset(0 0 100% 0)", scale: 1.05, duration: 1.5 }, .15)
+          .from(".cust-hero h1 span", { yPercent: 105, duration: 1.2, stagger: .1 }, .7)
+          .from(".cust-hero__meta > div", { y: 34, opacity: 0, duration: .9, stagger: .14 }, 1.25);
 
         const challenge = gsap.timeline({ scrollTrigger: { trigger: ".cust-challenge", start: "clamp(top 86%)", toggleActions: "play none none none", invalidateOnRefresh: true } });
         challenge
@@ -89,7 +105,7 @@ export default function CustomiserCaseStudy() {
       });
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.fromTo(".cust-approach > span", { scale: .7, xPercent: -4, opacity: .3 }, { scale: 1.08, xPercent: 4, opacity: 1, ease: "none", scrollTrigger: { trigger: ".cust-approach", start: "top bottom", end: "bottom top", scrub: 1.1 } });
-        gsap.fromTo(".cust-hero__band", { yPercent: -6 }, { yPercent: 6, ease: "none", scrollTrigger: { trigger: ".cust-hero", start: "top top", end: "bottom top", scrub: 1 } });
+        gsap.fromTo(".cust-crop img", { yPercent: -4 }, { yPercent: 4, ease: "none", scrollTrigger: { trigger: ".cust-hero", start: "top top", end: "bottom top", scrub: 1 } });
       });
       return () => mm.revert();
     }, root);
@@ -104,7 +120,7 @@ export default function CustomiserCaseStudy() {
     <header className="cust-nav"><Link href="/" aria-label="Back to María Mora portfolio"><img src={`${A}maria-logo-white.svg`} alt="" width="402" height="324" /></Link><Link className="cust-nav__back" href="/"><ArrowLeft /><span>Back to home</span></Link></header>
 
     <section className="cust-hero" aria-labelledby="cust-title">
-      <div className="cust-hero__band"><i className="cust-hero__glint" aria-hidden="true" /><span aria-hidden="true">CUSTOMISER</span></div>
+      <div className="cust-hero__band"><WorkCrop /></div>
       <h1 id="cust-title"><span>Turning a complex sales workflow</span>{" "}<span>into a <em>live</em> experience.</span></h1>
       <div className="cust-hero__meta"><div><small>Scope</small><p>Interactive Prototype · Sales Enablement ·<br />Client Onboarding</p></div><div><small>Role</small><p>Product Design</p></div><div><small>Tool</small><p>Figma, built for WAND</p></div></div>
     </section>
