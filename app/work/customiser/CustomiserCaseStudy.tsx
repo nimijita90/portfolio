@@ -1,28 +1,12 @@
 "use client";
 
-import { useLayoutEffect, useRef, type CSSProperties } from "react";
+import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { CasinoMockup } from "../../CasinoMockup";
 
 const A = "/portfolio/assets/";
-
-// Reuses the exact homepage crop of the Customiser card (same sheet, same
-// region) so the hero photo and colours match the Selected Work preview
-// instead of introducing a new, invented visual.
-function WorkCrop() {
-  const x = 1023, y = 296, width = 482, height = 510, sourceWidth = 1536, sourceHeight = 1024;
-  const style = {
-    aspectRatio: `${width} / ${height}`,
-    "--cu-crop-width": `${(sourceWidth / width) * 100}%`,
-    "--cu-crop-left": `${(-x / width) * 100}%`,
-    "--cu-crop-top": `${(-y / height) * 100}%`,
-  } as CSSProperties;
-  return <div className="cust-crop" style={style}>
-    {/* eslint-disable-next-line @next/next/no-img-element */}
-    <img src="/portfolio/canva/work.jpg" width={sourceWidth} height={sourceHeight} alt="Demo Casino Customiser" fetchPriority="high" />
-  </div>;
-}
 
 const capabilities = [
   "Colours & tonal variations",
@@ -105,7 +89,7 @@ export default function CustomiserCaseStudy() {
       });
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.fromTo(".cust-approach > span", { scale: .7, xPercent: -4, opacity: .3 }, { scale: 1.08, xPercent: 4, opacity: 1, ease: "none", scrollTrigger: { trigger: ".cust-approach", start: "top bottom", end: "bottom top", scrub: 1.1 } });
-        gsap.fromTo(".cust-crop img", { yPercent: -4 }, { yPercent: 4, ease: "none", scrollTrigger: { trigger: ".cust-hero", start: "top top", end: "bottom top", scrub: 1 } });
+        gsap.fromTo(".cust-hero__band img", { yPercent: -4 }, { yPercent: 4, ease: "none", scrollTrigger: { trigger: ".cust-hero", start: "top top", end: "bottom top", scrub: 1 } });
       });
       return () => mm.revert();
     }, root);
@@ -120,7 +104,10 @@ export default function CustomiserCaseStudy() {
     <header className="cust-nav"><Link href="/" aria-label="Back to María Mora portfolio"><img src={`${A}maria-logo-white.svg`} alt="" width="402" height="324" /></Link><Link className="cust-nav__back" href="/"><ArrowLeft /><span>Back to home</span></Link></header>
 
     <section className="cust-hero" aria-labelledby="cust-title">
-      <div className="cust-hero__band"><WorkCrop /></div>
+      <div className="cust-hero__band">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/portfolio/assets/customiser-card.jpg" width={482} height={510} alt="Demo Casino Customiser" fetchPriority="high" />
+      </div>
       <h1 id="cust-title"><span>Turning a complex sales workflow</span>{" "}<span>into a <em>live</em> experience.</span></h1>
       <div className="cust-hero__meta"><div><small>Scope</small><p>Interactive Prototype · Sales Enablement ·<br />Client Onboarding</p></div><div><small>Role</small><p>Product Design</p></div><div><small>Tool</small><p>Figma, built for WAND</p></div></div>
     </section>
@@ -137,8 +124,8 @@ export default function CustomiserCaseStudy() {
 
     <section className="cust-explore cust-section" aria-labelledby="explore-title">
       <div data-cust-reveal><p className="cust-label">Inside the Customiser</p><h2 id="explore-title">Everything the client<br />could try <em>on their own.</em></h2><p>Every option lived in one prototype — explored freely, without waiting on a meeting to find out what was possible.</p><ul className="cust-tags" aria-label="What the Customiser let you configure">{capabilities.map((item) => <li key={item}>{item}</li>)}</ul></div>
-      {/* Awaiting an approved screenshot of the Customiser prototype; no placeholder imagery is invented. */}
-      <figure className="cust-explore__stage" data-cust-visual role="img" aria-label="Screens from the Casino Customiser prototype — image pending"><figcaption>Casino Customiser prototype<span>Image pending</span></figcaption></figure>
+      {/* Illustrative UI, not a captured screenshot of the real prototype. */}
+      <div className="cust-explore__stage" data-cust-visual><CasinoMockup mode="casino" device="desktop" /></div>
     </section>
 
     <section className="cust-process cust-section" aria-labelledby="process-title">

@@ -45,7 +45,7 @@ const stages = [
 ];
 const projects = [
   { name: "WAND", x: 30, width: 482, copy: <>Scaling a legacy platform <br />across brands and markets.</>, href: "/work/wand" },
-  { name: "XSITE", x: 527, width: 482, copy: <>Reimagining a casino platform <br />from the ground up.</>, href: null },
+  { name: "XSITE", x: 527, width: 482, copy: <>Reimagining a casino platform <br />from the ground up.</>, href: "/work/xsite" },
   { name: "Demo Casino Customiser", x: 1023, width: 482, copy: <>Turning a complex sales workflow <br />into a live experience.</>, href: "/work/customiser" },
 ];
 

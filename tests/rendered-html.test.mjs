@@ -6,7 +6,7 @@ import test from "node:test";
 // HTML under .next/server/app. Reading that file is equivalent to fetching
 // the route from any host that serves the Next.js build output (including
 // Netlify's Next.js runtime), without needing a running server in tests.
-const prerendered = { "/": "index.html", "/work/wand": "work/wand.html", "/work/customiser": "work/customiser.html" };
+const prerendered = { "/": "index.html", "/work/wand": "work/wand.html", "/work/customiser": "work/customiser.html", "/work/xsite": "work/xsite.html" };
 async function render(pathname = "/") {
   const filePath = new URL(`../.next/server/app/${prerendered[pathname]}`, import.meta.url);
   const html = await readFile(filePath, "utf8");
@@ -31,8 +31,7 @@ test("renders the Canva section map with real content", async () => {
   assert.equal((html.match(/<h1\b/g) ?? []).length, 1);
   assert.ok(html.includes('href="/work/wand"'));
   assert.ok(html.includes('href="/work/customiser"'));
-  assert.ok(!html.includes('href="/work/xsite"'));
-  assert.ok(html.includes("case study not yet published"));
+  assert.ok(html.includes('href="/work/xsite"'));
   for (const fabricated of ["Astra One", "Pulse Live", "Core 43", "Concept case"]) assert.ok(!html.includes(fabricated));
 });
 
@@ -116,9 +115,21 @@ test("renders the Demo Casino Customiser case study without inventing metrics or
   const response = await render("/work/customiser");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything the client", "Image pending", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "Return to selected work"]) assert.ok(html.includes(text), text);
+  for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything the client", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "Return to selected work"]) assert.ok(html.includes(text), text);
+  assert.ok(html.includes("mock__grid") || html.includes("mock__tile"), "illustrated mockup should render in place of the old placeholder");
   for (const capability of ["Colours &amp; tonal variations", "Light, dark &amp; hybrid themes", "Top bar &amp; sidebar navigation", "Sportsbook on or off", "Component variants"]) assert.ok(html.includes(capability), capability);
   // No fabricated dates, quantified results or product screenshots for a project with none supplied.
   for (const fabricated of ["2019", "2020", "2021", "2022", "2023", "days →", "wand-canva", "wand-visual"]) assert.ok(!html.includes(fabricated), fabricated);
+  assert.ok(html.includes('href="/"'));
+});
+
+test("renders the XSITE case study as illustrative/provisional, not a real capture", async () => {
+  const response = await render("/work/xsite");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing, without engineering", "Where it stands", "Behind the work", "Return to selected work", "2024 — Ongoing"]) assert.ok(html.includes(text), text);
+  assert.ok(html.includes("mock__grid") || html.includes("mock__tile"), "illustrated casino/sportsbook mockups should render");
+  // No fabricated quantified results or real product screenshots for a provisional case study.
+  for (const fabricated of ["days →", "wand-canva", "wand-visual", "43 brands", "22 launched"]) assert.ok(!html.includes(fabricated), fabricated);
   assert.ok(html.includes('href="/"'));
 });
