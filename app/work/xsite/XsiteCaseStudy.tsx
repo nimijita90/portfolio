@@ -42,6 +42,7 @@ export default function XsiteCaseStudy() {
         gsap.timeline({ defaults: { ease: "power3.out" } })
           .from(".xs-hero", { opacity: 0, duration: 1.3, ease: "power1.out" }, 0)
           .from(".xs-hero__band", { clipPath: "inset(0 0 100% 0)", scale: 1.05, duration: 1.5 }, .15)
+          .fromTo(".xs-hero__glint", { xPercent: -120 }, { xPercent: 220, duration: 1.4, ease: "power2.inOut" }, .35)
           .from(".xs-hero h1 span", { yPercent: 105, duration: 1.2, stagger: .1 }, .7)
           .from(".xs-hero__meta > div", { y: 34, opacity: 0, duration: .9, stagger: .14 }, 1.25);
 
@@ -100,7 +101,11 @@ export default function XsiteCaseStudy() {
 
     <section className="xs-hero" aria-labelledby="xs-title">
       <p className="xs-wip"><i aria-hidden="true" />Work in progress — content and visuals are provisional</p>
-      <div className="xs-hero__band"><CasinoMockup mode="casino" device="desktop" /></div>
+      <div className="xs-hero__band">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={`${A}xsite-hero-banner.jpg`} width={2171} height={400} alt="XSITE" fetchPriority="high" />
+        <i className="xs-hero__glint" aria-hidden="true" />
+      </div>
       <h1 id="xs-title"><span>Reimagining a casino platform</span>{" "}<span>from the <em>ground</em> up.</span></h1>
       <div className="xs-hero__meta"><div><small>Scope</small><p>Design System · Multi-brand Customisation ·<br />Native Sportsbook · Mobile</p></div><div><small>Role</small><p>Design Leadership</p></div><div><small>Started</small><p>2024 — Ongoing</p></div></div>
     </section>

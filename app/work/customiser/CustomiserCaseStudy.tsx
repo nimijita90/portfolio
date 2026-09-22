@@ -47,6 +47,7 @@ export default function CustomiserCaseStudy() {
         gsap.timeline({ defaults: { ease: "power3.out" } })
           .from(".cust-hero", { opacity: 0, duration: 1.3, ease: "power1.out" }, 0)
           .from(".cust-hero__band", { clipPath: "inset(0 0 100% 0)", scale: 1.05, duration: 1.5 }, .15)
+          .fromTo(".cust-hero__glint", { xPercent: -120 }, { xPercent: 220, duration: 1.4, ease: "power2.inOut" }, .35)
           .from(".cust-hero h1 span", { yPercent: 105, duration: 1.2, stagger: .1 }, .7)
           .from(".cust-hero__meta > div", { y: 34, opacity: 0, duration: .9, stagger: .14 }, 1.25);
 
@@ -107,7 +108,8 @@ export default function CustomiserCaseStudy() {
       <p className="cust-wip"><i aria-hidden="true" />Work in progress — content and visuals are provisional</p>
       <div className="cust-hero__band">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/portfolio/assets/customiser-card.jpg" width={482} height={510} alt="Demo Casino Customiser" fetchPriority="high" />
+        <img src="/portfolio/assets/customiser-hero-banner.jpg" width={2171} height={406} alt="Demo Casino Customiser" fetchPriority="high" />
+        <i className="cust-hero__glint" aria-hidden="true" />
       </div>
       <h1 id="cust-title"><span>Turning a complex sales workflow</span>{" "}<span>into a <em>live</em> experience.</span></h1>
       <div className="cust-hero__meta"><div><small>Scope</small><p>Interactive Prototype · Sales Enablement ·<br />Client Onboarding</p></div><div><small>Role</small><p>Product Design</p></div><div><small>Tool</small><p>Figma, built for WAND</p></div></div>
