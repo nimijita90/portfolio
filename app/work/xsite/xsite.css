@@ -62,10 +62,10 @@
 .xs-feature--reverse .xs-visual{order:0}
 .xs-feature--reverse>div:last-child{order:1}
 .xs-visual{position:relative}
+.xs-visual img{display:block;width:100%;border-radius:6px;border:1px solid #1e1e1e}
 .xs-visual--pair{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:3vw;margin-top:2vw}
-.xs-badges{display:flex;flex-direction:column;gap:14px}
-.xs-badges span{border:1px solid #2c2c2c;border-radius:10px;padding:22px 26px;font:400 clamp(20px,1.8vw,28px)/1 var(--xs-serif);color:#e9e9e9;background:#0b0d10}
-.xs-badges span:nth-child(2){border-color:#00e7ac55;box-shadow:0 0 40px -18px #00e7ac88}
+.xs-visual--pair img{aspect-ratio:4/3;object-fit:cover;object-position:top}
+.xs-visual--mobile img{max-width:420px;aspect-ratio:720/620;object-fit:cover;object-position:top}
 
 .xs-builder{padding-top:9vw;padding-bottom:10vw;position:relative;overflow:hidden}
 .xs-builder>span{position:absolute;top:8%;right:-4%;font:400 min(24vw,380px)/1 var(--xs-serif);color:rgba(245,244,241,.06);letter-spacing:-.05em}

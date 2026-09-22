@@ -123,13 +123,14 @@ test("renders the Demo Casino Customiser case study without inventing metrics or
   assert.ok(html.includes('href="/"'));
 });
 
-test("renders the XSITE case study as illustrative/provisional, not a real capture", async () => {
+test("renders the XSITE case study with real product screenshots and a work-in-progress note", async () => {
   const response = await render("/work/xsite");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing, without engineering", "Where it stands", "Behind the work", "Return to selected work", "2024 — Ongoing"]) assert.ok(html.includes(text), text);
-  assert.ok(html.includes("mock__grid") || html.includes("mock__tile"), "illustrated casino/sportsbook mockups should render");
-  // No fabricated quantified results or real product screenshots for a provisional case study.
+  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing, without engineering", "Where it stands", "Behind the work", "Return to selected work", "2024 — Ongoing", "Work in progress"]) assert.ok(html.includes(text), text);
+  for (const asset of ["xsite-visual-casino.jpg", "xsite-visual-sportsbook.jpg", "xsite-visual-mobile.jpg", "xsite-visual-sweepstakes.jpg", "xsite-visual-missions.jpg"]) assert.ok(html.includes(asset), asset);
+  // No fabricated quantified results invented on top of the real screenshots.
   for (const fabricated of ["days →", "wand-canva", "wand-visual", "43 brands", "22 launched"]) assert.ok(!html.includes(fabricated), fabricated);
   assert.ok(html.includes('href="/"'));
+  for (const path of ["portfolio/assets/xsite-visual-casino.jpg", "portfolio/assets/xsite-visual-sportsbook.jpg", "portfolio/assets/xsite-visual-mobile.jpg", "portfolio/assets/xsite-visual-sweepstakes.jpg", "portfolio/assets/xsite-visual-missions.jpg"]) await access(new URL(`../public/${path}`, import.meta.url));
 });

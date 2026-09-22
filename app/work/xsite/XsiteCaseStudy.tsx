@@ -4,9 +4,13 @@ import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CasinoMockup } from "../../CasinoMockup";
 
 const A = "/portfolio/assets/";
+
+function Shot({ src, alt }: { src: string; alt: string }) {
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={`${A}${src}`} alt={alt} loading="lazy" />;
+}
 
 const foundationCards = [
   { number: "01", label: "Fragmented", title: "One model, every constraint.", body: "WAND’s architecture couldn’t cleanly support native switching between Casino and Sportsbook, or the flexibility newer clients needed." },
@@ -122,11 +126,14 @@ export default function XsiteCaseStudy() {
     <section className="xs-feature xs-section" aria-labelledby="switch-title">
       <header data-xs-reveal><p className="xs-label">01 · Casino ⇄ Sportsbook</p><h2 id="switch-title">Two products.<br />One native experience.</h2></header>
       <div className="xs-feature__copy"><p>Casino and Sportsbook were designed as a single system rather than two products bolted together — sharing navigation, components and identity, so switching between them feels instant and native.</p><p>Every brand could enable either, both, or switch emphasis by market — without a different codebase for each.</p></div>
-      <div className="xs-visual xs-visual--pair"><CasinoMockup mode="casino" device="desktop" /><CasinoMockup mode="sportsbook" device="desktop" /></div>
+      <div className="xs-visual xs-visual--pair">
+        <Shot src="xsite-visual-casino.jpg" alt="Casino homepage: vertical switcher, live promo carousel and game rows" />
+        <Shot src="xsite-visual-sportsbook.jpg" alt="Sportsbook view: featured odds and top events reached from the same switcher" />
+      </div>
     </section>
 
     <section className="xs-feature xs-feature--reverse xs-section" aria-labelledby="mobile-title">
-      <div className="xs-visual"><CasinoMockup mode="casino" device="mobile" /></div>
+      <div className="xs-visual xs-visual--mobile"><Shot src="xsite-visual-mobile.jpg" alt="Mobile homepage: the same Casino and Sports switcher, native on device" /></div>
       <div><header data-xs-reveal><p className="xs-label">02 · Native mobile</p><h2 id="mobile-title">The same system,<br />natively on mobile.</h2></header>
       <div className="xs-feature__copy"><p>The native mobile app draws from the exact same component library and design tokens as the web platform, so parity stopped being a manual, screen-by-screen effort.</p><p>A change to a component updates everywhere it’s used — web, mobile, every brand.</p></div></div>
     </section>
@@ -137,7 +144,10 @@ export default function XsiteCaseStudy() {
     </section>
 
     <section className="xs-feature xs-feature--reverse xs-section" aria-labelledby="sweepstakes-title">
-      <div className="xs-visual"><div className="xs-badges"><span>Real Money</span><span>Sweepstakes</span><span>Hybrid</span></div></div>
+      <div className="xs-visual xs-visual--pair">
+        <Shot src="xsite-visual-sweepstakes.jpg" alt="Sweepstakes-model homepage running on the same components, dual gold-coin and sweeps-coin balances" />
+        <Shot src="xsite-visual-missions.jpg" alt="Missions surface: daily, seasonal and one-time challenges with progress and rewards" />
+      </div>
       <div><header data-xs-reveal><p className="xs-label">04 · Sweepstakes & gamification</p><h2 id="sweepstakes-title">Built for more than one business model.</h2></header>
       <div className="xs-feature__copy"><p>XSITE supports Sweepstakes as a first-class model rather than an add-on, and pushed gamification further than WAND ever could — levels, missions and rewards designed as core product surfaces, not decoration.</p></div></div>
     </section>
