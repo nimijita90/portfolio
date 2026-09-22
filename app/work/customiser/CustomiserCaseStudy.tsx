@@ -4,7 +4,6 @@ import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { CasinoMockup } from "../../CasinoMockup";
 
 const A = "/portfolio/assets/";
 
@@ -75,7 +74,8 @@ export default function CustomiserCaseStudy() {
         gsap.timeline({ scrollTrigger: { trigger: ".cust-process", start: "clamp(top 80%)", once: true, invalidateOnRefresh: true } })
           .from(".cust-process .cust-label", { x: -54, opacity: 0, duration: .85, ease: "power2.out" })
           .from(".cust-process h2", { y: 96, opacity: 0, clipPath: "inset(0 0 82% 0)", duration: 1.4, ease: "power2.out" }, .12)
-          .from(".cust-step", { y: 60, opacity: 0, duration: 1, stagger: .14, ease: "power2.out" }, .5);
+          .from(".cust-step", { y: 60, opacity: 0, duration: 1, stagger: .14, ease: "power2.out" }, .5)
+          .from(".cust-process__visual", { y: 40, opacity: 0, duration: .95, ease: "power2.out" }, .85);
 
         gsap.timeline({ scrollTrigger: { trigger: ".cust-impact", start: "clamp(top 80%)", once: true, invalidateOnRefresh: true } })
           .from(".cust-impact .cust-label", { x: -54, opacity: 0, duration: .85, ease: "power2.out" })
@@ -84,11 +84,13 @@ export default function CustomiserCaseStudy() {
 
         gsap.timeline({ scrollTrigger: { trigger: ".cust-behind", start: "clamp(top 82%)", once: true, invalidateOnRefresh: true } })
           .from(".cust-behind .cust-label", { y: 26, opacity: 0, duration: .8, ease: "power2.out" })
-          .from(".cust-behind h2", { y: 90, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.35, ease: "power2.out" }, .18)
-          .from(".cust-behind__copy p", { y: 32, opacity: 0, duration: .9, stagger: .13, ease: "power2.out" }, .55)
-          .from(".cust-behind a", { y: 22, opacity: 0, duration: .9, ease: "power2.out" }, .85);
+          .from(".cust-behind__portrait", { scale: .65, opacity: 0, clipPath: "circle(0% at 50% 50%)", duration: 1.3, ease: "power2.out" }, .1)
+          .from(".cust-behind h2", { y: 90, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.35, ease: "power2.out" }, .3)
+          .from(".cust-behind__copy p", { y: 32, opacity: 0, duration: .9, stagger: .13, ease: "power2.out" }, .7)
+          .from(".cust-behind a", { y: 22, opacity: 0, duration: .9, ease: "power2.out" }, 1);
       });
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
+        gsap.fromTo(".cust-behind__portrait img", { scale: 1.18, yPercent: 6 }, { scale: 1.03, yPercent: -4, ease: "none", scrollTrigger: { trigger: ".cust-behind", start: "top bottom", end: "bottom top", scrub: 1.15 } });
         gsap.fromTo(".cust-approach > span", { scale: .7, xPercent: -4, opacity: .3 }, { scale: 1.08, xPercent: 4, opacity: 1, ease: "none", scrollTrigger: { trigger: ".cust-approach", start: "top bottom", end: "bottom top", scrub: 1.1 } });
         gsap.fromTo(".cust-hero__band img", { yPercent: -4 }, { yPercent: 4, ease: "none", scrollTrigger: { trigger: ".cust-hero", start: "top top", end: "bottom top", scrub: 1 } });
       });
@@ -113,6 +115,7 @@ export default function CustomiserCaseStudy() {
       </div>
       <h1 id="cust-title"><span>Turning a complex sales workflow</span>{" "}<span>into a <em>live</em> experience.</span></h1>
       <div className="cust-hero__meta"><div><small>Scope</small><p>Interactive Prototype · Sales Enablement ·<br />Client Onboarding</p></div><div><small>Role</small><p>Product Design</p></div><div><small>Tool</small><p>Figma, built for WAND</p></div></div>
+      <i className="cust-hero__divider" aria-hidden="true" />
     </section>
 
     <section className="cust-challenge cust-section" aria-labelledby="challenge-title">
@@ -127,13 +130,20 @@ export default function CustomiserCaseStudy() {
 
     <section className="cust-explore cust-section" aria-labelledby="explore-title">
       <div data-cust-reveal><p className="cust-label">Inside the Customiser</p><h2 id="explore-title">Everything the client<br />could try <em>on their own.</em></h2><p>Every option lived in one prototype — explored freely, without waiting on a meeting to find out what was possible.</p><ul className="cust-tags" aria-label="What the Customiser let you configure">{capabilities.map((item) => <li key={item}>{item}</li>)}</ul></div>
-      {/* Illustrative UI, not a captured screenshot of the real prototype. */}
-      <div className="cust-explore__stage" data-cust-visual><CasinoMockup mode="casino" device="desktop" /></div>
+      <div className="cust-explore__stage cust-gallery" data-cust-visual>
+        <figure><img src={`${A}customiser-gallery-colours.jpg`} alt="Primary colour picker with brand swatch options" loading="lazy" /><figcaption>Colours</figcaption></figure>
+        <figure><img src={`${A}customiser-gallery-tonal.jpg`} alt="Tonal scale for the selected colour, with hex values" loading="lazy" /><figcaption>Tonal variations</figcaption></figure>
+        <figure><img src={`${A}customiser-gallery-templates.jpg`} alt="Preset theme templates applied live to the layout" loading="lazy" /><figcaption>Templates</figcaption></figure>
+        <figure><img src={`${A}customiser-gallery-mode.jpg`} alt="Hybrid, light and dark mode toggle with Sportsbook enabled" loading="lazy" /><figcaption>Light, dark &amp; hybrid</figcaption></figure>
+        <figure><img src={`${A}customiser-gallery-variants.jpg`} alt="Component style variants for the homepage carousel" loading="lazy" /><figcaption>Component variants</figcaption></figure>
+        <figure><img src={`${A}customiser-gallery-mobile.jpg`} alt="Live mobile preview of the configured homepage" loading="lazy" /><figcaption>Desktop &amp; mobile</figcaption></figure>
+      </div>
     </section>
 
     <section className="cust-process cust-section" aria-labelledby="process-title">
       <header data-cust-reveal><p className="cust-label">From meetings to self-service</p><h2 id="process-title">Send. Explore. Decide.</h2></header>
       <div className="cust-process__grid">{steps.map((step) => <article className="cust-step" key={step.number}><span>{step.number}</span><h3>{step.title}</h3><p>{step.body}</p></article>)}</div>
+      <figure className="cust-process__visual" data-cust-visual><img src={`${A}customiser-summary.jpg`} alt="Summary screen listing the client’s chosen colours, layout, platform features and component styles" loading="lazy" /></figure>
       <p className="cust-process__note" data-cust-reveal>Meetings were still there whenever the client needed advice — they just weren’t needed anymore to explain every possibility the product had.</p>
     </section>
 
@@ -142,6 +152,6 @@ export default function CustomiserCaseStudy() {
       <div className="cust-impact__grid">{impact.map((row) => <article className="cust-impact-item" key={row.audience}><h3>{row.audience}</h3><p>{row.body}</p></article>)}</div>
     </section>
 
-    <section className="cust-behind cust-section" aria-labelledby="behind-title"><p className="cust-label">Behind the work</p><h2 id="behind-title">Want to see the <em>Customiser</em> in action?</h2><div className="cust-behind__copy"><p>The live prototype lives inside WAND’s Figma workspace, so I can’t share the working file publicly.</p><p>I’d be happy to walk you through how it’s built, the variables behind it,<br />and how it changed the way we onboarded clients.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=Demo%20Casino%20Customiser">Let’s talk <Arrow /></a><Link className="cust-behind__home" href="/#portfolio-work"><ArrowLeft /> Return to selected work</Link></section>
+    <section className="cust-behind cust-section" aria-labelledby="behind-title"><p className="cust-label">Behind the work</p><figure className="cust-behind__portrait"><img src={`${A}maria-portrait.jpg`} alt="María Mora" width="700" height="700" /></figure><h2 id="behind-title">Want to see the <em>Customiser</em> in action?</h2><div className="cust-behind__copy"><p>The live prototype lives inside WAND’s Figma workspace, so I can’t share the working file publicly.</p><p>I’d be happy to walk you through how it’s built, the variables behind it,<br />and how it changed the way we onboarded clients.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=Demo%20Casino%20Customiser">Let’s talk <Arrow /></a></section>
   </main>;
 }

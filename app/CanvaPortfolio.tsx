@@ -340,17 +340,19 @@ export default function CanvaPortfolio() {
 
     <section className="c-people c-section" id="portfolio-people" aria-labelledby="people-title">
       <div className="c-people-photo" aria-hidden="true">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/portfolio/canva/people-bg.jpg" width={2560} height={1440} alt="" loading="lazy" decoding="async" />
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/portfolio/canva/people-mobile.jpg" />
+          <img src="/portfolio/canva/people-bg.jpg" width={2560} height={1440} alt="" loading="lazy" decoding="async" />
+        </picture>
       </div>
       <header><div><Caption>People</Caption><Heading id="people-title">In their <em>words.</em></Heading></div><a className="c-recommendations-link" href="mailto:moragarciamaria@gmail.com?subject=Full%20recommendations">View all recommendations <Arrow direction="up" /></a></header>
-      <div className="c-quotes" aria-live="polite">{recommendations.map((quote, index) => <figure key={quote.name} className={index === activeQuote ? "is-active" : ""} aria-hidden={index !== activeQuote}><blockquote>{quote.quote}</blockquote><figcaption><strong>{quote.name}</strong><span>{quote.role}</span></figcaption></figure>)}</div>
+      <div className="c-quotes" aria-live="polite">{recommendations.map((quote, index) => <figure key={quote.name} className={index === activeQuote ? "is-active" : ""} aria-hidden={index !== activeQuote}><blockquote>“{quote.quote}”</blockquote><figcaption><strong>{quote.name}</strong><span>{quote.role}</span></figcaption></figure>)}</div>
       <div className="c-quote-controls"><span>{String(activeQuote + 1).padStart(2, "0")} <span>/ {String(recommendations.length).padStart(2, "0")}</span></span><i /><button aria-label="Previous recommendation" onClick={() => setActiveQuote((current) => (current + recommendations.length - 1) % recommendations.length)}><Arrow direction="left" /></button><button aria-label="Next recommendation" onClick={() => setActiveQuote((current) => (current + 1) % recommendations.length)}><Arrow /></button></div>
     </section>
 
     <section className="c-awards c-section" id="portfolio-recognition" aria-labelledby="awards-title">
       <Photo className="c-trophy" src="/portfolio/assets/award-trophy.jpg" width={1024} height={1536} alt="María holding the golden iGaming Idol award trophy" />
-      <div className="c-awards-content"><Caption>Awards</Caption><Heading id="awards-title">International <em>recognition.</em></Heading><div className="c-award-list">{awards.map((award, index) => <article key={award.year + award.place} data-reveal><div><p className="c-award-year">{award.year}</p><p>{award.place}</p></div><div><h3>{award.result}</h3><p>{award.description}</p></div><ReferenceImage sheet="awards" x={1275} y={index === 0 ? 307 : index === 3 ? 796 : 470} width={175} height={90} alt={award.mark.replace("\n", " ")} /></article>)}</div></div>
+      <div className="c-awards-content"><Caption>Awards</Caption><Heading id="awards-title">International <em>recognition.</em></Heading><div className="c-award-list">{awards.map((award, index) => <article key={award.year + award.place} data-reveal><div><p className="c-award-year">{award.year}</p><p>{award.place}</p></div><div><h3>{award.result}</h3><p>{award.description}</p></div><ReferenceImage sheet="awards" x={1275} y={index === 0 ? 307 : index === 3 ? 796 : 470} width={175} height={index === 1 || index === 2 ? 105 : 90} alt={award.mark.replace("\n", " ")} /></article>)}</div></div>
     </section>
 
     <section className="c-faq c-section" id="portfolio-faq" aria-labelledby="faq-title">

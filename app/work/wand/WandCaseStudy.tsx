@@ -143,11 +143,8 @@ export default function WandCaseStudy() {
         gsap.fromTo(".wand-visual--sweepstakes img", { yPercent: 5, rotate: -.35 }, { yPercent: -4, rotate: .35, ease: "none", scrollTrigger: { trigger: ".wand-feature--sweepstakes", start: "top bottom", end: "bottom top", scrub: 1.15 } });
         gsap.fromTo(".wand-behind__portrait img", { scale: 1.18, yPercent: 6 }, { scale: 1.03, yPercent: -4, ease: "none", scrollTrigger: { trigger: ".wand-behind", start: "top bottom", end: "bottom top", scrub: 1.15 } });
         const cards = gsap.utils.toArray<HTMLElement>(".wand-milestone");
-        const bodies = cards.map((card) => card.querySelectorAll(".wand-milestone__body, .wand-milestone__tags"));
         gsap.set(cards, { yPercent: 120, opacity: 0 });
         gsap.set(cards[0], { yPercent: 0, opacity: 1 });
-        gsap.set(cards[1], { yPercent: 108, opacity: .28 });
-        bodies.slice(1).forEach((body) => gsap.set(body, { opacity: 0, clipPath: "inset(0 0 100% 0)" }));
         const timeline = gsap.timeline({ scrollTrigger: { trigger: ".wand-evolution", start: "top top", end: "+=430%", pin: ".wand-evolution__stage", scrub: .9, invalidateOnRefresh: true } });
         milestones.forEach((milestone, index) => {
           timeline.to({}, { duration: milestone.hold });
@@ -155,9 +152,7 @@ export default function WandCaseStudy() {
           const at = timeline.duration();
           timeline.to(cards[index], { yPercent: -108, opacity: 0, duration: 1.05, ease: "power2.out" }, at)
             .to(cards[index + 1], { yPercent: 0, opacity: 1, duration: 1.1, ease: "power2.out" }, at)
-            .to(bodies[index + 1], { opacity: 1, clipPath: "inset(0 0 0% 0)", duration: .35, ease: "power2.out" }, at + .78)
             .to(".wand-timeline__progress", { scaleY: (index + 1) / (milestones.length - 1), duration: 1, ease: "none" }, at);
-          if (cards[index + 2]) timeline.to(cards[index + 2], { yPercent: 108, opacity: .28, duration: .35, ease: "power2.out" }, at + .82);
         });
       });
       return () => mm.revert();
@@ -176,6 +171,7 @@ export default function WandCaseStudy() {
       <div className="wand-hero__banner"><img src={`${A}wand-hero-banner-v2.png`} alt="WAND white-label casino platform" width="1550" height="285" /><i className="wand-hero__banner-glint" aria-hidden="true" /></div>
       <h1 id="wand-title"><span>Evolving a white-label casino</span>{" "}<span>into a scalable <em>multi-brand</em> platform.</span></h1>
       <div className="wand-hero__meta"><div><small>Scope</small><p>Design System · Multi-brand Customisation ·<br />Product Evolution · Client & Delivery Workflows</p></div><div><small>Role</small><p>Product Design → Design Leadership</p></div><div><small>Timeline</small><p>2019 — 2025</p></div></div>
+      <i className="wand-hero__divider" aria-hidden="true" />
     </section>
 
     <section className="wand-challenge wand-section" aria-labelledby="challenge-title">
@@ -188,7 +184,7 @@ export default function WandCaseStudy() {
     </section>
 
     <section className="wand-evolution" aria-labelledby="evolution-title"><div className="wand-evolution__stage wand-section">
-      <header className="wand-evolution__intro"><p className="wand-label">The evolution</p><h2 id="evolution-title">From building<br />the system to leading<br />its <em>evolution.</em></h2><p>My relationship with WAND evolved alongside the product. What started as hands-on product design gradually expanded into ownership of its design direction.</p><span>Scroll to travel through time</span></header>
+      <header className="wand-evolution__intro"><p className="wand-label">The evolution</p><h2 id="evolution-title">From building<br />the system to leading<br />its <em>evolution.</em></h2><p>My relationship with WAND evolved alongside the product. What started as hands-on product design gradually expanded into ownership of its design direction.</p><span className="wand-scroll-hint"><i className="wand-mouse" aria-hidden="true"><i className="wand-mouse__wheel" /></i>Scroll to travel through time</span></header>
       <div className="wand-timeline"><div className="wand-timeline__line"><i className="wand-timeline__progress" /></div><div className="wand-timeline__viewport" ref={track} onScroll={syncMilestone} tabIndex={0} aria-label="Career milestones, swipe to explore">{milestones.map((milestone, index) => <article className="wand-milestone" key={milestone.phase}><i className="wand-milestone__node" aria-hidden="true" /><p className="wand-milestone__phase">{milestone.phase}</p><h3>{milestone.headline}</h3><div className="wand-milestone__body">{milestone.body}</div><ul className="wand-milestone__tags" aria-label="Disciplines">{milestone.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul><span className="sr-only">Milestone {index + 1} of {milestones.length}</span></article>)}</div><div className="wand-timeline__pager"><span aria-live="polite">{String(activeMilestone + 1).padStart(2, "0")} / {String(milestones.length).padStart(2, "0")}</span><div>{milestones.map((milestone, index) => <button key={milestone.phase} type="button" aria-label={`Show ${milestone.phase}`} aria-current={activeMilestone === index ? "true" : undefined} onClick={() => goToMilestone(index)} />)}</div><em>Swipe</em></div></div>
     </div></section>
 
@@ -225,7 +221,7 @@ export default function WandCaseStudy() {
       </div>
     </section>
 
-    <section className="wand-behind wand-section" aria-labelledby="behind-title"><p className="wand-label">Behind the work</p><figure className="wand-behind__portrait"><img src="/portfolio/canva/faq-photo.jpg" alt="María Mora" width="1983" height="793" /></figure><h2 id="behind-title">Want to see how it <em>really</em> works?</h2><div className="wand-behind__copy"><p>Due to confidentiality and intellectual property restrictions,<br />I can’t share WAND’s full Design System publicly.</p><p>I’d be happy to walk you through its Figma architecture,<br />components and key design decisions in an interview,<br />and answer any questions you may have.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=WAND%20Design%20System">Let’s talk <Arrow /></a></section>
+    <section className="wand-behind wand-section" aria-labelledby="behind-title"><p className="wand-label">Behind the work</p><figure className="wand-behind__portrait"><img src={`${A}maria-portrait.jpg`} alt="María Mora" width="700" height="700" /></figure><h2 id="behind-title">Want to see how it <em>really</em> works?</h2><div className="wand-behind__copy"><p>Due to confidentiality and intellectual property restrictions,<br />I can’t share WAND’s full Design System publicly.</p><p>I’d be happy to walk you through its Figma architecture,<br />components and key design decisions in an interview,<br />and answer any questions you may have.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=WAND%20Design%20System">Let’s talk <Arrow /></a></section>
 
     <footer className="wand-next"><p className="wand-label">Next case study</p><h2>Demo Casino<br />Customiser.</h2><p>Would you like to know how we solve one of the product’s biggest commercial problems?</p><Link href="/work/customiser">View the case study <Arrow /></Link><Link className="wand-next__home" href="/"><ArrowLeft /> Back to home</Link></footer>
   </main>;

@@ -77,13 +77,17 @@ test("renders all eleven selected testimonials with complete copy and closing qu
   assert.ok(quotes);
   assert.equal((quotes.match(/<blockquote>/g) ?? []).length, 11);
   for (const name of ["Lavinia Popovici", "Romain Sarda", "Juan Jose Reina", "Roxanne Testa", "Nathalia López", "Alejandro Cruzado", "Yana Azzopardi", "Alina Medvid", "Esteban Saiz", "Matyas Farkas", "Javier Ortiz Almagro"]) assert.ok(quotes.includes(name), name);
-  assert.ok(quotes.includes("actively helps her team grow."));
+  assert.ok(quotes.includes("actively helps her team grow.”"));
+  assert.ok(quotes.includes("“What always stood out"));
   assert.ok(quotes.includes("the design process."));
   assert.ok(html.includes('/ 11'));
   const source = await readFile(new URL("../app/CanvaPortfolio.tsx", import.meta.url), "utf8");
   assert.ok(!source.includes('% 6'));
+  // Quote marks are literal characters inside the paragraph, not CSS-generated pseudo-elements pulled outside it.
+  assert.ok(source.includes('<blockquote>“{quote.quote}”</blockquote>'));
   const css = await readFile(new URL("../app/canva-portfolio.css", import.meta.url), "utf8");
-  assert.ok(css.includes('blockquote:after{content:"”"}'));
+  assert.ok(!css.includes('blockquote:before'));
+  assert.ok(!css.includes('blockquote:after'));
   assert.ok(css.includes('height:100svh;min-height:0'));
   assert.ok(!css.includes('.c-work .c-caption{'));
   assert.ok(css.includes('.c-career-company{font:400 clamp(15px,1.1vw,19px)/1.5 var(--c-sans)'));
@@ -108,29 +112,34 @@ test("renders the complete Canva-led WAND case study and local production assets
   assert.ok(hostingConfig.project_id === null || typeof hostingConfig.project_id === "string");
   assert.equal(hostingConfig.d1, null);
   assert.equal(hostingConfig.r2, null);
-  for (const path of ["og.png", "portfolio/assets/maria-logo-white.svg", "portfolio/assets/wand-hero-banner-v2.png", "portfolio/assets/wand-canva-complete.png", "portfolio/assets/wand-canva-configure.png", "portfolio/assets/wand-canva-cashier.png", "portfolio/assets/wand-canva-connect.png", "portfolio/assets/wand-navigation-models.png", "portfolio/assets/wand-dark-mode.png", "portfolio/assets/wand-sweepstakes.png", "portfolio/assets/LA3A7408-portrait-768.avif", "portfolio/canva/hero-photo.jpg", "portfolio/canva/faq-photo.jpg", "portfolio/canva/work.jpg", "portfolio/canva/people.jpg", "portfolio/canva/people-bg.jpg", "portfolio/canva/awards.jpg", "portfolio/canva/beyond.jpg", "portfolio/canva/highlights.jpg", "portfolio/fonts/Silk Serif Regular.woff2", "portfolio/fonts/Silk Serif Regular Italic.woff2"]) await access(new URL(`../public/${path}`, import.meta.url));
+  for (const path of ["og.png", "portfolio/assets/maria-logo-white.svg", "portfolio/assets/maria-portrait.jpg", "portfolio/assets/wand-hero-banner-v2.png", "portfolio/assets/wand-canva-complete.png", "portfolio/assets/wand-canva-configure.png", "portfolio/assets/wand-canva-cashier.png", "portfolio/assets/wand-canva-connect.png", "portfolio/assets/wand-navigation-models.png", "portfolio/assets/wand-dark-mode.png", "portfolio/assets/wand-sweepstakes.png", "portfolio/assets/LA3A7408-portrait-768.avif", "portfolio/canva/hero-photo.jpg", "portfolio/canva/faq-photo.jpg", "portfolio/canva/work.jpg", "portfolio/canva/people.jpg", "portfolio/canva/people-bg.jpg", "portfolio/canva/people-mobile.jpg", "portfolio/canva/awards.jpg", "portfolio/canva/beyond.jpg", "portfolio/canva/highlights.jpg", "portfolio/fonts/Silk Serif Regular.woff2", "portfolio/fonts/Silk Serif Regular Italic.woff2"]) await access(new URL(`../public/${path}`, import.meta.url));
+  assert.ok(html.includes("wand-behind__portrait"));
+  assert.ok(!html.includes("Return to selected work"));
 });
 
 test("renders the Demo Casino Customiser case study without inventing metrics or imagery", async () => {
   const response = await render("/work/customiser");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything the client", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "Return to selected work"]) assert.ok(html.includes(text), text);
-  assert.ok(html.includes("mock__grid") || html.includes("mock__tile"), "illustrated mockup should render in place of the old placeholder");
+  for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything the client", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "cust-behind__portrait", "cust-hero__divider"]) assert.ok(html.includes(text), text);
+  assert.ok(!html.includes("Return to selected work"));
+  for (const asset of ["customiser-gallery-colours.jpg", "customiser-gallery-tonal.jpg", "customiser-gallery-templates.jpg", "customiser-gallery-mode.jpg", "customiser-gallery-variants.jpg", "customiser-gallery-mobile.jpg", "customiser-summary.jpg"]) assert.ok(html.includes(asset), asset);
   for (const capability of ["Colours &amp; tonal variations", "Light, dark &amp; hybrid themes", "Top bar &amp; sidebar navigation", "Sportsbook on or off", "Component variants"]) assert.ok(html.includes(capability), capability);
   // No fabricated dates, quantified results or product screenshots for a project with none supplied.
   for (const fabricated of ["2019", "2020", "2021", "2022", "2023", "days →", "wand-canva", "wand-visual"]) assert.ok(!html.includes(fabricated), fabricated);
   assert.ok(html.includes('href="/"'));
+  for (const path of ["portfolio/assets/customiser-gallery-colours.jpg", "portfolio/assets/customiser-gallery-tonal.jpg", "portfolio/assets/customiser-gallery-templates.jpg", "portfolio/assets/customiser-gallery-mode.jpg", "portfolio/assets/customiser-gallery-variants.jpg", "portfolio/assets/customiser-gallery-mobile.jpg", "portfolio/assets/customiser-summary.jpg"]) await access(new URL(`../public/${path}`, import.meta.url));
 });
 
 test("renders the XSITE case study with real product screenshots and a work-in-progress note", async () => {
   const response = await render("/work/xsite");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing, without engineering", "Where it stands", "Behind the work", "Return to selected work", "2024 — Ongoing", "Work in progress"]) assert.ok(html.includes(text), text);
-  for (const asset of ["xsite-visual-casino.jpg", "xsite-visual-sportsbook.jpg", "xsite-visual-mobile.jpg", "xsite-visual-sweepstakes.jpg", "xsite-visual-missions.jpg"]) assert.ok(html.includes(asset), asset);
+  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing, without engineering", "Where it stands", "Behind the work", "xs-behind__portrait", "xs-hero__divider", "2024 — Ongoing", "Work in progress"]) assert.ok(html.includes(text), text);
+  assert.ok(!html.includes("Return to selected work"));
+  for (const asset of ["xsite-visual-devices.jpg", "xsite-visual-mobile.jpg", "xsite-visual-gamification.jpg"]) assert.ok(html.includes(asset), asset);
   // No fabricated quantified results invented on top of the real screenshots.
   for (const fabricated of ["days →", "wand-canva", "wand-visual", "43 brands", "22 launched"]) assert.ok(!html.includes(fabricated), fabricated);
   assert.ok(html.includes('href="/"'));
-  for (const path of ["portfolio/assets/xsite-visual-casino.jpg", "portfolio/assets/xsite-visual-sportsbook.jpg", "portfolio/assets/xsite-visual-mobile.jpg", "portfolio/assets/xsite-visual-sweepstakes.jpg", "portfolio/assets/xsite-visual-missions.jpg"]) await access(new URL(`../public/${path}`, import.meta.url));
+  for (const path of ["portfolio/assets/xsite-visual-devices.jpg", "portfolio/assets/xsite-visual-mobile.jpg", "portfolio/assets/xsite-visual-gamification.jpg"]) await access(new URL(`../public/${path}`, import.meta.url));
 });

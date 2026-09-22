@@ -83,13 +83,15 @@ export default function XsiteCaseStudy() {
 
         gsap.timeline({ scrollTrigger: { trigger: ".xs-behind", start: "clamp(top 82%)", once: true, invalidateOnRefresh: true } })
           .from(".xs-behind .xs-label", { y: 26, opacity: 0, duration: .8, ease: "power2.out" })
-          .from(".xs-behind h2", { y: 90, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.35, ease: "power2.out" }, .18)
-          .from(".xs-behind__copy p", { y: 32, opacity: 0, duration: .9, stagger: .13, ease: "power2.out" }, .55)
-          .from(".xs-behind a", { y: 22, opacity: 0, duration: .9, ease: "power2.out" }, .85);
+          .from(".xs-behind__portrait", { scale: .65, opacity: 0, clipPath: "circle(0% at 50% 50%)", duration: 1.3, ease: "power2.out" }, .1)
+          .from(".xs-behind h2", { y: 90, opacity: 0, clipPath: "inset(0 0 80% 0)", duration: 1.35, ease: "power2.out" }, .3)
+          .from(".xs-behind__copy p", { y: 32, opacity: 0, duration: .9, stagger: .13, ease: "power2.out" }, .7)
+          .from(".xs-behind a", { y: 22, opacity: 0, duration: .9, ease: "power2.out" }, 1);
       });
       mm.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.fromTo(".xs-vision > span", { scale: .7, xPercent: -4, opacity: .3 }, { scale: 1.08, xPercent: 4, opacity: 1, ease: "none", scrollTrigger: { trigger: ".xs-vision", start: "top bottom", end: "bottom top", scrub: 1.1 } });
         gsap.fromTo(".xs-hero__band img", { yPercent: -4 }, { yPercent: 4, ease: "none", scrollTrigger: { trigger: ".xs-hero", start: "top top", end: "bottom top", scrub: 1 } });
+        gsap.fromTo(".xs-behind__portrait img", { scale: 1.18, yPercent: 6 }, { scale: 1.03, yPercent: -4, ease: "none", scrollTrigger: { trigger: ".xs-behind", start: "top bottom", end: "bottom top", scrub: 1.15 } });
       });
       return () => mm.revert();
     }, root);
@@ -112,6 +114,7 @@ export default function XsiteCaseStudy() {
       </div>
       <h1 id="xs-title"><span>Reimagining a casino platform</span>{" "}<span>from the <em>ground</em> up.</span></h1>
       <div className="xs-hero__meta"><div><small>Scope</small><p>Design System · Multi-brand Customisation ·<br />Native Sportsbook · Mobile</p></div><div><small>Role</small><p>Design Leadership</p></div><div><small>Started</small><p>2024 — Ongoing</p></div></div>
+      <i className="xs-hero__divider" aria-hidden="true" />
     </section>
 
     <section className="xs-foundation xs-section" aria-labelledby="foundation-title">
@@ -126,10 +129,7 @@ export default function XsiteCaseStudy() {
     <section className="xs-feature xs-section" aria-labelledby="switch-title">
       <header data-xs-reveal><p className="xs-label">01 · Casino ⇄ Sportsbook</p><h2 id="switch-title">Two products.<br />One native experience.</h2></header>
       <div className="xs-feature__copy"><p>Casino and Sportsbook were designed as a single system rather than two products bolted together — sharing navigation, components and identity, so switching between them feels instant and native.</p><p>Every brand could enable either, both, or switch emphasis by market — without a different codebase for each.</p></div>
-      <div className="xs-visual xs-visual--pair">
-        <Shot src="xsite-visual-casino.jpg" alt="Casino homepage: vertical switcher, live promo carousel and game rows" />
-        <Shot src="xsite-visual-sportsbook.jpg" alt="Sportsbook view: featured odds and top events reached from the same switcher" />
-      </div>
+      <div className="xs-visual xs-visual--wide"><Shot src="xsite-visual-devices.jpg" alt="The same navigation and Sports switcher, consistent across desktop, mobile and the expanded menu" /></div>
     </section>
 
     <section className="xs-feature xs-feature--reverse xs-section" aria-labelledby="mobile-title">
@@ -144,10 +144,7 @@ export default function XsiteCaseStudy() {
     </section>
 
     <section className="xs-feature xs-feature--reverse xs-section" aria-labelledby="sweepstakes-title">
-      <div className="xs-visual xs-visual--pair">
-        <Shot src="xsite-visual-sweepstakes.jpg" alt="Sweepstakes-model homepage running on the same components, dual gold-coin and sweeps-coin balances" />
-        <Shot src="xsite-visual-missions.jpg" alt="Missions surface: daily, seasonal and one-time challenges with progress and rewards" />
-      </div>
+      <div className="xs-visual xs-visual--wide"><Shot src="xsite-visual-gamification.jpg" alt="VIP levels, leaderboards and reward tiers, native to the platform" /></div>
       <div><header data-xs-reveal><p className="xs-label">04 · Sweepstakes & gamification</p><h2 id="sweepstakes-title">Built for more than one business model.</h2></header>
       <div className="xs-feature__copy"><p>XSITE supports Sweepstakes as a first-class model rather than an add-on, and pushed gamification further than WAND ever could — levels, missions and rewards designed as core product surfaces, not decoration.</p></div></div>
     </section>
@@ -164,6 +161,6 @@ export default function XsiteCaseStudy() {
       <div className="xs-status__grid">{status.map((row) => <article className="xs-status-item" key={row.title}><h3>{row.title}</h3><p>{row.body}</p></article>)}</div>
     </section>
 
-    <section className="xs-behind xs-section" aria-labelledby="behind-title"><p className="xs-label">Behind the work</p><h2 id="behind-title">Want to see where <em>XSITE</em> is headed?</h2><div className="xs-behind__copy"><p>XSITE is still an active, evolving platform, so I can only share its full designs privately.</p><p>I’d be happy to walk you through the system, the Builder and<br />the thinking behind it in an interview.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=XSITE">Let’s talk <Arrow /></a><Link className="xs-behind__home" href="/#portfolio-work"><ArrowLeft /> Return to selected work</Link></section>
+    <section className="xs-behind xs-section" aria-labelledby="behind-title"><p className="xs-label">Behind the work</p><figure className="xs-behind__portrait"><img src={`${A}maria-portrait.jpg`} alt="María Mora" width="700" height="700" /></figure><h2 id="behind-title">Want to see where <em>XSITE</em> is headed?</h2><div className="xs-behind__copy"><p>XSITE is still an active, evolving platform, so I can only share its full designs privately.</p><p>I’d be happy to walk you through the system, the Builder and<br />the thinking behind it in an interview.</p></div><a href="mailto:moragarciamaria@gmail.com?subject=XSITE">Let’s talk <Arrow /></a></section>
   </main>;
 }
