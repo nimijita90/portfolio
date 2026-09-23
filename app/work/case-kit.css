@@ -2,18 +2,27 @@
 .ck-wip,.ck-figure,.ck-strip,.ck-phones,.ck-stats,.ck-next{--ck-serif:"Silk Editorial",Georgia,serif;--ck-sans:"Onest Variable",Arial,sans-serif;--ck-ease:cubic-bezier(.16,1,.3,1)}
 
 /* Provisional note, pinned inside the hero banner */
-.ck-wip{position:absolute;z-index:2;left:clamp(12px,1.4vw,22px);bottom:clamp(12px,1.4vw,22px);display:inline-flex;align-items:center;gap:9px;margin:0;padding:8px 14px 8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(6,6,6,.5);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);font:450 10.5px/1 var(--ck-sans);letter-spacing:.16em;text-transform:uppercase;color:#f3f2ee}
-.ck-wip i{width:6px;height:6px;border-radius:50%;background:var(--ck-accent,#fff);box-shadow:0 0 0 0 var(--ck-accent,#fff);animation:ck-pulse 2.4s ease-out infinite}
+.ck-wip{position:absolute;z-index:2;left:clamp(12px,1.4vw,22px);bottom:clamp(12px,1.4vw,22px);display:inline-flex;align-items:center;gap:9px;margin:0;padding:8px 14px 8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(6,6,6,.74);font:450 10.5px/1 var(--ck-sans);letter-spacing:.16em;text-transform:uppercase;color:#f3f2ee}
+/* The ring is a separate layer animated with transform + opacity only (compositor), not box-shadow (repaint every frame). */
+.ck-wip i{position:relative;width:6px;height:6px;border-radius:50%;background:var(--ck-accent,#fff)}
+.ck-wip i:after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--ck-accent,#fff);opacity:0;animation:ck-pulse 2.4s ease-out infinite}
 .ck-wip>span{color:#6f6f6f;letter-spacing:0}
 .ck-wip em{font-style:normal;letter-spacing:.04em;text-transform:none;color:#b8b8b8;font-size:11.5px}
-@keyframes ck-pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ck-accent,#fff) 70%,transparent)}70%,100%{box-shadow:0 0 0 7px transparent}}
+@keyframes ck-pulse{0%{transform:scale(1);opacity:.7}70%,100%{transform:scale(3.3);opacity:0}}
 
 /* Plates */
 figure.ck-figure{margin:clamp(44px,5vw,80px) 0 0}
 .ck-figure__media{position:relative;overflow:hidden;border-radius:10px;background:#0b0b0b;box-shadow:0 0 0 1px rgba(255,255,255,.07),0 50px 120px -60px rgba(0,0,0,.9)}
-.ck-figure__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
+.ck-figure__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ck-figure figcaption,.ck-strip figcaption,.ck-phones figcaption{display:flex;gap:16px;align-items:baseline;margin-top:18px;font:400 13.5px/1.55 var(--ck-sans);color:#8d8d8d;max-width:70ch}
 .ck-figure figcaption span,.ck-strip figcaption span,.ck-phones figcaption span{flex:0 0 auto;font-variant-numeric:tabular-nums;letter-spacing:.14em;color:#e2e2e2;font-size:11.5px}
+
+/* Placeholder plate: a deliberate, labelled gap for an image that is still to come */
+.ck-placeholder__frame{display:grid;place-content:center;justify-items:center;gap:clamp(12px,1.2vw,18px);padding:clamp(24px,4vw,64px);text-align:center;background:radial-gradient(70% 90% at 18% 0%,color-mix(in srgb,var(--ck-accent,#fff) 11%,transparent),transparent 62%),repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 56px),repeating-linear-gradient(90deg,rgba(255,255,255,.028) 0 1px,transparent 1px 56px),#080808}
+.ck-placeholder__index{position:absolute;top:clamp(14px,1.6vw,24px);left:clamp(16px,1.8vw,28px);font:450 11.5px/1 var(--ck-sans);letter-spacing:.14em;color:#8d8d8d;font-variant-numeric:tabular-nums}
+.ck-placeholder__tag{display:inline-flex;align-items:center;gap:9px;font:450 11px/1 var(--ck-sans);letter-spacing:.2em;text-transform:uppercase;color:#a9a9a9}
+.ck-placeholder__tag i{width:5px;height:5px;border-radius:50%;background:var(--ck-accent,#fff)}
+.ck-placeholder__text{max-width:26ch;font:400 clamp(22px,2.1vw,34px)/1.15 var(--ck-serif);letter-spacing:-.015em;color:#e9e8e4;text-wrap:balance}
 
 /* Equal-height row of plates */
 figure.ck-strip{margin:clamp(44px,5vw,80px) 0 0}
@@ -41,7 +50,7 @@ dl.ck-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp
 .ck-stats dt{font:450 clamp(12px,1.1vw,16px)/1.5 var(--ck-sans);letter-spacing:.18em;text-transform:uppercase;color:#a9a9a9;max-width:26ch}
 
 /* Next case study */
-.ck-next{padding:clamp(96px,11vw,180px) var(--ck-pad,24px) clamp(64px,6vw,100px)}
+.ck-next{padding:clamp(64px,6vw,112px) var(--ck-pad,24px) clamp(64px,6vw,100px)}
 .ck-next__link{display:grid;color:inherit;text-decoration:none}
 .ck-next__label{font:450 clamp(12px,1.15vw,18px)/1.4 var(--ck-sans);letter-spacing:.18em;text-transform:uppercase;color:#f5f4f1}
 .ck-next__title{display:block;margin-top:clamp(20px,2vw,32px);font:400 clamp(56px,8.4vw,140px)/.92 var(--ck-serif);letter-spacing:-.04em;color:#f5f4f1;text-wrap:balance}
@@ -64,6 +73,7 @@ dl.ck-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp
 @media(max-width:1023px){
  figure.ck-figure,figure.ck-strip,figure.ck-phones{margin-top:36px}
  .ck-figure__media,.ck-strip__item{border-radius:8px}
+ .ck-placeholder__frame{aspect-ratio:4/3!important}
  .ck-figure figcaption,.ck-strip figcaption,.ck-phones figcaption{font-size:13px;gap:12px}
  .ck-strip__row,.ck-phones__row{overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;margin-inline:calc(-1 * var(--ck-pad,24px));padding-inline:var(--ck-pad,24px);scroll-padding-inline:var(--ck-pad,24px)}
  .ck-strip__row::-webkit-scrollbar,.ck-phones__row::-webkit-scrollbar{display:none}
@@ -73,7 +83,7 @@ dl.ck-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp
  .ck-phone:nth-child(2){transform:none}
  .ck-stats{grid-template-columns:1fr 1fr;gap:20px}
  .ck-stats dd{font-size:clamp(88px,26vw,150px)}
- .ck-next{padding-block:88px 56px}
+ .ck-next{padding-block:44px 56px}
  .ck-next__foot{flex-direction:column;align-items:flex-start;gap:24px}
 }
 @media(max-width:680px){
@@ -81,7 +91,7 @@ dl.ck-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp
  .ck-next__title{font-size:clamp(46px,13vw,64px)}
 }
 @media(prefers-reduced-motion:reduce){
- .ck-wip i{animation:none}
+ .ck-wip i:after{animation:none}
  [data-ck-figure] *,.ck-next *{opacity:1!important;clip-path:none!important}
  .ck-next__media img{transition:none}
 }

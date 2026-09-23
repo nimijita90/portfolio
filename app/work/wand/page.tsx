@@ -4,7 +4,7 @@ import "../case-kit.css";
 import "./wand.css";
 
 export const metadata: Metadata = {
-  title: "WAND — María Mora",
+  title: "WAND · María Mora",
   description: "How María Mora evolved an incomplete white-label casino system into a scalable multi-brand product platform.",
 };
 

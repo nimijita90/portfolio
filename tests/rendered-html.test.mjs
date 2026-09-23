@@ -98,7 +98,7 @@ test("renders the complete Canva-led WAND case study and local production assets
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.ok(html.includes("WAND"));
-  for (const text of ["Evolving a white-label casino", "Scale exposed the cracks", "From building", "Complete. Configure. Connect.", "From incomplete", "Configuring", "Bringing clients", "As WAND grew, new problems emerged.", "Improving usability", "Different navigation.", "Dark Mode", "Extending the system to support a new business model.", "2024–2025 — Reaching the limit", "From weeks to", "Want to see how it", "The expansion", "Brand customisation", "Demo Casino", "Back to home", "wand-milestone__tags"]) assert.ok(html.includes(text), text);
+  for (const text of ["Evolving a white-label casino", "Scale exposed the cracks", "From building", "Complete. Configure. Connect.", "From incomplete", "Configuring", "Bringing clients", "As WAND grew, new problems emerged.", "Improving usability", "Different navigation.", "Dark Mode", "Extending the system to support a new business model.", "2024–2025 · Reaching the limit", "From weeks to", "Want to see how it", "The expansion", "Brand customisation", "Demo Casino", "Back to home", "wand-milestone__tags"]) assert.ok(html.includes(text), text);
   assert.equal((html.match(/class="wand-milestone"/g) ?? []).length, 5);
   assert.ok(html.includes("Eventually, evolution wasn’t enough."));
   assert.ok(!html.includes("hello@mariamora.design"));
@@ -113,7 +113,14 @@ test("renders the complete Canva-led WAND case study and local production assets
   assert.equal(hostingConfig.d1, null);
   assert.equal(hostingConfig.r2, null);
   for (const path of ["og.png", "portfolio/assets/maria-logo-white.svg", "portfolio/assets/maria-portrait.jpg", "portfolio/assets/wand-hero-banner-v2.png", "portfolio/assets/wand-canva-complete.png", "portfolio/assets/wand-canva-configure.png", "portfolio/assets/wand-canva-cashier.png", "portfolio/assets/wand-canva-connect.png", "portfolio/assets/wand-navigation-models.png", "portfolio/assets/wand-dark-mode.png", "portfolio/assets/wand-sweepstakes.png", "portfolio/assets/LA3A7408-portrait-768.avif", "portfolio/canva/hero-photo.jpg", "portfolio/canva/faq-photo.jpg", "portfolio/canva/work.jpg", "portfolio/canva/people.jpg", "portfolio/canva/people-bg.jpg", "portfolio/canva/people-mobile.jpg", "portfolio/canva/awards.jpg", "portfolio/canva/beyond.jpg", "portfolio/canva/highlights.jpg", "portfolio/fonts/Silk Serif Regular.woff2", "portfolio/fonts/Silk Serif Regular Italic.woff2"]) await access(new URL(`../public/${path}`, import.meta.url));
+  // Visuals ship as WebP (the PNG originals stay in public/ as the source files).
+  for (const name of ["wand-hero-banner-v2", "wand-visual-complete-v2", "wand-visual-configure-v2", "wand-visual-cashier-v2", "wand-navigation-models", "wand-dark-mode", "wand-sweepstakes"]) {
+    assert.ok(html.includes(`${name}.webp`), `${name}.webp is referenced`);
+    await access(new URL(`../public/portfolio/assets/${name}.webp`, import.meta.url));
+  }
   assert.ok(html.includes("wand-behind__portrait"));
+  assert.ok(html.includes("Content and visuals are provisional"), "WAND carries the in-progress note");
+  assert.ok(!html.includes("wand-visual-connect-v2") && html.includes("Branded client previews and presentation materials"), "Connect shows a labelled placeholder");
   assert.ok(!html.includes("Return to selected work"));
 });
 
@@ -123,6 +130,10 @@ test("renders the Demo Casino Customiser case study without inventing metrics or
   const html = await response.text();
   for (const text of ["Turning a complex sales workflow", "Two problems, one product", "The sales demo couldn’t keep up", "Kick-off meant meeting after meeting", "Configure the casino", "Everything a client", "Send. Explore. Decide.", "A sales fix that grew", "Sales", "Clients", "Product, Design &amp; Technology", "Over time", "Behind the work", "cust-behind__portrait", "cust-hero__divider"]) assert.ok(html.includes(text), text);
   assert.ok(!html.includes("Return to selected work"));
+  assert.ok(!html.includes("Content and visuals are provisional"), "Customiser carries no in-progress note");
+  assert.ok(html.includes("Lead Product Designer"), "Customiser role");
+  assert.ok(html.includes("customiser-event.webp"), "Customiser shows the event stand photo");
+  await access(new URL("../public/portfolio/assets/customiser-event.webp", import.meta.url));
   const customiserAssets = ["customiser-desk.webp", "customiser-modules.webp", "customiser-colour.webp", "customiser-templates.webp", "customiser-modes.webp", "customiser-imac-red.webp", "customiser-imac-shop.webp", "customiser-phone.webp", "customiser-summary.webp"];
   for (const asset of customiserAssets) assert.ok(html.includes(asset), asset);
   assert.ok(html.includes("ck-next") && html.includes('href="/work/xsite"'), "links on to the next case study");
@@ -133,11 +144,13 @@ test("renders the Demo Casino Customiser case study without inventing metrics or
   for (const asset of customiserAssets) await access(new URL(`../public/portfolio/assets/${asset}`, import.meta.url));
 });
 
-test("renders the XSITE case study with real product screenshots and a work-in-progress note", async () => {
+test("renders the rebuilt XSITE case study with real screenshots and labelled placeholders", async () => {
   const response = await render("/work/xsite");
   assert.equal(response.status, 200);
   const html = await response.text();
-  for (const text of ["Reimagining a casino platform", "WAND had reached its limits", "Configure. Switch. Publish.", "Casino ⇄ Sportsbook", "Native mobile", "Designed on evidence", "Sweepstakes", "XSITE Builder", "Publishing,", "Where it stands", "Behind the work", "xs-behind__portrait", "xs-hero__divider", "2024 — Ongoing", "Content and visuals are provisional"]) assert.ok(html.includes(text), text);
+  for (const text of ["Rebuilding a white-label casino", "Lead Product Designer", "2 Product Designers", "1 Graphic Designer<", "Evolution had reached", "Leading the design approach", "Designing the product and", "Research", "Understanding the market", "32 casino products", "Mobile first.", "Design System + Documentation", "Product Pages + Flows", "One navigation model instead of two.", "Product Switcher", "Cashier in a modal", "Many brand expressions", "Custom Plugin", "Designing beyond", "Connecting Design, Product", "From product definition", "did not observe the final live product", "Behind the work", "xs-behind__portrait", "xs-hero__divider", "Content and visuals are provisional", "Image to come"]) assert.ok(html.includes(text), text);
+  // Old, superseded copy is gone.
+  for (const old of ["Configure. Switch. Publish.", "XSITE Builder", "Where it stands", "Since 2024"]) assert.ok(!html.includes(old), old);
   assert.ok(!html.includes("Return to selected work"));
   const xsiteAssets = ["xsite-visual-devices.jpg", "xsite-m-loyalty.webp", "xsite-m-promotions.webp", "xsite-m-shop.webp", "xsite-visual-gamification.jpg"];
   for (const asset of xsiteAssets) assert.ok(html.includes(asset), asset);
@@ -150,13 +163,15 @@ test("renders the XSITE case study with real product screenshots and a work-in-p
 
 test("shows every operator logo as a local white asset, and the new Beyond photos", async () => {
   const html = await (await render()).text();
-  const files = ["williamhill.png", "rizk.svg", "dunder.svg", "netbet.svg", "thepools.svg", "slotbox.svg", "kingbilly.png", "kirgo.png", "eleven.svg", "jugadon.png", "solaire.svg"];
+  const files = ["williamhill.png", "hardrock.png", "rizk.svg", "skycity.svg", "dunder.svg", "thrills.svg", "netbet.svg", "splash.png", "kaboo.svg", "thepools.svg", "superlenny.svg", "slotbox.svg", "casinotime.svg", "eleven.svg", "kingbilly.png", "solaire.svg", "kirgo.png", "jugadon.png"];
   for (const file of files) {
     assert.ok(html.includes(`/portfolio/operators/${file}`), file);
     await access(new URL(`../public/portfolio/operators/${file}`, import.meta.url));
   }
   // Brands she did not work on must not be claimed.
-  for (const brand of ["Betsson", "LeoVegas", "Thrills"]) assert.ok(!html.includes(brand), brand);
+  for (const brand of ["Betsson", "LeoVegas"]) assert.ok(!html.includes(brand), brand);
+  assert.ok(html.includes("/portfolio/canva/xsite-card.webp"), "XSITE card uses its supplied cover");
+  await access(new URL("../public/portfolio/canva/xsite-card.webp", import.meta.url));
   for (const photo of ["beyond-children", "beyond-coffee", "beyond-garden", "beyond-cat"]) {
     assert.ok(html.includes(`/portfolio/canva/${photo}.webp`), photo);
     await access(new URL(`../public/portfolio/canva/${photo}.webp`, import.meta.url));

@@ -45,7 +45,7 @@ const stages = [
 ];
 const projects = [
   { name: "WAND", x: 30, width: 482, copy: <>Scaling a legacy platform <br />across brands and markets.</>, href: "/work/wand" },
-  { name: "XSITE", x: 527, width: 482, copy: <>Reimagining a casino platform <br />from the ground up.</>, href: "/work/xsite" },
+  { name: "XSITE", x: 527, width: 482, copy: <>Reimagining a casino platform <br />from the ground up.</>, href: "/work/xsite", image: "/portfolio/canva/xsite-card.webp" },
   { name: "Demo Casino Customiser", x: 1023, width: 482, copy: <>Turning a complex sales workflow <br />into a live experience.</>, href: "/work/customiser" },
 ];
 
@@ -154,7 +154,22 @@ export default function CanvaPortfolio() {
           }, .22 + index * .09);
         });
         enter(root.current!.querySelector(".c-metrics")!, metrics);
-        enter(root.current!.querySelector(".c-operators")!, gsap.from(".c-operators", { clipPath: "inset(0 100% 0 0)", x: -50, duration: 1.4, paused: true, ease: "power3.inOut" }));
+        // Not an IntersectionObserver entrance: the observer ignores an element whose own
+        // clip-path hides it completely, so the strip stayed clipped (invisible) forever.
+        // It sits above the Career pin, so a ScrollTrigger position is stable here.
+        gsap.from(".c-operators", { clipPath: "inset(0 100% 0 0)", x: -50, duration: 1.4, ease: "power3.inOut", scrollTrigger: { trigger: ".c-operators", start: "top 92%", once: true } });
+        // "10+": grows into place and counts up on every viewport (it was a desktop-only scrub
+        // that barely read at normal scroll speed, and had no motion at all on mobile).
+        const years = root.current!.querySelector<HTMLElement>(".c-years-number")!;
+        const yearsValue = { number: 0 };
+        const yearsTimeline = gsap.timeline({ paused: true });
+        yearsTimeline.from(years, { scale: .3, y: 120, opacity: .35, transformOrigin: "left top", duration: 1.7, ease: "power3.out" })
+          .to(yearsValue, { number: 10, duration: 1.6, ease: "power2.out",
+            onStart: () => { years.textContent = "0+"; },
+            onUpdate: () => { years.textContent = `${Math.round(yearsValue.number)}+`; },
+            onComplete: () => { years.textContent = "10+"; },
+          }, .1);
+        enter(years, yearsTimeline);
         // No entrance reveal here: it's a full-bleed section background now, not a
         // framed photo, and the old clip/scale entrance relied on the same
         // IntersectionObserver reveal that could get stuck unplayed (see the
@@ -197,8 +212,6 @@ export default function CanvaPortfolio() {
       });
       media.add("(min-width: 1024px) and (prefers-reduced-motion: no-preference)", () => {
         gsap.to(".c-hero-picture img", { yPercent: 8, scale: 1.06, ease: "none", scrollTrigger: { trigger: ".c-hero", start: "top top", end: "bottom top", scrub: 1 } });
-        gsap.from(".c-years-number", { scale: .3, transformOrigin: "left top", y: 120, opacity: .35,
-          scrollTrigger: { trigger: ".c-highlights", start: "top 92%", end: "top 28%", scrub: .9 } });
         gsap.utils.toArray<HTMLElement>(".c-project-image .c-crop").forEach((image) => gsap.fromTo(image, { yPercent: 7 }, { yPercent: -7, ease: "none", scrollTrigger: { trigger: image, start: "top bottom", end: "bottom top", scrub: 1 } }));
         gsap.to(".c-people-photo img", { yPercent: -6, ease: "none", scrollTrigger: { trigger: ".c-people", start: "top bottom", end: "bottom top", scrub: 1.2 } });
         gsap.to(".c-trophy img", { yPercent: -9, ease: "none", scrollTrigger: { trigger: ".c-awards", start: "top bottom", end: "bottom top", scrub: 1.2 } });
@@ -218,10 +231,15 @@ export default function CanvaPortfolio() {
           setActiveCareer(next);
           careerTween?.kill();
           careerCards.forEach((card, index) => { if (index !== previous && index !== next) gsap.set(card, { autoAlpha: 0, clipPath: "inset(0)" }); });
+          // GSAP owns x here: without it, the card that loses .is-active snaps to the CSS
+          // resting offset (translateX(80px)) mid-fade, which read as a jolt on every step.
+          const direction = next > previous ? 1 : -1;
           careerTween = gsap.timeline({ onComplete: onSettled });
           careerTween.set([careerCards[previous], careerCards[next]], { clipPath: "inset(0)" })
-            .to(careerCards[previous], { autoAlpha: 0, duration: .55, ease: "power2.out" }, 0)
-            .fromTo(careerCards[next], { autoAlpha: 0 }, { autoAlpha: 1, duration: .85, ease: "power2.out" }, 0);
+            // Sequenced, not cross-faded: two stages of text overlapping mid-fade read as a smudge.
+            // The outgoing stage fades in place (moving it left clipped it against the column edge).
+            .fromTo(careerCards[previous], { x: 0 }, { autoAlpha: 0, duration: .3, ease: "power1.in" }, 0)
+            .fromTo(careerCards[next], { autoAlpha: 0, x: 36 * direction }, { autoAlpha: 1, x: 0, duration: .9, ease: "power3.out" }, .3);
         };
         // Assigned once below, after the handlers that close over it are declared
         // (they reference it circularly), so it can't be a const at this point.
@@ -241,22 +259,39 @@ export default function CanvaPortfolio() {
           moveCareer(next, () => { trigger.scroll(checkpoint(next)); locked = false; });
         };
         careerMove.current = lockAndMove;
+        // One gesture, one step. A trackpad keeps emitting inertial wheel events for a second
+        // or more after the finger lifts; those used to arrive after the transition had
+        // settled and fire the next step straight away (1 → 2 → 3 in one swipe). A gesture
+        // ends after a short silence, or when a fresh swipe clearly out-accelerates the
+        // decaying inertia; until then every event is swallowed — including at the first and
+        // last stage, so the tail of the swipe that arrived there can't fling the page onward.
+        let lastWheelAt = 0;
+        let lastWheelSize = 0;
+        let lastStepAt = 0;
+        let gestureSpent = false;
+        // The swipe that scrolled the section into place is spent on arriving: its inertia
+        // must not also advance the first step.
+        const armFromScroll = () => { lastWheelAt = performance.now(); gestureSpent = true; };
         const handleWheel = (event: WheelEvent) => {
+          const now = performance.now();
+          const size = Math.abs(event.deltaY);
+          const freshSwipe = now - lastWheelAt > 180 || (now - lastStepAt > 900 && size > 14 && size > lastWheelSize * 1.8);
+          lastWheelAt = now;
+          lastWheelSize = size;
+          if (freshSwipe) gestureSpent = false;
           if (!trigger.isActive) return;
-          if (locked) { event.preventDefault(); return; }
-          if (event.deltaY > 0) {
-            if (visibleCareer >= 2) return; // at the last stage: let the page scroll on past the section
-            event.preventDefault();
-            lockAndMove(visibleCareer + 1);
-          } else if (event.deltaY < 0) {
-            if (visibleCareer <= 0) return; // at the first stage: let the page scroll back up
-            event.preventDefault();
-            lockAndMove(visibleCareer - 1);
-          }
+          if (locked || gestureSpent) { event.preventDefault(); return; }
+          const next = event.deltaY > 0 ? visibleCareer + 1 : event.deltaY < 0 ? visibleCareer - 1 : visibleCareer;
+          if (next < 0 || next > 2) return; // past the first/last stage on a new gesture: let the page scroll on
+          event.preventDefault();
+          if (next === visibleCareer) return;
+          gestureSpent = true;
+          lastStepAt = now;
+          lockAndMove(next);
         };
         trigger = ScrollTrigger.create({ trigger: ".c-career", pin: ".c-career-inner", start: "top top", end: "+=120%", invalidateOnRefresh: true,
-          onEnter: () => { moveCareer(0); window.addEventListener("wheel", handleWheel, { passive: false }); },
-          onEnterBack: () => { moveCareer(2); window.addEventListener("wheel", handleWheel, { passive: false }); },
+          onEnter: () => { moveCareer(0); armFromScroll(); window.addEventListener("wheel", handleWheel, { passive: false }); },
+          onEnterBack: () => { moveCareer(2); armFromScroll(); window.addEventListener("wheel", handleWheel, { passive: false }); },
           onLeave: () => { window.removeEventListener("wheel", handleWheel); locked = false; },
           onLeaveBack: () => { window.removeEventListener("wheel", handleWheel); locked = false; },
         });
@@ -327,12 +362,18 @@ export default function CanvaPortfolio() {
     </section>
 
     <section className="c-work c-section" id="portfolio-work" aria-labelledby="work-title">
-      <header><Caption>Selected work</Caption><Heading id="work-title">Work that shaped<br /><em>products.</em></Heading></header>
-      <div className="c-projects">{projects.map((project) => <article key={project.name} className="c-project" data-reveal>
-        {project.href ? <Link className="c-project-image" href={project.href} aria-label={`View ${project.name} case study`}><ReferenceImage sheet="work" x={project.x} y={296} width={project.width} height={510} alt={`${project.name} product preview`} /></Link> : <div className="c-project-image"><ReferenceImage sheet="work" x={project.x} y={296} width={project.width} height={510} alt={`${project.name} product preview`} /></div>}
+      <header><Caption>Selected work</Caption><Heading id="work-title">Work that shaped <br /><em>products.</em></Heading></header>
+      <div className="c-projects">{projects.map((project) => {
+        // A card with its own supplied cover uses it (centre-cropped to the card); the others crop the shared Canva sheet.
+        const media = "image" in project && project.image
+          ? <Photo src={project.image} width={project.width} height={510} alt={`${project.name} product preview`} />
+          : <ReferenceImage sheet="work" x={project.x} y={296} width={project.width} height={510} alt={`${project.name} product preview`} />;
+        return <article key={project.name} className="c-project" data-reveal>
+        {project.href ? <Link className="c-project-image" href={project.href} aria-label={`View ${project.name} case study`}>{media}</Link> : <div className="c-project-image">{media}</div>}
         <h3 className="sr-only">{project.name}</h3><p>{project.copy}</p>
         {project.href ? <Link className="c-project-link" href={project.href}>View project <Arrow /></Link> : <a className="c-project-link" href={`mailto:moragarciamaria@gmail.com?subject=${encodeURIComponent(`Tell me about ${project.name}`)}`}>Request project <Arrow /><span className="sr-only"> — case study not yet published</span></a>}
-      </article>)}</div>
+      </article>;
+      })}</div>
     </section>
 
     <section className="c-career" id="portfolio-about" aria-labelledby="career-title"><div className="c-career-inner c-section">
@@ -350,7 +391,7 @@ export default function CanvaPortfolio() {
           <img src="/portfolio/canva/people-bg.jpg" width={2560} height={1440} alt="" loading="lazy" decoding="async" />
         </picture>
       </div>
-      <header><div><Caption>People</Caption><Heading id="people-title">In their <em>words.</em></Heading></div><a className="c-recommendations-link" href="mailto:moragarciamaria@gmail.com?subject=Full%20recommendations">View all recommendations <Arrow direction="up" /></a></header>
+      <header><div><Caption>People</Caption><Heading id="people-title">In their <em>words.</em></Heading></div><a className="c-recommendations-link" href="https://www.linkedin.com/in/mar%C3%ADa-mora/" target="_blank" rel="noopener noreferrer">View all recommendations <Arrow direction="up" /></a></header>
       <div className="c-quotes" aria-live="polite">{recommendations.map((quote, index) => <figure key={quote.name} className={index === activeQuote ? "is-active" : ""} aria-hidden={index !== activeQuote}><blockquote>“{quote.quote}”</blockquote><figcaption><strong>{quote.name}</strong><span>{quote.role}</span></figcaption></figure>)}</div>
       <div className="c-quote-controls"><span>{String(activeQuote + 1).padStart(2, "0")} <span>/ {String(recommendations.length).padStart(2, "0")}</span></span><i /><button aria-label="Previous recommendation" onClick={() => setActiveQuote((current) => (current + recommendations.length - 1) % recommendations.length)}><Arrow direction="left" /></button><button aria-label="Next recommendation" onClick={() => setActiveQuote((current) => (current + 1) % recommendations.length)}><Arrow /></button></div>
     </section>
@@ -361,12 +402,12 @@ export default function CanvaPortfolio() {
     </section>
 
     <section className="c-faq c-section" id="portfolio-faq" aria-labelledby="faq-title">
-      <header><Caption>FAQ</Caption><Heading id="faq-title">Questions<br />I get <em>asked.</em></Heading><p data-reveal>A few answers to the questions that come up most often about my work, process and experience.</p></header>
+      <header><Caption>FAQ</Caption><Heading id="faq-title">Questions <br />I get <em>asked.</em></Heading><p data-reveal>A few answers to the questions that come up most often about my work, process and experience.</p></header>
       <div className="c-faq-list">{faqItems.map((item, index) => <article key={item.question} className={index === activeFaq ? "is-open" : ""}><h3><button id={`faq-question-${index}`} aria-expanded={index === activeFaq} aria-controls={`faq-panel-${index}`} onClick={() => setActiveFaq(index === activeFaq ? null : index)}><span className="c-faq-number">{String(index + 1).padStart(2, "0")}</span><span>{item.question}</span><span className="c-plus" aria-hidden="true" /></button></h3><div className="c-faq-panel" id={`faq-panel-${index}`} role="region" aria-labelledby={`faq-question-${index}`} inert={index !== activeFaq}><div><p className="c-faq-answer">{item.answer}</p></div></div></article>)}</div>
     </section>
 
-    <section className="c-beyond c-section" id="portfolio-playground" aria-labelledby="beyond-title"><div className="c-beyond-grid">{[{ src: "beyond-children", alt: "Two young children sitting by a colourful bead curtain" }, { src: "beyond-coffee", alt: "A cup of coffee with a biscuit on the saucer" }, { src: "beyond-garden", alt: "Rows of young plants in the vegetable garden" }, { src: "beyond-cat", alt: "A snowshoe cat looking at the camera" }].map((photo) => <div key={photo.src} data-reveal><Photo src={`/portfolio/canva/${photo.src}.webp`} width={900} height={900} alt={photo.alt} /></div>)}</div><header><Caption>Beyond design</Caption><Heading id="beyond-title">There’s more<br />to <em>life</em> than<br />pixels.</Heading><p data-reveal>The things that inspire me,<br />keep me grounded and<br />make life beautiful.</p></header></section>
+    <section className="c-beyond c-section" id="portfolio-playground" aria-labelledby="beyond-title"><div className="c-beyond-grid">{[{ src: "beyond-children", alt: "Two young children sitting by a colourful bead curtain" }, { src: "beyond-coffee", alt: "A cup of coffee with a biscuit on the saucer" }, { src: "beyond-garden", alt: "Rows of young plants in the vegetable garden" }, { src: "beyond-cat", alt: "A snowshoe cat looking at the camera" }].map((photo) => <div key={photo.src} data-reveal><Photo src={`/portfolio/canva/${photo.src}.webp`} width={900} height={900} alt={photo.alt} /></div>)}</div><header><Caption>Beyond design</Caption><Heading id="beyond-title">There’s more <br />to <em>life</em> than <br />pixels.</Heading><p data-reveal>The things that inspire me, <br />keep me grounded and <br />make life beautiful.</p></header></section>
 
-    <footer className="c-contact c-section" id="portfolio-contact" aria-labelledby="contact-title"><Caption>Contact</Caption><Heading id="contact-title">Let’s make something<br /><em>exceptional.</em></Heading><a className="c-email" href="mailto:moragarciamaria@gmail.com" data-reveal><span>moragarciamaria@gmail.com</span><Arrow direction="up" /></a><div className="c-footer-meta" data-reveal><p>María Mora · Design Leader<br />Marbella · Worldwide</p><span>© 2026</span></div></footer>
+    <footer className="c-contact c-section" id="portfolio-contact" aria-labelledby="contact-title"><Caption>Contact</Caption><Heading id="contact-title">Let’s make something <br /><em>exceptional.</em></Heading><a className="c-email" href="mailto:moragarciamaria@gmail.com" data-reveal><span>moragarciamaria@gmail.com</span><Arrow direction="up" /></a><div className="c-footer-meta" data-reveal><p>María Mora · Design Leader <br />Marbella · Worldwide</p><span>© 2026</span></div></footer>
   </main>;
 }

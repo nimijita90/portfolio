@@ -117,20 +117,28 @@ export const awards = [
   { year: "2022", place: "Europe", result: "Finalist", description: "Design and User Experience Award in the iGaming industry.", mark: "iGaming\nIdol" },
 ] as const;
 
-/** Operators María designed for (live or in development — proposals excluded), as white logos
- *  in /public/portfolio/operators. `ratio` is width / height, used to balance optical size. */
+/** Operators María designed for, as white logos in /public/portfolio/operators — the list she
+ *  supplied. Ordered so similar shapes never sit side by side. `ratio` is width / height, used
+ *  to balance optical size. */
 export const operators = [
   { name: "William Hill", file: "williamhill.png", ratio: 4.88 },
+  { name: "Hard Rock Hotel & Casino", file: "hardrock.png", ratio: 1.65 },
   { name: "Rizk", file: "rizk.svg", ratio: 3.24 },
+  { name: "SkyCity Online Casino", file: "skycity.svg", ratio: 2.91 },
   { name: "Dunder", file: "dunder.svg", ratio: 5.84 },
+  { name: "Thrills", file: "thrills.svg", ratio: 4.61 },
   { name: "NetBet", file: "netbet.svg", ratio: 5.7 },
+  { name: "Splash Coins", file: "splash.png", ratio: 2.49 },
+  { name: "Kaboo", file: "kaboo.svg", ratio: 6.29 },
   { name: "The Pools", file: "thepools.svg", ratio: 2.25 },
+  { name: "SuperLenny", file: "superlenny.svg", ratio: 6.78 },
   { name: "Slotbox", file: "slotbox.svg", ratio: 2.38 },
-  { name: "King Billy", file: "kingbilly.png", ratio: 4.77 },
-  { name: "Kirgo", file: "kirgo.png", ratio: 7.58 },
+  { name: "Casino Time", file: "casinotime.svg", ratio: 5.11 },
   { name: "11.lv", file: "eleven.svg", ratio: 2.23 },
-  { name: "Jugadón", file: "jugadon.png", ratio: 4.1 },
+  { name: "King Billy", file: "kingbilly.png", ratio: 4.77 },
   { name: "Solaire", file: "solaire.svg", ratio: 1.8 },
+  { name: "Kirgo", file: "kirgo.png", ratio: 7.58 },
+  { name: "Jugadón", file: "jugadon.png", ratio: 4.1 },
 ] as const;
 
 export const brandNames = ["William Hill", "Mr Green", "Rizk", "SkyCity", "Dunder", "Thrills"] as const;
