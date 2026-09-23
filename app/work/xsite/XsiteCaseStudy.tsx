@@ -203,9 +203,9 @@ export default function XsiteCaseStudy() {
         <p>Instead of keeping the entire product in one Figma file, we separated XSITE into two connected sources.</p>
       </div></header>
       <div className="xs-sources" aria-label="The two connected Figma sources">
-        <div><span>Source 01</span><strong>Design System + Documentation</strong></div>
+        <div><span>Source 01</span><strong>Design System + <br />Documentation</strong></div>
         <i aria-hidden="true" />
-        <div><span>Source 02</span><strong>Product Pages + Flows</strong></div>
+        <div><span>Source 02</span><strong>Product Pages + <br />Flows</strong></div>
       </div>
       <div className="xs-columns">
         <p>This solved the memory limitations we had experienced with larger Figma files and allowed both sides of the product to keep growing independently.</p>
