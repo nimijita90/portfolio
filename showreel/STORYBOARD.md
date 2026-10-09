@@ -34,26 +34,26 @@ Runtime: 48 s at 1920×1080 (draft: 960×540).
 | 05 | 6.10–7.15 | I know one. | — | Starts as an extreme close-up and snaps out to the full line |
 | 06 | 7.15–9.30 | I'm María Mora. | — | Letters glow in from blur while the tracking tightens |
 | 07 | 9.25–10.60 | 10+ years. | — | Oversized number bleeds off the frame; slides out |
-| 08 | 10.55–12.10 | Designing digital products. | WAND UI kit | Type/product parallax; the product takes the frame |
+| 08 | 10.55–12.10 | Designing digital products. | XSITE casino page (`media/xsite-casino-page.webp`) | Page frame rises and scrolls; type and frame exit together |
 | 09 | 12.10–13.30 | I've learned that great products need | — | Words build; all dim except "need" |
 | 10 | 13.25–14.25 | Evidence. | — | Camera passes along the oversized word and dives into the full stop |
-| 11 | 14.20–16.80 | 40% faster client delivery | Real Figma variables (WAND configure) | KPI + "Enabled by a multi-brand design system built with Figma variables." |
+| 11 | 14.20–16.80 | 40% faster client delivery | Figma variables export plugin (`media/plugin-variables.webm`) | KPI + "Enabled by a multi-brand design system built with Figma variables." |
 | 12 | 16.75–17.70 | Direction. | — | Drum roll over a ghost copy, then pushes into the footage |
 | 13 | 17.65–19.25 | (caption) Nordice | Nordice clip, 2.6–4.0 s of the source | Slow settle; wiped off by Runar |
 | 14 | 18.90–20.25 | (caption) Runar | Runar Viking clip, 12.5–13.9 s | Wipe in from the right |
 | 15 | 20.20–21.00 | (caption) Runar | Runar rune, the first 0.8 s of the shot only | Brief flash before it starts rotating |
-| 16 | 20.95–22.75 | (caption) XSITE · A white-label casino platform, rebuilt from the foundations | XSITE devices | Lateral camera; shrinks away |
+| 16 | 20.75–22.75 | (caption) XSITE · One platform, multiple brands — Nordice & Runar | Nordice and Runar pages side by side | The pages slide in from opposite edges and scroll in opposite directions |
 | 17 | 22.70–23.60 | Craft. | — | Echo marquee (outlined and solid rows) |
-| 18 | 23.55–25.25 | (caption) WAND · Cashier | WAND Cashier | Close-up pulls back to the full flow |
-| 19 | 25.20–26.60 | (caption) XSITE · Loyalty & gamification | XSITE gamification | Enters as the Cashier exits |
+| 18 | 23.55–25.25 | (caption) XSITE · Sportsbook | `media/xsite-sports-page.webp` | Tilted frame turns towards the camera while the page scrolls |
+| 19 | 25.20–26.60 | (caption) XSITE · Casino | `media/xsite-casino-page.webp` (Original games section) | Enters as the sportsbook exits; slow scroll |
 | 20 | 26.55–27.40 | My work spans | — | Tracking compresses |
 | 21 | 27.40–28.80 | 43 operator brands. | — | The number dominates (no count-up, so no wrong numbers ever on screen) |
 | 22 | 28.75–30.50 | 22 launched across 15 markets. | — | Contrasting scales + footnote: "Brand skins designed for 43 operator brands within a multi-brand platform." |
 | 23 | 30.45–32.90 | — | 18 real operator logos | Three rows; the middle row runs the opposite way |
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
-| 25 | 33.70–35.30 | Product strategy. | Process path (concept) | Title drum roll; insights → opportunities → prioritisation → roadmap |
-| 26 | 35.25–36.95 | Design systems. | Components (concept) → real WAND UI kit | Components snap into order and resolve into the real kit |
-| 27 | 36.90–38.85 | Design leadership. | María's portrait + 7 abstract avatars | Team ring; Product, Engineering and Research nodes; AI agents dashed |
+| 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
+| 26 | 35.25–36.95 | Design systems. | Components (concept) → real WAND UI kit (`media/wand-ui-kit.webm`) | Components snap into order and resolve into the UI kit footage |
+| 27 | 36.90–38.85 | Design leadership. | Portfolio portrait (hero photo, cropped) + 7 abstract avatars | Team ring; Product, Engineering and Research nodes; AI agents dashed |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | 41.00–43.10 | Is the kind of design problem I love. | — | Slow masked reveal |
 | 30 | 43.10–44.60 | So, what's next? | — | Typed; the "?" lands and carries the cut |
@@ -63,7 +63,7 @@ Runtime: 48 s at 1920×1080 (draft: 960×540).
 
 - Only the CV figures are used: 10+ years, 43 brands (skins), 22 launched across 15 markets, 40% faster client delivery, team of 7.
 - The 43/22 distinction is stated on screen. The 40% is labelled as delivery efficiency, not revenue or conversion.
-- Every product image is a real portfolio asset. The only invented elements are the abstract components in scene 23 and the process path in scene 22, both presented as concepts.
+- Only material supplied by María is used (folder "material porfolio"): XSITE roadmap, Nordice/Runar/casino/sports pages, the Figma variables plugin video, the WAND UI kit video and the Nordice/Runar clips. Plus the portfolio portrait and operator logos from the live site. None of the older repo images (`wand-visual-*`, `xsite-visual-*`) appear. The only invented element is the abstract component set in scene 26, presented as a concept.
 - The only AI footage is the supplied Nordice and Runar campaign clips. The failed rune rotation is excluded; only the first 0.8 s of that shot is used.
 
 ## Missing assets

@@ -47,6 +47,8 @@ svg{position:absolute;inset:0;overflow:visible}
 .ava::after{content:"";position:absolute;left:50%;top:39px;width:40px;height:30px;border-radius:50% 50% 0 0;background:#5c5a56;transform:translateX(-50%)}
 .disc{position:absolute;font-size:30px;padding:14px 28px;border:1px solid var(--line);border-radius:999px;background:#0a0a0a;white-space:nowrap}
 .disc.ai{border-style:dashed;color:#bdb8b0}
+.page{position:absolute;overflow:hidden;border-radius:16px;background:#0b0f1a;box-shadow:0 50px 140px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.page img{width:100%;height:auto;display:block}
 .title{position:absolute;left:120px;top:100px;font-size:150px;perspective:900px}
 .title > span{display:inline-block;transform-origin:50% 100%}
 </style>
@@ -91,7 +93,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 08 Designing digital products. -->
 <div class="sc" id="s08">
-  <div class="frame" id="ddImgF" style="left:860px;top:180px;width:1240px;height:698px"><img class="shot" src="../public/portfolio/assets/wand-visual-complete-v2.webp" style="inset:0;width:100%;height:100%"></div>
+  <div class="page" id="ddImgF" style="left:1040px;top:120px;width:740px;height:840px"><img id="ddImg" src="media/xsite-casino-page.webp"></div>
   <div class="abs serif" id="dd" style="left:140px;top:300px;font-size:150px;line-height:.95"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it">digital</span></span><br><span class="mask"><span class="w">products.</span></span></div>
 </div>
 
@@ -103,9 +105,9 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 11 Evidence visual -->
 <div class="sc" id="s11">
-  <div class="frame" id="cfgF" style="left:930px;top:150px;width:1300px;height:780px;border-radius:20px"><img class="shot" id="cfgImg" src="../public/portfolio/assets/wand-visual-configure-v2.webp" style="left:0;top:0;width:1386px;height:780px"></div>
+  <div class="frame" id="cfgF" style="left:1000px;top:200px;width:1200px;height:675px;border-radius:20px"><video class="shot" id="vPlugin" src="media/plugin-variables.webm" muted playsinline preload="auto" data-in="0" style="inset:0;width:100%;height:100%"></video></div>
   <div class="abs cap" id="kCap" style="left:140px;top:230px;color:var(--mute)">Delivery efficiency</div>
-  <div class="abs serif" id="kNum" style="left:120px;top:270px;font-size:400px;line-height:1"><span id="kN">0</span>%</div>
+  <div class="abs serif" id="kNum" style="left:120px;top:300px;font-size:340px;line-height:1"><span id="kN">0</span>%</div>
   <div class="abs sans" id="kTxt" style="left:140px;top:690px;font-size:64px;font-weight:500;letter-spacing:-.03em">faster client delivery</div>
   <div class="rule" id="kRule" style="left:140px;top:800px;width:620px"></div>
   <div class="abs sans" id="kSub" style="left:140px;top:830px;font-size:26px;line-height:1.45;color:#bdb8b0;width:640px">Enabled by a multi-brand design system<br>built with Figma variables.</div>
@@ -137,8 +139,9 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 16 XSITE -->
 <div class="sc" id="s16">
-  <img class="shot" id="xsDev" src="../public/portfolio/assets/xsite-visual-devices.jpg" style="left:0;top:0;width:1920px;height:1080px">
-  <div class="abs cap" id="xsCap" style="left:120px;bottom:90px">XSITE · A white-label casino platform, rebuilt from the foundations</div>
+  <div class="page" id="pgN" style="left:150px;top:60px;width:780px;height:880px"><img id="pgNi" src="media/nordice-page.webp"></div>
+  <div class="page" id="pgR" style="left:990px;top:60px;width:780px;height:880px"><img id="pgRi" src="media/runar-page.webp"></div>
+  <div class="abs cap" id="xsCap" style="left:150px;bottom:50px">XSITE · One platform, multiple brands — Nordice &amp; Runar</div>
 </div>
 
 <!-- 17 Craft. — echo marquee -->
@@ -150,14 +153,14 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 18 WAND Cashier -->
 <div class="sc" id="s18">
-  <img class="shot" id="cash" src="../public/portfolio/assets/wand-visual-cashier-v2.webp" style="left:0;top:0;width:1920px;height:1080px">
-  <div class="abs cap" id="cashCap" style="left:120px;bottom:90px">WAND · Cashier</div>
+  <div style="position:absolute;inset:0;perspective:1800px"><div class="page" id="cash" style="left:515px;top:40px;width:890px;height:1000px"><img id="cashI" src="media/xsite-sports-page.webp"></div></div>
+  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">XSITE · Sportsbook</div>
 </div>
 
 <!-- 19 XSITE gamification -->
 <div class="sc" id="s19">
-  <img class="shot" id="gam" src="../public/portfolio/assets/xsite-visual-gamification.jpg" style="left:0;top:0;width:1920px;height:1080px">
-  <div class="abs cap" id="gamCap" style="left:120px;bottom:90px">XSITE · Loyalty &amp; gamification</div>
+  <div class="page" id="gam" style="left:440px;top:-40px;width:1040px;height:1160px"><img id="gamI" src="media/xsite-casino-page.webp"></div>
+  <div class="abs cap" id="gamCap" style="left:120px;bottom:60px">XSITE · Casino</div>
 </div>
 
 <!-- 20 My work spans — letter-spaced compress -->
@@ -192,16 +195,13 @@ svg{position:absolute;inset:0;overflow:visible}
 <!-- 25 Product strategy. -->
 <div class="sc" id="s25">
   <div class="title serif" id="psT"><span>Product <i>strategy.</i></span></div>
-  <svg width="1920" height="1080"><path id="psPath" d="M260 700 C 460 700, 480 560, 700 560 S 960 760, 1180 700 S 1460 520, 1660 560" fill="none" stroke="rgba(245,244,241,.45)" stroke-width="2"/></svg>
-  <div class="node" id="ps1" style="left:140px;top:640px"><small>01</small>Research insights</div>
-  <div class="node" id="ps2" style="left:580px;top:500px"><small>02</small>Product opportunities</div>
-  <div class="node" id="ps3" style="left:1050px;top:650px"><small>03</small>Prioritisation</div>
-  <div class="node" id="ps4" style="left:1520px;top:470px;min-width:280px"><small>04</small>Roadmap</div>
+  <div class="frame" id="road" style="left:300px;top:300px;width:1320px;height:720px;border-radius:16px"><img id="roadI" src="media/xsite-roadmap.png" style="width:1320px;height:auto"></div>
+  <div class="abs cap" id="roadCap" style="left:300px;top:1030px;color:var(--mute)">XSITE · Delivery roadmap</div>
 </div>
 
 <!-- 26 Design systems. -->
 <div class="sc" id="s26">
-  <img class="shot" id="kit" src="../public/portfolio/assets/wand-visual-complete-v2.webp" style="left:0;top:0;width:1920px;height:1080px;opacity:0">
+  <video class="shot" id="kit" src="media/wand-ui-kit.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px;opacity:0"></video>
   <div id="cmps" style="position:absolute;inset:0;transform:scale(1.25);transform-origin:960px 560px">
     <div class="cmp btn" style="left:300px;top:380px;width:280px;height:72px">Primary button</div>
     <div class="cmp" style="left:300px;top:480px;width:420px;height:72px;color:#8d8a84">Search games…</div>
@@ -217,7 +217,7 @@ svg{position:absolute;inset:0;overflow:visible}
 <!-- 27 Design leadership. -->
 <div class="sc" id="s27">
   <svg id="ldSvg" width="1920" height="1080"></svg>
-  <div class="abs" id="me" style="left:810px;top:390px;width:300px;height:300px;border-radius:50%;overflow:hidden;border:1px solid var(--line)"><img src="../public/portfolio/assets/maria-portrait.jpg" style="width:100%;height:100%;object-fit:cover"></div>
+  <div class="abs" id="me" style="left:810px;top:390px;width:300px;height:300px;border-radius:50%;overflow:hidden;border:1px solid var(--line)"><div style="width:100%;height:100%;background:url(../public/portfolio/canva/hero-photo.jpg) 50% 18%/1150px auto no-repeat"></div></div>
   <div id="avas"></div>
   <div class="abs cap" id="teamCap" style="left:50%;top:910px;transform:translateX(-50%);white-space:nowrap;color:var(--mute)">Team of 7 designers</div>
   <div class="disc" id="dProduct" style="left:300px;top:300px">Product</div>
@@ -269,7 +269,7 @@ const T = {
   s01: [0.0, 1.35], s02: [1.3, 2.75], s03: [2.7, 4.85], s04: [4.85, 6.1], s05: [6.1, 7.15],
   s06: [7.15, 9.3], s07: [9.25, 10.6], s08: [10.55, 12.1], s09: [12.1, 13.3], s10: [13.25, 14.25],
   s11: [14.2, 16.8], s12: [16.75, 17.7], s13: [17.65, 19.25], s14: [18.9, 20.25], s15: [20.2, 21.0],
-  s16: [20.95, 22.75], s17: [22.7, 23.6], s18: [23.55, 25.25], s19: [25.2, 26.6], s20: [26.55, 27.4],
+  s16: [20.75, 22.75], s17: [22.7, 23.6], s18: [23.55, 25.25], s19: [25.2, 26.6], s20: [26.55, 27.4],
   s21: [27.4, 28.8], s22: [28.75, 30.5], s23: [30.45, 32.9], s24: [32.9, 33.75], s25: [33.7, 35.3],
   s26: [35.25, 36.95], s27: [36.9, 38.85], s28: [38.8, 41.0], s29: [41.0, 43.1], s30: [43.1, 44.6],
   s31: [44.55, 48.0],
@@ -325,10 +325,10 @@ const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.se
 // 08 Designing digital products. — type and product at different speeds; product takes the frame
 { const [a] = T.s08;
   tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a);
-  tl.fromTo("#ddImgF", { x: 900 }, { x: -60, duration: 1.5, ease: "power2.out" }, a);
+  tl.fromTo("#ddImgF", { y: 1100 }, { y: 0, duration: .8, ease: ex }, a);
+  tl.fromTo("#ddImg", { y: 0 }, { y: -1500, duration: 1.6, ease: "power1.inOut" }, a + .1);
   tl.to("#dd", { x: -30, duration: 1.5, ease: "none" }, a);
-  tl.to("#ddImgF", { left: 0, top: 0, width: 1920, height: 1080, x: 0, borderRadius: 0, duration: .45, ease: exi }, a + 1.1);
-  tl.to("#ddImgF img", { opacity: 0, duration: .2 }, a + 1.35); }
+  tl.to(["#dd", "#ddImgF"], { x: -1900, duration: .4, ease: exi }, a + 1.15); }
 
 // 09 I've learned that great products need — sentence builds, everything dims except "need"
 { const [a] = T.s09;
@@ -344,7 +344,6 @@ const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.se
 // 11 Evidence visual — one real KPI beside the real Figma variables it came from
 { const [a] = T.s11; const n = { v: 0 };
   tl.from("#cfgF", { x: 600, opacity: 0, duration: .9, ease: ex }, a);
-  tl.to("#cfgImg", { x: -86, duration: 2.6, ease: "none" }, a);
   tl.from("#kCap", { opacity: 0, duration: .4 }, a + .15);
   tl.from("#kNum", { y: 200, opacity: 0, duration: .7, ease: ex }, a + .1);
   tl.to(n, { v: 40, duration: .7, ease: "power2.out", onUpdate: () => { $("#kN").textContent = Math.round(n.v); } }, a + .1);
@@ -368,13 +367,16 @@ const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.se
   tl.from("#rCap", { opacity: 0, duration: .3 }, a + .3);
   [a] = T.s15;
   tl.fromTo("#s15", { opacity: 0 }, { opacity: 1, duration: .12 }, a);
-  tl.to("#s15", { opacity: 0, duration: .2 }, a + .6); }
+  tl.to("#s15", { opacity: 0, duration: .15 }, a + .62); }
 
 // 16 XSITE — wipe reveal, slow lateral camera
 { const [a] = T.s16;
-  tl.fromTo("#xsDev", { scale: 1.12, x: 60 }, { scale: 1.02, x: -40, duration: 1.8, ease: "power1.inOut" }, a);
+  tl.fromTo("#pgN", { y: -1100 }, { y: 0, duration: .5, ease: ex }, a);
+  tl.fromTo("#pgR", { y: 1100 }, { y: 0, duration: .5, ease: ex }, a);
+  tl.fromTo("#pgNi", { y: 0 }, { y: -900, duration: 1.8, ease: "power1.inOut" }, a + .1);
+  tl.fromTo("#pgRi", { y: -900 }, { y: 0, duration: 1.8, ease: "power1.inOut" }, a + .1);
   tl.from("#xsCap", { opacity: 0, y: 20, duration: .5 }, a + .4);
-  tl.to("#s16", { scale: .6, opacity: 0, duration: .35, ease: exi }, a + 1.45); }
+  tl.to("#s16", { scale: .6, opacity: 0, duration: .35, ease: exi }, a + 1.65); }
 
 // 17 Craft. — echo marquee: outlined rows drift one way, the solid row the other
 { const [a] = T.s17;
@@ -384,14 +386,16 @@ const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.se
 
 // 18 WAND Cashier — close-up on the UI, pull back to the full flow
 { const [a] = T.s18;
-  tl.fromTo("#cash", { scale: 2.1, xPercent: -6, yPercent: 8 }, { scale: 1.02, xPercent: 0, yPercent: 0, duration: 1.6, ease: "power2.inOut" }, a);
+  tl.fromTo("#cash", { rotationY: -18, rotationX: 6, scale: 1.25 }, { rotationY: 8, rotationX: 0, scale: 1, duration: 1.6, ease: "power2.inOut" }, a);
+  tl.fromTo("#cashI", { y: 0 }, { y: -640, duration: 1.6, ease: "power1.inOut" }, a);
   tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
   tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
 
 // 19 XSITE gamification — enters as the cashier exits
 { const [a] = T.s19;
   tl.fromTo("#s19", { x: 1920 }, { x: 0, duration: .45, ease: ex }, a - .05);
-  tl.fromTo("#gam", { scale: 1.05 }, { scale: 1.14, duration: 1.5, ease: "none" }, a);
+  tl.fromTo("#gamI", { y: -560 }, { y: -980, duration: 1.5, ease: "none" }, a);
+  tl.fromTo("#gam", { scale: 1.08 }, { scale: 1, duration: 1.5, ease: "power2.out" }, a);
   tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .5);
   tl.to("#s19", { opacity: 0, duration: .3 }, a + 1.2); }
 
@@ -433,10 +437,11 @@ const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.se
 const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
 
 // 25 Product strategy. — insight → opportunity → prioritisation → roadmap, one connected path
-{ const [a] = T.s25; const p = $("#psPath"); const len = p.getTotalLength();
+{ const [a] = T.s25;
   roll("#psT", a);
-  tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, a + .2);
-  tl.from(["#ps1", "#ps2", "#ps3", "#ps4"], { opacity: 0, y: 30, scale: .9, duration: .4, stagger: .22, ease: ex }, a + .25);
+  tl.fromTo("#road", { y: 500, opacity: 0, rotationX: 20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1);
+  tl.fromTo("#roadI", { x: 0, y: 0 }, { x: -200, y: -170, scale: 1.12, transformOrigin: "0 0", duration: 1.5, ease: "power1.inOut" }, a + .1);
+  tl.from("#roadCap", { opacity: 0, duration: .4 }, a + .5);
   tl.to("#s25", { x: -1920, duration: .35, ease: exi }, a + 1.25); }
 
 // 26 Design systems. — scattered components snap into order, then resolve into the real WAND UI kit
@@ -495,7 +500,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.set({}, {}, b); }
 
 /* ---------- video sync, preview and render hooks ---------- */
-const videos = [["#vNordice", "s13"], ["#vViking", "s14"], ["#vRune", "s15"]].map(([sel, sc]) => ({ el: $(sel), start: T[sc][0], end: T[sc][1] }));
+const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 1.1]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
 const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
   if (t < start - .2 || t > end) return null;
   const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
