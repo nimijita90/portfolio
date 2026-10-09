@@ -6,6 +6,7 @@ import "./wand.css";
 export const metadata: Metadata = {
   title: "WAND · María Mora",
   description: "How María Mora evolved an incomplete white-label casino system into a scalable multi-brand product platform.",
+  alternates: { canonical: "/work/wand" },
 };
 
 export default function WandCaseStudyPage() {

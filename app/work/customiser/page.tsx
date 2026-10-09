@@ -6,6 +6,7 @@ import "./customiser.css";
 export const metadata: Metadata = {
   title: "Demo Casino Customiser · María Mora",
   description: "How María Mora turned a complex sales and onboarding workflow into a self-service, interactive Figma prototype.",
+  alternates: { canonical: "/work/customiser" },
 };
 
 export default function CustomiserCaseStudyPage() {

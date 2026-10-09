@@ -4,22 +4,24 @@ import "./globals.css";
 import "./portfolio.css";
 import "./canva-portfolio.css";
 
-const title = "María Mora - Design Leader";
+import { siteUrl } from "./site";
+
+const title = "María Mora · Lead Product Designer & Design Leader in iGaming";
 const description =
-  "Design Leader specialising in iGaming products, design systems and team leadership.";
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://maria-lopez-design-portfolio.malapipa.chatgpt.site";
+  "María Mora is a Lead Product Designer and Design Leader with 10+ years in iGaming: casino and sportsbook platforms, design systems and design teams. iGaming Idol 2018 Design & UX Award winner.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title,
   description,
+  alternates: { canonical: "/" },
   icons: { icon: "/portfolio/assets/maria-logo-white.svg" },
   openGraph: {
     title,
     description,
     type: "website",
+    siteName: "María Mora",
+    locale: "en_GB",
     images: [{ url: "/og.png", width: 1680, height: 944, alt: title }],
   },
   twitter: {

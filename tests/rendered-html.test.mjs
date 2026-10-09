@@ -178,3 +178,19 @@ test("shows every operator logo as a local white asset, and the new Beyond photo
   }
   assert.ok(html.indexOf("beyond-children") < html.indexOf("beyond-coffee") && html.indexOf("beyond-coffee") < html.indexOf("beyond-garden") && html.indexOf("beyond-garden") < html.indexOf("beyond-cat"), "children, coffee / garden, cat");
 });
+
+test("exposes search metadata and structured data", async () => {
+  const home = await (await render()).text();
+  assert.ok(home.includes("Lead Product Designer &amp; Design Leader in iGaming"));
+  assert.ok(home.includes('rel="canonical"'));
+  const ld = home.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
+  assert.ok(ld, "Missing JSON-LD");
+  const person = JSON.parse(ld)["@graph"].find((node) => node["@type"] === "Person");
+  assert.equal(person.name, "María Mora");
+  assert.equal(person.jobTitle, "Lead Product Designer");
+  for (const route of ["/work/wand", "/work/xsite", "/work/customiser"]) {
+    const html = await (await render(route)).text();
+    assert.ok(html.includes(`rel="canonical" href="`) && html.includes(`${route}"`), `Missing canonical: ${route}`);
+  }
+  for (const file of ["robots.txt.body", "sitemap.xml.body"]) await access(new URL(`../.next/server/app/${file}`, import.meta.url));
+});
