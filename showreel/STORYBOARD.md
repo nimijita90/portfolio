@@ -69,7 +69,7 @@ Runtime: 48 s at 1920×1080 (draft: 960×540).
 ## Missing assets
 
 1. The original showreel storyboard (previous v1) — not in the repo. This v2 is built from the brief.
-3. The **Lexide** case study (benchmark-row reference). The logo rows follow the brief's description.
-4. **Envato reference** — analysed from the preview MP4 (67 s, 4K).
-5. **Music** — none yet. Add a licensed track; the cuts are not beat-locked, so retiming is easy.
-6. **Silk Serif licence** — confirm it covers video use before publishing.
+2. The **Lexide** case study (benchmark-row reference). The logo rows follow the brief's description.
+3. **Envato reference** — analysed from the preview MP4 (67 s, 4K).
+4. **Music** — none yet. Add a licensed track; the cuts are not beat-locked, so retiming is easy.
+5. **Silk Serif licence** — confirm it covers video use before publishing.
