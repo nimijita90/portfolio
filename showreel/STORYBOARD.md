@@ -4,62 +4,72 @@ Editable source: `showreel/index.html` (one GSAP timeline, scene times in the `T
 Preview in a browser: open the file; space plays/pauses, ←/→ jump one second.
 Render: `node showreel/render.mjs <scale> <fps> <out.mp4>`. Use `0.5 25` for a 540p draft and `1 25` (or `1 50`) for the 1080p master.
 
-Runtime: 47.5 s at 1920×1080 (draft: 960×540).
+Runtime: 48 s at 1920×1080 (draft: 960×540).
 
 ## Motion language
 
-- **Palette:** black #000 with ivory #f5f4f1 type. Muted grey #8d8a84 for captions. Colour comes only from the real product imagery.
-- **Type:** Silk Serif (regular and italic) carries the expressive statements, Onest carries the clear statements. One serif and one sans word share the frame whenever two ideas meet (e.g. "Lead" / "Product Designer.").
-- **Scale:** each statement has one scale decision: oversized and bleeding off the frame (Hi., Lead, 10+, 43), restrained and small (I think…, My work spans), or zoom-through (A Lead Product Designer. → I think…, Evidence. → data).
-- **Movement:** horizontal displacement is the main transition device. Words and product frames push each other out of shot, and opposing slabs move in opposite directions. Product visuals move slower than type (parallax).
-- **Rhythm:** fast `expo.out` entrances for short statements. Slow `power3.inOut` for the closing message and the final portrait. Short black beats (≤0.2 s) as punctuation, never empty pauses.
-- **Avoided:** rotation of product screens, glitches, shakes, generic fades between every scene.
+- **Palette:** black #000 with ivory #f5f4f1 type. Muted grey for small captions. Colour comes only from the real product imagery and the Nordice/Runar footage.
+- **Type:** Silk Serif carries the expressive statements, Onest the clear ones.
+- **Kinetic vocabulary, adapted from the Envato reference** (each move is used once or twice, never on every scene):
+  - typewriter with blinking cursor (02, 30);
+  - echo roll: a stack of outlined copies scrolls and lands on the solid word (03);
+  - tracking compression (04, 20);
+  - extreme close-up punch out to the full line (01, 05);
+  - glow reveal from blur (06);
+  - horizontal camera pass through an oversized word (10);
+  - perspective drum roll over a ghost copy (12, and shared by the titles in 25–27 so the trio reads as one series);
+  - echo marquee of outlined and solid rows (17);
+  - letter cascade (24).
+- **Movement:** horizontal displacement and push-outs link the scenes; product visuals move slower than type.
+- **Rhythm:** fast `expo` moves for short statements, slow `power3.inOut` for the closing message and the portrait. Black beats of 0.2 s or less, never empty pauses.
 
 ## Scenes (renumbered)
 
-| # | Time (s) | On-screen text | Visual / source | Type treatment | Motion → transition |
-|---|---|---|---|---|---|
-| 01 | 0.00–1.35 | Hi. | — | Silk italic, 760 px | Starts as an extreme close-up of the "H", pulls back to the word; the word lifts out of frame |
-| 02 | 1.30–2.65 | If you're looking for | — | Onest light, small | Words rise from below in the wake of "Hi."; slow camera drift; sentence pushed out left |
-| 03 | 2.60–4.75 | A Lead Product Designer. | — | "Lead" Silk 520 px; "Product Designer." Onest semibold 190 px | Two slabs enter from opposite sides and keep drifting apart; camera zooms through the full stop into black |
-| 04 | 4.75–6.05 | I think… | — | Silk italic, quiet | Dots appear one at a time (comic timing) |
-| 05 | 6.05–7.15 | I know one. | — | Onest semibold 250 px | Hard cut with a scale punch; pushed out left |
-| 06 | 7.15–9.35 | I'm María Mora. | — | "I'm" small sans; name Silk 250 px | Letters rise one by one while the tracking tightens; lifts out of frame |
-| 07 | 9.30–10.70 | 10+ years. | — | "10+" Silk 1180 px, bleeds off the frame | Rises from below; slides out left |
-| 08 | 10.65–12.25 | Designing digital products. | WAND UI kit (`wand-visual-complete-v2`) | Silk, three masked lines | Type and product move at different speeds; the product frame expands to full screen |
-| 09 | 12.25–13.50 | I've learned that great products need | — | Onest light | Words build; everything dims except "need"; pushed left |
-| 10 | 13.45–14.35 | Evidence. | — | Silk italic | Grows until the camera passes through the word |
-| 11 | 14.30–17.20 | 40% faster client delivery | Real Figma variables (`wand-visual-configure-v2`) | KPI Silk 400 px + caption | KPI counts to 40%; caption: "Enabled by a multi-brand design system built with Figma variables." No other metrics |
-| 12 | 17.15–18.75 | Direction. | XSITE brand card | Onest semibold 380 px | The word crosses the whole frame; XSITE emerges behind it |
-| 13 | 18.10–20.60 | (caption) XSITE · A white-label casino platform, rebuilt from the foundations | `xsite-visual-devices` | Caption only | Wipe reveal, slow lateral camera; shrinks away |
-| 14 | 20.55–21.40 | Craft. | — | Silk | Small and precise, then a sudden scale snap |
-| 15 | 21.35–23.35 | (caption) WAND · Cashier | `wand-visual-cashier-v2` | Caption | Close-up on the UI that pulls back to the full flow; pushed out left |
-| 16 | 23.30–25.20 | (caption) XSITE · Loyalty & gamification | `xsite-visual-gamification` | Caption | Enters as the Cashier leaves; slow push-in |
-| 17 | 25.20–25.95 | My work spans | — | Onest light | Quiet set-up |
-| 18 | 25.95–27.35 | 43 operator brands. | — | "43" Silk 1000 px | Grows and counts; drops out of frame |
-| 19 | 27.30–29.10 | 22 launched across 15 markets. | — | 22 (roman) and 15 (italic) at contrasting scales | Footnote: "Brand skins designed for 43 operator brands within a multi-brand platform." |
-| 20 | 29.05–31.80 | — | 18 real operator logos | — | Three rows; rows 1 and 3 move left, row 2 moves right |
-| 21 | 31.80–32.60 | And I bring together | — | Onest light | Words converge from both sides |
-| 22 | 32.55–34.20 | Product strategy. | Abstract process path | Silk title | Insights → Opportunities → Prioritisation → Roadmap drawn as one path (process, not invented documents) |
-| 23 | 34.15–35.95 | Design systems. | Abstract components → real WAND UI kit | Silk title | Scattered components (button, input, tokens, card, type) snap into order, then resolve into the real kit |
-| 24 | 35.90–37.85 | Design leadership. | María's portrait + 7 abstract designer avatars | Silk title | Team ring around María; Product, Engineering and Research nodes; AI agents shown dashed as a tool, not as people |
-| 25 | 37.80–40.20 | Because making complexity feel simple | — | "complexity" Silk italic 250 px | Scattered letters resolve into one clean word |
-| 26 | 40.20–42.50 | Is the kind of design problem I love. | — | Silk, two masked lines | Slow, deliberate reveal with room to breathe |
-| 27 | 42.50–43.90 | So, what's next? | — | Oversized italic "?" | The question mark grows and carries the cut |
-| 28 | 43.85–47.50 | MARÍA MORA · LEAD PRODUCT DESIGNER · moragarciamaria@gmail.com | `canva/hero-photo.jpg` (the portfolio portrait) | Silk name, tracked Onest role | Portrait settles; text enters in order and holds about 2.5 s |
+| # | Time (s) | On-screen text | Visual / source | Move |
+|---|---|---|---|---|
+| 01 | 0.00–1.35 | Hi. | — | Extreme close-up of the "H" pulls back; the word lifts out of frame |
+| 02 | 1.30–2.75 | If you're looking for | — | Typewriter + cursor; pushed out left |
+| 03 | 2.70–4.85 | A Lead Product Designer. | — | "Lead" echo roll lands; "Product Designer." slab from the opposite side; zoom through the full stop |
+| 04 | 4.85–6.10 | I think… | — | Tracking compresses; the dots arrive one at a time |
+| 05 | 6.10–7.15 | I know one. | — | Starts as an extreme close-up and snaps out to the full line |
+| 06 | 7.15–9.30 | I'm María Mora. | — | Letters glow in from blur while the tracking tightens |
+| 07 | 9.25–10.60 | 10+ years. | — | Oversized number bleeds off the frame; slides out |
+| 08 | 10.55–12.10 | Designing digital products. | WAND UI kit | Type/product parallax; the product takes the frame |
+| 09 | 12.10–13.30 | I've learned that great products need | — | Words build; all dim except "need" |
+| 10 | 13.25–14.25 | Evidence. | — | Camera passes along the oversized word and dives into the full stop |
+| 11 | 14.20–16.80 | 40% faster client delivery | Real Figma variables (WAND configure) | KPI + "Enabled by a multi-brand design system built with Figma variables." |
+| 12 | 16.75–17.70 | Direction. | — | Drum roll over a ghost copy, then pushes into the footage |
+| 13 | 17.65–19.25 | (caption) Nordice | Nordice clip, 2.6–4.0 s of the source | Slow settle; wiped off by Runar |
+| 14 | 18.90–20.25 | (caption) Runar | Runar Viking clip, 12.5–13.9 s | Wipe in from the right |
+| 15 | 20.20–21.00 | (caption) Runar | Runar rune, the first 0.8 s of the shot only | Brief flash before it starts rotating |
+| 16 | 20.95–22.75 | (caption) XSITE · A white-label casino platform, rebuilt from the foundations | XSITE devices | Lateral camera; shrinks away |
+| 17 | 22.70–23.60 | Craft. | — | Echo marquee (outlined and solid rows) |
+| 18 | 23.55–25.25 | (caption) WAND · Cashier | WAND Cashier | Close-up pulls back to the full flow |
+| 19 | 25.20–26.60 | (caption) XSITE · Loyalty & gamification | XSITE gamification | Enters as the Cashier exits |
+| 20 | 26.55–27.40 | My work spans | — | Tracking compresses |
+| 21 | 27.40–28.80 | 43 operator brands. | — | The number dominates (no count-up, so no wrong numbers ever on screen) |
+| 22 | 28.75–30.50 | 22 launched across 15 markets. | — | Contrasting scales + footnote: "Brand skins designed for 43 operator brands within a multi-brand platform." |
+| 23 | 30.45–32.90 | — | 18 real operator logos | Three rows; the middle row runs the opposite way |
+| 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
+| 25 | 33.70–35.30 | Product strategy. | Process path (concept) | Title drum roll; insights → opportunities → prioritisation → roadmap |
+| 26 | 35.25–36.95 | Design systems. | Components (concept) → real WAND UI kit | Components snap into order and resolve into the real kit |
+| 27 | 36.90–38.85 | Design leadership. | María's portrait + 7 abstract avatars | Team ring; Product, Engineering and Research nodes; AI agents dashed |
+| 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
+| 29 | 41.00–43.10 | Is the kind of design problem I love. | — | Slow masked reveal |
+| 30 | 43.10–44.60 | So, what's next? | — | Typed; the "?" lands and carries the cut |
+| 31 | 44.55–48.00 | MARÍA MORA · LEAD PRODUCT DESIGNER · moragarciamaria@gmail.com | Portfolio portrait | Portrait settles; text holds about 2.5 s |
 
 ## Accuracy checks
 
 - Only the CV figures are used: 10+ years, 43 brands (skins), 22 launched across 15 markets, 40% faster client delivery, team of 7.
 - The 43/22 distinction is stated on screen. The 40% is labelled as delivery efficiency, not revenue or conversion.
 - Every product image is a real portfolio asset. The only invented elements are the abstract components in scene 23 and the process path in scene 22, both presented as concepts.
-- No AI-generated footage is used. Runar is left out (see below).
+- The only AI footage is the supplied Nordice and Runar campaign clips. The failed rune rotation is excluded; only the first 0.8 s of that shot is used.
 
 ## Missing assets
 
 1. The original showreel storyboard (previous v1) — not in the repo. This v2 is built from the brief.
-2. **Nordice** and **Runar** clips. Only the Runar still is available, and the earlier generated clips must not be used. Drop the first 1–2 s of the original Runar video into scene 13 or 16 when it is available.
 3. The **Lexide** case study (benchmark-row reference). The logo rows follow the brief's description.
-4. **Envato reference** — elements.envato.com blocks automated access, so it was interpreted from the brief. A downloaded preview MP4 would allow a closer motion match.
+4. **Envato reference** — analysed from the preview MP4 (67 s, 4K).
 5. **Music** — none yet. Add a licensed track; the cuts are not beat-locked, so retiming is easy.
 6. **Silk Serif licence** — confirm it covers video use before publishing.

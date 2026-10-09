@@ -4,15 +4,15 @@
 <meta charset="utf-8">
 <title>María Mora — Showreel</title>
 <!--
-  Editable showreel composition. Every scene lives in one GSAP timeline (see SCENES below).
+  Editable showreel composition. Every scene lives in one GSAP timeline; scene times are in the T object.
   Open in a browser to preview (space = play/pause, ←/→ = ±1 s), or render frames with render.mjs.
   Stage is a fixed 1920×1080 canvas; the renderer scales it down for draft output.
+  Kinetic type vocabulary (after the Envato reference): typewriter + cursor, echo roll, extreme close-up punch,
+  horizontal pass through oversized words, perspective roll, echo marquee, letter cascade, glow reveal.
 -->
 <style>
 @font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Regular.woff2") format("woff2");font-weight:400}
 @font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Regular%20Italic.woff2") format("woff2");font-weight:400;font-style:italic}
-@font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Light.woff2") format("woff2");font-weight:300}
-@font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Light%20Italic.woff2") format("woff2");font-weight:300;font-style:italic}
 @font-face{font-family:"Onest";src:url("../node_modules/@fontsource-variable/onest/files/onest-latin-wght-normal.woff2") format("woff2");font-weight:100 900}
 @font-face{font-family:"Onest";src:url("../node_modules/@fontsource-variable/onest/files/onest-latin-ext-wght-normal.woff2") format("woff2");font-weight:100 900;unicode-range:U+0100-02AF,U+1E00-1EFF}
 :root{--ink:#f5f4f1;--mute:#8d8a84;--line:rgba(245,244,241,.22);--serif:"Silk",Georgia,serif;--sans:"Onest",Arial,sans-serif}
@@ -23,33 +23,32 @@ html,body{background:#000;overflow:hidden}
 .abs{position:absolute}
 .serif{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;line-height:.9}
 .it{font-style:italic}
-.sans{font-family:var(--sans)}
-.cap{font-family:var(--sans);font-size:24px;letter-spacing:.32em;text-transform:uppercase;color:var(--mute)}
+.cap{font-family:var(--sans);font-size:24px;letter-spacing:.32em;text-transform:uppercase;color:#e9e6e0}
 .c{left:50%;top:50%;white-space:nowrap}
 .w,.ch{display:inline-block;will-change:transform}
 .mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
-img{display:block}
+.cur{display:inline-block;width:.07em;height:.95em;background:var(--ink);vertical-align:-.12em;margin-left:.06em}
+.stroke{color:transparent;-webkit-text-stroke:2px rgba(245,244,241,.55)}
+img,video{display:block}
 .shot{position:absolute;object-fit:cover}
 .frame{position:absolute;border-radius:18px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.6)}
 .rule{position:absolute;height:1px;background:var(--line)}
-/* logos */
 .row{position:absolute;left:0;display:flex;gap:110px;align-items:center;white-space:nowrap}
 .row img{height:58px;width:auto;filter:brightness(0) invert(1);opacity:.92}
-/* strategy */
 .node{position:absolute;border:1px solid var(--line);border-radius:14px;padding:26px 30px;font-size:32px;background:#0b0b0b;min-width:250px}
 .node small{display:block;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
 svg{position:absolute;inset:0;overflow:visible}
-/* design system */
 .cmp{position:absolute;border-radius:12px;background:#141414;border:1px solid #2a2a2a;font-size:22px;display:flex;align-items:center;padding:0 22px}
 .btn{background:var(--ink);color:#000;font-weight:600;justify-content:center}
 .tok{font-family:ui-monospace,Menlo,monospace;font-size:18px;color:#cfcac2}
 .sw{width:22px;height:22px;border-radius:6px;margin-right:12px}
-/* leadership */
 .ava{position:absolute;width:64px;height:64px;border-radius:50%;background:#1d1d1d;border:1px solid #3a3a3a;overflow:hidden}
 .ava::before{content:"";position:absolute;left:50%;top:15px;width:20px;height:20px;border-radius:50%;background:#5c5a56;transform:translateX(-50%)}
 .ava::after{content:"";position:absolute;left:50%;top:39px;width:40px;height:30px;border-radius:50% 50% 0 0;background:#5c5a56;transform:translateX(-50%)}
 .disc{position:absolute;font-size:30px;padding:14px 28px;border:1px solid var(--line);border-radius:999px;background:#0a0a0a;white-space:nowrap}
 .disc.ai{border-style:dashed;color:#bdb8b0}
+.title{position:absolute;left:120px;top:100px;font-size:150px;perspective:900px}
+.title > span{display:inline-block;transform-origin:50% 100%}
 </style>
 </head>
 <body>
@@ -58,124 +57,150 @@ svg{position:absolute;inset:0;overflow:visible}
 <!-- 01 Hi. -->
 <div class="sc" id="s01"><div class="abs serif it c" id="hi" style="font-size:760px">Hi.</div></div>
 
-<!-- 02 If you're looking for -->
-<div class="sc" id="s02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:300;letter-spacing:-.02em"><span class="w">If</span> <span class="w">you’re</span> <span class="w">looking</span> <span class="w">for</span></div></div>
+<!-- 02 If you're looking for — typewriter -->
+<div class="sc" id="s02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:300;letter-spacing:-.02em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
 
-<!-- 03 A Lead Product Designer. -->
+<!-- 03 A Lead Product Designer. — echo roll + opposing slab -->
 <div class="sc" id="s03">
-  <div class="abs sans" id="lpA" style="left:150px;top:90px;font-size:64px;font-weight:300">A</div>
-  <div class="abs serif" id="lpLead" style="left:120px;top:150px;font-size:520px">Lead</div>
-  <div class="abs sans" id="lpPD" style="left:140px;top:690px;font-size:190px;font-weight:600;letter-spacing:-.045em;white-space:nowrap">Product Designer<span id="lpDot">.</span></div>
+  <div class="abs sans" id="lpA" style="left:150px;top:60px;font-size:64px;font-weight:300">A</div>
+  <div class="abs" id="leadMask" style="left:120px;top:150px;height:480px;width:1400px;overflow:hidden">
+    <div id="leadCol" class="serif" style="font-size:520px;line-height:480px">
+      <div class="stroke">Lead</div><div class="stroke">Lead</div><div class="stroke">Lead</div><div class="stroke">Lead</div><div>Lead</div>
+    </div>
+  </div>
+  <div class="abs sans" id="lpPD" style="left:140px;top:690px;font-size:190px;font-weight:650;letter-spacing:-.045em;white-space:nowrap">Product Designer<span id="lpDot">.</span></div>
 </div>
 
-<!-- 04 I think… -->
-<div class="sc" id="s04"><div class="abs serif it c" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
+<!-- 04 I think… — tracking compresses, dots arrive -->
+<div class="sc" id="s04"><div class="abs serif it c" id="think" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
 
-<!-- 05 I know one. -->
-<div class="sc" id="s05"><div class="abs sans c" id="know" style="font-size:250px;font-weight:650;letter-spacing:-.055em">I know one.</div></div>
+<!-- 05 I know one. — extreme close-up punch -->
+<div class="sc" id="s05"><div class="abs sans c" id="know" style="font-size:250px;font-weight:700;letter-spacing:-.055em">I know one.</div></div>
 
-<!-- 06/07 I'm María Mora. -->
-<div class="sc" id="s07">
-  <div class="abs sans" id="im" style="left:300px;top:330px;font-size:60px;font-weight:300">I’m</div>
+<!-- 06 I'm María Mora. — glow reveal -->
+<div class="sc" id="s06">
+  <div class="abs sans" id="im" style="left:240px;top:340px;font-size:60px;font-weight:300">I’m</div>
   <div class="abs serif" id="name" style="left:230px;top:430px;font-size:250px;white-space:nowrap"></div>
 </div>
 
-<!-- 08 10+ years. -->
-<div class="sc" id="s08">
-  <div class="abs serif" id="ten" style="left:80px;top:-40px;font-size:1180px;line-height:1"><span id="tenN">10</span>+</div>
+<!-- 07 10+ years. -->
+<div class="sc" id="s07">
+  <div class="abs serif" id="ten" style="left:80px;top:-40px;font-size:1180px;line-height:1">10+</div>
   <div class="abs sans" id="years" style="right:150px;bottom:150px;font-size:96px;font-weight:300">years.</div>
 </div>
 
-<!-- 09 Designing digital products. -->
-<div class="sc" id="s09">
+<!-- 08 Designing digital products. -->
+<div class="sc" id="s08">
   <div class="frame" id="ddImgF" style="left:860px;top:180px;width:1240px;height:698px"><img class="shot" src="../public/portfolio/assets/wand-visual-complete-v2.webp" style="inset:0;width:100%;height:100%"></div>
   <div class="abs serif" id="dd" style="left:140px;top:300px;font-size:150px;line-height:.95"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it">digital</span></span><br><span class="mask"><span class="w">products.</span></span></div>
 </div>
 
-<!-- 10 I've learned that great products need -->
-<div class="sc" id="s10"><div class="abs sans" id="learn" style="left:180px;top:480px;font-size:76px;font-weight:300;letter-spacing:-.02em"><span class="w">I’ve</span> <span class="w">learned</span> <span class="w">that</span> <span class="w">great</span> <span class="w">products</span> <span class="w" id="need">need</span></div></div>
+<!-- 09 I've learned that great products need -->
+<div class="sc" id="s09"><div class="abs sans" id="learn" style="left:180px;top:480px;font-size:76px;font-weight:300;letter-spacing:-.02em"><span class="w">I’ve</span> <span class="w">learned</span> <span class="w">that</span> <span class="w">great</span> <span class="w">products</span> <span class="w" id="need">need</span></div></div>
 
-<!-- 11 Evidence. -->
-<div class="sc" id="s11"><div class="abs serif it c" id="evi" style="font-size:330px">Evidence.</div></div>
+<!-- 10 Evidence. — horizontal pass through the oversized word -->
+<div class="sc" id="s10"><div class="abs serif" id="evi" style="left:0;top:180px;font-size:760px;white-space:nowrap;line-height:1;letter-spacing:-.01em">Evidence.</div></div>
 
-<!-- 12 Evidence visual: 40% faster client delivery -->
-<div class="sc" id="s12">
+<!-- 11 Evidence visual -->
+<div class="sc" id="s11">
   <div class="frame" id="cfgF" style="left:930px;top:150px;width:1300px;height:780px;border-radius:20px"><img class="shot" id="cfgImg" src="../public/portfolio/assets/wand-visual-configure-v2.webp" style="left:0;top:0;width:1386px;height:780px"></div>
-  <div class="abs cap" id="kCap" style="left:140px;top:230px">Delivery efficiency</div>
+  <div class="abs cap" id="kCap" style="left:140px;top:230px;color:var(--mute)">Delivery efficiency</div>
   <div class="abs serif" id="kNum" style="left:120px;top:270px;font-size:400px;line-height:1"><span id="kN">0</span>%</div>
   <div class="abs sans" id="kTxt" style="left:140px;top:690px;font-size:64px;font-weight:500;letter-spacing:-.03em">faster client delivery</div>
   <div class="rule" id="kRule" style="left:140px;top:800px;width:620px"></div>
   <div class="abs sans" id="kSub" style="left:140px;top:830px;font-size:26px;line-height:1.45;color:#bdb8b0;width:640px">Enabled by a multi-brand design system<br>built with Figma variables.</div>
 </div>
 
-<!-- 13 Direction. -->
+<!-- 12 Direction. — perspective roll stack -->
+<div class="sc" id="s12" style="perspective:1400px">
+  <div class="abs sans c" id="dir0" style="font-size:300px;font-weight:700;letter-spacing:-.06em"><span class="stroke">Direction.</span></div>
+  <div class="abs sans c" id="dir" style="font-size:300px;font-weight:700;letter-spacing:-.06em">Direction.</div>
+</div>
+
+<!-- 13 Nordice -->
 <div class="sc" id="s13">
-  <img class="shot" id="xsCard" src="../public/portfolio/canva/xsite-card.webp" style="left:0;top:-180px;width:1920px;height:1280px;opacity:0">
-  <div class="abs sans" id="dir" style="left:0;top:330px;font-size:380px;font-weight:650;letter-spacing:-.06em;white-space:nowrap">Direction.</div>
+  <video class="shot" id="vNordice" src="clips/nordice.webm" muted playsinline preload="auto" data-in="0.1" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" id="nCap" style="left:120px;bottom:90px">Nordice</div>
 </div>
 
-<!-- 14 XSITE -->
+<!-- 14 Runar — viking -->
 <div class="sc" id="s14">
-  <img class="shot" id="xsDev" src="../public/portfolio/assets/xsite-visual-devices.jpg" style="left:0;top:0;width:1920px;height:1080px">
-  <div class="abs cap" id="xsCap" style="left:120px;bottom:90px;color:#e9e6e0">XSITE · A white-label casino platform, rebuilt from the foundations</div>
+  <video class="shot" id="vViking" src="clips/runar-viking.webm" muted playsinline preload="auto" data-in="0.2" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" id="rCap" style="left:120px;bottom:90px">Runar</div>
 </div>
 
-<!-- 15 Craft. -->
-<div class="sc" id="s15"><div class="abs serif c" id="craft" style="font-size:330px"></div></div>
+<!-- 15 Runar — rune (first second of the original only) -->
+<div class="sc" id="s15">
+  <video class="shot" id="vRune" src="clips/runar-rune.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" style="left:120px;bottom:90px">Runar</div>
+</div>
 
-<!-- 16 WAND Cashier -->
+<!-- 16 XSITE -->
 <div class="sc" id="s16">
-  <img class="shot" id="cash" src="../public/portfolio/assets/wand-visual-cashier-v2.webp" style="left:0;top:0;width:1920px;height:1080px">
-  <div class="abs cap" id="cashCap" style="left:120px;bottom:90px;color:#e9e6e0">WAND · Cashier</div>
+  <img class="shot" id="xsDev" src="../public/portfolio/assets/xsite-visual-devices.jpg" style="left:0;top:0;width:1920px;height:1080px">
+  <div class="abs cap" id="xsCap" style="left:120px;bottom:90px">XSITE · A white-label casino platform, rebuilt from the foundations</div>
 </div>
 
-<!-- 17 XSITE gamification -->
+<!-- 17 Craft. — echo marquee -->
 <div class="sc" id="s17">
-  <img class="shot" id="gam" src="../public/portfolio/assets/xsite-visual-gamification.jpg" style="left:0;top:0;width:1920px;height:1080px">
-  <div class="abs cap" id="gamCap" style="left:120px;bottom:90px;color:#e9e6e0">XSITE · Loyalty &amp; gamification</div>
+  <div class="abs serif stroke" id="cr1" style="left:0;top:40px;font-size:330px;white-space:nowrap">Craft. Craft. Craft. Craft. Craft.</div>
+  <div class="abs serif" id="cr2" style="left:0;top:370px;font-size:330px;white-space:nowrap"><span class="stroke">Craft. Craft. </span>Craft.<span class="stroke"> Craft. Craft.</span></div>
+  <div class="abs serif stroke" id="cr3" style="left:0;top:700px;font-size:330px;white-space:nowrap">Craft. Craft. Craft. Craft. Craft.</div>
 </div>
 
-<!-- 18 My work spans -->
-<div class="sc" id="s18"><div class="abs sans c" id="spans" style="font-size:84px;font-weight:300">My work spans</div></div>
+<!-- 18 WAND Cashier -->
+<div class="sc" id="s18">
+  <img class="shot" id="cash" src="../public/portfolio/assets/wand-visual-cashier-v2.webp" style="left:0;top:0;width:1920px;height:1080px">
+  <div class="abs cap" id="cashCap" style="left:120px;bottom:90px">WAND · Cashier</div>
+</div>
 
-<!-- 19 43 operator brands. -->
+<!-- 19 XSITE gamification -->
 <div class="sc" id="s19">
-  <div class="abs serif" id="n43" style="left:90px;top:40px;font-size:1000px;line-height:1"><span id="n43v">0</span></div>
+  <img class="shot" id="gam" src="../public/portfolio/assets/xsite-visual-gamification.jpg" style="left:0;top:0;width:1920px;height:1080px">
+  <div class="abs cap" id="gamCap" style="left:120px;bottom:90px">XSITE · Loyalty &amp; gamification</div>
+</div>
+
+<!-- 20 My work spans — letter-spaced compress -->
+<div class="sc" id="s20"><div class="abs sans c" id="spans" style="font-size:84px;font-weight:300">My work spans</div></div>
+
+<!-- 21 43 operator brands. -->
+<div class="sc" id="s21">
+  <div class="abs serif" id="n43" style="left:90px;top:40px;font-size:1000px;line-height:1">43</div>
   <div class="abs sans" id="ob" style="left:1180px;top:620px;font-size:92px;font-weight:500;letter-spacing:-.035em;line-height:1">operator<br>brands.</div>
 </div>
 
-<!-- 20 22 launched across 15 markets. -->
-<div class="sc" id="s20">
+<!-- 22 22 launched across 15 markets. -->
+<div class="sc" id="s22">
   <div class="abs serif" id="n22" style="left:140px;top:120px;font-size:500px;line-height:1">22</div>
   <div class="abs sans" id="l22" style="left:720px;top:400px;font-size:84px;font-weight:300">launched</div>
   <div class="abs sans" id="a15" style="left:140px;top:720px;font-size:84px;font-weight:300">across</div>
   <div class="abs serif it" id="n15" style="left:520px;top:560px;font-size:330px;line-height:1">15</div>
   <div class="abs sans" id="m15" style="left:960px;top:720px;font-size:84px;font-weight:300">markets.</div>
-  <div class="abs sans" id="foot" style="right:120px;bottom:70px;font-size:20px;color:var(--mute);letter-spacing:.04em">Brand skins designed for 43 operator brands within a multi-brand platform.</div>
+  <div class="abs sans" id="foot" style="right:120px;bottom:70px;font-size:22px;color:var(--mute);letter-spacing:.04em">Brand skins designed for 43 operator brands within a multi-brand platform.</div>
 </div>
 
-<!-- 21 Logos -->
-<div class="sc" id="s21">
+<!-- 23 Logos -->
+<div class="sc" id="s23">
   <div class="row" id="r1" style="top:250px"></div>
   <div class="row" id="r2" style="top:510px"></div>
   <div class="row" id="r3" style="top:770px"></div>
 </div>
 
-<!-- 22 And I bring together -->
-<div class="sc" id="s22"><div class="abs sans" id="bring" style="left:180px;top:480px;font-size:84px;font-weight:300"><span class="w">And</span> <span class="w">I</span> <span class="w">bring</span> <span class="w">together</span></div></div>
+<!-- 24 And I bring together — letter cascade -->
+<div class="sc" id="s24"><div class="abs sans" id="bring" style="left:180px;top:480px;font-size:96px;font-weight:300"></div></div>
 
-<!-- 23 Product strategy. -->
-<div class="sc" id="s23">
-  <div class="abs serif" id="ps" style="left:120px;top:110px;font-size:150px">Product <span class="it">strategy.</span></div>
-  <svg id="psSvg" width="1920" height="1080"><path id="psPath" d="M260 700 C 460 700, 480 560, 700 560 S 960 760, 1180 700 S 1460 520, 1660 560" fill="none" stroke="rgba(245,244,241,.45)" stroke-width="2"/></svg>
+<!-- 25 Product strategy. -->
+<div class="sc" id="s25">
+  <div class="title serif" id="psT"><span>Product <i>strategy.</i></span></div>
+  <svg width="1920" height="1080"><path id="psPath" d="M260 700 C 460 700, 480 560, 700 560 S 960 760, 1180 700 S 1460 520, 1660 560" fill="none" stroke="rgba(245,244,241,.45)" stroke-width="2"/></svg>
   <div class="node" id="ps1" style="left:140px;top:640px"><small>01</small>Research insights</div>
   <div class="node" id="ps2" style="left:580px;top:500px"><small>02</small>Product opportunities</div>
   <div class="node" id="ps3" style="left:1050px;top:650px"><small>03</small>Prioritisation</div>
   <div class="node" id="ps4" style="left:1520px;top:470px;min-width:280px"><small>04</small>Roadmap</div>
 </div>
 
-<!-- 24 Design systems. -->
-<div class="sc" id="s24">
+<!-- 26 Design systems. -->
+<div class="sc" id="s26">
   <img class="shot" id="kit" src="../public/portfolio/assets/wand-visual-complete-v2.webp" style="left:0;top:0;width:1920px;height:1080px;opacity:0">
   <div id="cmps" style="position:absolute;inset:0;transform:scale(1.25);transform-origin:960px 560px">
     <div class="cmp btn" style="left:300px;top:380px;width:280px;height:72px">Primary button</div>
@@ -186,40 +211,40 @@ svg{position:absolute;inset:0;overflow:visible}
     <div class="cmp" style="left:300px;top:580px;width:640px;height:72px;font-family:var(--serif);font-size:34px">Aa · Heading / Display</div>
     <div class="cmp tok" style="left:980px;top:580px;width:640px;height:72px">spacing/16 · radius/12 · brand: <b style="color:#f5f4f1;margin-left:8px">WAND</b></div>
   </div>
-  <div class="abs serif" id="dsT" style="left:120px;top:110px;font-size:150px">Design <span class="it">systems.</span></div>
+  <div class="title serif" id="dsT"><span>Design <i>systems.</i></span></div>
 </div>
 
-<!-- 25 Design leadership. -->
-<div class="sc" id="s25">
+<!-- 27 Design leadership. -->
+<div class="sc" id="s27">
   <svg id="ldSvg" width="1920" height="1080"></svg>
   <div class="abs" id="me" style="left:810px;top:390px;width:300px;height:300px;border-radius:50%;overflow:hidden;border:1px solid var(--line)"><img src="../public/portfolio/assets/maria-portrait.jpg" style="width:100%;height:100%;object-fit:cover"></div>
   <div id="avas"></div>
-  <div class="abs cap" id="teamCap" style="left:50%;top:910px;transform:translateX(-50%);white-space:nowrap">Team of 7 designers</div>
+  <div class="abs cap" id="teamCap" style="left:50%;top:910px;transform:translateX(-50%);white-space:nowrap;color:var(--mute)">Team of 7 designers</div>
   <div class="disc" id="dProduct" style="left:300px;top:300px">Product</div>
   <div class="disc" id="dEng" style="left:1440px;top:300px">Engineering</div>
   <div class="disc" id="dRes" style="left:260px;top:720px">Research</div>
   <div class="disc ai" id="dAI" style="left:1460px;top:720px">AI agents</div>
-  <div class="abs serif" id="dlT" style="left:120px;top:90px;font-size:130px">Design <span class="it">leadership.</span></div>
+  <div class="title serif" id="dlT" style="font-size:130px;top:90px"><span>Design <i>leadership.</i></span></div>
 </div>
 
-<!-- 26 Because making complexity feel simple -->
-<div class="sc" id="s26">
+<!-- 28 Because making complexity feel simple -->
+<div class="sc" id="s28">
   <div class="abs sans" id="bec" style="left:180px;top:300px;font-size:70px;font-weight:300">Because making</div>
   <div class="abs serif it" id="cx" style="left:170px;top:400px;font-size:250px;white-space:nowrap"></div>
-  <div class="abs sans" id="fs" style="left:180px;top:720px;font-size:70px;font-weight:300">feel <span id="simple" style="font-weight:500">simple</span></div>
+  <div class="abs sans" id="fs" style="left:180px;top:720px;font-size:70px;font-weight:300">feel <span style="font-weight:500">simple</span></div>
 </div>
 
-<!-- 27 Is the kind of design problem I love. -->
-<div class="sc" id="s27"><div class="abs serif" id="love" style="left:180px;top:330px;font-size:150px;line-height:1.02"><span class="mask"><span class="w">Is the kind of design</span></span><br><span class="mask"><span class="w">problem I <span class="it">love.</span></span></span></div></div>
+<!-- 29 Is the kind of design problem I love. -->
+<div class="sc" id="s29"><div class="abs serif" id="love" style="left:180px;top:330px;font-size:150px;line-height:1.02"><span class="mask"><span class="w">Is the kind of design</span></span><br><span class="mask"><span class="w">problem I <span class="it">love.</span></span></span></div></div>
 
-<!-- 28 So, what's next? -->
-<div class="sc" id="s28">
-  <div class="abs sans" id="sowhat" style="left:180px;top:470px;font-size:96px;font-weight:300">So, what’s next</div>
-  <div class="abs serif it" id="qm" style="left:880px;top:180px;font-size:820px;line-height:1">?</div>
+<!-- 30 So, what's next? — typewriter, the question mark carries the cut -->
+<div class="sc" id="s30">
+  <div class="abs sans" id="sowhat" style="left:180px;top:470px;font-size:96px;font-weight:300"><span id="soT"></span><span class="cur" id="soC"></span></div>
+  <div class="abs serif it" id="qm" style="left:960px;top:180px;font-size:820px;line-height:1">?</div>
 </div>
 
-<!-- 29 Final portrait -->
-<div class="sc" id="s29">
+<!-- 31 Final portrait -->
+<div class="sc" id="s31">
   <img class="shot" id="hero" src="../public/portfolio/canva/hero-photo.jpg" style="left:0;top:0;width:1920px;height:1080px">
   <div class="abs" style="left:0;top:0;width:900px;height:1080px;background:linear-gradient(90deg,rgba(0,0,0,.75),rgba(0,0,0,0))"></div>
   <div class="abs serif" id="fName" style="left:130px;top:410px;font-size:92px;letter-spacing:.02em">MARÍA MORA</div>
@@ -232,241 +257,259 @@ svg{position:absolute;inset:0;overflow:visible}
 <script src="../node_modules/gsap/dist/gsap.min.js"></script>
 <script>
 const $ = (s) => document.querySelector(s);
-const $$ = (s) => [...document.querySelectorAll(s)];
-const split = (el, text, cls = "ch") => { el.innerHTML = [...text].map((c) => c === " " ? " " : `<span class="${cls}">${c}</span>`).join(""); return el.querySelectorAll("." + cls); };
+const split = (el, text, cls = "ch") => { el.innerHTML = [...text].map((c) => c === " " ? `<span class="${cls}">&nbsp;</span>` : `<span class="${cls}">${c}</span>`).join(""); return el.querySelectorAll("." + cls); };
+gsap.utils.random = ((r) => { let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647; return (a, b) => a + rnd() * (b - a); })(); // deterministic "random" so every render matches
 
 gsap.set(".c", { xPercent: -50, yPercent: -50 });
-gsap.set("#craft", { scale: .4 });
 const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
-// show a scene for [a, b): visibility toggles are tweens so seeking works in both directions
-const show = (id, a, b) => { tl.set(id, { visibility: "visible" }, a); tl.set(id, { visibility: "hidden" }, b); };
 const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
-  s01: [0.0, 1.35], s02: [1.3, 2.65], s03: [2.6, 4.75], s04: [4.75, 6.05], s05: [6.05, 7.15],
-  s07: [7.15, 9.35], s08: [9.3, 10.7], s09: [10.65, 12.25], s10: [12.25, 13.5], s11: [13.45, 14.35],
-  s12: [14.3, 17.2], s13: [17.15, 18.75], s14: [18.1, 20.6], s15: [20.55, 21.4], s16: [21.35, 23.35],
-  s17: [23.3, 25.2], s18: [25.2, 25.95], s19: [25.95, 27.35], s20: [27.3, 29.1], s21: [29.05, 31.8],
-  s22: [31.8, 32.6], s23: [32.55, 34.2], s24: [34.15, 35.95], s25: [35.9, 37.85], s26: [37.8, 40.2],
-  s27: [40.2, 42.5], s28: [42.5, 43.9], s29: [43.85, 47.5],
+  s01: [0.0, 1.35], s02: [1.3, 2.75], s03: [2.7, 4.85], s04: [4.85, 6.1], s05: [6.1, 7.15],
+  s06: [7.15, 9.3], s07: [9.25, 10.6], s08: [10.55, 12.1], s09: [12.1, 13.3], s10: [13.25, 14.25],
+  s11: [14.2, 16.8], s12: [16.75, 17.7], s13: [17.65, 19.25], s14: [18.9, 20.25], s15: [20.2, 21.0],
+  s16: [20.95, 22.75], s17: [22.7, 23.6], s18: [23.55, 25.25], s19: [25.2, 26.6], s20: [26.55, 27.4],
+  s21: [27.4, 28.8], s22: [28.75, 30.5], s23: [30.45, 32.9], s24: [32.9, 33.75], s25: [33.7, 35.3],
+  s26: [35.25, 36.95], s27: [36.9, 38.85], s28: [38.8, 41.0], s29: [41.0, 43.1], s30: [43.1, 44.6],
+  s31: [44.55, 48.0],
 };
-for (const [id, [a, b]] of Object.entries(T)) show("#" + id, a, b);
+for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
-// 01 Hi. — extreme close-up of the H pulls back to the word, then the word lifts out of frame
+// typewriter: chars appear one per step, cursor blinks after
+const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.set(chs, { display: "none" });
+  chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step));
+  for (let k = 0; k < 8; k++) tl.set(cur, { opacity: k % 2 ? 1 : 0 }, at + chs.length * step + .1 + k * .22);
+  return at + chs.length * step; };
+
+// 01 Hi. — extreme close-up of the H pulls back to the word, then lifts out of frame
 { const [a] = T.s01;
   tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
   tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
 
-// 02 If you're looking for — words rise from below in the wake of "Hi.", camera drifts left
-{ const [a] = T.s02;
-  tl.from("#look .w", { y: 260, opacity: 0, duration: .55, stagger: .12, ease: ex }, a);
-  tl.fromTo("#look", { x: 80 }, { x: -60, duration: 1.3, ease: "none" }, a);
-  tl.to("#look", { x: -1400, duration: .35, ease: exi }, a + 1.0); }
+// 02 If you're looking for — typewriter with cursor
+{ const [a] = T.s02; type($("#lookT"), "#lookC", "If you’re looking for", a + .05, .04);
+  tl.to("#look", { x: -1500, duration: .3, ease: exi }, a + 1.15); }
 
-// 03 A Lead Product Designer. — opposing horizontal slabs; zoom through the full stop
+// 03 A Lead Product Designer. — "Lead" rolls in as a stack of echoes and lands; slab from the other side; zoom through the full stop
 { const [a] = T.s03;
   tl.from("#lpA", { opacity: 0, x: 40, duration: .4 }, a + .05);
-  tl.fromTo("#lpLead", { x: 1700 }, { x: 0, duration: .7, ease: ex }, a);
-  tl.fromTo("#lpPD", { x: -1900 }, { x: 0, duration: .75, ease: ex }, a + .12);
-  tl.to("#lpLead", { x: -40, duration: 1.2, ease: "none" }, a + .7);
-  tl.to("#lpPD", { x: 30, duration: 1.2, ease: "none" }, a + .85);
+  tl.fromTo("#leadCol", { y: 0 }, { y: -4 * 480, duration: .85, ease: "expo.inOut" }, a);
+  tl.fromTo("#lpPD", { x: -1900 }, { x: 0, duration: .75, ease: ex }, a + .25);
+  tl.to("#lpPD", { x: 30, duration: 1.0, ease: "none" }, a + 1.0);
   tl.to("#s03", { scale: 26, transformOrigin: "88.6% 82%", duration: .45, ease: exi }, a + 1.7); }
 
-// 04 I think… — quiet, dots arrive one by one
+// 04 I think… — tracking compresses, dots arrive one by one
 { const [a] = T.s04;
-  tl.from("#s04 .c", { opacity: 0, duration: .5, ease: "power1.out" }, a + .05);
-  tl.from("#s04 .d", { opacity: 0, duration: .05, stagger: .28 }, a + .45); }
+  tl.fromTo("#think", { letterSpacing: ".5em", opacity: 0 }, { letterSpacing: "-.02em", opacity: 1, duration: .8, ease: io }, a);
+  tl.from("#think .d", { opacity: 0, duration: .05, stagger: .28 }, a + .55); }
 
-// 05 I know one. — hard cut, confident punch
+// 05 I know one. — starts as an extreme close-up of the "o", snaps out to the full line
 { const [a] = T.s05;
-  tl.fromTo("#know", { scale: 1.12 }, { scale: 1, duration: .45, ease: ex }, a);
-  tl.to("#know", { xPercent: -50, x: -1500, duration: .3, ease: exi }, a + .8); }
+  tl.fromTo("#know", { scale: 9, transformOrigin: "55% 55%" }, { scale: 1, duration: .5, ease: ex }, a);
+  tl.to("#know", { x: -1500, duration: .3, ease: exi }, a + .8); }
 
-// 06/07 I'm María Mora. — "I'm" waits, the name rises letter by letter and tightens
-{ const [a] = T.s07;
-  const chs = split($("#name"), "María Mora.");
+// 06 I'm María Mora. — letters glow in from blur, tracking tightens
+{ const [a] = T.s06; const chs = split($("#name"), "María Mora.");
   tl.from("#im", { opacity: 0, x: 60, duration: .4 }, a);
-  tl.from(chs, { yPercent: 110, opacity: 0, duration: .8, stagger: .04, ease: ex }, a + .5);
-  tl.fromTo("#name", { letterSpacing: ".12em" }, { letterSpacing: "-.025em", duration: 1.4, ease: io }, a + .5);
-  tl.to("#s07", { y: -300, opacity: 0, duration: .35, ease: exi }, a + 1.85); }
+  tl.fromTo(chs, { opacity: 0, filter: "blur(24px)", textShadow: "0 0 40px rgba(255,214,160,.9)" }, { opacity: 1, filter: "blur(0px)", textShadow: "0 0 0px rgba(255,214,160,0)", duration: .9, stagger: .05, ease: "power2.out" }, a + .4);
+  tl.fromTo("#name", { letterSpacing: ".12em" }, { letterSpacing: "-.025em", duration: 1.4, ease: io }, a + .4);
+  tl.to("#s06", { y: -300, opacity: 0, duration: .35, ease: exi }, a + 1.8); }
 
-// 08 10+ years. — oversized number counts up, bleeds off the frame, slides out left
-{ const [a] = T.s08;
+// 07 10+ years. — oversized number bleeds off the frame, slides out left
+{ const [a] = T.s07;
   tl.fromTo("#ten", { y: 700 }, { y: 0, duration: .6, ease: ex }, a);
   tl.from("#years", { opacity: 0, x: 80, duration: .5 }, a + .45);
-  tl.to(["#ten", "#years"], { x: -1900, duration: .4, ease: exi }, a + 1.0); }
+  tl.to(["#ten", "#years"], { x: -1900, duration: .4, ease: exi }, a + .95); }
 
-// 09 Designing digital products. — type and product move at different speeds
-{ const [a] = T.s09;
+// 08 Designing digital products. — type and product at different speeds; product takes the frame
+{ const [a] = T.s08;
   tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a);
-  tl.fromTo("#ddImgF", { x: 900 }, { x: -60, duration: 1.6, ease: "power2.out" }, a);
-  tl.to("#dd", { x: -30, duration: 1.6, ease: "none" }, a);
-  tl.to("#ddImgF", { left: 0, top: 0, width: 1920, height: 1080, x: 0, borderRadius: 0, duration: .45, ease: exi }, a + 1.15);
-  tl.to("#ddImgF img", { opacity: 0, duration: .2 }, a + 1.4); }
+  tl.fromTo("#ddImgF", { x: 900 }, { x: -60, duration: 1.5, ease: "power2.out" }, a);
+  tl.to("#dd", { x: -30, duration: 1.5, ease: "none" }, a);
+  tl.to("#ddImgF", { left: 0, top: 0, width: 1920, height: 1080, x: 0, borderRadius: 0, duration: .45, ease: exi }, a + 1.1);
+  tl.to("#ddImgF img", { opacity: 0, duration: .2 }, a + 1.35); }
 
-// 10 I've learned that great products need — sentence builds; "need" is pushed forward
-{ const [a] = T.s10;
-  tl.from("#learn .w", { opacity: 0, y: 30, duration: .35, stagger: .1 }, a);
-  tl.to("#learn .w:not(#need)", { opacity: .25, duration: .3 }, a + .95);
-  tl.to("#learn", { x: -1600, duration: .3, ease: exi }, a + 1.0); }
+// 09 I've learned that great products need — sentence builds, everything dims except "need"
+{ const [a] = T.s09;
+  tl.from("#learn .w", { opacity: 0, y: 30, duration: .35, stagger: .09 }, a);
+  tl.to("#learn .w:not(#need)", { opacity: .25, duration: .3 }, a + .85);
+  tl.to("#learn", { x: -1600, duration: .3, ease: exi }, a + .9); }
 
-// 11 Evidence. — grows until the frame is inside the word, opening onto the data
-{ const [a] = T.s11;
-  tl.fromTo("#evi", { scale: .35, opacity: 0 }, { scale: 1, opacity: 1, duration: .45, ease: ex }, a);
-  tl.to("#evi", { scale: 30, transformOrigin: "33% 55%", duration: .4, ease: exi }, a + .5); }
+// 10 Evidence. — the camera passes along the oversized word, then dives into its full stop
+{ const [a] = T.s10; const w = () => $("#evi").offsetWidth;
+  tl.fromTo("#evi", { x: 900 }, { x: () => 1920 - w() - 60, duration: .75, ease: "power2.inOut" }, a);
+  tl.to("#evi", { scale: 6, transformOrigin: "97% 80%", opacity: 0, duration: .25, ease: exi }, a + .75); }
 
-// 12 Evidence visual — one real KPI beside the real Figma variables it came from
-{ const [a] = T.s12; const n = { v: 0 };
+// 11 Evidence visual — one real KPI beside the real Figma variables it came from
+{ const [a] = T.s11; const n = { v: 0 };
   tl.from("#cfgF", { x: 600, opacity: 0, duration: .9, ease: ex }, a);
-  tl.to("#cfgImg", { x: -86, duration: 2.8, ease: "none" }, a);
+  tl.to("#cfgImg", { x: -86, duration: 2.6, ease: "none" }, a);
   tl.from("#kCap", { opacity: 0, duration: .4 }, a + .15);
   tl.from("#kNum", { y: 200, opacity: 0, duration: .7, ease: ex }, a + .1);
-  tl.to(n, { v: 40, duration: 1.0, ease: "power2.out", onUpdate: () => { $("#kN").textContent = Math.round(n.v); } }, a + .1);
+  tl.to(n, { v: 40, duration: .7, ease: "power2.out", onUpdate: () => { $("#kN").textContent = Math.round(n.v); } }, a + .1);
   tl.from("#kTxt", { opacity: 0, y: 30, duration: .5 }, a + .55);
   tl.from("#kRule", { scaleX: 0, transformOrigin: "0 0", duration: .6, ease: io }, a + .8);
   tl.from("#kSub", { opacity: 0, y: 20, duration: .5 }, a + 1.0);
-  tl.to("#s12", { y: -1080, duration: .4, ease: exi }, a + 2.5); }
+  tl.to("#s11", { y: -1080, duration: .4, ease: exi }, a + 2.2); }
 
-// 13 Direction. — the word travels the frame, XSITE emerges behind it
-{ const [a] = T.s13;
-  tl.fromTo("#dir", { x: 1920 }, { x: -2100, duration: 1.0, ease: "power2.inOut" }, a);
-  tl.to("#xsCard", { opacity: 1, duration: .5 }, a + .45);
-  tl.fromTo("#xsCard", { scale: 1.2 }, { scale: 1, duration: 1.0, ease: "power2.out" }, a); }
+// 12 Direction. — rolls over a ghost copy like a drum, then pushes into the footage
+{ const [a] = T.s12;
+  tl.fromTo("#dir", { rotationX: -90, y: 160, transformOrigin: "50% 50% -150px" }, { rotationX: 0, y: 0, duration: .55, ease: ex }, a);
+  tl.fromTo("#dir0", { rotationX: 0, opacity: .8, transformOrigin: "50% 50% -150px" }, { rotationX: 90, y: -160, opacity: 0, duration: .55, ease: ex }, a);
+  tl.to("#dir", { scale: 4, opacity: 0, duration: .3, ease: exi }, a + .65); }
 
-// 14 XSITE — brand card hands over to the product, slow lateral camera
-{ const [a] = T.s14;
-  tl.fromTo("#xsDev", { scale: 1.12, x: 60 }, { scale: 1.02, x: -40, duration: 2.5, ease: "power1.inOut" }, a);
-  tl.from("#xsDev", { clipPath: "inset(0 0 0 100%)", duration: .6, ease: io }, a);
-  tl.from("#xsCap", { opacity: 0, y: 20, duration: .5 }, a + .6);
-  tl.to("#s14", { scale: .6, opacity: 0, duration: .4, ease: exi }, a + 2.1); }
+// 13–15 Nordice and Runar — real campaign footage; only the opening second of the rune shot
+{ let [a] = T.s13;
+  tl.fromTo("#vNordice", { scale: 1.15 }, { scale: 1.0, duration: 1.3, ease: "power2.out" }, a);
+  tl.from("#nCap", { opacity: 0, duration: .3 }, a + .3);
+  [a] = T.s14;
+  tl.fromTo("#s14", { clipPath: "inset(0 0 0 100%)" }, { clipPath: "inset(0 0 0 0%)", duration: .35, ease: io }, a - .05);
+  tl.from("#rCap", { opacity: 0, duration: .3 }, a + .3);
+  [a] = T.s15;
+  tl.fromTo("#s15", { opacity: 0 }, { opacity: 1, duration: .12 }, a);
+  tl.to("#s15", { opacity: 0, duration: .2 }, a + .6); }
 
-// 15 Craft. — small and precise, then a sudden change of scale
-{ const [a] = T.s15; const chs = split($("#craft"), "Craft.");
-  tl.from(chs, { opacity: 0, y: 40, duration: .3, stagger: .04 }, a);
-  tl.to("#craft", { scale: 1.1, duration: .25, ease: ex }, a + .4);
-  tl.to("#craft", { scale: 1.25, duration: .45, ease: "none" }, a + .55); }
-
-// 16 WAND Cashier — close-up on the journey, pull back to the full flow
+// 16 XSITE — wipe reveal, slow lateral camera
 { const [a] = T.s16;
-  tl.fromTo("#cash", { scale: 2.1, xPercent: -6, yPercent: 8 }, { scale: 1.02, xPercent: 0, yPercent: 0, duration: 1.8, ease: "power2.inOut" }, a);
-  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .9);
-  tl.to("#s16", { x: -1920, duration: .4, ease: exi }, a + 1.65); }
+  tl.fromTo("#xsDev", { scale: 1.12, x: 60 }, { scale: 1.02, x: -40, duration: 1.8, ease: "power1.inOut" }, a);
+  tl.from("#xsCap", { opacity: 0, y: 20, duration: .5 }, a + .4);
+  tl.to("#s16", { scale: .6, opacity: 0, duration: .35, ease: exi }, a + 1.45); }
 
-// 17 XSITE gamification — enters from the right as the cashier exits
+// 17 Craft. — echo marquee: outlined rows drift one way, the solid row the other
 { const [a] = T.s17;
-  tl.fromTo("#s17", { x: 1920 }, { x: 0, duration: .45, ease: ex }, a - .05);
-  tl.fromTo("#gam", { scale: 1.05 }, { scale: 1.16, duration: 1.9, ease: "none" }, a);
-  tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .6);
-  tl.to("#s17", { opacity: 0, duration: .3 }, a + 1.6); }
+  tl.fromTo(["#cr1", "#cr3"], { x: -200 }, { x: -1100, duration: .9, ease: "none" }, a);
+  tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
+  tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
-// 18 My work spans — quiet set-up
-{ const [a] = T.s18; tl.from("#spans", { opacity: 0, scale: .96, duration: .4 }, a); }
+// 18 WAND Cashier — close-up on the UI, pull back to the full flow
+{ const [a] = T.s18;
+  tl.fromTo("#cash", { scale: 2.1, xPercent: -6, yPercent: 8 }, { scale: 1.02, xPercent: 0, yPercent: 0, duration: 1.6, ease: "power2.inOut" }, a);
+  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
+  tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
 
-// 19 43 operator brands. — number dominates, counts, bleeds off frame
-{ const [a] = T.s19; const n = { v: 0 };
+// 19 XSITE gamification — enters as the cashier exits
+{ const [a] = T.s19;
+  tl.fromTo("#s19", { x: 1920 }, { x: 0, duration: .45, ease: ex }, a - .05);
+  tl.fromTo("#gam", { scale: 1.05 }, { scale: 1.14, duration: 1.5, ease: "none" }, a);
+  tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .5);
+  tl.to("#s19", { opacity: 0, duration: .3 }, a + 1.2); }
+
+// 20 My work spans — tracking compresses
+{ const [a] = T.s20; tl.fromTo("#spans", { letterSpacing: ".6em", opacity: 0 }, { letterSpacing: "0em", opacity: 1, duration: .6, ease: io }, a); }
+
+// 21 43 operator brands. — the number dominates and bleeds off frame (no count-up, so no wrong numbers on screen)
+{ const [a] = T.s21;
   tl.fromTo("#n43", { scale: .2, opacity: 0, transformOrigin: "30% 60%" }, { scale: 1, opacity: 1, duration: .55, ease: ex }, a);
-  tl.to(n, { v: 43, duration: .8, ease: "power2.out", onUpdate: () => { $("#n43v").textContent = Math.round(n.v); } }, a);
-  tl.from("#ob", { opacity: 0, x: 80, duration: .5 }, a + .4);
-  tl.to("#s19", { y: 1080, duration: .35, ease: exi }, a + 1.1); }
+  tl.from("#ob", { opacity: 0, x: 80, duration: .5 }, a + .35);
+  tl.to("#s21", { y: 1080, duration: .35, ease: exi }, a + 1.05); }
 
-// 20 22 launched across 15 markets. — two numbers at contrasting scales, footnote keeps the claim accurate
-{ const [a] = T.s20;
+// 22 22 launched across 15 markets. — two numbers at contrasting scales; footnote keeps the claim accurate
+{ const [a] = T.s22;
   tl.from("#n22", { y: -900, duration: .55, ease: ex }, a);
   tl.from("#l22", { opacity: 0, x: 60, duration: .4 }, a + .3);
   tl.from("#a15", { opacity: 0, x: -60, duration: .4 }, a + .55);
   tl.from("#n15", { scale: 1.8, opacity: 0, duration: .5, ease: ex }, a + .65);
   tl.from("#m15", { opacity: 0, x: 60, duration: .4 }, a + .8);
   tl.from("#foot", { opacity: 0, duration: .4 }, a + .9);
-  tl.to("#s20", { opacity: 0, duration: .25 }, a + 1.55); }
+  tl.to("#s22", { opacity: 0, duration: .25 }, a + 1.5); }
 
-// 21 Logos — three rows, middle row opposed
-{ const [a] = T.s21; const L = ["williamhill.png","rizk.svg","skycity.svg","thrills.svg","casinotime.svg","dunder.svg","kaboo.svg","netbet.svg","superlenny.svg","thepools.svg","slotbox.svg","jugadon.png","kingbilly.png","hardrock.png","solaire.svg","splash.png","kirgo.png","eleven.svg"];
+// 23 Logos — three rows, middle row opposed
+{ const [a, b] = T.s23; const L = ["williamhill.png","rizk.svg","skycity.svg","thrills.svg","casinotime.svg","dunder.svg","kaboo.svg","netbet.svg","superlenny.svg","thepools.svg","slotbox.svg","jugadon.png","kingbilly.png","hardrock.png","solaire.svg","splash.png","kirgo.png","eleven.svg"];
   const fill = (row, list) => { row.innerHTML = [...list, ...list].map((f) => `<img src="../public/portfolio/operators/${f}">`).join(""); };
   fill($("#r1"), L.slice(0, 6).concat(L.slice(12, 15))); fill($("#r2"), L.slice(6, 12).concat(L.slice(15))); fill($("#r3"), L.slice(12).concat(L.slice(0, 4)));
-  const d = T.s21[1] - a;
+  const d = b - a;
   tl.fromTo("#r1", { x: 0 }, { x: -1500, duration: d, ease: "none" }, a);
   tl.fromTo("#r2", { x: -1700 }, { x: -200, duration: d, ease: "none" }, a);
   tl.fromTo("#r3", { x: -300 }, { x: -1800, duration: d, ease: "none" }, a);
   tl.from(".row", { opacity: 0, duration: .4, stagger: .1 }, a);
-  tl.to(".row", { opacity: 0, duration: .3 }, a + d - .3); }
+  tl.to(".row", { opacity: 0, duration: .3 }, b - .3); }
 
-// 22 And I bring together — words converge from both sides
-{ const [a] = T.s22;
-  tl.from("#bring .w", { x: (i) => (i < 2 ? -300 : 300), opacity: 0, duration: .5, ease: ex, stagger: .06 }, a); }
+// 24 And I bring together — letters cascade into place
+{ const [a] = T.s24; const chs = split($("#bring"), "And I bring together");
+  tl.from(chs, { y: (i) => -220 - (i % 5) * 60, opacity: 0, duration: .45, stagger: .018, ease: ex }, a); }
 
-// 23 Product strategy. — insight → opportunity → prioritisation → roadmap, one connected path
-{ const [a] = T.s23; const p = $("#psPath"); const len = p.getTotalLength();
-  tl.from("#ps", { yPercent: 60, opacity: 0, duration: .5, ease: ex }, a);
+// 25–27 — the three titles share one move: a perspective roll up from the baseline
+const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
+
+// 25 Product strategy. — insight → opportunity → prioritisation → roadmap, one connected path
+{ const [a] = T.s25; const p = $("#psPath"); const len = p.getTotalLength();
+  roll("#psT", a);
   tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len }, { strokeDashoffset: 0, duration: 1.1, ease: "power2.inOut" }, a + .2);
   tl.from(["#ps1", "#ps2", "#ps3", "#ps4"], { opacity: 0, y: 30, scale: .9, duration: .4, stagger: .22, ease: ex }, a + .25);
-  tl.to("#s23", { x: -1920, duration: .35, ease: exi }, a + 1.3); }
+  tl.to("#s25", { x: -1920, duration: .35, ease: exi }, a + 1.25); }
 
-// 24 Design systems. — scattered components snap into order, then resolve into the real WAND UI kit
-{ const [a] = T.s24;
-  tl.fromTo("#s24", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
-  tl.from("#dsT", { opacity: 0, duration: .3 }, a + .1);
+// 26 Design systems. — scattered components snap into order, then resolve into the real WAND UI kit
+{ const [a] = T.s26;
+  tl.fromTo("#s26", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
+  roll("#dsT", a + .1);
   tl.from("#cmps .cmp", { x: () => gsap.utils.random(-700, 700), y: () => gsap.utils.random(-400, 400), rotation: () => gsap.utils.random(-25, 25), opacity: 0, duration: .8, stagger: .05, ease: ex }, a + .1);
   tl.to("#cmps", { opacity: 0, duration: .35 }, a + 1.05);
   tl.to("#kit", { opacity: 1, duration: .35 }, a + 1.1);
   tl.to("#dsT", { opacity: 0, duration: .2 }, a + 1.1);
-  tl.fromTo("#kit", { scale: 1.12 }, { scale: 1, duration: .7, ease: "power2.out" }, a + 1.1); }
+  tl.fromTo("#kit", { scale: 1.12 }, { scale: 1, duration: .6, ease: "power2.out" }, a + 1.1); }
 
-// 25 Design leadership. — people, disciplines and decisions connected around María; AI agents as a distinct, dashed node
-{ const [a] = T.s25; const cx = 960, cy = 540, R = 230;
-  const av = $("#avas"); let lines = "";
-  for (let i = 0; i < 7; i++) { const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 7; const x = cx + R * Math.cos(ang), y = cy + R * Math.sin(ang);
-    av.insertAdjacentHTML("beforeend", `<div class="ava" style="left:${x - 32}px;top:${y - 32}px"></div>`); }
-  const nodes = [["#dProduct", 380, 326], ["#dEng", 1540, 326], ["#dRes", 340, 746], ["#dAI", 1540, 746]];
-  for (const [, x, y] of nodes) lines += `<path class="ln" d="M${cx} ${cy} Q ${(cx + x) / 2} ${y < cy ? cy - 40 : cy + 40}, ${x} ${y}" fill="none" stroke="rgba(245,244,241,.25)" stroke-width="1.5"/>`;
+// 27 Design leadership. — people, disciplines and decisions around María; AI agents dashed (a tool, not people)
+{ const [a] = T.s27; const cx = 960, cy = 540, R = 230; let lines = "";
+  for (let i = 0; i < 7; i++) { const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 7;
+    $("#avas").insertAdjacentHTML("beforeend", `<div class="ava" style="left:${cx + R * Math.cos(ang) - 32}px;top:${cy + R * Math.sin(ang) - 32}px"></div>`); }
+  for (const [x, y] of [[380, 326], [1540, 326], [340, 746], [1540, 746]]) lines += `<path class="ln" d="M${cx} ${cy} Q ${(cx + x) / 2} ${y < cy ? cy - 40 : cy + 40}, ${x} ${y}" fill="none" stroke="rgba(245,244,241,.25)" stroke-width="1.5"/>`;
   $("#ldSvg").innerHTML = lines + `<circle cx="${cx}" cy="${cy}" r="${R}" fill="none" stroke="rgba(245,244,241,.14)"/>`;
-  tl.from("#dlT", { opacity: 0, y: 40, duration: .45, ease: ex }, a);
+  roll("#dlT", a);
   tl.from("#me", { scale: .6, opacity: 0, duration: .6, ease: ex }, a + .1);
   tl.from("#avas .ava", { scale: 0, opacity: 0, duration: .4, stagger: .06, ease: "back.out(2)" }, a + .3);
   tl.from("#teamCap", { opacity: 0, duration: .4 }, a + .7);
   tl.from(".ln", { opacity: 0, duration: .5, stagger: .08 }, a + .7);
   tl.from(["#dProduct", "#dEng", "#dRes", "#dAI"], { opacity: 0, scale: .8, duration: .4, stagger: .1, ease: ex }, a + .75);
   tl.to("#avas", { rotation: 12, transformOrigin: `${cx}px ${cy}px`, duration: 2, ease: "none" }, a);
-  tl.to("#s25", { opacity: 0, duration: .25 }, a + 1.65); }
+  tl.to("#s27", { opacity: 0, duration: .25 }, a + 1.7); }
 
-// 26 Because making complexity feel simple — scattered letters resolve into one clean line
-{ const [a] = T.s26; const chs = split($("#cx"), "complexity");
+// 28 Because making complexity feel simple — scattered letters resolve into one clean word
+{ const [a] = T.s28; const chs = split($("#cx"), "complexity");
   tl.from("#bec", { opacity: 0, y: 20, duration: .5 }, a);
   tl.from(chs, { x: () => gsap.utils.random(-500, 900), y: () => gsap.utils.random(-350, 450), rotation: () => gsap.utils.random(-90, 90), scale: () => gsap.utils.random(.4, 1.8), opacity: 0, duration: .01 }, a);
   tl.to(chs, { opacity: .55, duration: .3, stagger: .02 }, a + .2);
   tl.to(chs, { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: 1.1, ease: "power4.inOut", stagger: .03 }, a + .55);
   tl.from("#fs", { opacity: 0, y: 20, duration: .5 }, a + 1.4);
-  tl.to("#s26", { y: -200, opacity: 0, duration: .45, ease: "power2.in" }, a + 1.95); }
+  tl.to("#s28", { y: -200, opacity: 0, duration: .45, ease: "power2.in" }, a + 1.75); }
 
-// 27 Is the kind of design problem I love. — slow, deliberate, room to breathe
-{ const [a] = T.s27;
-  tl.from("#love .w", { yPercent: 110, duration: 1.0, stagger: .25, ease: ex }, a + .05);
-  tl.to("#love", { scale: 1.04, transformOrigin: "0 50%", duration: 2.3, ease: "none" }, a);
-  tl.to("#love", { opacity: 0, duration: .4 }, a + 1.95); }
-
-// 28 So, what's next? — the question mark carries the cut into the portrait
-{ const [a] = T.s28;
-  tl.from("#sowhat", { opacity: 0, x: -40, duration: .5 }, a);
-  tl.from("#qm", { opacity: 0, rotation: -8, scale: .7, duration: .6, ease: ex }, a + .3);
-  tl.to("#sowhat", { opacity: 0, duration: .3 }, a + 1.0);
-  tl.to("#qm", { scale: 7, opacity: 0, transformOrigin: "40% 70%", duration: .5, ease: exi }, a + 1.0); }
-
-// 29 Final portrait — minimal, readable hold
+// 29 Is the kind of design problem I love. — slow, deliberate, room to breathe
 { const [a] = T.s29;
+  tl.from("#love .w", { yPercent: 110, duration: 1.0, stagger: .25, ease: ex }, a + .05);
+  tl.to("#love", { scale: 1.04, transformOrigin: "0 50%", duration: 2.1, ease: "none" }, a);
+  tl.to("#love", { opacity: 0, duration: .4 }, a + 1.75); }
+
+// 30 So, what's next? — typed, then the question mark lands and carries the cut
+{ const [a] = T.s30; const end = type($("#soT"), "#soC", "So, what’s next", a + .05, .035);
+  tl.from("#qm", { opacity: 0, rotation: -8, scale: .7, duration: .5, ease: ex }, end + .05);
+  tl.to("#sowhat", { opacity: 0, duration: .25 }, a + 1.1);
+  tl.to("#qm", { scale: 7, opacity: 0, transformOrigin: "40% 70%", duration: .45, ease: exi }, a + 1.05); }
+
+// 31 Final portrait — minimal, readable hold
+{ const [a, b] = T.s31;
   tl.fromTo("#hero", { opacity: 0, scale: 1.08 }, { opacity: 1, scale: 1, duration: 1.6, ease: "power2.out" }, a);
   tl.from("#fName", { opacity: 0, y: 30, letterSpacing: ".2em", duration: 1.0, ease: ex }, a + .5);
   tl.from("#fRole", { opacity: 0, duration: .6 }, a + .85);
   tl.from("#fRule", { scaleX: 0, transformOrigin: "0 0", duration: .6, ease: io }, a + 1.0);
   tl.from("#fMail", { opacity: 0, y: 12, duration: .6 }, a + 1.15);
-  tl.set({}, {}, T.s29[1]); }
+  tl.set({}, {}, b); }
 
-/* ---------- preview / render hooks ---------- */
-window.DURATION = T.s29[1];
-window.seek = (t) => { tl.seek(t, false); };
-window.ready = document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {}))));
+/* ---------- video sync, preview and render hooks ---------- */
+const videos = [["#vNordice", "s13"], ["#vViking", "s14"], ["#vRune", "s15"]].map(([sel, sc]) => ({ el: $(sel), start: T[sc][0], end: T[sc][1] }));
+const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
+  if (t < start - .2 || t > end) return null;
+  const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
+  if (Math.abs(el.currentTime - target) < .001) return null;
+  el.currentTime = target;
+  return wait ? new Promise((r) => el.addEventListener("seeked", r, { once: true })) : null;
+}));
+window.DURATION = T.s31[1];
+window.seek = async (t) => { tl.seek(t, false); await syncVideos(t, true); };
+window.ready = document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {})).concat(videos.map(({ el }) => el.readyState >= 1 ? 0 : new Promise((r) => el.addEventListener("loadedmetadata", r, { once: true }))))));
 const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); $("#stage").style.transform = `scale(${s})`; };
 if (!new URLSearchParams(location.search).has("render")) {
   addEventListener("resize", fit); fit();
+  tl.eventCallback("onUpdate", () => syncVideos(tl.time(), false));
   addEventListener("keydown", (e) => { if (e.code === "Space") tl.paused() ? tl.play() : tl.pause(); if (e.code === "ArrowRight") tl.seek(tl.time() + 1); if (e.code === "ArrowLeft") tl.seek(Math.max(0, tl.time() - 1)); });
   window.ready.then(() => tl.play());
 }
