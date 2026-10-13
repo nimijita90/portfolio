@@ -4,7 +4,7 @@ Editable source: `showreel/index.html` (one GSAP timeline, scene times in the `T
 Preview in a browser: open the file; space plays/pauses, ←/→ jump one second.
 Render: `node showreel/render.mjs <scale> <fps> <out.mp4>`. Use `0.5 25` for a 540p draft and `1 25` (or `1 50`) for the 1080p master.
 
-Runtime: 48 s at 1920×1080 (draft: 960×540).
+Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 
 ## Motion language
 
@@ -28,12 +28,13 @@ Runtime: 48 s at 1920×1080 (draft: 960×540).
 | # | Time (s) | On-screen text | Visual / source | Move |
 |---|---|---|---|---|
 | 01 | 0.00–1.35 | Hi. | — | Extreme close-up of the "H" pulls back; the word lifts out of frame |
+| 01b | 1.35–3.55 | — | over99 logo (`media/over99.svg`, María\'s own animation) | Letters rise from the baseline, the "v" turns into ">", a shockwave releases the second 9; driven frame by frame by the timeline |
 | 02 | 1.30–2.75 | If you're looking for | — | Typewriter + cursor; pushed out left |
-| 03 | 2.70–4.85 | A Lead Product Designer. | — | "Lead" echo roll lands; "Product Designer." slab from the opposite side; zoom through the full stop |
+| 03 | 2.70–4.85 | A Design Lead. | — | "Design" echo roll lands; "Lead." slab from the opposite side; zoom through the full stop |
 | 04 | 4.85–6.10 | I think… | — | Tracking compresses; the dots arrive one at a time |
 | 05 | 6.10–7.15 | I know one. | — | Starts as an extreme close-up and snaps out to the full line |
-| 06 | 7.15–9.30 | I'm María Mora. | — | Letters glow in from blur while the tracking tightens |
-| 07 | 9.25–10.60 | 10+ years. | — | Oversized number bleeds off the frame; slides out |
+| 06 | 7.15–9.30 | I'm María Mora. | — | A rule draws across, the letters rise crisply from a mask and the full stop pops; the letters drop out the same way |
+| 07 | 9.25–10.60 | 10+ years. | — | Counter climbs 0 → 10; the number bleeds off the frame |
 | 08 | 10.55–12.10 | Designing digital products. | XSITE casino page (`media/xsite-casino-page.webp`) | Page frame rises and scrolls; type and frame exit together |
 | 09 | 12.10–13.30 | I've learned that great products need | — | Words build; all dim except "need" |
 | 10 | 13.25–14.25 | Evidence. | — | Camera passes along the oversized word and dives into the full stop |
@@ -57,7 +58,7 @@ Runtime: 48 s at 1920×1080 (draft: 960×540).
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | 41.00–43.10 | Is the kind of design problem I love. | — | Slow masked reveal |
 | 30 | 43.10–44.60 | So, what's next? | — | Typed; the "?" lands and carries the cut |
-| 31 | 44.55–48.00 | MARÍA MORA · LEAD PRODUCT DESIGNER · moragarciamaria@gmail.com | Portfolio portrait | Portrait settles; text holds about 2.5 s |
+| 31 | 44.55–48.00 | MARÍA MORA · DESIGN LEAD · moragarciamaria@gmail.com | Portfolio portrait | Portrait settles; text holds about 2.5 s |
 
 ## Accuracy checks
 
@@ -73,3 +74,5 @@ Runtime: 48 s at 1920×1080 (draft: 960×540).
 3. **Envato reference** — analysed from the preview MP4 (67 s, 4K).
 4. **Music** — none yet. Add a licensed track; the cuts are not beat-locked, so retiming is easy.
 5. **Silk Serif licence** — confirm it covers video use before publishing.
+
+> Times in the table above are from v3. v4 inserts the over99 logo (+2.2 s) and slows scenes 07–09 (+2.3 s); the live values are in the `T` object in `index.html`.
