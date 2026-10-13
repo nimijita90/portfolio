@@ -214,8 +214,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 26 Design systems. -->
 <div class="sc" id="s26">
-  <video class="shot" id="kit" src="media/wand-ui-kit.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
-  <div class="abs" style="left:0;top:0;width:1920px;height:420px;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,0))"></div>
+  <div class="frame" id="kitF" style="left:300px;top:300px;width:1320px;height:742px;border-radius:16px"><video class="shot" id="kit" src="media/wand-ui-kit.webm" muted playsinline preload="auto" data-in="0" style="inset:0;width:100%;height:100%"></video></div>
   <div class="title serif" id="dsT"><span>Design <i>systems.</i></span></div>
 </div>
 
@@ -479,8 +478,8 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 // 26 Design systems. — the real WAND UI kit footage, title over it
 { const [a] = T.s26;
   tl.fromTo("#s26", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
-  roll("#dsT", a + .15);
-  tl.fromTo("#kit", { scale: 1.06 }, { scale: 1, duration: 1.7, ease: "power2.out" }, a); }
+  roll("#dsT", a + .1);
+  tl.fromTo("#kitF", { y: 500, opacity: 0, rotationX: 20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1); }
 
 // 27 Design leadership. — people, disciplines and decisions around María; AI agents dashed (a tool, not people)
 { const [a] = T.s27; const cx = 960, cy = 540, R = 230; let lines = "";

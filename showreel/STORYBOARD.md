@@ -53,7 +53,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 23 | 30.45–32.90 | — | 18 real operator logos | Three rows; the middle row runs the opposite way |
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
-| 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Footage slides in; title drum roll over it |
+| 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Title drum roll; the footage rises in a frame below it (same layout as Product strategy) |
 | 27 | 36.90–38.85 | Design leadership. | Portfolio portrait (hero photo, cropped) + 7 abstract avatars | Team ring; Product, Engineering and Research nodes; AI agents dashed |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | 41.00–43.10 | Is the kind of design problem I love. | — | Slow masked reveal |
