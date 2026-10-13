@@ -102,7 +102,6 @@ svg{position:absolute;inset:0;overflow:visible}
 <div class="sc" id="s06">
   <div class="abs sans" id="im" style="left:240px;top:340px;font-size:60px;font-weight:300">I’m</div>
   <div class="abs serif" id="name" style="left:230px;top:430px;font-size:250px;white-space:nowrap;overflow:hidden;padding:0 .05em .12em 0"></div>
-  <div class="rule" id="nameRule" style="left:240px;top:720px;width:1300px;background:rgba(245,244,241,.5)"></div>
 </div>
 
 <!-- 07 10+ years. -->
@@ -352,10 +351,8 @@ const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAn
 // 06 I'm María Mora. — letters glow in from blur, tracking tightens
 { const [a] = T.s06; const chs = split($("#name"), "María Mora.");
   tl.from("#im", { x: -80, opacity: 0, duration: .35, ease: ex }, a);
-  tl.fromTo("#nameRule", { scaleX: 0, transformOrigin: "0 0" }, { scaleX: 1, duration: .6, ease: "expo.inOut" }, a + .15);
   tl.fromTo(chs, { yPercent: 115 }, { yPercent: 0, duration: .55, stagger: .035, ease: "expo.out" }, a + .3);
   tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .75);
-  tl.to("#nameRule", { scaleX: 0, transformOrigin: "100% 0", duration: .4, ease: "expo.in" }, a + 1.55);
   tl.to(chs, { yPercent: -115, duration: .35, stagger: .015, ease: "expo.in" }, a + 1.75);
   tl.to("#im", { x: -80, opacity: 0, duration: .3, ease: exi }, a + 1.75); }
 
@@ -363,7 +360,7 @@ const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAn
 { const [a] = T.s07;
   const n = { v: 0 };
   tl.fromTo("#ten", { y: 700 }, { y: 0, duration: .6, ease: ex }, a);
-  tl.fromTo(n, { v: 0 }, { v: 10, duration: 1.1, ease: "power3.out", onUpdate: () => { $("#tenN").textContent = Math.floor(n.v); } }, a + .1);
+  tl.fromTo(n, { v: 0 }, { v: 10, duration: .9, ease: "none", onUpdate: () => { $("#tenN").textContent = Math.round(n.v); } }, a + .1);
   tl.from("#years", { opacity: 0, x: 80, duration: .5 }, a + 1.0);
   tl.to(["#ten", "#years"], { x: -1900, duration: .4, ease: exi }, a + 1.45); }
 

@@ -33,8 +33,8 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 03 | 2.70–4.85 | A Design Lead. | — | "Design" echo roll lands; "Lead." slab from the opposite side; zoom through the full stop |
 | 04 | 4.85–6.10 | I think… | — | Tracking compresses; the dots arrive one at a time |
 | 05 | 6.10–7.15 | I know one. | — | Starts as an extreme close-up and snaps out to the full line |
-| 06 | 7.15–9.30 | I'm María Mora. | — | A rule draws across, the letters rise crisply from a mask and the full stop pops; the letters drop out the same way |
-| 07 | 9.25–10.60 | 10+ years. | — | Counter climbs 0 → 10; the number bleeds off the frame |
+| 06 | 7.15–9.30 | I'm María Mora. | — | The letters rise crisply from a mask and the full stop pops; the letters drop out the same way |
+| 07 | 9.25–10.60 | 10+ years. | — | Counter climbs 0 → 10 at an even pace; the number bleeds off the frame |
 | 08 | 10.55–12.10 | Designing digital products. | XSITE casino page (`media/xsite-casino-page.webp`) | Page frame rises and scrolls; type and frame exit together |
 | 09 | 12.10–13.30 | I've learned that great products need | — | Words build; all dim except "need" |
 | 10 | 13.25–14.25 | Evidence. | — | Camera passes along the oversized word and dives into the full stop |
