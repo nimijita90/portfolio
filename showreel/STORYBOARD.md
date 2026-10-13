@@ -53,7 +53,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 23 | 30.45–32.90 | — | 18 real operator logos | Three rows; the middle row runs the opposite way |
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
-| 26 | 35.25–36.95 | Design systems. | Components (concept) → real WAND UI kit (`media/wand-ui-kit.webm`) | Components snap into order and resolve into the UI kit footage |
+| 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Footage slides in; title drum roll over it |
 | 27 | 36.90–38.85 | Design leadership. | Portfolio portrait (hero photo, cropped) + 7 abstract avatars | Team ring; Product, Engineering and Research nodes; AI agents dashed |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | 41.00–43.10 | Is the kind of design problem I love. | — | Slow masked reveal |
@@ -64,7 +64,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 
 - Only the CV figures are used: 10+ years, 43 brands (skins), 22 launched across 15 markets, 40% faster client delivery, team of 7.
 - The 43/22 distinction is stated on screen. The 40% is labelled as delivery efficiency, not revenue or conversion.
-- Only material supplied by María is used (folder "material porfolio"): XSITE roadmap, Nordice/Runar/casino/sports pages, the Figma variables plugin video, the WAND UI kit video and the Nordice/Runar clips. Plus the portfolio portrait and operator logos from the live site. None of the older repo images (`wand-visual-*`, `xsite-visual-*`) appear. The only invented element is the abstract component set in scene 26, presented as a concept.
+- Only material supplied by María is used (folder "material porfolio"): XSITE roadmap, Nordice/Runar/casino/sports pages, the Figma variables plugin video, the WAND UI kit video and the Nordice/Runar clips. Plus the portfolio portrait and operator logos from the live site. None of the older repo images (`wand-visual-*`, `xsite-visual-*`) appear.
 - The only AI footage is the supplied Nordice and Runar campaign clips. The failed rune rotation is excluded; only the first 0.8 s of that shot is used.
 
 ## Missing assets

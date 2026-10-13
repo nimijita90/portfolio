@@ -214,16 +214,8 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 26 Design systems. -->
 <div class="sc" id="s26">
-  <video class="shot" id="kit" src="media/wand-ui-kit.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px;opacity:0"></video>
-  <div id="cmps" style="position:absolute;inset:0;transform:scale(1.25);transform-origin:960px 560px">
-    <div class="cmp btn" style="left:300px;top:380px;width:280px;height:72px">Primary button</div>
-    <div class="cmp" style="left:300px;top:480px;width:420px;height:72px;color:#8d8a84">Search games…</div>
-    <div class="cmp tok" style="left:780px;top:380px;width:420px;height:72px"><span class="sw" style="background:#3d63ff"></span>color/brand/primary</div>
-    <div class="cmp tok" style="left:780px;top:480px;width:420px;height:72px"><span class="sw" style="background:#f5f4f1"></span>color/text/default</div>
-    <div class="cmp" style="left:1260px;top:380px;width:360px;height:172px;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px"><b style="font-weight:600">Card title</b><span style="color:#8d8a84;font-size:18px">Supporting text</span></div>
-    <div class="cmp" style="left:300px;top:580px;width:640px;height:72px;font-family:var(--serif);font-size:34px">Aa · Heading / Display</div>
-    <div class="cmp tok" style="left:980px;top:580px;width:640px;height:72px">spacing/16 · radius/12 · brand: <b style="color:#f5f4f1;margin-left:8px">WAND</b></div>
-  </div>
+  <video class="shot" id="kit" src="media/wand-ui-kit.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs" style="left:0;top:0;width:1920px;height:420px;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,0))"></div>
   <div class="title serif" id="dsT"><span>Design <i>systems.</i></span></div>
 </div>
 
@@ -484,15 +476,11 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.from("#roadCap", { opacity: 0, duration: .4 }, a + .5);
   tl.to("#s25", { x: -1920, duration: .35, ease: exi }, a + 1.25); }
 
-// 26 Design systems. — scattered components snap into order, then resolve into the real WAND UI kit
+// 26 Design systems. — the real WAND UI kit footage, title over it
 { const [a] = T.s26;
   tl.fromTo("#s26", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
-  roll("#dsT", a + .1);
-  tl.from("#cmps .cmp", { x: () => gsap.utils.random(-700, 700), y: () => gsap.utils.random(-400, 400), rotation: () => gsap.utils.random(-25, 25), opacity: 0, duration: .8, stagger: .05, ease: ex }, a + .1);
-  tl.to("#cmps", { opacity: 0, duration: .35 }, a + 1.05);
-  tl.to("#kit", { opacity: 1, duration: .35 }, a + 1.1);
-  tl.to("#dsT", { opacity: 0, duration: .2 }, a + 1.1);
-  tl.fromTo("#kit", { scale: 1.12 }, { scale: 1, duration: .6, ease: "power2.out" }, a + 1.1); }
+  roll("#dsT", a + .15);
+  tl.fromTo("#kit", { scale: 1.06 }, { scale: 1, duration: 1.7, ease: "power2.out" }, a); }
 
 // 27 Design leadership. — people, disciplines and decisions around María; AI agents dashed (a tool, not people)
 { const [a] = T.s27; const cx = 960, cy = 540, R = 230; let lines = "";
@@ -540,7 +528,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.set({}, {}, b); }
 
 /* ---------- video sync, preview and render hooks ---------- */
-const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 1.1]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
+const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
 const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
   if (t < start - .2 || t > end) return null;
   const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
