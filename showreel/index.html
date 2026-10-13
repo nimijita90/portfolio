@@ -172,8 +172,12 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 19 XSITE gamification -->
 <div class="sc" id="s19">
-  <div class="page" id="gam" style="left:463px;top:40px;width:994px;height:1000px"><img id="gamI" src="media/xsite-casino-lobby.webp"></div>
-  <div class="abs cap" id="gamCap" style="left:120px;bottom:60px">XSITE · Casino</div>
+  <div class="abs" id="gamWrap" style="inset:0;transform-origin:960px 512px">
+    <div class="page" id="gam" style="left:260px;top:15px;width:1400px;height:995px"><img id="gamI" src="media/xsite-lobby-desktop.webp"></div>
+    <div class="abs" id="gamDim" style="left:260px;top:15px;width:1400px;height:995px;border-radius:16px;background:rgba(4,6,20,.62);opacity:0"></div>
+    <img class="abs" id="gamModal" src="media/xsite-signup-modal.webp" style="left:560px;top:168px;width:801px;height:688px;box-shadow:0 40px 120px rgba(0,0,0,.6);border-radius:13px">
+  </div>
+  <div class="abs cap" id="gamCap" style="left:260px;top:1030px">XSITE · Casino lobby &amp; sign-up</div>
 </div>
 
 <!-- 20 My work spans — letter-spaced compress -->
@@ -273,10 +277,10 @@ const T = {
   s01: [0.0, 1.35], s01b: [1.35, 3.55], s02: [3.5, 4.95], s03: [4.9, 7.55], s04: [7.55, 8.8], s05: [8.8, 9.85],
   s06: [9.85, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6], s10: [17.55, 18.55],
   s11: [18.5, 21.1], s12: [21.05, 22.0], s13: [21.95, 24.1], s14: [23.75, 25.1], s15: [25.05, 26.75],
-  s16: [26.5, 28.5], s17: [28.45, 29.35], s18: [29.3, 31.0], s19: [30.95, 32.35], s20: [32.3, 33.15],
-  s21: [33.15, 34.55], s22: [34.5, 36.25], s23: [36.2, 38.65], s24: [38.65, 39.5], s25: [39.45, 41.05],
-  s26: [41.0, 42.7], s27: [42.65, 44.6], s28: [44.55, 46.75], s29: [46.75, 48.85], s30: [48.85, 50.35],
-  s31: [50.3, 53.75],
+  s16: [26.5, 28.5], s17: [28.45, 29.35], s18: [29.3, 31.0], s19: [30.95, 33.35], s20: [33.3, 34.15],
+  s21: [34.15, 35.55], s22: [35.5, 37.25], s23: [37.2, 39.65], s24: [39.65, 40.5], s25: [40.45, 42.05],
+  s26: [42.0, 43.7], s27: [43.65, 45.6], s28: [45.55, 47.75], s29: [47.75, 49.85], s30: [49.85, 51.35],
+  s31: [51.3, 54.75],
 };
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
@@ -420,13 +424,16 @@ const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAn
   tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
   tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
 
-// 19 XSITE gamification — enters as the cashier exits
+// 19 XSITE casino — the lobby lands, then the sign-up modal pops over it and the camera leans in
 { const [a] = T.s19;
   tl.fromTo("#s19", { x: 1920 }, { x: 0, duration: .45, ease: ex }, a - .05);
-  tl.fromTo("#gamI", { y: 0 }, { y: -560, duration: 1.5, ease: "power1.inOut" }, a);
-  tl.fromTo("#gam", { scale: 1.04 }, { scale: 1, duration: 1.5, ease: "power2.out" }, a);
-  tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .5);
-  tl.to("#s19", { opacity: 0, duration: .3 }, a + 1.2); }
+  tl.fromTo("#gamWrap", { scale: 1 }, { scale: 1.04, duration: .8, ease: "none" }, a);
+  tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .4);
+  tl.to("#gamCap", { opacity: 0, duration: .2 }, a + .8);
+  tl.to("#gamDim", { opacity: 1, duration: .25, ease: "power2.out" }, a + .8);
+  tl.fromTo("#gamModal", { scale: .78, y: 90, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, y: 0, opacity: 1, duration: .6, ease: "back.out(1.6)" }, a + .85);
+  tl.to("#gamWrap", { scale: 1.16, duration: 1.1, ease: "power3.out" }, a + .85);
+  tl.to("#s19", { opacity: 0, duration: .3 }, a + 2.1); }
 
 // 20 My work spans — tracking compresses
 { const [a] = T.s20; tl.fromTo("#spans", { letterSpacing: ".6em", opacity: 0 }, { letterSpacing: "0em", opacity: 1, duration: .6, ease: io }, a); }
