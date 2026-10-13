@@ -30,7 +30,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 01 | 0.00–1.35 | Hi. | — | Extreme close-up of the "H" pulls back; the word lifts out of frame |
 | 01b | 1.35–3.55 | — | over99 logo (`media/over99.svg`, María\'s own animation) | Letters rise from the baseline, the "v" turns into ">", a shockwave releases the second 9; driven frame by frame by the timeline |
 | 02 | 1.30–2.75 | If you're looking for | — | Typewriter + cursor; pushed out left |
-| 03 | 2.70–4.85 | A Design Lead. | — | "Design" echo roll lands; "Lead." slab from the opposite side; zoom through the full stop |
+| 03 | 2.70–4.85 | A Design Lead. | — | Large italic "A", "Design" echo roll lands, "Lead." (same Silk Serif) slides in from the opposite side; zoom through the full stop |
 | 04 | 4.85–6.10 | I think… | — | Tracking compresses; the dots arrive one at a time |
 | 05 | 6.10–7.15 | I know one. | — | Starts as an extreme close-up and snaps out to the full line |
 | 06 | 7.15–9.30 | I'm María Mora. | — | The letters rise crisply from a mask and the full stop pops; the letters drop out the same way |

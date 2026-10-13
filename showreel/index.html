@@ -89,7 +89,7 @@ svg{position:absolute;inset:0;overflow:visible}
       <div class="stroke">Design</div><div class="stroke">Design</div><div class="stroke">Design</div><div class="stroke">Design</div><div>Design</div>
     </div>
   </div>
-  <div class="abs sans" id="lpPD" style="left:110px;top:640px;font-size:300px;font-weight:650;letter-spacing:-.05em;white-space:nowrap;line-height:1">Lead<span id="lpDot">.</span></div>
+  <div class="abs serif" id="lpPD" style="left:110px;top:560px;font-size:470px;white-space:nowrap;line-height:1">Lead<span id="lpDot">.</span></div>
 </div>
 
 <!-- 04 I think… — tracking compresses, dots arrive -->
@@ -336,7 +336,7 @@ const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAn
   tl.fromTo("#leadCol", { y: 0 }, { y: -4 * 680, duration: .85, ease: "expo.inOut" }, a);
   tl.fromTo("#lpPD", { x: -1900 }, { x: 0, duration: .75, ease: ex }, a + .25);
   tl.to("#lpPD", { x: 30, duration: 1.0, ease: "none" }, a + 1.0);
-  tl.to("#s03", { scale: 26, transformOrigin: () => { const d = $("#lpDot"); return `${110 + d.offsetLeft + d.offsetWidth / 2}px ${640 + d.offsetTop + d.offsetHeight * .78}px`; }, duration: .45, ease: exi }, a + 1.7); }
+  tl.to("#s03", { scale: 26, transformOrigin: () => { const d = $("#lpDot"); return `${110 + d.offsetLeft + d.offsetWidth / 2}px ${560 + d.offsetTop + d.offsetHeight * .78}px`; }, duration: .45, ease: exi }, a + 1.7); }
 
 // 04 I think… — tracking compresses, dots arrive one by one
 { const [a] = T.s04;
