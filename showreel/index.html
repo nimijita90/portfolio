@@ -83,13 +83,13 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 03 A Lead Product Designer. — echo roll + opposing slab -->
 <div class="sc" id="s03">
-  <div class="abs sans" id="lpA" style="left:150px;top:60px;font-size:64px;font-weight:300">A</div>
-  <div class="abs" id="leadMask" style="left:120px;top:110px;height:540px;width:1800px;overflow:hidden">
+  <div class="abs serif it" id="lpA" style="left:80px;top:190px;font-size:400px;line-height:1">A</div>
+  <div class="abs" id="leadMask" style="left:380px;top:110px;height:540px;width:1500px;overflow:hidden">
     <div id="leadCol" class="serif" style="font-size:520px;line-height:680px;margin-top:-70px">
       <div class="stroke">Design</div><div class="stroke">Design</div><div class="stroke">Design</div><div class="stroke">Design</div><div>Design</div>
     </div>
   </div>
-  <div class="abs sans" id="lpPD" style="left:150px;top:640px;font-size:300px;font-weight:650;letter-spacing:-.05em;white-space:nowrap;line-height:1">Lead<span id="lpDot">.</span></div>
+  <div class="abs sans" id="lpPD" style="left:110px;top:640px;font-size:300px;font-weight:650;letter-spacing:-.05em;white-space:nowrap;line-height:1">Lead<span id="lpDot">.</span></div>
 </div>
 
 <!-- 04 I think… — tracking compresses, dots arrive -->
@@ -332,11 +332,11 @@ const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAn
 
 // 03 A Lead Product Designer. — "Lead" rolls in as a stack of echoes and lands; slab from the other side; zoom through the full stop
 { const [a] = T.s03;
-  tl.from("#lpA", { opacity: 0, x: 40, duration: .4 }, a + .05);
+  tl.fromTo("#lpA", { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .45, ease: ex }, a);
   tl.fromTo("#leadCol", { y: 0 }, { y: -4 * 680, duration: .85, ease: "expo.inOut" }, a);
   tl.fromTo("#lpPD", { x: -1900 }, { x: 0, duration: .75, ease: ex }, a + .25);
   tl.to("#lpPD", { x: 30, duration: 1.0, ease: "none" }, a + 1.0);
-  tl.to("#s03", { scale: 26, transformOrigin: () => { const d = $("#lpDot"); return `${150 + d.offsetLeft + d.offsetWidth / 2}px ${640 + d.offsetTop + d.offsetHeight * .78}px`; }, duration: .45, ease: exi }, a + 1.7); }
+  tl.to("#s03", { scale: 26, transformOrigin: () => { const d = $("#lpDot"); return `${110 + d.offsetLeft + d.offsetWidth / 2}px ${640 + d.offsetTop + d.offsetHeight * .78}px`; }, duration: .45, ease: exi }, a + 1.7); }
 
 // 04 I think… — tracking compresses, dots arrive one by one
 { const [a] = T.s04;
