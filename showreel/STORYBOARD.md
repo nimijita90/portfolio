@@ -41,7 +41,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 11 | 14.20–16.80 | 40% faster client delivery | Figma variables export plugin (`media/plugin-variables.webm`) | KPI + "Enabled by a multi-brand design system built with Figma variables." |
 | 12 | 16.75–17.70 | Direction. | — | Drum roll over a ghost copy, then pushes into the footage |
 | 13 | 17.65–19.25 | (caption) Nordice | Nordice clip, 2.6–4.0 s of the source | Slow settle; wiped off by Runar |
-| 14 | 18.90–20.25 | (caption) Runar | Runar Viking clip, 12.5–13.9 s | Wipe in from the right |
+| 14 | 18.90–20.25 | (caption) Runar | Runar Viking clip, 11.35–12.7 s (symbols visible, before the explosion) | Wipe in from the right |
 | 15 | 20.20–21.00 | (caption) Runar | Runar rune, the first 0.8 s of the shot only | Brief flash before it starts rotating |
 | 16 | 20.75–22.75 | (caption) XSITE · One platform, multiple brands — Nordice & Runar | Nordice and Runar pages side by side | The pages slide in from opposite edges and scroll in opposite directions |
 | 17 | 22.70–23.60 | Craft. | — | Echo marquee (outlined and solid rows) |
