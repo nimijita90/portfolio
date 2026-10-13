@@ -43,7 +43,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 13 | 17.65–19.25 | (caption) Nordice | Nordice clip, 2.6–4.0 s of the source | Slow settle; wiped off by Runar |
 | 14 | 18.90–20.25 | (caption) Runar | Runar Viking clip, 11.35–12.7 s (symbols visible, before the explosion) | Wipe in from the right |
 | 15 | 20.20–21.00 | (caption) Runar | Runar rune, the first 0.8 s of the shot only | Brief flash before it starts rotating |
-| 16 | 20.75–22.75 | (caption) XSITE · One platform, multiple brands — Nordice & Runar | Nordice and Runar pages side by side | The pages slide in from opposite edges and scroll in opposite directions |
+| 16 | 20.75–22.75 | (caption) XSITE · One platform, multiple brands — Nordice & Runar | Nordice and Runar pages side by side | The pages slide in from opposite edges, open close on their hero banners, then pull back and scroll |
 | 17 | 22.70–23.60 | Craft. | — | Echo marquee (outlined and solid rows) |
 | 18 | 23.55–25.25 | (caption) XSITE · Sportsbook | `media/xsite-sports-page.webp` | Tilted frame turns towards the camera while the page scrolls |
 | 19 | — | (caption) XSITE · Casino lobby & sign-up | `media/xsite-lobby-desktop.webp` + `media/xsite-signup-modal.webp` | The lobby slides in; the background dims, the sign-up modal pops with a quick overshoot and the camera leans in |
