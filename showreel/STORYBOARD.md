@@ -46,7 +46,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 16 | 20.75–22.75 | (caption) XSITE · One platform, multiple brands — Nordice & Runar | Nordice and Runar pages side by side | The pages slide in from opposite edges and scroll in opposite directions |
 | 17 | 22.70–23.60 | Craft. | — | Echo marquee (outlined and solid rows) |
 | 18 | 23.55–25.25 | (caption) XSITE · Sportsbook | `media/xsite-sports-page.webp` | Tilted frame turns towards the camera while the page scrolls |
-| 19 | 25.20–26.60 | (caption) XSITE · Casino | `media/xsite-casino-page.webp` (Original games section) | Enters as the sportsbook exits; slow scroll |
+| 19 | 25.20–26.60 | (caption) XSITE · Casino | `media/xsite-casino-lobby.webp` (desktop lobby) | Enters as the sportsbook exits; slow scroll |
 | 20 | 26.55–27.40 | My work spans | — | Tracking compresses |
 | 21 | 27.40–28.80 | 43 operator brands. | — | The number dominates (no count-up, so no wrong numbers ever on screen) |
 | 22 | 28.75–30.50 | 22 launched across 15 markets. | — | Contrasting scales + footnote: "Brand skins designed for 43 operator brands within a multi-brand platform." |
