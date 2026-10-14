@@ -54,7 +54,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
 | 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
-| 27 | — | Design leadership. | María's portrait (natural light, background removed) against a white sun | Circle opens and the portrait rises; a watch-dial ring of ticks sweeps in while a ring of text unrolls around the sun and keeps turning (ticks counter-rotate): Design ownership · Brand systems · Design systems · Product UI/UX · Cross-functional · Motion & 3D · 10+ yrs iGaming · Team building. Title in difference blend. Text only. Items mirror the over99 Design Lead brief |
+| 27 | — | Design ownership · Brand systems · Design systems · Product UI/UX · Cross-functional · Motion & 3D · 10+ yrs iGaming · Team building → Design leadership. | — (text only, no photo) | Rapid-fire: one capability at a time arrives from the depth, holds for a beat and passes the camera (0.27 s each) with a "01 / 08" counter; then "Design leadership." rises in the cleared centre and holds. Each arrival has a soft tick in the score |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | — | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
 | 30 | — | So, what's next? | — | Centred Silk line; the words rise one by one from masks ("next?" in italic), the line breathes, then the words slip away upwards in the same order. Calmer pace, leading into the slow ending |
@@ -72,7 +72,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 1. The original showreel storyboard (previous v1) — not in the repo. This v2 is built from the brief.
 2. The **Lexide** case study (benchmark-row reference). The logo rows follow the brief's description.
 3. **Envato reference** — analysed from the preview MP4 (67 s, 4K).
-4. **Music** — none yet. Add a licensed track; the cuts are not beat-locked, so retiming is easy.
+4. **Music** — original score synthesised by `showreel/music/compose.py` (no samples, no third-party audio), locked to the scene times. Re-run it after retiming scenes. A licensed track can replace it later.
 5. **Silk Serif licence** — confirm it covers video use before publishing.
 
 > Times in the table above are from v3. v4 inserts the over99 logo (+2.2 s) and slows scenes 07–09 (+2.3 s); the live values are in the `T` object in `index.html`.
