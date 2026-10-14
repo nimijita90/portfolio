@@ -57,8 +57,8 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 27 | — | Design leadership. | María's portrait (natural light, background removed) against a white sun | Circle opens and the portrait rises; a watch-dial ring of ticks sweeps in while a ring of text unrolls around the sun and keeps turning (ticks counter-rotate): Design ownership · Brand systems · Design systems · Product UI/UX · Cross-functional · Motion & 3D · 10+ yrs iGaming · Team building. Title in difference blend. Text only. Items mirror the over99 Design Lead brief |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | — | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
-| 30 | 43.10–44.60 | So, what's next? | — | Typed; the "?" lands and carries the cut |
-| 31 | — | María Mora · DESIGN LEAD · design@mariamoragarcia.com · MARIAMORAGARCIA.COM | — (no photo) | An ivory iris takes over the frame after the "?"; rows of the name (outlined, one solid) rush past in opposite directions and collapse into a line; the name rises from a mask, the role's tracking compresses, a rule draws and the email builds letter by letter; the website settles underneath and the card holds |
+| 30 | — | So, what's next? | — | Typed; the "?" lands, the cursor deletes the line backwards and the "?" drops out of frame (no zoom, so it does not repeat 29) |
+| 31 | — | design@mariamoragarcia.com | — (black, no photo) | The slow ending after a fast film: a black beat, then the email surfaces letter by letter from the centre (soft blur to sharp), its tracking settles, a faint rule draws underneath; holds about 3 s |
 
 ## Accuracy checks
 
