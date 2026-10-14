@@ -274,7 +274,7 @@ const T = {
   s16: [26.5, 29.0], s17: [28.95, 29.85], s18: [29.8, 31.5], s19: [31.45, 33.5], s20: [33.35, 34.3],
   s21: [34.3, 35.7], s22: [35.65, 37.4], s23: [37.35, 39.8], s24: [39.8, 40.65], s25: [40.6, 42.2],
   s26: [42.15, 43.85], s27: [43.8, 47.55], s28: [47.5, 49.7], s29: [49.7, 52.4], s30: [52.4, 54.8],
-  s31: [54.75, 61.25],
+  s31: [54.75, 60.25],
 };
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
@@ -526,9 +526,9 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 // 31 Closing — after a black beat the email surfaces letter by letter, slowly, and holds
 { const [a, b] = T.s31;
   const mail = split($("#fMail"), "design@mariamoragarcia.com");
-  tl.fromTo(mail, { opacity: 0, y: 14, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 1.6, stagger: { each: .055, from: "center" }, ease: "power2.out" }, a + .5);
-  tl.fromTo("#fMail", { letterSpacing: ".14em" }, { letterSpacing: ".02em", duration: 3.6, ease: "power2.out" }, a + .5);
-  tl.fromTo("#fRule", { scaleX: 0 }, { scaleX: 1, duration: 2.0, ease: "power2.inOut" }, a + 2.4);
+  tl.fromTo(mail, { opacity: 0, y: 14, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: .9, stagger: { each: .025, from: "center" }, ease: "power2.out" }, a + .25);
+  tl.fromTo("#fMail", { letterSpacing: ".14em" }, { letterSpacing: ".02em", duration: 2.0, ease: "power2.out" }, a + .25);
+  tl.fromTo("#fRule", { scaleX: 0 }, { scaleX: 1, duration: 1.2, ease: "power2.inOut" }, a + 1.2);
   tl.set({}, {}, b); }
 
 /* ---------- video sync, preview and render hooks ---------- */

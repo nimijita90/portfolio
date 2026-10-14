@@ -58,7 +58,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | — | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
 | 30 | — | So, what's next? | — | Centred Silk line; the words rise one by one from masks ("next?" in italic), the line breathes, then the words slip away upwards in the same order. Calmer pace, leading into the slow ending |
-| 31 | — | design@mariamoragarcia.com | — (black, no photo) | The slow ending after a fast film: a black beat, then the email surfaces letter by letter from the centre (soft blur to sharp), its tracking settles, a faint rule draws underneath; holds about 3 s |
+| 31 | — | design@mariamoragarcia.com | — (black, no photo) | The slow ending after a fast film: a black beat, then the email surfaces letter by letter from the centre (soft blur to sharp), its tracking settles, a faint rule draws underneath; readable within about 1.3 s, then holds about 4 s |
 
 ## Accuracy checks
 
