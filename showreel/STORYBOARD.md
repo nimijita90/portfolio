@@ -58,7 +58,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 28 | 45.95–48.55 | The point left by scene 27 bursts into the ten letters of *complexity*, which hang in a slowly turning orbit around it, rotated and dimmed; then they snap into one clean Silk italic word (power4.inOut). "Because making" and "feel **simple**" rise in after it. Exit: up and out. |
 | 29 | 48.55–51.25 | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
 | 30 | 51.25–53.65 | So, what's next? | — | Centred Silk line; the words rise one by one from masks ("next?" in italic), the line breathes, then the words slip away upwards in the same order. Calmer pace, leading into the slow ending |
-| 31 | 53.60–59.10 | design@mariamoragarcia.com | — (black, no photo) | The slow ending after a fast film: a black beat, then the email surfaces letter by letter from the centre (soft blur to sharp), its tracking settles, a faint rule draws underneath; readable within about 1.3 s, then holds about 4 s |
+| 31 | 53.60–61.60 | Closing. (1) Flashback wall: sixteen frames of the film itself (over99, name, 10+, 40%, Nordice, Runar, XSITE, sportsbook, 43, 22/15, logos, roadmap, UI kit, leadership, complexity, I love) cut in fast, in shuffled order, as a 4×4 wall that breathes forward. (2) The wall collapses into one ivory point (expo in, from the edges). (3) The point opens into a hairline; "María *Mora*" (Silk, 200px) rises out of it, unlit. (4) A light sweeps across and switches the name on. (5) design@mariamoragarcia.com settles in letter by letter from blur, slow and quiet; hold on name + email to the end. Black throughout. |
 
 ## Accuracy checks
 
