@@ -1,40 +1,46 @@
 # Showreel music brief
 
-Length: **61 s** (the video runs 0:00–0:60.75). Instrumental only, no vocals.
+Length: **62.4 s** (the video runs 0:00–1:02.4). Instrumental only, no vocals.
 
 ## Direction
 
-Minimal, premium electronic with a cinematic finish. Tight, dry and precise, to match the kinetic typography: muted kick, short clicks and plucks, a deep sub bass and one simple synth/piano motif. No EDM drops, no epic trailer drums, no guitars, no stock "corporate inspiration" feel.
+Dynamic and catchy, but premium: a confident electronic track with a clear melodic hook that people remember. It should sit between minimal techno and modern fashion-film electronica. Punchy, dry drums, a rolling sub bass, crisp plucks and one memorable synth hook that comes back. It must not sound like EDM festival music, an epic trailer, stock "corporate inspiration" music or ukulele pop. The ending is playful: the viewer writes María an email and clicks Send.
 
-- Tempo: **120 BPM**, 4/4 (one beat = 0.5 s, so the cuts can be locked to the grid afterwards).
-- Key: minor, e.g. A minor.
-- Reference mood (genre only): modern fashion and design-house films; minimal techno and electronica meets a neo-classical piano ending.
+- Tempo: **120 BPM**, 4/4 (one beat is 0.5 s, so cuts can be locked to the grid).
+- Key: A minor, lifting to C major for the final chord.
+- Reference mood (genre only): fashion-house campaign films, Apple keynote openers, minimal electro-pop.
 
 ## Structure, locked to the edit
 
 | Time | Picture | Music |
 |---|---|---|
-| 0:00–0:03.5 | "Hi." → over99 logo | Near silence; a single synth/piano motif. A soft riser lands on a hit at **0:03.0** (logo shockwave) |
-| 0:03.5–0:09.8 | "If you're looking for a Design Lead… I know one." | Clicks and hi-hats only; the pulse starts |
-| 0:09.8 | "I'm María Mora." | **Kick enters**; groove established |
-| 0:11–0:17.5 | 10+ years, products, "I've learned…" | Groove builds; short riser into the next hit |
+| 0:00–0:03.5 | "Hi." → over99 logo | The hook, played once on a filtered pluck; a short riser lands on a hit at **0:03.0** (logo) |
+| 0:03.5–0:09.8 | "If you're looking for a Design Lead… I know one." | Hi-hats and clicks; the pulse starts |
+| 0:09.8 | "I'm María Mora." | **Kick and bass enter**; the groove is on |
+| 0:11–0:17.5 | 10+ years, products, "I've learned…" | Groove builds, with a riser into the next hit |
 | 0:17.5 | "Evidence." | Accent hit |
-| 0:21.0 | "Direction." → Nordice/Runar footage | **Full energy**: bass line and motif together |
-| 0:21–0:40.5 | Work, 43 brands, 22/15, logos | Driving, steady, slight variation every 8 bars; no breakdown |
-| 0:40.5–0:47.5 | Product strategy, design systems, leadership | Peak layer (extra arpeggio or pad); energy holds |
-| 0:47.5 | "Because making complexity feel simple" | **Drums drop out**; bass and pad only |
-| 0:51.0 | "I love." grows to fill the frame | Swell that opens up (no hit) |
-| 0:52.4–0:54.3 | "So, what's next?" | Almost silence; one held note |
-| 0:54.3–0:60.75 | Only the email, slow | **Slow, beautiful outro**: soft piano with a warm pad, the motif played once more, slower. It resolves and decays to silence at about 0:60 |
+| 0:21.0 | "Direction." → Nordice / Runar footage | **Full energy: the hook in full**, with bass and drums |
+| 0:21–0:40.5 | Work, 43 brands, 22 / 15 markets, logos | Driving and steady, with variation every 8 bars and no breakdown |
+| 0:40.5–0:46.0 | Product strategy, design systems, leadership | Peak: an extra arpeggio layer; a reverse swell into **0:45.9** |
+| 0:45.9 | "complexity" bursts into letters | Impact plus a short stop (a half-beat of silence), then the groove snaps back as the letters lock |
+| 0:48.5 | "Is the kind of design problem I love." | Drums thin out; bass and hook only |
+| 0:51.2 | "So, what's next?" | Almost silence: one held note, a breath |
+| 0:53.6–0:58.5 | A mail composer types "Hey, María! Welcome on board." | Playful and light: a ticking pluck groove in the rhythm of the typing, with the hook teased |
+| **0:58.6** | The pointer clicks **Send** | **Button hit**: a satisfying stab, then the window flies off on a whoosh |
+| 0:59.2–1:02.4 | Only the address stays, centred, "Sent ✓" | A warm resolved chord (C major) with the hook's last notes; decays to silence at about 1:02 |
 
-## Prompt for a music generator (Suno, Udio, ElevenLabs Music…)
+## Prompt for Higgsfield (Sonilo) or another music generator
 
-> Instrumental, 61 seconds, 120 BPM, A minor. Minimal premium electronic for a designer's portfolio showreel. Tight, dry and elegant: muted kick, crisp clicks, short plucks, deep sub bass, one simple melancholic synth-piano motif. Starts almost silent with the motif alone and a soft riser hitting at 3 seconds. Hi-hats from 4 s, kick enters at 10 s, full groove with bass from 21 s, steady and driving until 47 s, with an extra arpeggio layer from 40 s. At 47 s the drums stop: only bass and pad, then a warm swell at 51 s. At 54 s it becomes a slow, intimate outro: soft felt piano and a warm pad playing the motif once more, slowly, resolving and fading to silence at 60 s. No vocals, no EDM drop, no epic trailer drums, no guitar.
+> Instrumental, 62 seconds, 120 BPM, A minor. Dynamic, catchy, premium electronic for a design lead's portfolio showreel. Punchy dry drums, rolling sub bass, crisp plucks and one memorable synth hook that returns. Starts with the hook alone on a filtered pluck and a riser hitting at 3 s. Hi-hats from 4 s, kick and bass at 10 s, the full hook at 21 s, driving and steady until 46 s, with an extra arpeggio from 40 s. Impact and a half-beat stop at 46 s, then back in. Drums thin out at 48 s, near silence at 51 s. At 54 s a light, playful ticking groove, then a bright stab at 58.6 s and a warm C major chord ringing out to silence by 62 s. No vocals, no EDM drop, no trailer drums, no guitar.
 
-## Library search (Artlist, Musicbed, Epidemic Sound)
+Short version (if the prompt field is limited):
 
-Keywords: *minimal electronic, fashion, sleek, modern, pulse, tech, elegant, 120 bpm, piano outro*. Pick a track with a clear soft ending, or one with stems so the outro can be edited.
+> Instrumental 62s, 120 BPM, A minor. Catchy premium electronic showreel: punchy dry drums, sub bass, plucks, memorable synth hook. Builds from 0–21s, full hook 21–46s, impact + short stop at 46s, breaks down at 51s, playful light groove 54s, bright stab at 58.6s, warm major chord fading out by 62s. No vocals, no EDM drop.
+
+## Library alternative (licence-free)
+
+If the generator cannot follow the structure, a licensed library track works too; Pixabay Music is free for commercial use without attribution. Keywords: *minimal electronic, fashion, catchy, upbeat, 120 bpm, modern, sleek*. Choose a track with a clean ending.
 
 ## Delivery
 
-WAV or high-quality MP3, at least 61 s. Once the track is in `showreel/audio/`, the cuts are retimed to its beats and it is mixed into the master: a fade-in at 0:00, and the outro is left to decay naturally on the email.
+WAV or high-quality MP3, at least 62 s, placed in `showreel/audio/`. The cuts are then fine-tuned to the beat and the track is mixed into the master, with the outro decaying naturally on the email.
