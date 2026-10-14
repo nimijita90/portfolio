@@ -28,7 +28,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | # | Time (s) | On-screen text | Visual / source | Move |
 |---|---|---|---|---|
 | 01 | 0.00–1.35 | Hi. | — | Extreme close-up of the "H" pulls back; the word lifts out of frame |
-| 01b | 1.35–3.55 | — | over99 logo (`media/over99.svg`, María\'s own animation) | Letters rise from the baseline, the "v" turns into ">", a shockwave releases the second 9; driven frame by frame by the timeline |
+| 01b | 1.35–3.55 | — | over99 logo (`media/over99.svg`, María's own animation) with a deep blue halo glowing up behind it | Letters rise from the baseline, the "v" turns into ">", a shockwave releases the second 9; driven frame by frame by the timeline |
 | 02 | 1.30–2.75 | If you're looking for | — | Typewriter + cursor; pushed out left |
 | 03 | — | a Design Lead. | — | Camera pass along the oversized line: "a" → "Design" → "Lead." with hard stops, then a pull-back reveals the full sentence on one line, which holds; clean cut to "I think…" |
 | 04 | 4.85–6.10 | I think… | — | Tracking compresses; the dots arrive one at a time |

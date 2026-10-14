@@ -63,7 +63,7 @@ svg{position:absolute;inset:0;overflow:visible}
 <div class="sc" id="s01"><div class="abs serif it c" id="hi" style="font-size:760px">Hi.</div></div>
 
 <!-- 01b over99 logo (María's supplied animation, driven by the timeline) -->
-<div class="sc" id="s01b"><svg class="logo" id="o99" style="position:absolute;left:50%;top:50%;width:1180px;transform:translate(-50%,-50%);overflow:visible;fill:var(--ink)" viewBox="8 4 384 84" role="img" aria-label="over99">
+<div class="sc" id="s01b"><div class="abs" id="o99Halo" style="left:60px;top:110px;width:1800px;height:860px;background:radial-gradient(ellipse 50% 50% at 50% 52%,rgba(24,66,170,.95) 0%,rgba(16,46,130,.72) 32%,rgba(9,26,82,.4) 58%,rgba(0,0,0,0) 82%);opacity:0"></div><svg class="logo" id="o99" style="position:absolute;left:50%;top:50%;width:1180px;transform:translate(-50%,-50%);overflow:visible;fill:var(--ink)" viewBox="8 4 384 84" role="img" aria-label="over99">
     <defs><clipPath id="o99line"><rect x="0" y="0" width="400" height="86"/></clipPath></defs>
     <g class="word">
     <circle class="wave" cx="133" cy="52" r="10"/>
@@ -304,7 +304,11 @@ const logoAnims = (() => { const svg = $("#o99"); const q = (c) => svg.querySele
   run(chev, [{ transform: "translateX(0)" }, { transform: "translateX(5px)", offset: .4 }, { transform: "translateX(0)" }], { duration: 500, delay: 1750, easing: "ease-in-out", composite: "add", fill: "none" });
   return list; })();
 const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAnims.forEach((a) => { a.currentTime = ms; }); };
-{ const [a] = T.s01b; tl.to("#o99", { x: -1900, duration: .35, ease: exi }, a + 1.85); }
+{ const [a] = T.s01b;
+  // a deep blue halo glows up behind the logo as it builds, then leaves with it
+  tl.fromTo("#o99Halo", { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" }, a + .15);
+  tl.to("#o99", { x: -1900, duration: .35, ease: exi }, a + 1.85);
+  tl.to("#o99Halo", { x: -1900, opacity: 0, duration: .35, ease: exi }, a + 1.85); }
 
 // 02 If you're looking for — typewriter with cursor
 { const [a] = T.s02; type($("#lookT"), "#lookC", "If you’re looking for", a + .05, .04);
