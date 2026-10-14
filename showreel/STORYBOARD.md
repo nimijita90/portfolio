@@ -54,7 +54,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
 | 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
-| 27 | — | Design / leadership. | — (type only) | Follow the leader: the "l" of "leadership." enters first from the right along a curved path and every other letter follows the same path, one after another, until the word locks into place (Silk italic, 230 px); "Design" (Silk regular, 190 px) rises from a mask above, in a staggered layout; slow push-in |
+| 27 | — | Design leadership. | — (minimal chess motion graphic) | A thin line draws; seven grey pawns (the team of 7) rise onto it; a white queen rises in front, steps forward one square under a soft light, and the seven pawns advance one square behind her and brighten. "Design leadership." rises underneath (Silk, 96 px) |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | — | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
 | 30 | — | So, what's next? | — | Centred Silk line; the words rise one by one from masks ("next?" in italic), the line breathes, then the words slip away upwards in the same order. Calmer pace, leading into the slow ending |
