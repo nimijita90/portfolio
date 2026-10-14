@@ -58,7 +58,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 28 | 45.95–48.55 | The point left by scene 27 bursts into the ten letters of *complexity*, which hang in a slowly turning orbit around it, rotated and dimmed; then they snap into one clean Silk italic word (power4.inOut). "Because making" and "feel **simple**" rise in after it. Exit: up and out. |
 | 29 | 48.55–51.25 | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
 | 30 | 51.25–53.65 | "So, what's *next?*" — centred Silk line, words rise from masks and sink back out. |
-| 31 | 53.60–62.40 | Closing: the viewer answers. A minimal dark mail composer (no real brand) rises in; "To" types design@mariamoragarcia.com, Subject "Design Lead", body in Silk: "Hey María! / *You're hired.*" A pointer glides to Send and clicks; the window flies off, the pointer leaves, and only the address stays, gliding to centre and scaling up. A small "Sent ✓" appears under it; hold to the end. Black throughout. |
+| 31 | 53.60–62.40 | Closing: the viewer answers. A minimal dark mail composer (no real brand) rises in; "To" types design@mariamoragarcia.com, Subject "Design Lead", body in Silk: "Hey María! / *Welcome on board.*" A pointer glides to Send and clicks; the window flies off, the pointer leaves, and only the address stays, gliding to centre and scaling up. A small "Sent ✓" appears under it; hold to the end. Black throughout. |
 
 ## Accuracy checks
 
