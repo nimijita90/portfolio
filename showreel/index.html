@@ -224,14 +224,14 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 27 Design leadership. -->
 <div class="sc" id="s27">
-  <svg class="abs" id="ldFlock" style="left:0;top:0;width:1920px;height:1080px;overflow:visible" viewBox="0 0 1920 1080">
-    <g id="ldLines" stroke="#f5f4f1" stroke-width="1.5" opacity=".4"><line class="ldLn" x1="960" y1="400" x2="960" y2="400"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400"/></g>
-    <circle id="ldPulse" cx="960" cy="400" r="18" fill="none" stroke="#f5f4f1" stroke-width="1.5"/>
-    <g fill="#f5f4f1"><circle class="ldDot" r="7" cx="330" cy="180" data-r="960,150" data-v="770,388" data-k="1"/><circle class="ldDot" r="7" cx="1580" cy="240" data-r="1155,244" data-v="660,326" data-k="2"/><circle class="ldDot" r="7" cx="250" cy="760" data-r="1204,456" data-v="550,264" data-k="3"/><circle class="ldDot" r="7" cx="1650" cy="820" data-r="1068,625" data-v="770,512" data-k="1"/><circle class="ldDot" r="7" cx="700" cy="930" data-r="852,625" data-v="660,574" data-k="2"/><circle class="ldDot" r="7" cx="1300" cy="110" data-r="716,456" data-v="550,636" data-k="3"/><circle class="ldDot" r="7" cx="1150" cy="900" data-r="765,244" data-v="650,450" data-k="2"/></g>
-    <circle id="ldHalo" cx="960" cy="400" r="38" fill="none" stroke="#f5f4f1" stroke-width="1.5" opacity=".55"/>
-    <circle id="ldLead" cx="960" cy="400" r="20" fill="#f5f4f1" style="filter:drop-shadow(0 0 18px rgba(245,244,241,.7))"/>
+  <svg class="abs" id="ldTree" style="left:0;top:0;width:1920px;height:1080px;overflow:visible" viewBox="0 0 1920 1080">
+    <g id="ldLines" stroke="#f5f4f1" stroke-width="1.5" opacity=".35"><line class="ldLn" x1="960" y1="290" x2="960" y2="290" data-x="450"/><line class="ldLn" x1="960" y1="290" x2="960" y2="290" data-x="620"/><line class="ldLn" x1="960" y1="290" x2="960" y2="290" data-x="790"/><line class="ldLn" x1="960" y1="290" x2="960" y2="290" data-x="960"/><line class="ldLn" x1="960" y1="290" x2="960" y2="290" data-x="1130"/><line class="ldLn" x1="960" y1="290" x2="960" y2="290" data-x="1300"/><line class="ldLn" x1="960" y1="290" x2="960" y2="290" data-x="1470"/></g>
+    <circle id="ldPulse" cx="960" cy="290" r="16" fill="none" stroke="#f5f4f1" stroke-width="1.5" opacity="0"/>
+    <g><circle class="ldDot" r="0" cx="960" cy="290" fill="#6b6862" data-x="450"/><circle class="ldDot" r="0" cx="960" cy="290" fill="#6b6862" data-x="620"/><circle class="ldDot" r="0" cx="960" cy="290" fill="#6b6862" data-x="790"/><circle class="ldDot" r="0" cx="960" cy="290" fill="#6b6862" data-x="960"/><circle class="ldDot" r="0" cx="960" cy="290" fill="#6b6862" data-x="1130"/><circle class="ldDot" r="0" cx="960" cy="290" fill="#6b6862" data-x="1300"/><circle class="ldDot" r="0" cx="960" cy="290" fill="#6b6862" data-x="1470"/></g>
+    <g fill="#f5f4f1" style="filter:drop-shadow(0 0 10px rgba(245,244,241,.9))"><circle class="ldSpark" r="5" cx="960" cy="290" opacity="0" data-x="450"/><circle class="ldSpark" r="5" cx="960" cy="290" opacity="0" data-x="620"/><circle class="ldSpark" r="5" cx="960" cy="290" opacity="0" data-x="790"/><circle class="ldSpark" r="5" cx="960" cy="290" opacity="0" data-x="960"/><circle class="ldSpark" r="5" cx="960" cy="290" opacity="0" data-x="1130"/><circle class="ldSpark" r="5" cx="960" cy="290" opacity="0" data-x="1300"/><circle class="ldSpark" r="5" cx="960" cy="290" opacity="0" data-x="1470"/></g>
+    <circle id="ldLead" cx="960" cy="290" r="0" fill="#f5f4f1" style="filter:drop-shadow(0 0 18px rgba(245,244,241,.7))"/>
   </svg>
-  <div class="abs serif c" id="ldTitle" style="top:840px;font-size:110px;line-height:1;white-space:nowrap"><span class="mask"><span class="w">Design</span></span> <span class="mask"><span class="w it">leadership.</span></span></div>
+  <div class="abs serif c" id="ldTitle" style="top:800px;font-size:110px;line-height:1;white-space:nowrap"><span class="mask"><span class="w">Design</span></span> <span class="mask"><span class="w it">leadership.</span></span></div>
 </div>
 
 <!-- 28 Because making complexity feel simple -->
@@ -488,32 +488,24 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 
 // 27 Design leadership. — María in silhouette against a white sun; what she brings as a design lead orbits around her
 { const [a, b] = T.s27;
-  // team of 7: scattered dots, a leader appears and connects them, they form a V and follow the leader's turn one by one
-  const LV = [880, 450], PATH = [[150, -110], [330, -60], [470, -90]];
-  const P = (el, k) => el.dataset[k].split(",").map(Number);
-  const dots = gsap.utils.toArray(".ldDot"), lns = gsap.utils.toArray(".ldLn");
-  const follow = (target, bx, by, ax, ay) => ({ keyframes: PATH.map(([px, py]) => ({ attr: { [ax]: bx + px, [ay]: by + py }, duration: .5, ease: "sine.inOut" })) });
-  dots.forEach((d, i) => {
-    const [rx, ry] = P(d, "r"), [vx, vy] = P(d, "v"), lag = +d.dataset.k * .12;
-    tl.fromTo(d, { attr: { r: 0 } }, { attr: { r: 7 }, duration: .35, ease: "back.out(2)" }, a + i * .04);
-    tl.to(d, { x: (i % 2 ? 1 : -1) * 40, y: (i % 3 - 1) * 30, duration: 1.0, ease: "sine.inOut" }, a);
-    tl.to(d, { attr: { cx: rx, cy: ry }, x: 0, y: 0, duration: .6, ease: "expo.inOut" }, a + .95 + i * .03);
-    tl.to(lns[i], { attr: { x2: rx, y2: ry }, duration: .6, ease: "expo.inOut" }, a + .95 + i * .03);
-    tl.to(d, { attr: { cx: vx, cy: vy }, duration: .7, ease: "expo.inOut" }, a + 1.85);
-    tl.to(lns[i], { attr: { x1: LV[0], y1: LV[1], x2: vx, y2: vy }, duration: .7, ease: "expo.inOut" }, a + 1.85);
-    tl.to(d, follow(d, vx, vy, "cx", "cy"), a + 2.55 + lag);
-    tl.to(lns[i], follow(lns[i], vx, vy, "x2", "y2"), a + 2.55 + lag);
-    tl.to(lns[i], follow(lns[i], LV[0], LV[1], "x1", "y1"), a + 2.55);
+  // one becomes eight: a single dot gives rise to a team of 7, sends a wave of light down to each of them, then they all pulse in sync
+  const ROW = 560, order = [3, 2, 4, 1, 5, 0, 6];  // members leave from the centre outwards
+  const dots = gsap.utils.toArray(".ldDot"), lns = gsap.utils.toArray(".ldLn"), sparks = gsap.utils.toArray(".ldSpark");
+  tl.to("#ldLead", { attr: { r: 16 }, duration: .45, ease: "back.out(2.5)" }, a + .05);
+  tl.fromTo("#ldPulse", { attr: { r: 16 }, opacity: .9 }, { attr: { r: 140 }, opacity: 0, duration: .8, ease: "expo.out" }, a + .35);
+  order.forEach((i, n) => {
+    const x = +dots[i].dataset.x, t0 = a + .6 + n * .06;
+    tl.to(dots[i], { attr: { r: 8, cx: x, cy: ROW }, duration: .8, ease: "expo.out" }, t0);
+    tl.to(lns[i], { attr: { x2: x, y2: ROW }, duration: .8, ease: "expo.out" }, t0);
+    // the wave of light travels down every line at once and lights each member
+    tl.to(sparks[i], { keyframes: [{ opacity: 1, duration: .05 }, { attr: { cx: x, cy: ROW }, duration: .45, ease: "power2.in" }, { opacity: 0, duration: .1 }] }, a + 1.75);
+    tl.to(dots[i], { attr: { r: 11, fill: "#f5f4f1" }, duration: .25, ease: "back.out(3)" }, a + 2.25);
+    tl.to(dots[i], { keyframes: [{ attr: { r: 15 }, duration: .15, ease: "power2.out" }, { attr: { r: 11 }, duration: .35, ease: "power2.inOut" }] }, a + 3.15);
   });
-  tl.fromTo("#ldLead", { attr: { r: 0 } }, { attr: { r: 20 }, duration: .4, ease: "back.out(2.5)" }, a + .7);
-  tl.fromTo("#ldHalo", { attr: { r: 0 }, opacity: 0 }, { attr: { r: 38 }, opacity: .55, duration: .5, ease: "expo.out" }, a + .8);
-  tl.fromTo("#ldPulse", { attr: { r: 18 }, opacity: .9 }, { attr: { r: 300 }, opacity: 0, duration: 1.0, ease: "expo.out" }, a + .75);
-  tl.fromTo("#ldLines", { opacity: 0 }, { opacity: .4, duration: .3 }, a + .95);
-  ["#ldLead", "#ldHalo"].forEach((sel) => {
-    tl.to(sel, { attr: { cx: LV[0], cy: LV[1] }, duration: .7, ease: "expo.inOut" }, a + 1.85);
-    tl.to(sel, follow(sel, LV[0], LV[1], "cx", "cy"), a + 2.55);
-  });
-  tl.from("#ldTitle .w", { yPercent: 110, duration: .8, stagger: .12, ease: ex }, a + 2.2); }
+  tl.fromTo("#ldLines", { opacity: .35 }, { keyframes: [{ opacity: .9, duration: .2 }, { opacity: .35, duration: .5 }] }, a + 1.75);
+  tl.to("#ldLead", { keyframes: [{ attr: { r: 22 }, duration: .15, ease: "power2.out" }, { attr: { r: 16 }, duration: .35, ease: "power2.inOut" }] }, a + 1.7);
+  tl.to("#ldLead", { keyframes: [{ attr: { r: 22 }, duration: .15, ease: "power2.out" }, { attr: { r: 16 }, duration: .35, ease: "power2.inOut" }] }, a + 3.0);
+  tl.from("#ldTitle .w", { yPercent: 110, duration: .8, stagger: .12, ease: ex }, a + 2.4); }
 
 // 28 Because making complexity feel simple — scattered letters resolve into one clean word
 { const [a] = T.s28; const chs = split($("#cx"), "complexity");

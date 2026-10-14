@@ -54,7 +54,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
 | 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
-| 27 | — | Design leadership. | — (motion graphic, no photo) | Team of 7 as seven dots drifting apart; a leader dot (with a halo) appears with a pulse and pulls them into a connected ring; the group snaps into a V formation (the ">" of the over99 logo), then the leader turns and each member follows its path one after another, the furthest back last. The title rises underneath; only one line of text |
+| 27 | — | Design leadership. | — (motion graphic, no photo) | One becomes eight: a single dot appears and pulses; seven dim dots (team of 7) are born from it and settle in a row below, joined to it by fine lines; a wave of light runs down every line at once and lights them up; leader and team then pulse in sync. The title rises underneath; only one line of text |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | — | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
 | 30 | — | So, what's next? | — | Centred Silk line; the words rise one by one from masks ("next?" in italic), the line breathes, then the words slip away upwards in the same order. Calmer pace, leading into the slow ending |
