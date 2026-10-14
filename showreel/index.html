@@ -568,7 +568,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   const t3 = typeIn("#mBody1", "Hey, María!", t2 + .3, .05);
   const t4 = typeIn("#mBody2", "Welcome on board.", t3 + .35, .05); caret("#mBodyC", t2 + .3, t4 + .55);
   // pointer glides to Send and clicks
-  const tc = t4 + .85;
+  const tc = a + 4.9; // 58.5 s: lands on the music's button stab
   tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 770, duration: .65, ease: "power3.inOut" }, t4 + .12);
   tl.to("#mSend", { scale: .92, duration: .08, ease: "power2.out" }, tc);
   tl.to("#mSend", { scale: 1, duration: .2, ease: "power2.out" }, tc + .08);
