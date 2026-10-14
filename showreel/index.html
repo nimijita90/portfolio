@@ -225,7 +225,7 @@ svg{position:absolute;inset:0;overflow:visible}
 <!-- 27 Design leadership. -->
 <div class="sc" id="s27">
   <div class="title serif" id="dlT"><span>Design <i>leadership.</i></span></div>
-  <div class="abs ln" style="left:300px;top:430px;width:380px;height:2px;background:#f5f4f1"></div><div class="abs ln" style="left:820px;top:498px;width:240px;height:2px;background:#55534f"></div><div class="abs ln" style="left:520px;top:566px;width:420px;height:2px;background:#55534f"></div><div class="abs ln" style="left:1180px;top:634px;width:300px;height:2px;background:#55534f"></div><div class="abs ln" style="left:380px;top:702px;width:200px;height:2px;background:#55534f"></div><div class="abs ln" style="left:960px;top:770px;width:460px;height:2px;background:#55534f"></div><div class="abs ln" style="left:640px;top:838px;width:260px;height:2px;background:#55534f"></div>
+  <canvas class="abs" id="mlC" width="1920" height="1080" style="left:0;top:0;width:1920px;height:1080px"></canvas>
 </div>
 
 <!-- 28 Because making complexity feel simple -->
@@ -484,14 +484,28 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   roll("#dsT", a + .1);
   tl.fromTo("#kitF", { y: -500, opacity: 0, rotationX: -20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1); }
 
-// 27 Design leadership. — seven scattered hairlines; the ivory one commits first, the rest follow and align into one clean block
-{ const [a] = T.s27; const lns = gsap.utils.toArray(".ln");
+// 27 Design leadership. — "magnet lines" (after React Bits' MagnetLines, MIT + Commons Clause): a quiet grid of hairlines, each pointing its own way; a single ivory point appears and the whole field turns, in a wave, to face it
+{ const [a, b] = T.s27; const cv = $("#mlC"), g = cv.getContext("2d");
+  const C = 19, R = 8, SP = 72, X0 = 960 - (C - 1) * SP / 2, Y0 = 410, L = 17;
+  const rnd = gsap.utils.random, lines = [];
+  for (let r = 0; r < R; r++) for (let c = 0; c < C; c++) lines.push({ x: X0 + c * SP, y: Y0 + r * SP, a0: ((c * 7 + r * 13) % 11) / 11 * Math.PI });
+  const st = { px: 924, py: Y0 + (R - 1) * SP / 2, dot: 0, wave: 0, show: 0 };
+  const ease = gsap.parseEase("power3.inOut");
+  const draw = () => { g.clearRect(0, 0, 1920, 1080);
+    for (const l of lines) { const dx = st.px - l.x, dy = st.py - l.y, d = Math.hypot(dx, dy);
+      let t = Math.atan2(dy, dx), diff = ((t - l.a0) % Math.PI + Math.PI * 1.5) % Math.PI - Math.PI / 2;
+      const k = ease(gsap.utils.clamp(0, 1, (st.wave * 1700 - d) / 520)), an = l.a0 + diff * k;
+      const near = Math.max(0, 1 - d / 700), c = Math.round(70 + 120 * k * (.45 + .55 * near));
+      g.strokeStyle = `rgba(${c + 50},${c + 48},${c + 44},${st.show})`; g.lineWidth = 2; g.lineCap = "round";
+      const ux = Math.cos(an) * L, uy = Math.sin(an) * L; g.beginPath(); g.moveTo(l.x - ux, l.y - uy); g.lineTo(l.x + ux, l.y + uy); g.stroke(); }
+    if (st.dot > 0) { g.fillStyle = "#f5f4f1"; g.beginPath(); g.arc(st.px, st.py, 10 * st.dot, 0, 7); g.fill(); } };
   tl.to("#s26", { x: -1920, duration: .35, ease: exi }, a - .3);
   tl.fromTo("#s27", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#dlT", a + .1);
-  tl.from(lns, { scaleX: 0, transformOrigin: "0 50%", duration: .45, stagger: .04, ease: ex }, a + .15);
-  tl.to(lns[0], { width: 1320, duration: .6, ease: "expo.inOut" }, a + .7);
-  tl.to(lns.slice(1), { left: 300, width: 1320, backgroundColor: "#f5f4f1", duration: .6, stagger: .06, ease: "expo.inOut" }, a + .85); }
+  tl.fromTo(st, { show: 0 }, { show: 1, duration: .4, ease: "power2.out", onUpdate: draw }, a);
+  tl.fromTo(st, { dot: 0 }, { dot: 1, duration: .35, ease: "back.out(1.6)", onUpdate: draw }, a + .45);
+  tl.fromTo(st, { wave: 0 }, { wave: 1, duration: 1.0, ease: "none", onUpdate: draw }, a + .55);
+  tl.fromTo(st, { px: 924 }, { px: 1140, duration: b - a - 1.0, ease: "power1.inOut", onUpdate: draw }, a + 1.0); }
 
 // 28 Because making complexity feel simple — scattered letters resolve into one clean word
 { const [a] = T.s28; const chs = split($("#cx"), "complexity");
