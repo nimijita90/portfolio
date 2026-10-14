@@ -54,7 +54,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
 | 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
-| 27 | 36.90–38.85 | Design leadership. | Portfolio portrait (hero photo, cropped) + 7 abstract avatars | Team ring; Product, Engineering and Research nodes; AI agents dashed |
+| 27 | — | Design leadership. | María's portrait in silhouette (hair kept blonde) against a white sun; eight discs cropped from her real work | Circle opens, silhouette rises, title (difference blend), discs pop in and drift: Design ownership · Brand systems · Design systems · Product UI/UX · Cross-functional · Motion & 3D · 10+ yrs iGaming · Team building (7). Items mirror the over99 Design Lead brief |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | 41.00–43.10 | Is the kind of design problem I love. | — | Slow masked reveal |
 | 30 | 43.10–44.60 | So, what's next? | — | Typed; the "?" lands and carries the cut |
