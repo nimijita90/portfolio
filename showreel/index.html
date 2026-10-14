@@ -223,11 +223,10 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 27 Design leadership. -->
-<div class="sc" id="s27" style="background:#0c0c0c">
-  <div class="abs" id="lgCone" style="left:360px;top:401px;width:1200px;height:520px;filter:blur(9px);opacity:0"><div style="width:1120px;height:480px;clip-path:polygon(160px 0,960px 0,100% 100%,0 100%);background:linear-gradient(180deg,rgba(245,244,241,.34) 0%,rgba(245,244,241,.13) 30%,rgba(245,244,241,.04) 65%,rgba(245,244,241,0) 100%);position:absolute;left:40px;top:0"></div></div>
-  <div class="abs" id="lgTube" style="left:560px;top:398px;width:800px;height:4px;border-radius:2px;background:#fbfaf7;box-shadow:0 0 14px 2px rgba(245,244,241,.75),0 0 60px 6px rgba(245,244,241,.25);opacity:0"></div>
-  <div class="abs serif" id="lgText" style="left:0;width:1920px;top:560px;text-align:center;font-size:112px;line-height:1;color:#f5f4f1;opacity:0">Design <i>leadership.</i></div>
-  <div class="abs" style="left:0;top:0;width:1920px;height:1080px;background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>&quot;);opacity:.07;mix-blend-mode:screen;pointer-events:none"></div>
+<div class="sc" id="s27">
+  <div class="title serif" id="dlT"><span>Design <i>leadership.</i></span></div>
+  <div class="frame" id="ldF" style="left:300px;top:300px;width:1320px;height:720px;border-radius:16px;background:#000"><img id="ldI" src="media/lead/maria-endframe.jpg" style="position:absolute;left:0;top:-23px;width:1320px;height:auto"></div>
+  <div class="abs cap" id="ldCap" style="left:300px;top:1030px;color:var(--mute)">Leading a team of 7</div>
 </div>
 
 <!-- 28 Because making complexity feel simple -->
@@ -482,14 +481,14 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   roll("#dsT", a + .1);
   tl.fromTo("#kitF", { y: -500, opacity: 0, rotationX: -20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1); }
 
-// 27 Design leadership. — María in silhouette against a white sun; what she brings as a design lead orbits around her
+// 27 Design leadership. — closes the trio: same title roll and framed real image; María herself (her studio photo on black)
 { const [a, b] = T.s27;
-  // black room; a strip light flickers on and the phrase appears in its light
-  const flick = [[0, .05], [1, .06], [.15, .07], [1, .05], [.35, .08], [1, .1]];
-  let t = a + .45;
-  flick.forEach(([o, d]) => { tl.to(["#lgTube", "#lgCone", "#lgText"], { opacity: o, duration: d, ease: "none" }, t); t += d + .02; });
-  tl.fromTo("#lgText", { y: 6 }, { y: 0, duration: 1.2, ease: "power2.out" }, a + .45);
-  tl.fromTo(["#lgTube", "#lgCone", "#lgText"], { scale: 1 }, { scale: 1.035, transformOrigin: "50% 40%", duration: b - a - .5, ease: "none" }, a + .5); }
+  tl.to("#s26", { x: -1920, duration: .35, ease: exi }, a - .3);
+  tl.fromTo("#s27", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
+  roll("#dlT", a + .1);
+  tl.fromTo("#ldF", { y: 500, opacity: 0, rotationX: 20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1);
+  tl.fromTo("#ldI", { scale: 1.12, x: 60 }, { scale: 1, x: 0, transformOrigin: "70% 40%", duration: b - a, ease: "power2.out" }, a + .1);
+  tl.from("#ldCap", { opacity: 0, duration: .4 }, a + .6); }
 
 // 28 Because making complexity feel simple — scattered letters resolve into one clean word
 { const [a] = T.s28; const chs = split($("#cx"), "complexity");
