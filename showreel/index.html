@@ -224,18 +224,13 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 27 Design leadership. -->
 <div class="sc" id="s27">
-  <div class="abs" id="ldSpace" style="left:0;top:0;width:1920px;height:1080px;perspective:900px;perspective-origin:50% 50%;transform-style:preserve-3d">
-    <div class="abs serif ldF" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">Design ownership</div>
-    <div class="abs serif ldF it" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">Brand systems</div>
-    <div class="abs serif ldF" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">Design systems</div>
-    <div class="abs serif ldF" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">Product UI/UX</div>
-    <div class="abs serif ldF it" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">Cross-functional</div>
-    <div class="abs serif ldF" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">Motion &amp; 3D</div>
-    <div class="abs serif ldF" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">10+ yrs iGaming</div>
-    <div class="abs serif ldF it" style="left:960px;top:540px;font-size:140px;opacity:0;white-space:nowrap">Team building</div>
-  </div>
-  <div class="abs sans c cap" id="ldN" style="top:400px;font-size:20px;letter-spacing:.4em;color:#9a968e">01 / 08</div>
-  <div class="abs serif c" id="ldTitle" style="top:540px;font-size:170px;line-height:1;text-align:center"><span class="mask"><span class="w">Design</span></span><br><span class="mask"><span class="w it">leadership.</span></span></div>
+  <svg class="abs" id="ldFlock" style="left:0;top:0;width:1920px;height:1080px;overflow:visible" viewBox="0 0 1920 1080">
+    <g id="ldLines" stroke="#f5f4f1" stroke-width="1.5" opacity=".4"><line class="ldLn" x1="960" y1="400" x2="960" y2="400" data-r="960,150" data-v="1020,338"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400" data-r="1155,244" data-v="910,276"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400" data-r="1204,456" data-v="800,214"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400" data-r="1068,625" data-v="1020,462"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400" data-r="852,625" data-v="910,524"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400" data-r="716,456" data-v="800,586"/><line class="ldLn" x1="960" y1="400" x2="960" y2="400" data-r="765,244" data-v="900,400"/></g>
+    <circle id="ldPulse" cx="960" cy="400" r="18" fill="none" stroke="#f5f4f1" stroke-width="1.5"/>
+    <g fill="#f5f4f1"><circle class="ldDot" r="9" cx="330" cy="180" data-r="960,150" data-v="1020,338"/><circle class="ldDot" r="9" cx="1580" cy="240" data-r="1155,244" data-v="910,276"/><circle class="ldDot" r="9" cx="250" cy="760" data-r="1204,456" data-v="800,214"/><circle class="ldDot" r="9" cx="1650" cy="820" data-r="1068,625" data-v="1020,462"/><circle class="ldDot" r="9" cx="700" cy="930" data-r="852,625" data-v="910,524"/><circle class="ldDot" r="9" cx="1300" cy="110" data-r="716,456" data-v="800,586"/><circle class="ldDot" r="9" cx="1150" cy="900" data-r="765,244" data-v="900,400"/></g>
+    <circle id="ldLead" cx="960" cy="400" r="20" fill="#f5f4f1" style="filter:drop-shadow(0 0 18px rgba(245,244,241,.7))"/>
+  </svg>
+  <div class="abs serif c" id="ldTitle" style="top:820px;font-size:110px;line-height:1;white-space:nowrap"><span class="mask"><span class="w">Design</span></span> <span class="mask"><span class="w it">leadership.</span></span></div>
 </div>
 
 <!-- 28 Because making complexity feel simple -->
@@ -492,20 +487,24 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 
 // 27 Design leadership. — María in silhouette against a white sun; what she brings as a design lead orbits around her
 { const [a, b] = T.s27;
-  // one capability at a time arrives from the depth, holds for a beat and passes the camera; a counter keeps score
-  gsap.set(".ldF", { xPercent: -50, yPercent: -50 });
-  const caps = gsap.utils.toArray(".ldF"), step = .27;
-  tl.fromTo("#ldN", { opacity: 0 }, { opacity: 1, duration: .2 }, a + .1);
-  caps.forEach((el, i) => {
-    const t0 = a + .1 + i * step;
-    tl.fromTo(el, { z: -1400, opacity: 0 }, { z: 0, opacity: 1, duration: .2, ease: "expo.out", immediateRender: false }, t0);
-    tl.to(el, { z: 650, opacity: 0, duration: .14, ease: "power2.in" }, t0 + .19);
-    tl.set("#ldN", { textContent: String(i + 1).padStart(2, "0") + " / 08" }, t0);
+  // team of 7: scattered dots drift, a leader appears, connects them into a ring, then the group flies in a V formation
+  const P = (el, k) => el.dataset[k].split(",").map(Number);
+  const dots = gsap.utils.toArray(".ldDot"), lns = gsap.utils.toArray(".ldLn");
+  dots.forEach((d, i) => {
+    tl.fromTo(d, { attr: { r: 0 } }, { attr: { r: 9 }, duration: .35, ease: "back.out(2)" }, a + i * .04);
+    tl.to(d, { x: (i % 2 ? 1 : -1) * 40, y: (i % 3 - 1) * 30, duration: 1.0, ease: "sine.inOut" }, a);
+    const [rx, ry] = P(d, "r"), [vx, vy] = P(d, "v");
+    tl.to(d, { attr: { cx: rx, cy: ry }, x: 0, y: 0, duration: .6, ease: "expo.inOut" }, a + .95 + i * .03);
+    tl.to(lns[i], { attr: { x2: rx, y2: ry }, duration: .6, ease: "expo.inOut" }, a + .95 + i * .03);
+    tl.to(d, { attr: { cx: vx, cy: vy }, duration: .7, ease: "expo.inOut" }, a + 1.85);
+    tl.to(lns[i], { attr: { x1: 1130, y1: 400, x2: vx, y2: vy }, duration: .7, ease: "expo.inOut" }, a + 1.85);
   });
-  const tEnd = a + .1 + caps.length * step;
-  tl.to("#ldN", { opacity: 0, duration: .2 }, tEnd);
-  tl.from("#ldTitle .w", { yPercent: 110, duration: .8, stagger: .12, ease: ex }, tEnd);
-  tl.fromTo("#ldTitle", { scale: .96 }, { scale: 1.02, duration: b - tEnd, ease: "none" }, tEnd); }
+  tl.fromTo("#ldLead", { attr: { r: 0 } }, { attr: { r: 20 }, duration: .4, ease: "back.out(2.5)" }, a + .7);
+  tl.fromTo("#ldPulse", { attr: { r: 18 }, opacity: .9 }, { attr: { r: 300 }, opacity: 0, duration: 1.0, ease: "expo.out" }, a + .75);
+  tl.fromTo("#ldLines", { opacity: 0 }, { opacity: .4, duration: .3 }, a + .95);
+  tl.to("#ldLead", { attr: { cx: 1130, cy: 400 }, duration: .7, ease: "expo.inOut" }, a + 1.85);
+  tl.fromTo("#ldFlock", { x: 0 }, { x: 70, duration: b - a - 2.5, ease: "none" }, a + 2.5);
+  tl.from("#ldTitle .w", { yPercent: 110, duration: .8, stagger: .12, ease: ex }, a + 2.2); }
 
 // 28 Because making complexity feel simple — scattered letters resolve into one clean word
 { const [a] = T.s28; const chs = split($("#cx"), "complexity");
