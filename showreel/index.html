@@ -224,11 +224,10 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 27 Design leadership. -->
 <div class="sc" id="s27">
-  <div class="abs sans arL" style="left:210px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">L</div><div class="abs sans arL" style="left:360px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">E</div><div class="abs sans arL" style="left:510px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">A</div><div class="abs sans arL" style="left:660px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">D</div><div class="abs sans arL" style="left:810px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">E</div><div class="abs sans arL" style="left:960px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">R</div><div class="abs sans arL" style="left:1110px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">S</div><div class="abs sans arL" style="left:1260px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">H</div><div class="abs sans arL" style="left:1410px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1;visibility:hidden">I</div><div class="abs sans arL" style="left:1560px;top:408px;width:150px;text-align:center;font-size:118px;font-weight:300;line-height:1;color:#f5f4f1">P</div>
-  <div class="abs" id="arPool" style="left:1225px;top:580px;width:520px;height:110px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(245,244,241,.16) 0%,rgba(245,244,241,0) 70%);opacity:0"></div>
-  <div class="abs" id="arHalo" style="left:1185px;top:300px;width:600px;height:380px;background:radial-gradient(ellipse 45% 50% at 50% 55%,rgba(245,244,241,.28) 0%,rgba(245,244,241,.08) 50%,rgba(245,244,241,0) 75%);opacity:0"></div>
-  <img class="abs" id="arHer" src="media/lead/maria-cutout.png" style="left:1424px;top:350px;height:270px;filter:grayscale(1) brightness(1.25) contrast(1.05) drop-shadow(0 0 1.5px rgba(245,244,241,.7))">
-  <img class="abs" id="arRefl" src="media/lead/maria-cutout.png" style="left:1424px;top:620px;height:270px;opacity:0;transform:scaleY(-1);filter:grayscale(1) brightness(.5);-webkit-mask-image:linear-gradient(0deg,#000 0%,transparent 60%)">
+  <div class="abs" id="lsBeam" style="left:-500px;top:240px;width:420px;height:600px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(245,244,241,.16) 0%,rgba(245,244,241,.05) 45%,rgba(245,244,241,0) 72%)"></div>
+  <div class="abs sans" id="lsEyebrow" style="left:0;width:1920px;top:356px;text-align:center;font-size:28px;font-weight:500;letter-spacing:.5em;color:#9a968e">DESIGN</div>
+  <div class="abs serif it" id="lsDark" style="left:0;width:1920px;top:400px;text-align:center;font-size:270px;line-height:1;color:#1d1d1c">leadership.</div>
+  <div class="abs serif it" id="lsLit" style="left:0;width:1920px;top:400px;text-align:center;font-size:270px;line-height:1;color:#f5f4f1;--p:0%;-webkit-mask-image:linear-gradient(90deg,#000 calc(var(--p) - 6%),transparent var(--p));mask-image:linear-gradient(90deg,#000 calc(var(--p) - 6%),transparent var(--p))">leadership.</div>
 </div>
 
 <!-- 28 Because making complexity feel simple -->
@@ -485,17 +484,13 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 
 // 27 Design leadership. — María in silhouette against a white sun; what she brings as a design lead orbits around her
 { const [a, b] = T.s27;
-  // LEADERSH_P is already there; she walks towards the camera out of the darkness and becomes the missing "I"
-  const t0 = a + .5, t1 = a + 3.0;
-  tl.from(".arL", { opacity: 0, duration: .5, stagger: .03, ease: "power2.out" }, a);
-  tl.fromTo("#arHer", { scale: .1, y: -150, opacity: 0, transformOrigin: "50% 100%" }, { scale: 1, y: 0, duration: t1 - t0, ease: "power1.in" }, t0);
-  tl.to("#arHer", { opacity: 1, duration: 1.2, ease: "power1.in" }, t0);
-  for (let k = 0; k < 10; k++) tl.to("#arHer", { rotation: k % 2 ? -.8 : .8, duration: (t1 - t0) / 10, ease: "sine.inOut" }, t0 + k * (t1 - t0) / 10);
-  tl.to("#arHer", { rotation: 0, duration: .2 }, t1);
-  tl.to("#arRefl", { opacity: .25, duration: .6 }, t1 - .3);
-  tl.to("#arPool", { opacity: 1, duration: .8 }, t1 - .5);
-  tl.to("#arHalo", { opacity: 1, duration: 1.6, ease: "power1.in" }, t0 + .4);
-  tl.to(".arL", { opacity: 1, textShadow: "0 0 18px rgba(245,244,241,.35)", duration: .6 }, t1); }
+  // the word sits in the dark; a soft light travels across and switches it on letter by letter, then "Design" settles above
+  tl.fromTo("#lsDark", { opacity: 0 }, { opacity: 1, duration: .5, ease: "power2.out" }, a);
+  tl.fromTo("#lsLit", { "--p": "0%" }, { "--p": "106%", duration: 1.9, ease: "power2.inOut" }, a + .35);
+  tl.fromTo("#lsBeam", { x: 0, opacity: 0 }, { x: 2400, duration: 1.9, ease: "power2.inOut" }, a + .35);
+  tl.to("#lsBeam", { keyframes: [{ opacity: 1, duration: .4 }, { opacity: 1, duration: 1.1 }, { opacity: 0, duration: .4 }] }, a + .35);
+  tl.from("#lsEyebrow", { opacity: 0, letterSpacing: "1.1em", duration: 1.0, ease: "power3.out" }, a + 1.9);
+  tl.fromTo(["#lsLit", "#lsDark"], { scale: 1 }, { scale: 1.035, transformOrigin: "50% 50%", duration: b - a, ease: "none" }, a); }
 
 // 28 Because making complexity feel simple — scattered letters resolve into one clean word
 { const [a] = T.s28; const chs = split($("#cx"), "complexity");
