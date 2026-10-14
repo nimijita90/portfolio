@@ -54,11 +54,11 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
 | 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
-| 27 | — | Design leadership. | María's portrait (natural light, background removed) against a white sun | Circle opens, portrait rises, title (difference blend); eight numbered Silk titles rise from masks on both sides and drift: Design ownership · Brand systems · Team building · 10+ yrs iGaming · Design systems · Product UI/UX · Cross-functional · Motion & 3D. Text only, no images. Items mirror the over99 Design Lead brief |
+| 27 | — | Design leadership. | María's portrait (natural light, background removed) against a white sun | Circle opens and the portrait rises; a watch-dial ring of ticks sweeps in while a ring of text unrolls around the sun and keeps turning (ticks counter-rotate): Design ownership · Brand systems · Design systems · Product UI/UX · Cross-functional · Motion & 3D · 10+ yrs iGaming · Team building. Title in difference blend. Text only. Items mirror the over99 Design Lead brief |
 | 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
 | 29 | — | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
 | 30 | 43.10–44.60 | So, what's next? | — | Typed; the "?" lands and carries the cut |
-| 31 | 44.55–48.00 | MARÍA MORA · DESIGN LEAD · moragarciamaria@gmail.com | Portfolio portrait | Portrait settles; text holds about 2.5 s |
+| 31 | — | María Mora · DESIGN LEAD · design@mariamoragarcia.com · MARIAMORAGARCIA.COM | — (no photo) | An ivory iris takes over the frame after the "?"; rows of the name (outlined, one solid) rush past in opposite directions and collapse into a line; the name rises from a mask, the role's tracking compresses, a rule draws and the email builds letter by letter; the website settles underneath and the card holds |
 
 ## Accuracy checks
 
