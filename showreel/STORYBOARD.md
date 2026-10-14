@@ -54,11 +54,11 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
 | 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
-| 27 | 43.80–48.20 | "Design *leadership.*" (title roll, push in from the right). Below it, seven identical flat circles on black, no outlines, gradients or shadows: one ivory (the leader), six grey (the team). 0–1 s scattered and still; 1–2 s the ivory circle moves right; from 1.5 s the greys follow one after another (0.2 s stagger); from 3.6 s the whole group drifts gently right and settles into a loose, balanced formation, each keeping its own place. Smooth power2.inOut, no bounce. Idea: shared progress, not hierarchy. |
-| 28 | 38.80–41.00 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
-| 29 | — | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
-| 30 | — | So, what's next? | — | Centred Silk line; the words rise one by one from masks ("next?" in italic), the line breathes, then the words slip away upwards in the same order. Calmer pace, leading into the slow ending |
-| 31 | — | design@mariamoragarcia.com | — (black, no photo) | The slow ending after a fast film: a black beat, then the email surfaces letter by letter from the centre (soft blur to sharp), its tracking settles, a faint rule draws underneath; readable within about 1.3 s, then holds about 4 s |
+| 27 | 43.80–45.80 | "Design *leadership.*" (push in from the right, same title roll as 25–26). Below it, seven fine hairlines draw in, scattered at different lengths and offsets; only the first is ivory. The ivory line commits first and extends to the full width; the other six follow in quick succession (0.06 s stagger), align to the same edges and turn ivory, ending as one clean block. Expo in-out, 2 s: matches the rhythm of the trio. Idea: leadership as alignment. |
+| 28 | 45.75–47.95 | Because making complexity feel simple | — | Scattered letters resolve into "complexity" |
+| 29 | 47.95–50.65 | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
+| 30 | 50.65–53.05 | So, what's next? | — | Centred Silk line; the words rise one by one from masks ("next?" in italic), the line breathes, then the words slip away upwards in the same order. Calmer pace, leading into the slow ending |
+| 31 | 53.00–58.50 | design@mariamoragarcia.com | — (black, no photo) | The slow ending after a fast film: a black beat, then the email surfaces letter by letter from the centre (soft blur to sharp), its tracking settles, a faint rule draws underneath; readable within about 1.3 s, then holds about 4 s |
 
 ## Accuracy checks
 
