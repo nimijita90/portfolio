@@ -1,5 +1,7 @@
 # Showreel music brief
 
+> **Final soundtrack:** Sonilo take D2 (neo-baroque strings, harpsichord and an electronic kick at 120 BPM), generated via the Higgsfield CLI and approved by María. The original take and the handback notes are in `music/sonilo/D2/`. `music/edit_d2.py` re-cuts it bar by bar to the picture, producing `music/score-d2.m4a`: the slam at 1.35 s (logo), the last hit at 45.35 s ("complexity"), strings only from 47.35 to 53.35 s, the beat back at 53.35 s (mail window) and the final hit at 59.03 s (Send). The video ends at 62.8 s. The brief below is the original planning document.
+
 Length: **62.4 s** (the video runs 0:00–1:02.4). Instrumental only, no vocals.
 
 ## Direction

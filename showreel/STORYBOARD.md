@@ -50,15 +50,15 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 20 | 26.55–27.40 | My work spans | — | Tracking compresses |
 | 21 | 27.40–28.80 | 43 operator brands. | — | The number dominates (no count-up, so no wrong numbers ever on screen) |
 | 22 | 28.75–30.50 | 22 launched across 15 markets. | — | Contrasting scales (footnote removed) |
-| 23 | 30.45–32.90 | — | 18 real operator logos | Three rows; the middle row runs the opposite way |
-| 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
-| 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
-| 26 | — | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
-| 27 | 43.80–46.00 | "Design *leadership.*" (push in from the right, same title roll as 25–26). Below it, a restless field of 26×10 hairlines, each pointing its own way. An ivory point enters from the left and crosses to the centre; as it passes, the lines turn to face it in a wave, stretching and brightening near it. In the last half-second the whole field converges on the point, the title fades and only the point remains. After React Bits' *MagnetLines* (MIT + Commons Clause), rebuilt as a deterministic canvas. Idea: a team oriented to a shared direction. |
-| 28 | 45.95–48.55 | The point left by scene 27 bursts into the ten letters of *complexity*, which hang in a slowly turning orbit around it, rotated and dimmed; then they snap into one clean Silk italic word (power4.inOut). "Because making" and "feel **simple**" rise in after it. Exit: up and out. |
-| 29 | 48.55–51.25 | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
-| 30 | 51.25–53.65 | "So, what's *next?*" — centred Silk line, words rise from masks and sink back out. |
-| 31 | 53.60–62.40 | Closing: the viewer answers. A minimal dark mail composer (no real brand) rises in; "To" types design@mariamoragarcia.com, Subject "Design Lead", body in Silk: "Hey, María! / *Welcome on board.*" A pointer glides to Send and clicks; the window flies off, the pointer leaves, and only the address stays, gliding to centre and scaling up. A small "Sent ✓" appears under it; hold to the end. Black throughout. |
+| 23 | 37.35–39.20 | — | 18 real operator logos | Three rows; the middle row runs the opposite way |
+| 24 | 39.20–40.05 | And I bring together | — | Letter cascade |
+| 25 | 40.00–41.60 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |
+| 26 | 41.55–43.25 | Design systems. | Real WAND UI kit footage (`media/wand-ui-kit.webm`) | Inverted layout: the footage drops into a frame at the top, title drum roll below it |
+| 27 | 43.20–45.40 | "Design *leadership.*" (push in from the right, same title roll as 25–26). Below it, a restless field of 26×10 hairlines, each pointing its own way. An ivory point enters from the left and crosses to the centre; as it passes, the lines turn to face it in a wave, stretching and brightening near it. In the last half-second the whole field converges on the point, the title fades and only the point remains. After React Bits' *MagnetLines* (MIT + Commons Clause), rebuilt as a deterministic canvas. Idea: a team oriented to a shared direction. |
+| 28 | 45.35–47.95 | The point left by scene 27 bursts into the ten letters of *complexity*, which hang in a slowly turning orbit around it, rotated and dimmed; then they snap into one clean Silk italic word (power4.inOut). "Because making" and "feel **simple**" rise in after it. Exit: up and out. |
+| 29 | 47.95–50.65 | Is the kind of design problem I love. | — | Masked reveal, then the camera zooms into "I love." until it fills the frame (the rest of the line leaves the edges); hard cut |
+| 30 | 50.65–53.40 | "So, what's *next?*" — centred Silk line, words rise from masks and sink back out. |
+| 31 | 53.35–62.80 | Closing: the viewer answers. A minimal dark mail composer (no real brand) rises in; "To" types design@mariamoragarcia.com, Subject "Design Lead", body in Silk: "Hey, María! / *Welcome on board.*" A pointer glides to Send and clicks on the final hit of the score (59.03 s); the window flies off, the pointer leaves, and only the address stays, gliding to centre and scaling up. A small "Sent ✓" appears under it; hold to the end. Black throughout. |
 
 ## Accuracy checks
 
