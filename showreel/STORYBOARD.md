@@ -38,7 +38,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 08 | 10.55–12.10 | Designing digital products. | XSITE casino page (`media/xsite-casino-page.webp`) | Page frame rises and scrolls; type and frame exit together |
 | 09 | 12.10–13.30 | I've learned that great products need | — | Words build; all dim except "need" |
 | 10 | 13.25–14.25 | Evidence. | — | Camera passes along the oversized word and dives into the full stop |
-| 11 | 14.20–16.80 | 40% faster client delivery | Figma variables export plugin (`media/plugin-variables.webm`) | KPI + "Enabled by a multi-brand design system built with Figma variables." |
+| 11 | 14.20–16.80 | 40% faster client delivery | Figma variables export plugin (`media/plugin-variables.webm`) | KPI only (divider and footnote removed) |
 | 12 | 16.75–17.70 | Direction. | — | Drum roll over a ghost copy, then pushes into the footage |
 | 13 | 17.65–19.25 | (caption) Nordice | Nordice clip, 2.6–4.0 s of the source | Slow settle; wiped off by Runar |
 | 14 | 18.90–20.25 | (caption) Runar | Runar Viking clip, 11.35–12.7 s (symbols visible, before the explosion) | Wipe in from the right |
@@ -49,7 +49,7 @@ Runtime: 52.5 s at 1920×1080 (draft: 960×540).
 | 19 | — | (caption) XSITE · Casino lobby & sign-up | `media/xsite-lobby-desktop.webp` + `media/xsite-signup-modal.webp` | The lobby slides in; the background dims, the sign-up modal pops with a quick overshoot and the camera leans in |
 | 20 | 26.55–27.40 | My work spans | — | Tracking compresses |
 | 21 | 27.40–28.80 | 43 operator brands. | — | The number dominates (no count-up, so no wrong numbers ever on screen) |
-| 22 | 28.75–30.50 | 22 launched across 15 markets. | — | Contrasting scales + footnote: "Brand skins designed for 43 operator brands within a multi-brand platform." |
+| 22 | 28.75–30.50 | 22 launched across 15 markets. | — | Contrasting scales (footnote removed) |
 | 23 | 30.45–32.90 | — | 18 real operator logos | Three rows; the middle row runs the opposite way |
 | 24 | 32.90–33.75 | And I bring together | — | Letter cascade |
 | 25 | 33.70–35.30 | Product strategy. | Real XSITE delivery roadmap (`media/xsite-roadmap.png`) | Title drum roll; the roadmap rises in perspective and the camera drifts across the timeline |

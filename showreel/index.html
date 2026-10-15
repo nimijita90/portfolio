@@ -26,7 +26,7 @@ html,body{background:#000;overflow:hidden}
 .cap{font-family:var(--sans);font-size:24px;letter-spacing:.32em;text-transform:uppercase;color:#e9e6e0}
 .c{left:50%;top:50%;white-space:nowrap}
 .w,.ch,.lc{display:inline-block;will-change:transform}
-.mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em}
+.mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;padding-right:.14em;margin-right:-.14em}
 .cur{display:inline-block;width:.07em;height:.95em;background:var(--ink);vertical-align:-.12em;margin-left:.06em}
 .stroke{color:transparent;-webkit-text-stroke:2px rgba(245,244,241,.55)}
 img,video{display:block}
@@ -122,8 +122,6 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="abs cap" id="kCap" style="left:140px;top:230px;color:var(--mute)">Delivery efficiency</div>
   <div class="abs serif" id="kNum" style="left:120px;top:300px;font-size:340px;line-height:1"><span id="kN">0</span>%</div>
   <div class="abs sans" id="kTxt" style="left:140px;top:690px;font-size:64px;font-weight:500;letter-spacing:-.03em">faster client delivery</div>
-  <div class="rule" id="kRule" style="left:140px;top:800px;width:620px"></div>
-  <div class="abs sans" id="kSub" style="left:140px;top:830px;font-size:26px;line-height:1.45;color:#bdb8b0;width:640px">Enabled by a multi-brand design system<br>built with Figma variables.</div>
 </div>
 
 <!-- 12 Direction. — perspective roll stack -->
@@ -196,7 +194,6 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="abs sans" id="a15" style="left:140px;top:720px;font-size:84px;font-weight:300">across</div>
   <div class="abs serif it" id="n15" style="left:520px;top:560px;font-size:330px;line-height:1">15</div>
   <div class="abs sans" id="m15" style="left:960px;top:720px;font-size:84px;font-weight:300">markets.</div>
-  <div class="abs sans" id="foot" style="right:120px;bottom:70px;font-size:22px;color:var(--mute);letter-spacing:.04em">Brand skins designed for 43 operator brands within a multi-brand platform.</div>
 </div>
 
 <!-- 23 Logos -->
@@ -386,8 +383,6 @@ const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAn
   tl.from("#kNum", { y: 200, opacity: 0, duration: .7, ease: ex }, a + .1);
   tl.to(n, { v: 40, duration: .7, ease: "power2.out", onUpdate: () => { $("#kN").textContent = Math.round(n.v); } }, a + .1);
   tl.from("#kTxt", { opacity: 0, y: 30, duration: .5 }, a + .55);
-  tl.from("#kRule", { scaleX: 0, transformOrigin: "0 0", duration: .6, ease: io }, a + .8);
-  tl.from("#kSub", { opacity: 0, y: 20, duration: .5 }, a + 1.0);
   tl.to("#s11", { y: -1080, duration: .4, ease: exi }, a + 2.2); }
 
 // 12 Direction. — rolls over a ghost copy like a drum, then pushes into the footage
@@ -460,7 +455,6 @@ const syncLogo = (t) => { const ms = Math.max(0, (t - T.s01b[0]) * 1000); logoAn
   tl.from("#a15", { opacity: 0, x: -60, duration: .4 }, a + .55);
   tl.from("#n15", { scale: 1.8, opacity: 0, duration: .5, ease: ex }, a + .65);
   tl.from("#m15", { opacity: 0, x: 60, duration: .4 }, a + .8);
-  tl.from("#foot", { opacity: 0, duration: .4 }, a + .9);
   tl.to("#s22", { opacity: 0, duration: .25 }, a + 1.5); }
 
 // 23 Logos — three rows, middle row opposed
@@ -547,6 +541,10 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   // "I love." grows to fill the frame: zoom anchored on its centre, the rest of the line leaves the edges
   gsap.set("#love", { transformOrigin: "722px 242px" });
   tl.to("#love", { scale: 1.03, duration: 1.3, ease: "none" }, a);
+  // before the zoom: let the glyphs overflow their masks (the italic "l" rises above them) and drop the
+  // will-change layers so the text is re-rasterised sharp at every scale instead of stretched from a small bitmap
+  tl.set("#love .mask", { overflow: "visible" }, a + 1.3);
+  tl.set("#love .w", { willChange: "auto" }, a + 1.3);
   tl.to("#love", { scale: 5.1, x: 58, y: 40, duration: .8, ease: "expo.inOut" }, a + 1.3);
   tl.to("#love", { scale: 5.35, duration: .6, ease: "none" }, a + 2.1); }
 
