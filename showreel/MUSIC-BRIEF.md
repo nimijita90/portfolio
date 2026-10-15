@@ -41,6 +41,21 @@ Short version (if the prompt field is limited):
 
 If the generator cannot follow the structure, a licensed library track works too; Pixabay Music is free for commercial use without attribution. Keywords: *minimal electronic, fashion, catchy, upbeat, 120 bpm, modern, sleek*. Choose a track with a clean ending.
 
+## Generating it with Sonilo (video-to-music)
+
+Sonilo's `video-to-music` scores the silent cut directly, reading its pacing and cuts, while the prompt and timed segments steer style and hit points. Everything is in `music/sonilo/`:
+
+- `prompt.txt`: the overall style (sleek, elegant, 120 BPM, a catchy hook).
+- `segments.json`: six timed sections that follow the table above (0, 10, 21, 40, 46 and 53.5 s).
+- `run.sh`: the command, with `--prompt-influence 0.6` so the picture leads the timing and the prompt leads the style, `--format wav`, and three variants to choose from.
+
+Run it on a machine that can reach api.sonilo.com:
+
+    pip install sonilo-cli && sonilo login
+    bash showreel/music/sonilo/run.sh showreel/out/showreel-silent.mp4   # VARIANTS=1 for the free-trial run
+
+Then drop the chosen `showreel-music.N.wav` into `showreel/audio/` for the mix.
+
 ## Delivery
 
 WAV or high-quality MP3, at least 62 s, placed in `showreel/audio/`. The cuts are then fine-tuned to the beat and the track is mixed into the master, with the outro decaying naturally on the email.
