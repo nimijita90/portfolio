@@ -2,7 +2,7 @@
 
 Source: `javier.html` (same system as `index.html`). Render it with:
 
-    PAGE=javier.html node showreel/render.mjs 1 60 showreel/out/javier.mp4                     # the film (53.05 s, mail closing)
+    PAGE=javier.html node showreel/render.mjs 1 60 showreel/out/javier.mp4                     # the film (54.45 s, mail closing)
     PAGE=javier.html QUERY=end=web node showreel/render.mjs 1 60 showreel/out/javier-web.mp4   # optional short loop that closes on "Let's talk."
 
 **One film.** It closes on the mail. A short loopable variant that ends on "Let's *talk.*" is kept behind `?end=web`, but only the mail film is exported.
@@ -33,13 +33,13 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 09 | 20.30–22.90 | black | Systems *Thinking.* | One white ball falls in and bounces along the line (stretch and squash on each landing). Each landing generates a word, its letters springing out from the impact point: "Systems", then "*Thinking*". Two smaller bounces and it comes to rest as the full stop. Centred, 210 px, no illustration |
 | 10 | 22.85–28.15 | black | AI-Powered *Design Workflows.* (title by María; replaces "AI-Driven Design.") | A short chat laid out after María's mock-up. YOU: "I need a designer who can integrate AI into the design process." (typed in a full-width outlined bubble, two lines) / ✦ AI thinks for a beat (three square dots) and answers "**You need** *Javier Ortiz.*" then, in grey, "He connects AI and design tools to build smarter workflows." (copy by María; Javier should approve it) |
 | 12 | 28.10–30.10 | black | I've learned that great products need | The sentence builds word by word |
-| 13 | 30.05–31.15 | black | clear thinking, (outline) | Horizontal pass, dive into the comma |
-| 14 | 31.10–32.20 | black | strong collaboration, | Perspective roll over an outline ghost |
-| 15 | 32.15–34.00 | black | and thoughtful *execution.* | Echo marquee |
-| 16 | 33.95–36.55 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
-| 16b | 36.55–38.55 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
-| 17 | 38.50–41.60 | black | So, what's *next?* | One word at a time, alone, big and centred: "So," → "what's" → "*next?*"; then "next?" glides into the line as "So," and "what's" appear in place |
-| 18 | 41.55–53.05 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" beneath — nothing else | Typed at a calm pace, with a caret per line; the final frame holds |
+| 13 | 30.05–31.85 | black | clear thinking, (outline) | Horizontal pass, dive into the comma |
+| 14 | 31.80–33.60 | black | strong collaboration, | Perspective roll over an outline ghost |
+| 15 | 33.55–35.40 | black | and thoughtful *execution.* | Echo marquee |
+| 16 | 35.35–37.95 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
+| 16b | 37.95–39.95 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
+| 17 | 39.90–43.00 | black | So, what's *next?* | One word at a time, alone, big and centred: "So," → "what's" → "*next?*"; then "next?" glides into the line as "So," and "what's" appear in place |
+| 18 | 42.95–54.45 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" beneath — nothing else | Typed at a calm pace, with a caret per line; the final frame holds |
 
 
 "3 promotions in 5 years." (and its added lead-in "So far:") was removed from Javier's script at María's request.

@@ -218,8 +218,8 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
   j01: [0.0, 1.95], j02: [1.9, 3.35], j03: [3.3, 6.2], j04: [6.15, 7.55], j05: [7.5, 8.55], j06: [8.5, 11.1], j07: [11.05, 13.5],
-  jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 28.15], j12: [28.1, 30.1], j13: [30.05, 31.15], j14: [31.1, 32.2],
-  j15: [32.15, 34.0], j16: [33.95, 36.55], j16b: [36.55, 38.55], j17: [38.5, 41.6], j18: [41.55, 53.05],
+  jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 28.15], j12: [28.1, 30.1], j13: [30.05, 31.85], j14: [31.8, 33.6],
+  j15: [33.55, 35.4], j16: [35.35, 37.95], j16b: [37.95, 39.95], j17: [39.9, 43.0], j18: [42.95, 54.45],
 };
 // the film closes on the mail (default); ?end=web gives a short loopable cut that closes on "Let's talk."; ?end=mail keeps the mail closing for sending
 if (new URLSearchParams(location.search).get("end") === "web") { T.j19 = [T.j18[0], T.j18[0] + 3.5]; delete T.j18; }
@@ -397,14 +397,14 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
 
 // 13 clear thinking, — the camera passes along the oversized words, then dives into the comma
 { const [a] = T.j13; const w = () => $("#clear").offsetWidth;
-  tl.fromTo("#clear", { x: 900 }, { x: () => 1920 - w() - 60, duration: .8, ease: "power2.inOut" }, a);
-  tl.to("#clear", { scale: 6, transformOrigin: "98% 85%", opacity: 0, duration: .25, ease: exi }, a + .8); }
+  tl.fromTo("#clear", { x: 900 }, { x: () => 1920 - w() - 60, duration: 1.3, ease: "power2.inOut" }, a);
+  tl.to("#clear", { scale: 6, transformOrigin: "98% 85%", opacity: 0, duration: .25, ease: exi }, a + 1.5); }
 
 // 14 strong collaboration, — rolls over a ghost copy like a drum
 { const [a] = T.j14;
   tl.fromTo("#col", { rotationX: -90, y: 160, transformOrigin: "50% 50% -150px" }, { rotationX: 0, y: 0, duration: .55, ease: ex }, a);
   tl.fromTo("#col0", { rotationX: 0, opacity: .8, transformOrigin: "50% 50% -150px" }, { rotationX: 90, y: -160, opacity: 0, duration: .55, ease: ex }, a);
-  tl.to("#col", { scale: 4, opacity: 0, duration: .3, ease: exi }, a + .75); }
+  tl.to("#col", { scale: 4, opacity: 0, duration: .3, ease: exi }, a + 1.45); }
 
 // 15 and thoughtful execution. — echo marquee: outlined rows drift one way, the solid line settles in the centre
 { const [a] = T.j15; const mid = () => 960 - ($("#exS").offsetLeft + $("#exS").offsetWidth / 2);

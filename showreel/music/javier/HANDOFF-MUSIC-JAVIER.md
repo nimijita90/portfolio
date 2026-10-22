@@ -12,7 +12,7 @@ This is deliberately different from María's own track (dark neo-baroque strings
 
 ## 2. The video
 
-- **Javier Ortiz, Senior Product Designer.** The film is ~53 s, 1920×1080, 60 fps, all black with ivory type (Instrument Sans) and white line art. It is sent to companies after an interview.
+- **Javier Ortiz, Senior Product Designer.** The film is ~54.5 s, 1920×1080, 60 fps, all black with ivory type (Instrument Sans) and white line art. It is sent to companies after an interview.
 - Kinetic typography, hard cuts, no fades. One live-action shot: Javier turning to camera (8.5 s).
 - The silent reference video is sent with this file as `javier-silent.mp4`.
 
@@ -24,7 +24,7 @@ This is deliberately different from María's own track (dark neo-baroque strings
 | A clear **climax** and a clear **ending** that resolves | Corporate "inspiration" ukulele/piano |
 | ~120–124 BPM so the cuts can be locked to the beat | Fades out mid-groove or abrupt cut |
 
-## 3. Cue sheet (exact times in the current cut, 53.05 s)
+## 3. Cue sheet (exact times in the current cut, 54.45 s)
 
 | Time (s) | Picture | Music should… |
 |---|---|---|
@@ -34,19 +34,19 @@ This is deliberately different from María's own track (dark neo-baroque strings
 | 11.05 | "Designing complex products." (big staircase) | Driving |
 | **14.35** | "Bringing together": the two words meet in the middle | **Accent** |
 | 15.25–28.15 | "Product Strategy." (flow diagram) → "Systems Thinking." → "AI-Powered Design Workflows." (a chat that answers "You need Javier Ortiz.") | Full, joyful groove with the hook; can lift on each title (15.25, 20.3, 22.85) |
-| 28.1–34.0 | "I've learned that great products need" → "clear thinking," → "strong collaboration," → "and thoughtful execution." | **Build**, rising |
-| **33.95** | A point bursts into the letters of "complexity", they orbit and snap into "clarity" (~35.3) | **Climax**: the biggest, most epic moment |
-| 36.55–38.55 | "is what drives me." | Sustain the climax, anthemic |
-| **38.5** | "So, what's next?" (one word at a time) | **Break: near silence**, one held chord |
-| 41.55–48.0 | A mail composer: To: javier6165@gmail.com, Subject, "Hey, Javier! Let's talk." typed | Light, playful pulse; tease the hook (bells/plucks) |
-| **48.05** | The pointer clicks **Send** | **One big, bright final hit** |
-| 48.35–53.05 | The window flies off; his address centred, "Sent ✓" beneath | Warm resolved major chord ringing out to silence |
+| 28.1–35.4 | "I've learned that great products need" → "clear thinking," → "strong collaboration," → "and thoughtful execution." | **Build**, rising |
+| **35.35** | A point bursts into the letters of "complexity", they orbit and snap into "clarity" (~36.7) | **Climax**: the biggest, most epic moment |
+| 37.95–39.95 | "is what drives me." | Sustain the climax, anthemic |
+| **39.9** | "So, what's next?" (one word at a time) | **Break: near silence**, one held chord |
+| 42.95–49.4 | A mail composer: To: javier6165@gmail.com, Subject, "Hey, Javier! Let's talk." typed | Light, playful pulse; tease the hook (bells/plucks) |
+| **49.45** | The pointer clicks **Send** | **One big, bright final hit** |
+| 49.75–54.45 | The window flies off; his address centred, "Sent ✓" beneath | Warm resolved major chord ringing out to silence |
 
-Generate **55 s** so the tail rings past 53.05. Sonilo tends to ignore exact timestamps (with María's track the kick always arrived at ~23 s); that's fine. What matters is that the **sections and the energy curve** are there. The video session will re-cut the take bar by bar to the picture, as it did with María's D2 (`../edit_d2.py`).
+Generate **57 s** so the tail rings past 54.45. Sonilo tends to ignore exact timestamps (with María's track the kick always arrived at ~23 s); that's fine. What matters is that the **sections and the energy curve** are there. The video session will re-cut the take bar by bar to the picture, as it did with María's D2 (`../edit_d2.py`).
 
 ## 4. How to generate
 
-    higgsfield generate cost sonilo_music --prompt "test" --duration 55
+    higgsfield generate cost sonilo_music --prompt "test" --duration 57
     bash higgsfield.sh                     # one take each of prompts A, B, C (~3.5 credits per take)
 
 Prompts:
