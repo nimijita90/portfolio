@@ -17,16 +17,16 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 
 Fonts are in `fonts/javier/` (SIL OFL 1.1, licences included). Outlined words use `instrument-sans-latin-600-outline.woff2`, a static 600 instance with its overlapping contours merged (fontTools removeOverlaps), so strokes show no internal joins.
 
-The copy is Javier's script, plus connectors that add no new facts. They are marked "added" below; Javier should approve them. The only footage is in scene 06: `media/javier/javier-turn.webm` (and an `.mp4` fallback), an AI-generated 3 s clip of Javier made from his portrait, supplied by María, mirrored so he first looks towards his name. Javier must approve its use. Renders drive the clip frame by frame (`syncVid`). `portrait-badge.jpg` (the earlier badge) is kept for reference but no longer used. Every other scene is typographic or line art. Silent for now. Product Strategy is a flat line infographic (style reference: Netlify's "What is Netlify?" film, without its glow); AI-Driven Design is a chat.
+The copy is Javier's script, plus connectors that add no new facts. They are marked "added" below; Javier should approve them. The only footage is in scene 06: `media/javier/javier-turn.webm` (and an `.mp4` fallback), an AI-generated 3 s clip of Javier made from his portrait, supplied by María, mirrored so he first looks towards his name, and cut out of its studio backdrop (rembg isnet-general-use, frame by frame) onto the page black, so there is no halo. Javier must approve its use. Renders drive the clip frame by frame (`syncVid`). `portrait-badge.jpg` (the earlier badge) is kept for reference but no longer used. Every other scene is typographic or line art. Silent for now. Product Strategy is a flat line infographic (style reference: Netlify's "What is Netlify?" film, without its glow); AI-Driven Design is a chat.
 
 | # | Time (s) | Theme | On screen | Motion |
 |---|---|---|---|---|
-| 01 | 0.00–1.35 | black | Hi. | Extreme close-up of the H pulls back |
+| 01 | 0.00–1.35 | black | Hi | Opens on black: the word rises from its mask while the camera settles, then lifts out of frame (no full stop) |
 | 02 | 1.30–2.75 | black | If you're looking for | Typewriter and cursor |
-| 03 | 2.70–5.60 | black | a Senior Product Designer | Camera stops on each word, then pulls back to the line |
+| 03 | 2.70–5.60 | black | a Senior Product Designer | Camera stops on each word, framing it whole (it pulls back as far as the word needs), then pulls back to the line |
 | 04 | 5.55–6.95 | black | I think… | Tracking compresses; the dots arrive one by one |
 | 05 | 6.90–7.95 | black | I know one. | Extreme close-up punch |
-| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask; the full stop pops. On the right Javier (clip, graded to the black and faded into it) looks towards his name, then turns to camera with a smile; he lifts out of frame with the letters (no fade) |
+| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask; the full stop pops. On the right Javier (clip, cut out onto the black, no halo) looks towards his name, then turns to camera with a smile; he lifts out of frame with the letters (no fade) |
 | 07 | 10.45–12.90 | black | Designing *complex* products. | Masked lines rise; the other lines fade and the camera zooms into "complex" |
 | 07b | 12.90–14.70 | black | Bringing together *(added)* | Letter cascade |
 | 08 | 14.65–18.85 | black | Product *Strategy.* · 01 / 03 | The structure of his rule-editor flow drawn as a line infographic (no product UI or data): outlined blocks with line icons, skeleton bars and generic Fragment Mono labels (trigger, filter, query, calculate, store, send, tag) build one by one. White wires draw between them, small flat pulses run along the wires, and the camera travels along the flow and pulls back to show it whole |
