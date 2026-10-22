@@ -2,7 +2,7 @@
 
 Source: `javier.html` (same system as `index.html`). Render it with:
 
-    PAGE=javier.html node showreel/render.mjs 1 60 showreel/out/javier.mp4                     # the film (54.25 s, mail closing)
+    PAGE=javier.html node showreel/render.mjs 1 60 showreel/out/javier.mp4                     # the film (51.75 s, mail closing)
     PAGE=javier.html QUERY=end=web node showreel/render.mjs 1 60 showreel/out/javier-web.mp4   # optional short loop that closes on "Let's talk."
 
 **One film.** It closes on the mail. A short loopable variant that ends on "Let's *talk.*" is kept behind `?end=web`, but only the mail film is exported.
@@ -17,7 +17,7 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 
 Fonts are in `fonts/javier/` (SIL OFL 1.1, licences included). Outlined words use `instrument-sans-latin-600-outline.woff2`, a static 600 instance with its overlapping contours merged (fontTools removeOverlaps), so strokes show no internal joins.
 
-The copy is Javier's script, plus connectors that add no new facts. They are marked "added" below; Javier should approve them. The only footage is in scene 06: `media/javier/javier-turn.webm` (and an `.mp4` fallback), an AI-generated 3 s clip of Javier made from his portrait, supplied by María, mirrored so he first looks towards his name, and cut out of its studio backdrop (rembg isnet-general-use, frame by frame) onto the page black, so there is no halo. Javier must approve its use. Renders drive the clip frame by frame (`syncVid`). `portrait-badge.jpg` (the earlier badge) is kept for reference but no longer used. Every other scene is typographic or line art. Silent for now. Product Strategy is a flat line infographic (style reference: Netlify's "What is Netlify?" film, without its glow); AI-Driven Design is a bare dialogue with Claude.
+The copy is Javier's script, plus connectors that add no new facts. They are marked "added" below; Javier should approve them. The only footage is in scene 06: `media/javier/javier-turn.webm` (and an `.mp4` fallback), an AI-generated 3 s clip of Javier made from his portrait, supplied by María, mirrored so he first looks towards his name, and cut out of its studio backdrop (rembg isnet-general-use, frame by frame) onto the page black, so there is no halo. Javier must approve its use. Renders drive the clip frame by frame (`syncVid`). `portrait-badge.jpg` (the earlier badge) is kept for reference but no longer used. Every other scene is typographic or line art. Silent for now. Product Strategy is a flat line infographic (style reference: Netlify's "What is Netlify?" film, without its glow); AI-Driven Design is a short chat.
 
 | # | Time (s) | Theme | On screen | Motion |
 |---|---|---|---|---|
@@ -31,15 +31,15 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 07b | 13.50–15.30 | black | Bringing together *(added)* | Letter cascade |
 | 08 | 15.25–20.35 | black | Product *Strategy.* | The title lands big and centred letter by letter, then glides to its place; the structure of his rule-editor flow drawn as a line infographic (no product UI or data): outlined blocks with line icons, skeleton bars and generic Fragment Mono labels (trigger, filter, query, calculate, store, send, tag) build one by one. White wires draw between them, small flat pulses run along the wires, and the camera travels along the flow and pulls back to show it whole |
 | 09 | 20.30–22.90 | black | Systems *Thinking.* | One white ball falls in and bounces along the line (stretch and squash on each landing). Each landing generates a word, its letters springing out from the impact point: "Systems", then "*Thinking*". Two smaller bounces and it comes to rest as the full stop. Centred, 210 px, no illustration |
-| 10 | 22.85–29.35 | black | AI-Driven *Design.* | A bare dialogue, no boxes or icons. you: "Summarise this week's FullStory sessions." (typed) / ✦ claude: "Users drop off at step 3 of the rule builder." (grey, word by word) / you: "Redesign it in Figma and open a Jira ticket." / ✦ claude: "Done. Prototype and ticket are *ready.*" Claude works as his hub without being drawn. Copy is illustrative (*added*); Javier must approve it |
-| 12 | 29.30–31.30 | black | I've learned that great products need | The sentence builds word by word |
-| 13 | 31.25–32.35 | black | clear thinking, (outline) | Horizontal pass, dive into the comma |
-| 14 | 32.30–33.40 | black | strong collaboration, | Perspective roll over an outline ghost |
-| 15 | 33.35–35.20 | black | and thoughtful *execution.* | Echo marquee |
-| 16 | 35.15–37.75 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
-| 16b | 37.75–39.75 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
-| 17 | 39.70–42.80 | black | So, what's *next?* | One word at a time, alone, big and centred: "So," → "what's" → "*next?*"; then "next?" glides into the line as "So," and "what's" appear in place |
-| 18 | 42.75–54.25 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" beneath — nothing else | Typed at a calm pace, with a caret per line; the final frame holds |
+| 10 | 22.85–26.85 | black | AI-Driven *Design.* | A short chat. you: "I need a Senior Product Designer." (typed in an outlined bubble; it echoes the opening line) / the AI thinks for a beat (three square dots) and answers "You need *Javier Ortiz.*" Copy is illustrative (*added*); Javier must approve it |
+| 12 | 26.80–28.80 | black | I've learned that great products need | The sentence builds word by word |
+| 13 | 28.75–29.85 | black | clear thinking, (outline) | Horizontal pass, dive into the comma |
+| 14 | 29.80–30.90 | black | strong collaboration, | Perspective roll over an outline ghost |
+| 15 | 30.85–32.70 | black | and thoughtful *execution.* | Echo marquee |
+| 16 | 32.65–35.25 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
+| 16b | 35.25–37.25 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
+| 17 | 37.20–40.30 | black | So, what's *next?* | One word at a time, alone, big and centred: "So," → "what's" → "*next?*"; then "next?" glides into the line as "So," and "what's" appear in place |
+| 18 | 40.25–51.75 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" beneath — nothing else | Typed at a calm pace, with a caret per line; the final frame holds |
 
 
 "3 promotions in 5 years." (and its added lead-in "So far:") was removed from Javier's script at María's request.
