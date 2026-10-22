@@ -12,7 +12,7 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 
 Fonts are in `fonts/javier/` (SIL OFL 1.1, licences included). Outlined words use `instrument-sans-latin-600-outline.woff2`, a static 600 instance with its overlapping contours merged (fontTools removeOverlaps), so strokes show no internal joins.
 
-The copy is Javier's script, plus two connectors that add no new facts. They are marked "added" below; Javier should approve them. The only image is his portrait (`media/javier/portrait-badge.jpg`, a crop of `hero-system.jpg` from his site) on the badge in scene 06; every other scene is typographic or line art. Silent for now (48.4 s). Product Strategy and AI-Driven Design follow the look of Netlify's "What is Netlify?" film (style reference only): dark ground with a glow rising from below, glass cards with lit edges in 3D, a monospace prompt with a glowing caret and a burst of light, here in white and drawn flat and frontal, without perspective.
+The copy is Javier's script, plus connectors that add no new facts. They are marked "added" below; Javier should approve them. The only image is his portrait (`media/javier/portrait-badge.jpg`, a crop of `hero-system.jpg` from his site) on the badge in scene 06; every other scene is typographic or line art. Silent for now (46.35 s). Product Strategy and AI-Driven Design follow the look of Netlify's "What is Netlify?" film (style reference only): dark ground with a glow rising from below, glass cards with lit edges in 3D, a monospace prompt with a glowing caret and a burst of light, here in white and drawn flat and frontal, without perspective.
 
 | # | Time (s) | Theme | On screen | Motion |
 |---|---|---|---|---|
@@ -27,12 +27,14 @@ The copy is Javier's script, plus two connectors that add no new facts. They are
 | 08 | 13.85–18.05 | black | Product *Strategy.* · 01 / 03 | The structure of his rule-editor flow drawn as a line infographic (no product UI or data): outlined blocks with line icons, skeleton bars and generic Fragment Mono labels (trigger, filter, query, calculate, store, send, tag) build one by one. Glowing white wires draw between them, light pulses travel along the wires, and the camera travels along the flow and pulls back to show it whole |
 | 09 | 18.00–20.60 | black | Systems *Thinking.* · 02 / 03 | One white ball falls in and bounces along the line (stretch and squash on each landing). Each landing generates a word, its letters springing out from the impact point: "Systems", then "*Thinking*". Two smaller bounces and it comes to rest as the full stop. Centred, 210 px, no illustration |
 | 10 | 20.55–24.55 | black | AI-Driven *Design.* · 03 / 03 | A glass prompt card rises in; "Prototype a calmer rule builder." (illustrative prompt, *added*) is typed in Fragment Mono; Send triggers a burst of light. The card slides left and a `rule.ts` panel streams syntax-coloured code (illustrative, *added*), ending with "✓ prototype ready" |
-| 11 | 24.50–26.60 | black | So far: *(added)* 3 promotions in *5* years. | Two numbers at contrasting scales |
-| 12 | 26.55–28.55 | black | I've learned that great products need | Builds; all dims except "need" |
-| 13 | 28.50–29.60 | black | clear thinking, (outline) | Horizontal pass, dive into the comma |
-| 14 | 29.55–30.65 | black | strong collaboration, | Perspective roll over an outline ghost |
-| 15 | 30.60–31.75 | black | and thoughtful *execution.* | Echo marquee |
-| 16 | 31.70–34.30 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
-| 16b | 34.30–36.30 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
-| 17 | 36.25–38.50 | black | So, what's *next?* | Masked rise and sink |
-| 18 | 38.45–48.40 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's build something / great *together.*" (his own closing line). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed, with a caret per line |
+| 12 | 24.50–26.50 | black | I've learned that great products need | Builds; all dims except "need" |
+| 13 | 26.45–27.55 | black | clear thinking, (outline) | Horizontal pass, dive into the comma |
+| 14 | 27.50–28.60 | black | strong collaboration, | Perspective roll over an outline ghost |
+| 15 | 28.55–29.70 | black | and thoughtful *execution.* | Echo marquee |
+| 16 | 29.65–32.25 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
+| 16b | 32.25–34.25 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
+| 17 | 34.20–36.45 | black | So, what's *next?* | Masked rise and sink |
+| 18 | 36.40–46.35 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's build something / great *together.*" (his own closing line). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed, with a caret per line |
+
+
+"3 promotions in 5 years." (and its added lead-in "So far:") was removed from Javier's script at María's request.

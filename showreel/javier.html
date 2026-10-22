@@ -158,16 +158,6 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="title serif" id="aiT"><span>AI-Driven <i>Design.</i></span></div>
 </div>
 
-<!-- 11 3 promotions in 5 years. -->
-<div class="sc dk" id="j11">
-  <div class="abs sans" id="sofar" style="left:150px;top:90px;font-size:64px;font-weight:500;letter-spacing:-.035em">So far:</div>
-  <div class="abs serif" id="n3" style="left:140px;top:170px;font-size:500px;line-height:1">3</div>
-  <div class="abs sans" id="pr" style="left:470px;top:450px;font-size:84px;font-weight:500;letter-spacing:-.035em">promotions</div>
-  <div class="abs sans" id="in5" style="left:140px;top:770px;font-size:84px;font-weight:500;letter-spacing:-.035em">in</div>
-  <div class="abs serif it" id="n5" style="left:290px;top:610px;font-size:330px;line-height:1">5</div>
-  <div class="abs sans" id="y5" style="left:520px;top:770px;font-size:84px;font-weight:500;letter-spacing:-.035em">years.</div>
-</div>
-
 <!-- 12 I've learned that great products need -->
 <div class="sc dk" id="j12"><div class="abs sans" id="learn" style="left:180px;top:470px;font-size:86px;font-weight:500;letter-spacing:-.035em"><span class="w">I’ve</span> <span class="w">learned</span> <span class="w">that</span> <span class="w">great</span> <span class="w">products</span> <span class="w" id="need">need</span></div></div>
 
@@ -236,8 +226,8 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
   j01: [0.0, 1.35], j02: [1.3, 2.75], j03: [2.7, 5.6], j04: [5.55, 6.95], j05: [6.9, 7.95], j06: [7.9, 10.5], j07: [10.45, 12.9],
-  jbt: [12.9, 13.9], j08: [13.85, 18.05], j09: [18.0, 20.6], j10: [20.55, 24.55], j11: [24.5, 26.6], j12: [26.55, 28.55], j13: [28.5, 29.6],
-  j14: [29.55, 30.65], j15: [30.6, 31.75], j16: [31.7, 34.3], j16b: [34.3, 36.3], j17: [36.25, 38.5], j18: [38.45, 48.4],
+  jbt: [12.9, 13.9], j08: [13.85, 18.05], j09: [18.0, 20.6], j10: [20.55, 24.55], j12: [24.5, 26.5], j13: [26.45, 27.55],
+  j14: [27.5, 28.6], j15: [28.55, 29.7], j16: [29.65, 32.25], j16b: [32.25, 34.25], j17: [34.2, 36.45], j18: [36.4, 46.35],
 };
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
@@ -400,16 +390,6 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   chars.forEach((c, i) => tl.set(c, { display: "inline" }, e + .75 + i * .0065));
   tl.fromTo("#codeOk", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .35 }, e + .75 + chars.length * .0065 + .15);
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
-
-// 11 3 promotions in 5 years. — two numbers at contrasting scales
-{ const [a, b] = T.j11;
-  tl.from("#sofar", { opacity: 0, y: 24, duration: .4, ease: ex }, a);
-  tl.from("#n3", { y: -900, duration: .55, ease: ex }, a + .15);
-  tl.from("#pr", { opacity: 0, x: 60, duration: .4 }, a + .3);
-  tl.from("#in5", { opacity: 0, x: -60, duration: .4 }, a + .55);
-  tl.from("#n5", { scale: 1.8, opacity: 0, duration: .5, ease: ex }, a + .65);
-  tl.from("#y5", { opacity: 0, x: 60, duration: .4 }, a + .8);
-  tl.to("#j11", { y: 1080, duration: .35, ease: exi }, b - .35); }
 
 // 12 I've learned that great products need — sentence builds, everything dims except "need"
 { const [a] = T.j12;
