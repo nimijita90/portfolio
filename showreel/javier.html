@@ -76,8 +76,8 @@ svg{position:absolute;inset:0;overflow:visible}
 <body>
 <div id="stage">
 
-<!-- 01 Hi. -->
-<div class="sc dk" id="j01"><div class="abs serif c" id="hi" style="font-size:700px">Hi.</div></div>
+<!-- 01 Hi -->
+<div class="sc dk" id="j01"><div class="abs serif c" id="hi" style="font-size:700px"><span class="mask"><span class="w">Hi</span></span></div></div>
 
 <!-- 02 If you're looking for — typewriter -->
 <div class="sc dk" id="j02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
@@ -228,9 +228,10 @@ const caret = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); for (let t
 const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
 
 
-// 01 Hi. — extreme close-up of the H pulls back to the word, then lifts out of frame
+// 01 Hi — opens on black: the word rises from its mask while the camera settles, then lifts out of frame
 { const [a] = T.j01;
-  tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
+  tl.fromTo("#hi .w", { yPercent: 110 }, { yPercent: 0, duration: .7, ease: ex }, a + .05);
+  tl.fromTo("#hi", { scale: 1.12 }, { scale: 1, duration: 1.0, ease: "power3.out" }, a);
   tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
 
 // 02 If you're looking for — typewriter with cursor
@@ -239,12 +240,15 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 
 // 03 a Senior Product Designer, — the camera stops on each word, then pulls back to the whole line
 { const [a] = T.j03; const strip = $("#strip");
-  const at = (id) => () => { const w = $(id); return 960 - (w.offsetLeft + w.offsetWidth / 2); };
+  // each stop frames the whole word: the camera pulls back as far as the word needs (at most 1:1), so long words are never cropped
+  const fit = (id) => Math.min(1, 1640 / $(id).offsetWidth);
+  const at = (id) => () => { const w = $(id); return 960 - fit(id) * (w.offsetLeft + w.offsetWidth / 2); };
+  const stop = (id) => ({ x: at(id), scale: () => fit(id) });
   const k = () => 1720 / strip.offsetWidth;
-  tl.fromTo(strip, { x: () => at("#w1")() + 500, scale: 1 }, { x: at("#w1"), duration: .35, ease: ex }, a);
-  tl.to(strip, { x: at("#w2"), duration: .4, ease: "expo.inOut" }, a + .4);
-  tl.to(strip, { x: at("#w3"), duration: .4, ease: "expo.inOut" }, a + .85);
-  tl.to(strip, { x: at("#w4"), duration: .4, ease: "expo.inOut" }, a + 1.3);
+  tl.fromTo(strip, { x: () => at("#w1")() + 500, scale: 1 }, { ...stop("#w1"), duration: .35, ease: ex, immediateRender: false }, a);
+  tl.to(strip, { ...stop("#w2"), duration: .4, ease: "expo.inOut" }, a + .4);
+  tl.to(strip, { ...stop("#w3"), duration: .4, ease: "expo.inOut" }, a + .85);
+  tl.to(strip, { ...stop("#w4"), duration: .4, ease: "expo.inOut" }, a + 1.3);
   tl.to(strip, { scale: k, x: () => (1920 - strip.offsetWidth * k()) / 2, duration: .55, ease: "expo.inOut" }, a + 1.85); }
 
 // 04 I think — tracking compresses
