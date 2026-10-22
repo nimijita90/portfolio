@@ -166,7 +166,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 16 Turning complexity into clarity. — scattered letters orbit, then snap into one clean word -->
 <div class="sc dk" id="j16">
-  <div class="bl" id="cxDot" style="width:22px;height:22px"></div>
+  <div class="abs" id="cxDot" style="left:953px;top:633px;width:14px;height:14px;background:#f1f3ed;transform:scale(0)"></div>
   <div class="abs sans" id="tur" style="left:180px;top:300px;font-size:70px;font-weight:500;letter-spacing:-.035em">Turning</div>
   <div class="abs serif it" id="cx" style="left:170px;top:400px;font-size:250px;white-space:nowrap"></div>
   <div class="abs sans" id="cla" style="left:180px;top:720px;font-size:70px;font-weight:500;letter-spacing:-.035em">into <span style="font-weight:700">clarity</span></div>
@@ -236,17 +236,16 @@ const anchor = (gl, root, fs, g) => { const [ox] = offIn(gl, root), [, by] = off
 const mkBall = (root, d) => { const b = document.createElement("div"); b.className = "bl"; root.appendChild(b); gsap.set(b, { width: d, height: d }); return b; };
 const squash = (b, t, k, pre) => { // stretch into the landing, squash, recover (scaled about the centre, yPercent keeps the bottom on the baseline)
   tl.to(b, { scaleX: 1 - .2 * k, scaleY: 1 + .3 * k, yPercent: -15 * k, duration: pre, ease: "power1.in" }, t - pre);
-  tl.to(b, { scaleX: 1 + .45 * k, scaleY: 1 - .4 * k, yPercent: 20 * k, duration: .05, ease: "power1.out" }, t);
-  tl.to(b, { scaleX: 1, scaleY: 1, yPercent: 0, duration: .14, ease: "back.out(3)" }, t + .05); };
+  tl.to(b, { scaleX: 1 + .35 * k, scaleY: 1 - .3 * k, yPercent: 15 * k, duration: .08, ease: "power2.out" }, t);
+  tl.to(b, { scaleX: 1, scaleY: 1, yPercent: 0, duration: .32, ease: "back.out(2)" }, t + .08); };
 // p = { x, y, t }: start centre and time; each leg lands at (x, y) at time t after an arc h px above the higher end; k = squash strength
 const fly = (b, d, p, legs) => { tl.set(b, { x: p.x - d / 2, y: p.y - d / 2, opacity: 1 }, p.t);
   for (const L of legs) { const top = Math.min(p.y, L.y) - (L.h || 0), dt = L.t - p.t, u = Math.sqrt(p.y - top), w = Math.sqrt(L.y - top), tu = u + w ? dt * u / (u + w) : 0;
     tl.to(b, { x: L.x - d / 2, duration: dt, ease: "none" }, p.t);
     if (tu > .001) tl.to(b, { y: top - d / 2, duration: tu, ease: "power2.out" }, p.t);
     if (dt - tu > .001) tl.to(b, { y: L.y - d / 2, duration: dt - tu, ease: "power2.in" }, p.t + tu);
-    if ((L.h || 0) >= 100) tl.to(b, { rotation: (b._r = (b._r || 0) + 180), duration: dt, ease: "power1.inOut" }, p.t); // a half flip on the big hops
     if (L.k) squash(b, L.t, L.k, Math.min(.07, (dt - tu) * .6));
-    p = L.k ? { ...L, t: L.t + .05 } : L; } }; // stays on the ground while it squashes
+    p = L.k ? { ...L, t: L.t + .08 } : L; } }; // stays on the ground while it squashes
 const mid = (els) => { const f = els[0], l = els[els.length - 1]; return (f.offsetLeft + l.offsetLeft + l.offsetWidth) / 2; };
 const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offsetWidth / 2, k = Math.abs(c - x); // letters spring out of the impact point
   tl.fromTo(e, { opacity: 0, x: (x - c) * .55, y: 46, scale: .35 }, { opacity: 1, x: 0, y: 0, scale: 1, duration: .55, ease: "expo.out" }, t + k * .00045); });
@@ -268,8 +267,7 @@ const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offs
 // 04 I think — tracking compresses
 { const [a] = T.j04;
   tl.fromTo("#think", { letterSpacing: ".5em", opacity: 0 }, { letterSpacing: "-.045em", opacity: 1, duration: .8, ease: io }, a);
-  // the three dots are left by the ball, bounce by bounce (see buildBalls)
-}
+  tl.from("#think .d", { opacity: 0, duration: .05, stagger: .28 }, a + .55); }
 
 // 05 I know one. — extreme close-up of the "o", snaps out to the full line
 { const [a] = T.j05;
@@ -303,23 +301,17 @@ const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offs
 { const [a] = T.jbt; const chs = split($("#bring"), "Bringing together");
   tl.from(chs, { y: (i) => -220 - (i % 5) * 60, opacity: 0, duration: .45, stagger: .018, ease: ex }, a); }
 
-// 08 Product Strategy. — the structure of his rule flow builds itself block by block while the camera travels along it; the ball runs the flow
+// 08 Product Strategy. — the structure of his rule flow builds itself block by block while the camera travels along it; data pulses run the wires
 { const [a, b] = T.j08; const lx = $("#lx");
   const cam = (bx, by, sx, sy, sc) => ({ x: sx - bx * sc, y: sy - by * sc, scale: sc });
   const glow = (sel, at) => { tl.fromTo(sel, { opacity: 0, scale: .9, y: 24 },
       { opacity: 1, scale: 1, y: 0, duration: .45, ease: ex }, at);
     tl.from(sel + " .nb i", { scaleX: 0, transformOrigin: "0 50%", duration: .35, stagger: .03, ease: "power2.out" }, at + .15); };
-  // the ball travels the flow: along a wire, then a hop over each block onto the next wire
-  const ball = document.createElementNS("http://www.w3.org/2000/svg", "rect"), B = { x: 0, y: 0 };
-  ball.setAttribute("width", 18); ball.setAttribute("height", 18); ball.setAttribute("fill", "#f1f3ed"); ball.setAttribute("opacity", 0); $("#pulses").appendChild(ball);
-  const put = () => { ball.setAttribute("x", B.x - 9); ball.setAttribute("y", B.y - 9); };
-  const end = (id, f) => $(id).getPointAtLength(f * $(id).getTotalLength());
-  const along = (id, t0, dur) => { const q = { p: 0 }, path = $(id), L = path.getTotalLength();
-    tl.fromTo(q, { p: 0 }, { p: 1, duration: dur, ease: "power1.inOut", immediateRender: false, onUpdate: () => { const pt = path.getPointAtLength(q.p * L); B.x = pt.x; B.y = pt.y; put(); } }, t0); };
-  const hop = (from, to, t0, dur, h) => { const top = Math.min(from.y, to.y) - h, u = Math.sqrt(from.y - top), w = Math.sqrt(to.y - top), tu = dur * u / (u + w);
-    tl.fromTo(B, { x: from.x }, { x: to.x, duration: dur, ease: "none", immediateRender: false, onUpdate: put }, t0);
-    tl.fromTo(B, { y: from.y }, { y: top, duration: tu, ease: "power2.out", immediateRender: false, onUpdate: put }, t0);
-    tl.fromTo(B, { y: top }, { y: to.y, duration: dur - tu, ease: "power2.in", immediateRender: false, onUpdate: put }, t0 + tu); };
+  // light pulses travel along each wire once it is drawn, like data moving through the flow
+  const pulse = (id, at, n) => { const path = $(id), g = $("#pulses");
+    for (let k = 0; k < n; k++) { const c = document.createElementNS("http://www.w3.org/2000/svg", "circle"); c.setAttribute("r", 4.5); c.setAttribute("class", "pulse"); c.setAttribute("opacity", 0); g.appendChild(c);
+      const st = { p: 0 }; const put = () => { const L = path.getTotalLength(), pt = path.getPointAtLength(st.p * L); c.setAttribute("cx", pt.x); c.setAttribute("cy", pt.y); };
+      tl.fromTo(st, { p: 0 }, { p: 1, duration: .7, ease: "power1.inOut", onUpdate: put, onStart: () => c.setAttribute("opacity", 1), onComplete: () => c.setAttribute("opacity", 0) }, at + k * .9); } };
   const wire = (ids, at) => { [].concat(ids).forEach((id) => {
       tl.set(id, { opacity: 1 }, at);
       tl.fromTo(id, { attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: .4, ease: "power2.inOut" }, at);
@@ -340,11 +332,7 @@ const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offs
   wire("#c4", a + 1.9); glow("#nTemp", a + 2.1);
   tl.to(".pt:nth-of-type(n+9):nth-of-type(-n+10)", { opacity: 1, duration: .2 }, a + 2.35);
   wire(["#c5", "#c6"], a + 2.4); glow("#nSend", a + 2.6); glow("#nTag", a + 2.7);
-  tl.set(ball, { attr: { opacity: 1 } }, a + 1.0);
-  along("#c1", a + 1.0, .4); hop(end("#c1", 1), end("#c2", 0), a + 1.4, .22, 50);
-  along("#c2", a + 1.62, .43); hop(end("#c2", 1), end("#c4", 0), a + 2.05, .3, 90);
-  along("#c4", a + 2.35, .4); hop(end("#c4", 1), end("#c5", 0), a + 2.75, .2, 50);
-  along("#c5", a + 2.95, .35);
+  pulse("#c1", a + 1.0, 3); pulse("#c2", a + 1.6, 2); pulse("#c3", a + 1.8, 2); pulse("#c4", a + 2.35, 2); pulse("#c5", a + 2.85, 1); pulse("#c6", a + 3.0, 1);
   tl.to(".pt:nth-of-type(n+11)", { opacity: 1, duration: .2 }, a + 2.9);
   tl.to("#j08", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
@@ -364,8 +352,8 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   const P = (x) => x - d / 2, G = py - d / 2; // ball left / resting top
   const land = (t, hard) => { // stretch into the floor, squash, recover
     tl.to(ball, { scaleX: .8, scaleY: 1.3, duration: .09, ease: "power1.in" }, t - .09);
-    tl.to(ball, { scaleX: hard ? 1.5 : 1.25, scaleY: hard ? .58 : .78, duration: .05, ease: "power1.out" }, t);
-    tl.to(ball, { scaleX: 1, scaleY: 1, duration: .24, ease: "back.out(3)" }, t + .05); };
+    tl.to(ball, { scaleX: hard ? 1.35 : 1.18, scaleY: hard ? .7 : .84, duration: .08, ease: "power2.out" }, t);
+    tl.to(ball, { scaleX: 1, scaleY: 1, duration: .32, ease: "back.out(2)" }, t + .08); };
   const hop = (t, x, h, up) => { // one parabolic hop from the resting line to x, apex h px above it
     tl.to(ball, { x: P(x), duration: up * 2, ease: "none" }, t);
     tl.to(ball, { y: G - h, duration: up, ease: "power2.out" }, t);
@@ -373,21 +361,21 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offsetWidth / 2, k = Math.abs(c - x);
     tl.fromTo(e, { opacity: 0, x: (x - c) * .55, y: 46, scale: .35 }, { opacity: 1, x: 0, y: 0, scale: 1, duration: .55, ease: "expo.out" }, t + k * .00045); });
   // fall in from the upper left
-  const t1 = a + .62;
-  tl.set(ball, { opacity: 1 }, a + .2);
-  tl.to(ball, { x: P(x1), duration: .42, ease: "none" }, t1 - .42);
-  tl.to(ball, { y: G, duration: .42, ease: "power2.in" }, t1 - .42);
+  const t1 = a + .55;
+  tl.set(ball, { opacity: 1 }, a + .1);
+  tl.to(ball, { x: P(x1), duration: .45, ease: "none" }, t1 - .45);
+  tl.to(ball, { y: G, duration: .45, ease: "power2.in" }, t1 - .45);
   land(t1, true); grow(A, x1, t1);
-  const t2 = t1 + .54; hop(t1 + .02, x2, 300, .26); land(t2, true); grow(B, x2, t2);
-  const t3 = t2 + .38; hop(t2 + .02, px, 170, .18); land(t3, false);
-  hop(t3 + .02, px, 46, .1); hop(t3 + .24, px, 12, .055);
+  const t2 = t1 + .6; hop(t1 + .08, x2, 300, .26); land(t2, true); grow(B, x2, t2); // each hop leaves the ground after the squash
+  const t3 = t2 + .44; hop(t2 + .08, px, 170, .18); land(t3, false);
+  hop(t3 + .08, px, 30, .15);
   // the ball becomes the full stop
-  tl.to(ball, { skewX: -12.5, duration: .2, ease: "power2.out" }, t3 + .32); // leans into the italic, then hands over to the real full stop
+  tl.to(ball, { skewX: -12.5, duration: .3, ease: "power2.inOut" }, t3 + .38); // leans into the italic, then hands over to the real full stop
   tl.to(dot, { opacity: 1, duration: .2 }, t3 + .5); tl.to(ball, { opacity: 0, duration: .2 }, t3 + .5);
   tl.to("#j09", { x: -1920, duration: .35, ease: exi }, b - .3); };
 
 // 10 AI-Driven Design. — his toolchain as a hub-and-spoke map (after "how AI agents work" diagrams): AI in the centre, tools grouped by
-// design, build, ship & learn. The ball hops from tool to tool and comes back to the hub. Line icons only, no brand logos
+// design, build, ship & learn; they light up in turn, then the hub. Line icons only, no brand logos
 { const [a, b] = T.j10, H = [960, 600], R = 46, ink = "#f1f3ed";
   const I = {
     pen: '<path d="M15.7 21.3a1 1 0 0 1-1.4 0l-1.6-1.6a1 1 0 0 1 0-1.4l5.6-5.6a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4z"/><path d="m18 13-1.4-6.9a1 1 0 0 0-.7-.8L3.2 2a1 1 0 0 0-1.2 1.2l3.3 12.7a1 1 0 0 0 .8.7L13 18"/><path d="m2.3 2.3 7.3 7.3"/><circle cx="11" cy="11" r="2"/>',
@@ -416,16 +404,12 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.from(".grp", { opacity: 0, duration: .4, stagger: .08 }, a + .45);
   tl.fromTo(".ed", { attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: .4, stagger: .04, ease: "power2.inOut" }, a + .5);
   tl.from(nodes, { opacity: 0, scale: .6, transformOrigin: "50% 50%", duration: .4, stagger: .045, ease: "back.out(2)" }, a + .65);
-  // the ball pops out of the hub and hops through the toolchain: design → build → ship & learn → back to the hub
-  const d = 22, ball = mkBall($("#j10"), d), top = (i) => ({ x: N[i][1], y: N[i][2] - R - d / 2 });
+  // the tools light up one after another — design, build, ship & learn — then the hub
   const light = (i, t) => { const c = nodes[i].querySelector("circle"), ic = nodes[i].querySelector(".ic");
-    tl.to(c, { attr: { fill: ink }, duration: .06 }, t); tl.to(ic, { attr: { stroke: "#121514" }, duration: .06 }, t);
-    tl.to(c, { attr: { fill: "#121514" }, duration: .3 }, t + .3); tl.to(ic, { attr: { stroke: ink }, duration: .3 }, t + .3); };
-  tl.fromTo(ball, { scale: 0 }, { scale: 1, duration: .2, ease: "back.out(3)" }, a + 1.15);
-  const seq = [[0, 1.45, 130], [1, 1.68, 60], [2, 2.08, 170], [3, 2.3, 60], [4, 2.52, 60], [7, 2.8, 90], [6, 3.0, 70], [5, 3.2, 70]];
-  fly(ball, d, { x: H[0], y: H[1] - 62 - d / 2, t: a + 1.15 }, [...seq.map(([i, t, h]) => ({ ...top(i), t: a + t, h, k: .6 })), { x: H[0], y: H[1] - 62 - d / 2, t: a + 3.48, h: 120, k: .8 }]);
-  seq.forEach(([i, t]) => light(i, a + t));
-  tl.to("#hub", { attr: { fill: ink }, duration: .06 }, a + 3.48); tl.to("#hubS", { attr: { fill: "#121514" }, duration: .06 }, a + 3.48);
+    tl.to(c, { attr: { fill: ink }, duration: .15 }, t); tl.to(ic, { attr: { stroke: "#121514" }, duration: .15 }, t);
+    tl.to(c, { attr: { fill: "#121514" }, duration: .5 }, t + .4); tl.to(ic, { attr: { stroke: ink }, duration: .5 }, t + .4); };
+  [0, 1, 2, 3, 4, 5, 6, 7].forEach((i, k) => light(i, a + 1.35 + k * .2));
+  tl.to("#hub", { attr: { fill: ink }, duration: .2 }, a + 3.05); tl.to("#hubS", { attr: { fill: "#121514" }, duration: .2 }, a + 3.05);
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
 // 12 I've learned that great products need — sentence builds, everything dims except "need"
@@ -451,14 +435,14 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.fromTo("#ex2", { x: () => mid() - 420 }, { x: mid, duration: 1.0, ease: "power2.out" }, a);
   tl.from("#j15 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
-// 16 Turning complexity into clarity. — the ball drops in and bursts into scattered letters, they orbit, then snap into one clean word
+// 16 Turning complexity into clarity. — a point bursts into scattered letters, they orbit, then snap into one clean word
 { const [a, b] = T.j16; const chs = split($("#cx"), "complexity"); const rnd = gsap.utils.random;
   const ring = (i, spin) => { const th = i / chs.length * Math.PI * 2 + [.1, -.15, .2, 0, -.1, .15, -.2, .05, .1, -.05][i] + spin, rr = 1 + [.08, -.1, .05, .12, -.06, 0, .1, -.08, .04, -.12][i]; return { x: Math.cos(th) * 560 * rr, y: Math.sin(th) * 300 * rr }; };
   const scat = [...chs].map((c, i) => ({ ...ring(i, 0), r: rnd(-60, 60), s: rnd(.55, 1.25), x2: ring(i, .32).x, y2: ring(i, .32).y }));
   const fromPt = (el, axis) => axis === "x" ? 960 - (170 + el.offsetLeft + el.offsetWidth / 2) : 640 - (400 + el.offsetTop + el.offsetHeight / 2);
-  const s0 = a + .38;
-  fly($("#cxDot"), 22, { x: 760, y: -40, t: a }, [{ x: 960, y: 640, t: a + .18, k: .8 }]);
-  tl.to("#cxDot", { scale: 0, transformOrigin: "50% 50%", duration: .1 }, s0);
+  const s0 = a + .25;
+  tl.fromTo("#cxDot", { scale: 0, opacity: 1 }, { scale: 1, duration: .15, ease: "back.out(2)" }, a);
+  tl.to("#cxDot", { scale: 0, duration: .1 }, s0);
   tl.fromTo(chs, { x: (i, el) => fromPt(el, "x"), y: (i, el) => fromPt(el, "y"), scale: 0, rotation: 0, opacity: 1 },
     { x: (i, el) => fromPt(el, "x") + scat[i].x, y: (i, el) => fromPt(el, "y") + scat[i].y, rotation: (i) => scat[i].r, scale: (i) => scat[i].s, opacity: .5, duration: .5, ease: "expo.out", stagger: .012 }, s0);
   tl.to(chs, { x: (i, el) => fromPt(el, "x") + scat[i].x2, y: (i, el) => fromPt(el, "y") + scat[i].y2, rotation: (i) => scat[i].r * .6, duration: .3, ease: "none" }, s0 + .5);
@@ -509,32 +493,25 @@ const buildBalls = () => {
     tl.fromTo(hi, { scale: 7, x: hi.offsetWidth / 2 - g.x, y: hi.offsetHeight / 2 - g.y, transformOrigin: `${g.x}px ${g.y}px` }, { scale: 1, x: 0, y: 0, duration: .75, ease: ex }, a);
     tl.to(hi, { y: -1100, duration: .4, ease: exi }, a + .95);
     tl.set(b, { x: g.x - g.d / 2, y: g.y - g.d / 2, opacity: 1 }, a);
-    fly(b, g.d, { x: g.x, y: g.y, t: a + .74 }, [{ x: g.x + 1300, y: g.y + 520, t: a + 1.2, h: 240 }]); }
-  // 04 I think… — the ball bounces three times; every bounce leaves one of the dots
-  { const [a] = T.j04, th = $("#think"), ds = [...th.querySelectorAll(".gl")], ls = th.style.letterSpacing;
-    th.style.letterSpacing = "-.045em"; const P = ds.map((e) => anchor(e, th, 150, BL.dot)); th.style.letterSpacing = ls;
-    const d = P[0].d, b = mkBall(th, d), at = [a + .95, a + 1.1, a + 1.25];
-    gsap.set(ds, { opacity: 0 }); ds.forEach((e, i) => tl.set(e, { opacity: 1 }, at[i]));
-    fly(b, d, { x: P[0].x - 900, y: P[0].y - 380, t: a + .7 }, [{ ...P[0], t: at[0], k: .8 }, { ...P[1], t: at[1], h: 45, k: .4 }, { ...P[2], t: at[2], h: 45, k: .4 },
-      { x: P[2].x + 780, y: P[2].y + 220, t: a + 1.42, h: 90 }]); }
+    fly(b, g.d, { x: g.x, y: g.y, t: a + .72 }, [{ x: g.x + 1100, y: g.y + 700, t: a + 1.3, h: 200 }]); }
   // 06 I'm Javier Ortiz. — the name rises with a bare i; the ball drops onto it and settles as its dot, then hops away as the name leaves
   { const [a] = T.j06, sc = $("#j06"), g = anchor($("#name .gl"), sc, 170, BL.tit), b = mkBall(sc, g.d);
-    fly(b, g.d, { x: g.x - 70, y: -60, t: a + .5 }, [{ x: g.x, y: g.y, t: a + .85, k: 1 }, { x: g.x, y: g.y, t: a + 1.1, h: 50, k: .4 }, { x: g.x, y: g.y, t: a + 1.26, h: 14 }]);
-    fly(b, g.d, { x: g.x, y: g.y, t: a + 2.05 }, [{ x: g.x + 380, y: -120, t: a + 2.4, h: 60 }]); }
+    fly(b, g.d, { x: g.x - 60, y: -60, t: a + .45 }, [{ x: g.x, y: g.y, t: a + .85, k: .8 }, { x: g.x, y: g.y, t: a + 1.25, h: 40 }]);
+    fly(b, g.d, { x: g.x, y: g.y, t: a + 1.95 }, [{ x: g.x + 420, y: -140, t: a + 2.45, h: 90 }]); }
   // 17 So, what's next? — the ball lands as the dot of the question mark, then leaps off as the words sink
   { const [a, e] = T.j17, so = $("#sowhat"), gl = $("#sowhat .gl"), fs = 150, g = anchor(gl, so, fs, BL.qIt), bm = gl.querySelector(".bm");
     Object.assign(gl.querySelector(".qc").style, { left: .16 * fs + "px", width: .22 * fs + "px", top: bm.offsetTop - .165 * fs + "px", height: .18 * fs + "px" });
     const b = mkBall(so, g.d);
-    fly(b, g.d, { x: g.x - 800, y: g.y - 420, t: a + .85 }, [{ x: g.x, y: g.y, t: a + 1.15, k: 1 }, { x: g.x, y: g.y, t: a + 1.36, h: 34, k: .3 }]);
-    tl.to(b, { skewX: -12.5, duration: .2, ease: "power2.out" }, a + 1.4); tl.to(b, { skewX: 0, duration: .15 }, e - .85); // leans into the italic
-    fly(b, g.d, { x: g.x, y: g.y, t: e - .85 }, [{ x: g.x + 260, y: g.y - 900, t: e - .45 }]); }
+    fly(b, g.d, { x: g.x - 520, y: g.y - 520, t: a + .7 }, [{ x: g.x, y: g.y, t: a + 1.15, k: .7 }, { x: g.x, y: g.y, t: a + 1.5, h: 30 }]);
+    tl.to(b, { skewX: -12.5, duration: .4, ease: "power2.inOut" }, a + 1.5); tl.to(b, { skewX: 0, duration: .3 }, e - .9); // leans into the italic
+    fly(b, g.d, { x: g.x, y: g.y, t: e - .85 }, [{ x: g.x + 320, y: g.y - 900, t: e - .3 }]); }
   // 19 web closing — "great" and "together" spring from the ball's landings; it settles as the full stop, then glides to centre and grows into the opening dot
   if (T.j19) { const [a] = T.j19, row = $("#clRow"), fs = 150, g = anchor($("#clP"), row, fs, BL.dot), d = g.d, b = mkBall(row, d);
     const Gs = split($("#clG"), "great"), Ts = split($("#clT"), "together"), x1 = mid(Gs), x2 = mid(Ts);
     tl.from("#cl1", { yPercent: 110, duration: .8, ease: ex }, a + .05);
-    fly(b, d, { x: x1 - 520, y: g.y - 760, t: a + .35 }, [{ x: x1, y: g.y, t: a + .75, k: 1 }, { x: x2, y: g.y, t: a + 1.25, h: 240, k: 1 },
-      { x: g.x, y: g.y, t: a + 1.58, h: 130, k: .6 }, { x: g.x, y: g.y, t: a + 1.78, h: 36 }, { x: g.x, y: g.y, t: a + 1.9, h: 10 }]);
-    grow(Gs, x1, a + .75); grow(Ts, x2, a + 1.25);
+    fly(b, d, { x: x1 - 460, y: g.y - 760, t: a + .3 }, [{ x: x1, y: g.y, t: a + .78, k: .9 }, { x: x2, y: g.y, t: a + 1.38, h: 230, k: .8 },
+      { x: g.x, y: g.y, t: a + 1.83, h: 120, k: .6 }, { x: g.x, y: g.y, t: a + 2.13, h: 26 }]);
+    grow(Gs, x1, a + .78); grow(Ts, x2, a + 1.38);
     tl.to(["#cl1", "#cl2"], { opacity: 0, duration: .45, ease: "power2.in" }, a + 2.9);
     tl.set(b, { transformOrigin: "50% 50%" }, a + 2.92);
     tl.to(b, { x: 960 - d / 2, y: 540 - row.offsetTop - d / 2, scale: 676 / d, duration: 1.0, ease: "expo.inOut" }, a + 2.95); } // 676 px = the i-dot of "Hi." at 7x
