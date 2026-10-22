@@ -128,7 +128,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 10 AI-Driven Design. — "Connect …": Claude becomes the hub and his tools connect around it -->
 <div class="sc dk" id="j10">
-  <div class="abs" id="pBar" style="left:310px;top:290px;width:1300px;height:84px;border:1.5px solid rgba(241,243,237,.6);border-radius:42px">
+  <div class="abs" id="pBar" style="left:210px;top:290px;width:1500px;height:84px;border:1.5px solid rgba(241,243,237,.6);border-radius:42px">
     <svg viewBox="0 0 24 24" style="position:absolute;inset:auto;left:30px;top:24px;width:34px;height:34px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/></svg>
     <div class="abs sans" style="left:82px;top:19px;font-size:34px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;line-height:1.3"><span id="pT"></span><span class="cur" id="pC" style="opacity:0"></span></div>
     <div class="abs" id="pSend" style="right:12px;top:12px;width:58px;height:58px;border-radius:29px;border:1.5px solid rgba(241,243,237,.6);display:grid;place-items:center"><svg viewBox="0 0 24 24" style="position:static;width:24px;height:24px"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="#f1f3ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
@@ -358,7 +358,7 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.to(dot, { opacity: 1, duration: .2 }, t3 + .5); tl.to(ball, { opacity: 0, duration: .2 }, t3 + .5);
   tl.to("#j09", { x: -1920, duration: .35, ease: exi }, b - .3); };
 
-// 10 AI-Driven Design. — Claude as his hub: "Connect Figma, FigJam, Miro, Jira, Confluence, FullStory and Codex." is typed and sent;
+// 10 AI-Driven Design. — Claude as his hub: "Connect Figma, FigJam, Miro, Jira, Confluence, FullStory, Codex and Higgsfield." is typed and sent;
 // Claude appears in the centre and his tools connect around it one by one, then a pulse runs out to all of them. Line icons and names only, no logos
 { const [a, b] = T.j10, ink = "#f1f3ed", C = [960, 715], R = 46;
   const I = {
@@ -368,9 +368,10 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
     kanban: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v7M12 7v4M16 7v9"/>',
     doc: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>',
     eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
-    code: '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>' };
-  const N = [["Figma", I.pen], ["FigJam", I.note], ["Miro", I.board], ["Jira", I.kanban], ["Confluence", I.doc], ["FullStory", I.eye], ["Codex", I.code]]
-    .map(([t, ic], i) => { const th = -Math.PI / 2 + i * 2 * Math.PI / 7; return [t, ic, C[0] + Math.cos(th) * 580, C[1] + Math.sin(th) * 235]; }); // a ring around Claude
+    code: '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>',
+    film: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 12h18M3 7.5h4M3 16.5h4M17 7.5h4M17 16.5h4"/>' };
+  const N = [["Figma", I.pen], ["FigJam", I.note], ["Miro", I.board], ["Jira", I.kanban], ["Confluence", I.doc], ["FullStory", I.eye], ["Codex", I.code], ["Higgsfield", I.film]]
+    .map(([t, ic], i) => { const th = -Math.PI / 2 + i * 2 * Math.PI / 8; return [t, ic, C[0] + Math.cos(th) * 580, C[1] + Math.sin(th) * 235]; }); // a ring around Claude
   $("#hubG").innerHTML =
     N.map(([, , x, y]) => `<path class="hl" d="M${C[0]} ${C[1]} L${x} ${y}" pathLength="1" fill="none" stroke="rgba(241,243,237,.5)" stroke-width="1.4"/>`).join("") +
     N.map(([, , x, y]) => `<circle class="hp" cx="${C[0]}" cy="${C[1]}" r="5" fill="${ink}" opacity="0"/>`).join("") +
@@ -380,7 +381,7 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.fromTo("#j10", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#aiT", a + .1);
   tl.from("#pBar", { opacity: 0, y: 30, duration: .5, ease: ex }, a + .35);
-  const e = typeIn("#pT", "Connect Figma, FigJam, Miro, Jira, Confluence, FullStory and Codex.", a + .6, .022); caret("#pC", a + .5, e + .25);
+  const e = typeIn("#pT", "Connect Figma, FigJam, Miro, Jira, Confluence, FullStory, Codex and Higgsfield.", a + .6, .02); caret("#pC", a + .5, e + .25);
   tl.to("#pSend", { backgroundColor: ink, duration: .12 }, e + .2); tl.to("#pSend path", { attr: { stroke: "#121514" }, duration: .12 }, e + .2);
   tl.to("#pSend", { scale: .9, duration: .08, yoyo: true, repeat: 1 }, e + .25);
   const h0 = e + .45;
