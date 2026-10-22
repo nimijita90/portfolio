@@ -26,7 +26,7 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 03 | 2.70–5.60 | black | a Senior Product Designer | Camera stops on each word, framing it whole (it pulls back as far as the word needs), then pulls back to the line |
 | 04 | 5.55–6.95 | black | I think… | Tracking compresses; the dots arrive one by one |
 | 05 | 6.90–7.95 | black | I know one. | Extreme close-up punch |
-| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask; the full stop pops. On the right Javier (clip, cut out onto the black, no halo) looks towards his name, then turns to camera with a smile; he lifts out of frame with the letters (no fade) |
+| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask; the full stop pops. On the right Javier (clip, cut out onto the black, no halo) looks towards his name, then turns to camera with a smile; the shot holds and simply cuts to the next scene |
 | 07 | 10.45–12.90 | black | Designing *complex* products. | Masked lines rise; the other lines fade and the camera zooms into "complex" |
 | 07b | 12.90–14.70 | black | Bringing together *(added)* | Letter cascade |
 | 08 | 14.65–18.85 | black | Product *Strategy.* · 01 / 03 | The structure of his rule-editor flow drawn as a line infographic (no product UI or data): outlined blocks with line icons, skeleton bars and generic Fragment Mono labels (trigger, filter, query, calculate, store, send, tag) build one by one. White wires draw between them, small flat pulses run along the wires, and the camera travels along the flow and pulls back to show it whole |
