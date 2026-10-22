@@ -76,8 +76,8 @@ svg{position:absolute;inset:0;overflow:visible}
 <body>
 <div id="stage">
 
-<!-- 01 Hi -->
-<div class="sc dk" id="j01"><div class="abs serif c" id="hi" style="font-size:700px"><span class="mask"><span class="w">Hi</span></span></div></div>
+<!-- 01 Hi — the word is assembled from its own rectangles (in Instrument Sans the H and the i are nothing but rectangles) -->
+<div class="sc dk" id="j01"><div class="abs" id="hi" style="left:0;top:0;width:1920px;height:1080px"><div class="abs" id="hL" style="left:592.3px;top:216.0px;width:117.0px;height:648.0px;background:var(--ink)"></div><div class="abs" id="hR" style="left:1016.2px;top:216.0px;width:117.0px;height:648.0px;background:var(--ink)"></div><div class="abs" id="hB" style="left:648.1px;top:480.6px;width:421.2px;height:91.8px;background:var(--ink)"></div><div class="abs" id="iS" style="left:1208.8px;top:405.0px;width:113.4px;height:459.0px;background:var(--ink)"></div><div class="abs" id="iD" style="left:1203.4px;top:204.3px;width:124.2px;height:125.1px;background:var(--ink)"></div></div></div>
 
 <!-- 02 If you're looking for — typewriter -->
 <div class="sc dk" id="j02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
@@ -119,13 +119,11 @@ svg{position:absolute;inset:0;overflow:visible}
     </div>
   </div>
   <div class="abs" style="left:0;top:0;width:1920px;height:360px;background:linear-gradient(#121514 52%,rgba(18,21,20,0))"></div>
-  <div class="abs mono" style="right:120px;top:150px">01 / 03</div>
-  <div class="title serif" id="psT"><span>Product <i>Strategy.</i></span></div>
+  <div class="title serif" id="psT"><span><span class="ch">P</span><span class="ch">r</span><span class="ch">o</span><span class="ch">d</span><span class="ch">u</span><span class="ch">c</span><span class="ch">t</span> <i><span class="ch">S</span><span class="ch">t</span><span class="ch">r</span><span class="ch">a</span><span class="ch">t</span><span class="ch">e</span><span class="ch">g</span><span class="ch">y</span><span class="ch">.</span></i></span></div>
 </div>
 
 <!-- 09 Systems Thinking. — a field of hairlines turns, in a wave, towards one point -->
 <div class="sc dk" id="j09">
-  <div class="abs mono" id="stN" style="right:120px;top:150px">02 / 03</div>
   <div class="abs serif" id="stRow" style="left:0;top:430px;width:1920px;text-align:center;font-size:210px;line-height:1;white-space:nowrap"><span id="stA">Systems</span> <i id="stB">Thinking</i><i id="stDot" style="display:inline-block;opacity:0">.</i><span id="stBase" style="display:inline-block;width:0;height:0"></span><div class="abs" id="ball" style="left:0;top:0;background:#f1f3ed;opacity:0"></div></div>
 </div>
 
@@ -139,7 +137,6 @@ svg{position:absolute;inset:0;overflow:visible}
     <div class="abs" id="aDots" style="left:98px;top:250px;display:flex;gap:10px"><b style="width:12px;height:12px;background:#f1f3ed"></b><b style="width:12px;height:12px;background:#f1f3ed"></b><b style="width:12px;height:12px;background:#f1f3ed"></b></div>
     <div class="abs sans" id="aT" style="left:96px;top:226px;font-size:54px;font-weight:500;line-height:1.22;letter-spacing:-.03em;white-space:nowrap"><span class="aw">There’s</span> <span class="aw">a</span> <span class="aw">brilliant</span> <span class="aw">one</span> <span class="aw">in</span> <span class="aw">Marbella:</span><br><i><span class="aw">Javier</span> <span class="aw">Ortiz.</span></i><br><span class="aw">Hire</span> <span class="aw">him</span> <span class="aw">right</span> <span class="aw">away.</span></div>
   </div>
-  <div class="abs mono" style="right:120px;top:150px">03 / 03</div>
   <div class="title serif" id="aiT"><span>AI-Driven <i>Design.</i></span></div>
 </div>
 
@@ -175,7 +172,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 17 So, what's next? -->
 <div class="sc dk" id="j17">
-  <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next?</span></span></div>
+  <div class="abs serif c" id="sowhat" style="top:540px;font-size:170px;line-height:1.1"><span class="w">So,</span> <span class="w">what’s</span> <span class="w it">next<span id="qm" style="display:inline-block">?</span></span></div>
 </div>
 
 <!-- 19 Closing (web) — "Let's talk." rises, holds and fades to black, so the loop returns to "Hi." -->
@@ -215,12 +212,12 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
-  j01: [0.0, 1.35], j02: [1.3, 2.75], j03: [2.7, 5.6], j04: [5.55, 6.95], j05: [6.9, 7.95], j06: [7.9, 10.5], j07: [10.45, 12.9],
-  jbt: [12.9, 14.7], j08: [14.65, 18.85], j09: [18.8, 21.4], j10: [21.35, 26.35], j12: [26.3, 28.3], j13: [28.25, 29.35],
-  j14: [29.3, 30.4], j15: [30.35, 31.5], j16: [31.45, 34.05], j16b: [34.05, 36.05], j17: [36.0, 38.75], j18: [38.7, 47.65],
+  j01: [0.0, 1.95], j02: [1.9, 3.35], j03: [3.3, 6.2], j04: [6.15, 7.55], j05: [7.5, 8.55], j06: [8.5, 11.1], j07: [11.05, 13.5],
+  jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 27.85], j12: [27.8, 29.8], j13: [29.75, 30.85], j14: [30.8, 31.9],
+  j15: [31.85, 33.0], j16: [32.95, 35.55], j16b: [35.55, 37.55], j17: [37.5, 40.6], j18: [40.55, 52.05],
 };
-// two cuts: the web cut closes on "Let's talk." and fades out so it can loop; ?end=mail keeps the mail closing for sending
-if (new URLSearchParams(location.search).get("end") !== "mail") { delete T.j18; T.j19 = [38.7, 42.2]; }
+// the film closes on the mail (default); ?end=web gives a short loopable cut that closes on "Let's talk."; ?end=mail keeps the mail closing for sending
+if (new URLSearchParams(location.search).get("end") === "web") { T.j19 = [T.j18[0], T.j18[0] + 3.5]; delete T.j18; }
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
 const typeIn = (sel, text, at, step) => { const chs = split($(sel), text); gsap.set(chs, { display: "none" }); chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step)); return at + chs.length * step; };
@@ -228,11 +225,18 @@ const caret = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); for (let t
 const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
 
 
-// 01 Hi — opens on black: the word rises from its mask while the camera settles, then lifts out of frame
+// 01 Hi — opens on black and builds the word piece by piece: the left stem shoots up, the right one drops in, the bar spans them,
+// the i rises and its square dot falls into place; the camera eases in, then the word lifts out of frame
 { const [a] = T.j01;
-  tl.fromTo("#hi .w", { yPercent: 110 }, { yPercent: 0, duration: .7, ease: ex }, a + .05);
-  tl.fromTo("#hi", { scale: 1.12 }, { scale: 1, duration: 1.0, ease: "power3.out" }, a);
-  tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
+  tl.from("#hL", { scaleY: 0, transformOrigin: "50% 100%", duration: .5, ease: "expo.out" }, a + .08);
+  tl.from("#hR", { y: -1100, duration: .55, ease: "expo.out" }, a + .22);
+  tl.from("#hB", { scaleX: 0, transformOrigin: "0% 50%", duration: .45, ease: "expo.inOut" }, a + .45);
+  tl.from("#iS", { y: 700, duration: .5, ease: "expo.out" }, a + .62);
+  tl.fromTo("#iD", { y: -900 }, { y: 0, duration: .32, ease: "power2.in" }, a + .82);
+  tl.to("#iD", { scaleX: 1.3, scaleY: .7, transformOrigin: "50% 100%", duration: .06, ease: "power2.out" }, a + 1.14);
+  tl.to("#iD", { scaleX: 1, scaleY: 1, duration: .35, ease: "back.out(2.5)" }, a + 1.2);
+  tl.fromTo("#hi", { scale: 1 }, { scale: 1.06, transformOrigin: "50% 50%", duration: 1.2, ease: "power1.inOut" }, a + .5);
+  tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + 1.55); }
 
 // 02 If you're looking for — typewriter with cursor
 { const [a] = T.j02; const e = typeIn("#lookT", "If you’re looking for", a + .05, .04); caret("#lookC", e, a + 1.15);
@@ -286,8 +290,8 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 { const [a] = T.jbt; const chs = split($("#bring"), "Bringing together");
   tl.from(chs, { y: (i) => -220 - (i % 5) * 60, opacity: 0, duration: .45, stagger: .018, ease: ex }, a); }
 
-// 08 Product Strategy. — the structure of his rule flow builds itself block by block while the camera travels along it; data pulses run the wires
-{ const [a, b] = T.j08; const lx = $("#lx");
+// 08 Product Strategy. — the title lands big and centred, moves to its place, then the structure of his rule flow builds itself block by block while the camera travels along it; data pulses run the wires
+{ let [a, b] = T.j08; const lx = $("#lx");
   const cam = (bx, by, sx, sy, sc) => ({ x: sx - bx * sc, y: sy - by * sc, scale: sc });
   const glow = (sel, at) => { tl.fromTo(sel, { opacity: 0, scale: .9, y: 24 },
       { opacity: 1, scale: 1, y: 0, duration: .45, ease: ex }, at);
@@ -303,7 +307,13 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
       tl.set(id, { attr: { "marker-end": $(id).dataset.mk } }, at + .38); }); };
   gsap.set(".pt", { opacity: 0 });
   tl.fromTo("#j08", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
-  roll("#psT", a + .1);
+  // the title lands big and centred, letter by letter, holds, then glides to its place as the flow starts building
+  const ps = () => $("#psT > span");
+  gsap.set("#psT", { transformOrigin: "0 0" });
+  tl.set("#psT", { x: () => (1920 - ps().offsetWidth * 1.45) / 2 - 120, y: () => (1080 - ps().offsetHeight * 1.45) / 2 - 100, scale: 1.45 }, a - .05);
+  tl.to("#psT", { x: 0, y: 0, scale: 1, duration: .8, ease: "expo.inOut" }, a + .85);
+  tl.from("#psT .ch", { yPercent: 110, opacity: 0, rotation: 6, duration: .6, stagger: .03, ease: ex }, a + .1);
+  a += .9; // the flow builds after the title
   tl.fromTo(lx, { ...cam(170, 523, 760, 690, 1.2), rotationX: 0 }, { ...cam(170, 523, 760, 690, 1.2), rotationX: 0, duration: .01 }, a);
   tl.to(lx, { ...cam(720, 470, 960, 760, 1.0), rotationX: 0, duration: .85, ease: "power2.inOut" }, a + .95);
   tl.to(lx, { ...cam(1330, 560, 1060, 720, .98), rotationX: 0, duration: .85, ease: "power2.inOut" }, a + 1.95);
@@ -325,7 +335,6 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 // (built once the fonts have loaded, because the landing points are measured from the set type)
 const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $("#ball");
   tl.fromTo("#j09", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
-  tl.from("#stN", { opacity: 0, duration: .3 }, a + .2);
   const A = split($("#stA"), "Systems"), B = split($("#stB"), "Thinking");
   const base = $("#stBase").offsetTop, dot = $("#stDot");
   const cx = document.createElement("canvas").getContext("2d"); cx.font = 'italic 600 210px "Instrument Sans"';
@@ -375,10 +384,9 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.from("#aT .aw", { opacity: 0, y: 22, duration: .4, stagger: .07, ease: ex }, th + .9);
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
-// 12 I've learned that great products need — sentence builds, everything dims except "need"
+// 12 I've learned that great products need — the sentence builds word by word
 { const [a] = T.j12;
   tl.from("#learn .w", { opacity: 0, y: 30, duration: .4, stagger: .13 }, a);
-  tl.to("#learn .w:not(#need)", { opacity: .25, duration: .3 }, a + 1.55);
   tl.to("#learn", { x: -1600, duration: .3, ease: exi }, a + 1.7); }
 
 // 13 clear thinking, — the camera passes along the oversized words, then dives into the comma
@@ -419,23 +427,25 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.from("#drv .w", { yPercent: 110, duration: .9, ease: ex }, a + .05);
   tl.to("#drv .w", { yPercent: -110, duration: .55, ease: "power3.in" }, b - .6); }
 
-// 17 So, what's next? — words rise from masks and sink back
+// 17 So, what's next? — the words drop in one by one and bounce, the question mark swings like a sign on a hinge, then everything falls away
 { const [a, b] = T.j17;
-  tl.from("#sowhat .w", { yPercent: 110, duration: .9, stagger: .18, ease: "power3.out" }, a + .05);
-  tl.to("#sowhat .w", { yPercent: -110, duration: .6, stagger: .1, ease: "power3.in" }, b - .75); }
+  tl.from("#sowhat .w", { y: -760, duration: .75, stagger: .22, ease: "bounce.out" }, a + .05);
+  const sw = { t: 0 };
+  tl.fromTo(sw, { t: 0 }, { t: 1.6, duration: 1.6, ease: "none", onUpdate: () => gsap.set("#qm", { rotation: 22 * Math.exp(-2.3 * sw.t) * Math.sin(9 * sw.t), transformOrigin: "50% 92%" }) }, a + .95);
+  tl.to("#sowhat .w", { y: 900, duration: .45, stagger: .06, ease: "power2.in" }, b - .55); }
 
 // 18 Closing — the viewer answers "what's next?" by writing to Javier: To, Subject and "Hey, Javier! Let’s talk." are typed,
 // the pointer hits Send, the window flies off, and his address glides to centre stage with his site beneath it
 if (T.j18) { const [a, b] = T.j18;
   tl.fromTo("#mCard", { clipPath: "inset(100% 0 0 0 round 24px)", y: 60 }, { clipPath: "inset(0% 0 0 0 round 24px)", y: 0, duration: .7, ease: ex }, a);
   tl.fromTo("#mTo", { y: 60 }, { y: 0, duration: .7, ease: ex }, a);
-  const t1 = typeIn("#mToT", "javier6165@gmail.com", a + .55, .03); caret("#mToC", a + .45, t1 + .25);
-  const t2 = typeIn("#mSub", "Senior Product Designer", t1 + .3, .035); caret("#mSubC", t1 + .25, t2 + .2);
-  const t3 = typeIn("#mBody1", "Hey, Javier!", t2 + .3, .05);
+  const t1 = typeIn("#mToT", "javier6165@gmail.com", a + .6, .045); caret("#mToC", a + .45, t1 + .3);
+  const t2 = typeIn("#mSub", "Senior Product Designer", t1 + .35, .05); caret("#mSubC", t1 + .3, t2 + .25);
+  const t3 = typeIn("#mBody1", "Hey, Javier!", t2 + .35, .065);
   $("#mBody2").innerHTML = '<span id="mB2a"></span><i id="mB2b"></i>';
-  const t4 = typeIn("#mB2a", "Let’s ", t3 + .35, .055), t6 = typeIn("#mB2b", "talk.", t4, .055);
+  const t4 = typeIn("#mB2a", "Let’s ", t3 + .4, .07), t6 = typeIn("#mB2b", "talk.", t4, .07);
   caret("#mBC1", t2 + .25, t3 + .3); caret("#mBC2", t3 + .3, t6 + .5);
-  const tc = t6 + .9;
+  const tc = t6 + 1.2;
   tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 830, duration: .65, ease: "power3.inOut" }, tc - .85);
   tl.to("#mSend", { scale: .92, duration: .08, ease: "power2.out" }, tc);
   tl.to("#mSend", { scale: 1, duration: .2, ease: "power2.out" }, tc + .08);
