@@ -127,7 +127,7 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="abs serif" id="stRow" style="left:0;top:430px;width:1920px;text-align:center;font-size:210px;line-height:1;white-space:nowrap"><span id="stA">Systems</span> <i id="stB">Thinking</i><i id="stDot" style="display:inline-block;opacity:0">.</i><span id="stBase" style="display:inline-block;width:0;height:0"></span><div class="abs" id="ball" style="left:0;top:0;background:#f1f3ed;opacity:0"></div></div>
 </div>
 
-<!-- 10 AI-Driven Design. — a short chat: "I need a Senior Product Designer." / "You need Javier Ortiz." -->
+<!-- 10 AI-Powered Design Workflows. — a short chat: "I need a designer who knows how to work with AI." / "You need Javier Ortiz. He doesn't just use AI. He designs with it." -->
 <div class="sc dk" id="j10">
   <div class="abs" id="chat" style="left:360px;top:360px;width:1200px;height:440px">
     <div class="abs mono" id="uL" style="right:6px;top:0;font-size:18px">you</div>
@@ -135,9 +135,9 @@ svg{position:absolute;inset:0;overflow:visible}
     <div class="abs" id="aAv" style="left:0;top:232px;width:64px;height:64px;border-radius:50%;border:1.5px solid #f1f3ed;display:grid;place-items:center"><svg viewBox="0 0 24 24" style="position:static;width:30px;height:30px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/></svg></div>
     <div class="abs mono" id="aL" style="left:96px;top:206px;font-size:18px">ai</div>
     <div class="abs" id="aDots" style="left:98px;top:258px;display:flex;gap:10px"><b style="width:12px;height:12px;background:#f1f3ed"></b><b style="width:12px;height:12px;background:#f1f3ed"></b><b style="width:12px;height:12px;background:#f1f3ed"></b></div>
-    <div class="abs sans" id="aT" style="left:96px;top:228px;font-size:72px;font-weight:500;line-height:1.1;letter-spacing:-.035em;white-space:nowrap;color:#b6beb6"><span class="cw">You</span> <span class="cw">need</span> <i style="color:#f1f3ed"><span class="cw">Javier</span> <span class="cw">Ortiz.</span></i></div>
+    <div class="abs sans" id="aT" style="left:96px;top:228px;font-size:72px;font-weight:500;line-height:1.1;letter-spacing:-.035em;white-space:nowrap;color:#b6beb6"><span class="cw">You</span> <span class="cw">need</span> <i style="color:#f1f3ed"><span class="cw">Javier</span> <span class="cw">Ortiz.</span></i><div style="margin-top:22px;font-size:52px;letter-spacing:-.025em"><span class="cw">He</span> <span class="cw">doesn’t</span> <span class="cw">just</span> <span class="cw">use</span> <span class="cw">AI.</span> <span class="cw">He</span> <span class="cw">designs</span> <span class="cw">with</span> <span class="cw">it.</span></div></div>
   </div>
-  <div class="title serif" id="aiT"><span>AI-Driven <i>Design.</i></span></div>
+  <div class="title serif" id="aiT" style="font-size:118px"><span>AI-Powered Design <i>Workflows.</i></span></div>
 </div>
 
 <!-- 12 I've learned that great products need -->
@@ -212,8 +212,8 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
   j01: [0.0, 1.95], j02: [1.9, 3.35], j03: [3.3, 6.2], j04: [6.15, 7.55], j05: [7.5, 8.55], j06: [8.5, 11.1], j07: [11.05, 13.5],
-  jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 26.85], j12: [26.8, 28.8], j13: [28.75, 29.85], j14: [29.8, 30.9],
-  j15: [30.85, 32.7], j16: [32.65, 35.25], j16b: [35.25, 37.25], j17: [37.2, 40.3], j18: [40.25, 51.75],
+  jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 28.15], j12: [28.1, 30.1], j13: [30.05, 31.15], j14: [31.1, 32.2],
+  j15: [32.15, 34.0], j16: [33.95, 36.55], j16b: [36.55, 38.55], j17: [38.5, 41.6], j18: [41.55, 53.05],
 };
 // the film closes on the mail (default); ?end=web gives a short loopable cut that closes on "Let's talk."; ?end=mail keeps the mail closing for sending
 if (new URLSearchParams(location.search).get("end") === "web") { T.j19 = [T.j18[0], T.j18[0] + 3.5]; delete T.j18; }
@@ -361,20 +361,22 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.to(dot, { opacity: 1, duration: .2 }, t3 + .5); tl.to(ball, { opacity: 0, duration: .2 }, t3 + .5);
   tl.to("#j09", { x: -1920, duration: .35, ease: exi }, b - .3); };
 
-// 10 AI-Driven Design. — a short chat: "I need a Senior Product Designer." is typed and sent (it echoes the opening line); the AI thinks
-// for a beat (three square dots) and answers "You need Javier Ortiz." Copy is illustrative and must be approved by Javier
+// 10 AI-Powered Design Workflows. — a short chat: "I need a designer who knows how to work with AI." is typed and sent; the AI thinks
+// for a beat (three square dots) and answers "You need Javier Ortiz." then "He doesn't just use AI. He designs with it." (copy by María)
 { const [a, b] = T.j10;
   tl.fromTo("#j10", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#aiT", a + .1);
   tl.from(["#uL", "#uB"], { opacity: 0, y: 24, duration: .45, stagger: .05, ease: ex }, a + .35);
-  const e = typeIn("#uT", "I need a Senior Product Designer.", a + .5, .028); caret("#uC", a + .4, e + .15);
+  const e = typeIn("#uT", "I need a designer who knows how to work with AI.", a + .5, .026); caret("#uC", a + .4, e + .15);
   tl.to("#uB", { borderColor: "rgba(241,243,237,.3)", duration: .3 }, e + .2); // sent
   tl.from(["#aAv", "#aL"], { opacity: 0, scale: .6, transformOrigin: "50% 50%", duration: .4, stagger: .05, ease: "back.out(2)" }, e + .3);
   const th = e + .4;
   tl.from("#aDots", { opacity: 0, duration: .12 }, th);
   gsap.utils.toArray("#aDots b").forEach((d, i) => tl.to(d, { y: -10, duration: .16, ease: "power2.out", yoyo: true, repeat: 1 }, th + i * .08));
   tl.to("#aDots", { opacity: 0, duration: .1 }, th + .5);
-  tl.from("#aT .cw", { opacity: 0, y: 22, duration: .45, stagger: .09, ease: ex }, th + .55);
+  const ws = gsap.utils.toArray("#aT .cw");
+  tl.from(ws.slice(0, 4), { opacity: 0, y: 22, duration: .45, stagger: .09, ease: ex }, th + .55);
+  tl.from(ws.slice(4), { opacity: 0, y: 18, duration: .4, stagger: .06, ease: ex }, th + 1.25);
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
 // 12 I've learned that great products need — the sentence builds word by word
