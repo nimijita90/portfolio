@@ -12,7 +12,7 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 - 
 Fonts are in `fonts/javier/` (SIL OFL 1.1, licences included). Outlined words use `instrument-sans-latin-600-outline.woff2`, a static 600 instance with its overlapping contours merged (fontTools removeOverlaps), so strokes show no internal joins.
 
-The copy is Javier's script, plus two connectors that add no new facts. They are marked "added" below; Javier should approve them. There is no footage or imagery, so every scene is typographic or abstract. Silent for now (45.1 s). Product Strategy and AI-Driven Design follow the look of Netlify's "What is Netlify?" film (style reference only): dark ground with a glow rising from below, glass cards with lit edges in 3D, a monospace prompt with a glowing caret and a burst of light, here in white and drawn flat and frontal, without perspective.
+The copy is Javier's script, plus two connectors that add no new facts. They are marked "added" below; Javier should approve them. There is no footage or imagery, so every scene is typographic or abstract. Silent for now (46.5 s). Product Strategy and AI-Driven Design follow the look of Netlify's "What is Netlify?" film (style reference only): dark ground with a glow rising from below, glass cards with lit edges in 3D, a monospace prompt with a glowing caret and a burst of light, here in white and drawn flat and frontal, without perspective.
 
 | # | Time (s) | Theme | On screen | Motion |
 |---|---|---|---|---|
@@ -35,5 +35,4 @@ The copy is Javier's script, plus two connectors that add no new facts. They are
 | 16 | 29.80–32.40 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
 | 16b | 32.40–34.40 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
 | 17 | 34.35–36.60 | black | So, what's *next?* | Masked rise and sink |
-| 18 | 36.55–39.35 | black | Let's build something great *together.* | Two masked lines rise and sink |
-| 19 | 39.30–45.10 | black | javierortizalmagro.com | Typed into a minimal bar; the bar falls away and the address stays |
+| 18 | 36.55–46.50 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's build something / great *together.*" (his own closing line). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed, with a caret per line |

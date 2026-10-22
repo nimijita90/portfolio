@@ -191,15 +191,25 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next?</span></span></div>
 </div>
 
-<!-- 18 Let's build something great together. -->
-<div class="sc dk" id="j18"><div class="abs serif" id="lets" style="left:160px;top:380px;font-size:124px;line-height:1.04"><span class="mask"><span class="w">Let’s build something</span></span><br><span class="mask"><span class="w">great <i>together.</i></span></span></div></div>
-
-<!-- 19 javierortizalmagro.com — the address is typed into a minimal bar; the bar falls away and the address stays -->
-<div class="sc dk" id="j19">
-  <div class="abs" id="uBar" style="left:390px;top:466px;width:1140px;height:148px;border-radius:74px;background:var(--bar);outline:1px solid var(--line);box-shadow:0 18px 50px rgba(17,17,17,.08);outline-offset:-1px"></div>
-  <div class="abs sans" id="uTxt" style="left:470px;top:502px;font-size:60px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;transform-origin:0 50%"><span id="uT"></span><span class="cur" id="uC" style="opacity:0"></span></div>
+<!-- 18 Closing — the viewer answers "what's next?": a mail to Javier is written and sent; his address and site stay -->
+<div class="sc dk" id="j18">
+  <div class="abs" id="mCard" style="left:400px;top:190px;width:1120px;height:700px;border-radius:24px;background:#1a1e1c;outline:1px solid var(--line);outline-offset:-1px;overflow:hidden">
+    <div class="abs mono" style="left:44px;top:32px;font-size:20px">New message</div>
+    <div class="abs" style="right:44px;top:40px;width:68px;height:12px;display:flex;gap:10px"><i style="width:12px;height:12px;border-radius:6px;background:#39403b"></i><i style="width:12px;height:12px;border-radius:6px;background:#39403b"></i><i style="width:12px;height:12px;border-radius:6px;background:#39403b"></i></div>
+    <div class="abs" style="left:44px;right:44px;top:84px;height:1px;background:var(--line)"></div>
+    <div class="abs sans" style="left:44px;top:106px;font-size:26px;font-weight:500;color:var(--mute)">To</div>
+    <div class="abs" style="left:44px;right:44px;top:168px;height:1px;background:var(--line)"></div>
+    <div class="abs sans" style="left:44px;top:190px;font-size:26px;font-weight:500;color:var(--mute)">Subject</div>
+    <div class="abs sans" style="left:180px;top:184px;font-size:32px;font-weight:500;letter-spacing:-.02em"><span id="mSub"></span><span class="cur" id="mSubC" style="opacity:0"></span></div>
+    <div class="abs" style="left:44px;right:44px;top:252px;height:1px;background:var(--line)"></div>
+    <div class="abs serif" style="left:44px;top:296px;font-size:76px;line-height:1.08;white-space:nowrap"><span id="mBody1" style="font-weight:500"></span><span class="cur" id="mBC1" style="opacity:0"></span><br><span id="mBody2"></span><span class="cur" id="mBC2" style="opacity:0"></span><br><span id="mBody3"></span><span class="cur" id="mBC3" style="opacity:0"></span></div>
+    <div class="abs sans" id="mSend" style="right:44px;bottom:40px;padding:16px 38px;border-radius:40px;background:#f1f3ed;color:#121514;font-size:26px;font-weight:600">Send</div>
+  </div>
+  <div class="abs sans" id="mTo" style="left:580px;top:290px;font-size:32px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;transform-origin:0 50%"><span id="mToT"></span><span class="cur" id="mToC" style="opacity:0"></span></div>
+  <div class="abs mono c" id="mSite" style="top:640px;font-size:28px;opacity:0">javierortizalmagro.com</div>
+  <div class="abs mono c" id="mSent" style="top:440px;font-size:20px;opacity:0">Sent ✓</div>
+  <svg class="abs" id="mPtr" viewBox="0 0 24 24" style="left:0;top:0;width:44px;height:44px;overflow:visible"><path d="M3 2 L3 19 L7.6 14.8 L10.6 21.4 L13.4 20.2 L10.4 13.7 L16.6 13.4 Z" fill="#f1f3ed" stroke="#121514" stroke-width="1.2" stroke-linejoin="round"/></svg>
 </div>
-
 </div>
 <script src="../node_modules/gsap/dist/gsap.min.js"></script>
 <script>
@@ -215,7 +225,7 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 const T = {
   j01: [0.0, 1.35], j02: [1.3, 2.75], j03: [2.7, 5.6], j04: [5.55, 6.95], j05: [6.9, 7.95], j06: [7.9, 9.35], j07: [9.3, 11.75],
   jbt: [11.75, 12.75], j08: [12.7, 16.9], j09: [16.85, 19.3], j10: [19.25, 22.65], j11: [22.6, 24.7], j12: [24.65, 26.65], j13: [26.6, 27.7],
-  j14: [27.65, 28.75], j15: [28.7, 29.85], j16: [29.8, 32.4], j16b: [32.4, 34.4], j17: [34.35, 36.6], j18: [36.55, 39.35], j19: [39.3, 45.1],
+  j14: [27.65, 28.75], j15: [28.7, 29.85], j16: [29.8, 32.4], j16b: [32.4, 34.4], j17: [34.35, 36.6], j18: [36.55, 46.5],
 };
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
@@ -401,22 +411,33 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.from("#sowhat .w", { yPercent: 110, duration: .9, stagger: .18, ease: "power3.out" }, a + .05);
   tl.to("#sowhat .w", { yPercent: -110, duration: .6, stagger: .1, ease: "power3.in" }, b - .75); }
 
-// 18 Let's build something great together. — two lines rise slowly, hold, and sink
+// 18 Closing — the viewer answers "what's next?" by writing to Javier: To, Subject and "Hey, Javier! Let's build something great together." are typed,
+// the pointer hits Send, the window flies off, and his address glides to centre stage with his site beneath it
 { const [a, b] = T.j18;
-  tl.from("#lets .w", { yPercent: 110, duration: 1.0, stagger: .25, ease: ex }, a + .05);
-  tl.to("#lets .w", { yPercent: -110, duration: .6, stagger: .1, ease: "power3.in" }, b - .75); }
-
-// 19 javierortizalmagro.com — typed into a minimal bar; the bar falls away and the address takes centre stage
-{ const [a, b] = T.j19;
-  tl.fromTo("#uBar", { clipPath: "inset(100% 0 0 0 round 74px)", y: 50 }, { clipPath: "inset(0% 0 0 0 round 74px)", y: 0, duration: .7, ease: ex }, a);
-  tl.fromTo("#uTxt", { y: 50 }, { y: 0, duration: .7, ease: ex }, a);
-  const e = typeIn("#uT", "javierortizalmagro.com", a + .6, .05); caret("#uC", a + .5, e + .6);
-  tl.to("#uBar", { scaleX: .02, opacity: 0, duration: .55, ease: "expo.in" }, e + .7);
-  tl.to("#uTxt", { x: () => 960 - 470 - $("#uT").offsetWidth * 1.5 / 2, scale: 1.5, duration: 1.0, ease: "expo.inOut" }, e + .95);
+  tl.fromTo("#mCard", { clipPath: "inset(100% 0 0 0 round 24px)", y: 60 }, { clipPath: "inset(0% 0 0 0 round 24px)", y: 0, duration: .7, ease: ex }, a);
+  tl.fromTo("#mTo", { y: 60 }, { y: 0, duration: .7, ease: ex }, a);
+  const t1 = typeIn("#mToT", "javier6165@gmail.com", a + .55, .03); caret("#mToC", a + .45, t1 + .25);
+  const t2 = typeIn("#mSub", "Senior Product Designer", t1 + .3, .035); caret("#mSubC", t1 + .25, t2 + .2);
+  const t3 = typeIn("#mBody1", "Hey, Javier!", t2 + .3, .05);
+  const t4 = typeIn("#mBody2", "Let’s build something", t3 + .35, .042);
+  split($("#mBody3"), ""); $("#mBody3").innerHTML = '<span id="mB3a"></span><i id="mB3b"></i>';
+  const t5 = typeIn("#mB3a", "great ", t4 + .05, .042), t6 = typeIn("#mB3b", "together.", t5, .042);
+  caret("#mBC1", t2 + .25, t3 + .3); caret("#mBC2", t3 + .3, t4 + .03); caret("#mBC3", t4 + .03, t6 + .5);
+  const tc = t6 + .9;
+  tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 830, duration: .65, ease: "power3.inOut" }, tc - .85);
+  tl.to("#mSend", { scale: .92, duration: .08, ease: "power2.out" }, tc);
+  tl.to("#mSend", { scale: 1, duration: .2, ease: "power2.out" }, tc + .08);
+  tl.to("#mPtr", { scale: .85, duration: .08, transformOrigin: "10% 10%" }, tc);
+  tl.to("#mPtr", { scale: 1, duration: .2 }, tc + .08);
+  tl.to("#mCard", { y: -1000, x: 260, rotation: -7, scale: .72, duration: .6, ease: "expo.in" }, tc + .3);
+  tl.to("#mPtr", { x: 1900, y: 1150, duration: .5, ease: "power2.in" }, tc + .35);
+  tl.to("#mTo", { x: () => 960 - 580 - $("#mTo").offsetWidth * 2 / 2, y: 540 - 290 - 24, scale: 2, duration: 1.0, ease: "expo.inOut" }, tc + .65);
+  tl.fromTo("#mSent", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .5, ease: "power2.out" }, tc + 1.4);
+  tl.fromTo("#mSite", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: "power2.out" }, tc + 1.6);
   tl.set({}, {}, b); }
 
 /* ---------- preview and render hooks ---------- */
-window.DURATION = T.j19[1];
+window.DURATION = T.j18[1];
 window.seek = async (t) => { tl.seek(t, false); };
 window.ready = document.fonts.ready;
 const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); $("#stage").style.transform = `scale(${s})`; };
