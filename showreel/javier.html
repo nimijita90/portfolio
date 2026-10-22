@@ -12,7 +12,7 @@
 @font-face{font-family:"Instrument Sans";src:url("fonts/javier/instrument-sans-latin-wdth-normal.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%}
 @font-face{font-family:"Instrument Sans";src:url("fonts/javier/instrument-sans-latin-wdth-italic.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%;font-style:italic}
 @font-face{font-family:"Fragment Mono";src:url("fonts/javier/fragment-mono-latin-400-normal.woff2") format("woff2");font-weight:400}
-:root{--bg:#f7f7f3;--ink:#171817;--mute:#555750;--line:#d8dad3;--accent:#0d99ff;--serif:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--mono:"Fragment Mono",Menlo,monospace}
+:root{--bg:#121514;--ink:#f1f3ed;--mute:#b6beb6;--line:#39403b;--accent:#f1f3ed;--serif:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--mono:"Fragment Mono",Menlo,monospace}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);overflow:hidden}
 #stage{position:absolute;left:0;top:0;width:1920px;height:1080px;background:var(--bg);color:var(--ink);font-family:var(--sans);overflow:hidden;transform-origin:0 0}
@@ -56,19 +56,19 @@ svg{position:absolute;inset:0;overflow:visible}
 .title > span{display:inline-block;transform-origin:50% 100%}
 
 /* flow infographic (structure of his rule editor, drawn as line art) */
-.nd{position:absolute;width:293px;border-radius:14px;border:1.5px solid rgba(127,208,255,.7);background:rgba(13,153,255,.05);box-shadow:0 0 22px rgba(13,153,255,.18),inset 0 0 24px rgba(13,153,255,.05)}
-.nh{display:flex;gap:12px;align-items:center;padding:16px 16px 14px;border-bottom:1px solid rgba(127,208,255,.25)}
-.ni{flex:none;width:34px;height:34px;border-radius:8px;border:1.5px solid rgba(127,208,255,.8);display:grid;place-items:center}
-.ni svg{position:static;width:20px;height:20px;fill:none;stroke:#bfe6ff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.nl{font-family:var(--mono);font-size:15px;letter-spacing:.06em;color:#bfe6ff}
-.nb{padding:16px}.nb i{display:block;height:7px;border-radius:4px;background:rgba(127,208,255,.32);margin-bottom:14px}
-.mmA{position:absolute;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(127,208,255,.7);box-shadow:0 0 14px rgba(13,153,255,.3)}
-.mmA::after{content:"";position:absolute;left:12px;top:9px;width:13px;height:13px;border-radius:50%;border:1.5px solid #bfe6ff}
-.pulse{fill:#e9f6ff;filter:drop-shadow(0 0 6px #0d99ff) drop-shadow(0 0 12px #0d99ff)}
+.nd{position:absolute;width:293px;border-radius:14px;border:1.5px solid rgba(241,243,237,.7);background:rgba(241,243,237,0.03);box-shadow:0 0 22px rgba(241,243,237,0.13),inset 0 0 24px rgba(241,243,237,0.03)}
+.nh{display:flex;gap:12px;align-items:center;padding:16px 16px 14px;border-bottom:1px solid rgba(241,243,237,.25)}
+.ni{flex:none;width:34px;height:34px;border-radius:8px;border:1.5px solid rgba(241,243,237,.8);display:grid;place-items:center}
+.ni svg{position:static;width:20px;height:20px;fill:none;stroke:#d9ddd5;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.nl{font-family:var(--mono);font-size:15px;letter-spacing:.06em;color:#d9ddd5}
+.nb{padding:16px}.nb i{display:block;height:7px;border-radius:4px;background:rgba(241,243,237,.32);margin-bottom:14px}
+.mmA{position:absolute;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(241,243,237,.7);box-shadow:0 0 14px rgba(241,243,237,0.21)}
+.mmA::after{content:"";position:absolute;left:12px;top:9px;width:13px;height:13px;border-radius:50%;border:1.5px solid #d9ddd5}
+.pulse{fill:#ffffff;filter:drop-shadow(0 0 6px #f1f3ed) drop-shadow(0 0 12px #f1f3ed)}
 /* Netlify-style glass: generated cards */
-.gen{position:absolute;border-radius:20px;background:rgba(13,153,255,.03);border:1.5px solid rgba(13,153,255,.55);box-shadow:0 0 40px rgba(13,153,255,.22),inset 0 0 40px rgba(13,153,255,.06);padding:34px 36px;opacity:0}
-.gen i{display:block;height:16px;border-radius:8px;background:rgba(127,208,255,.28);margin-bottom:16px}
-.gen b{display:inline-block;width:27%;height:70px;border-radius:12px;border:1.5px solid rgba(127,208,255,.45);margin:10px 3% 0 0}
+.gen{position:absolute;border-radius:20px;background:rgba(241,243,237,0.02);border:1.5px solid rgba(241,243,237,0.39);box-shadow:0 0 40px rgba(241,243,237,0.15),inset 0 0 40px rgba(241,243,237,0.04);padding:34px 36px;opacity:0}
+.gen i{display:block;height:16px;border-radius:8px;background:rgba(241,243,237,.28);margin-bottom:16px}
+.gen b{display:inline-block;width:27%;height:70px;border-radius:12px;border:1.5px solid rgba(241,243,237,.45);margin:10px 3% 0 0}
 </style>
 </head>
 <body>
@@ -81,12 +81,12 @@ svg{position:absolute;inset:0;overflow:visible}
 <div class="sc dk" id="j02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
 
 <!-- 03 a Senior Product Designer, — camera pass along the oversized line, then pull back -->
-<div class="sc lt" id="j03">
+<div class="sc dk" id="j03">
   <div class="abs serif" id="strip" style="left:0;top:90px;font-size:900px;line-height:900px;white-space:nowrap;transform-origin:0 50%"><span id="w1">a</span> <span id="w2">Senior</span> <span id="w3">Product</span> <span id="w4">Designer</span></div>
 </div>
 
 <!-- 04 I think — tracking compresses -->
-<div class="sc lt" id="j04"><div class="abs serif c" id="think" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
+<div class="sc dk" id="j04"><div class="abs serif c" id="think" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
 
 <!-- 05 I know one. — extreme close-up punch -->
 <div class="sc dk" id="j05"><div class="abs sans c" id="know" style="font-size:250px;font-weight:600;letter-spacing:-.045em">I know one.</div></div>
@@ -98,18 +98,18 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 07 Designing complex digital products. -->
-<div class="sc lt" id="j07">
+<div class="sc dk" id="j07">
   <div class="abs serif" id="dd" style="left:140px;top:250px;font-size:160px;line-height:.98"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it">complex</span></span><br><span class="mask"><span class="w">digital products.</span></span></div>
 </div>
 
 <!-- 07b Bringing together — letter cascade (added connector) -->
-<div class="sc lt" id="jbt"><div class="abs sans" id="bring" style="left:180px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"></div></div>
+<div class="sc dk" id="jbt"><div class="abs sans" id="bring" style="left:180px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"></div></div>
 
 <!-- 08 Product Strategy. — one connected path, milestone by milestone -->
-<div class="sc dk" id="j08" style="background:radial-gradient(110% 75% at 50% 112%,rgba(13,153,255,.22),rgba(13,153,255,0) 62%),#121514">
+<div class="sc dk" id="j08" style="background:radial-gradient(110% 75% at 50% 112%,rgba(241,243,237,0.15),rgba(241,243,237,0.0) 62%),#121514">
   <div class="abs" id="lxView" style="left:0;top:0;width:1920px;height:1080px;perspective:1800px;overflow:hidden">
     <div id="lx" style="position:absolute;left:0;top:0;width:1920px;height:860px;transform-origin:0 0">
-      <svg viewBox="0 0 1920 860" style="width:1920px;height:860px"><defs><marker id="ar36c37a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 9 5 0 9z" fill="#7fd0ff"/></marker><marker id="are5484d" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 9 5 0 9z" fill="#2f7fc4"/></marker><marker id="ar3b9eff" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 9 5 0 9z" fill="#7fd0ff"/></marker></defs><path class="cn" id="c1" d="M317 523 H426" stroke="#7fd0ff" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(13,153,255,.9))" data-mk="url(#ar36c37a)" opacity="0"/><path class="cn" id="c2" d="M727 508 H768 Q778 508 778 498 V259 Q778 249 788 249 H817" stroke="#7fd0ff" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(13,153,255,.9))" data-mk="url(#ar36c37a)" opacity="0"/><path class="cn" id="c3" d="M727 536 H768 Q778 536 778 546 V742 Q778 752 788 752 H818" stroke="#2f7fc4" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(13,153,255,.9))" data-mk="url(#are5484d)" opacity="0"/><path class="cn" id="c4" d="M967 481 V522 Q967 532 977 532 H1122 Q1132 532 1132 542 V561 Q1132 571 1142 571 H1178" stroke="#7fd0ff" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(13,153,255,.9))" data-mk="url(#ar3b9eff)" opacity="0"/><path class="cn" id="c5" d="M1480 550 H1535 Q1545 550 1545 540 V417 Q1545 407 1555 407 H1594" stroke="#7fd0ff" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(13,153,255,.9))" data-mk="url(#ar36c37a)" opacity="0"/><path class="cn" id="c6" d="M1480 578 H1535 Q1545 578 1545 588 V707 Q1545 717 1555 717 H1594" stroke="#2f7fc4" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(13,153,255,.9))" data-mk="url(#are5484d)" opacity="0"/><circle class="pt" cx="317" cy="523" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="727" cy="508" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="727" cy="536" r="5" fill="#121514" stroke="#2f7fc4" stroke-width="2"/><circle class="pt" cx="1114" cy="237" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="1114" cy="265" r="5" fill="#121514" stroke="#2f7fc4" stroke-width="2"/><circle class="pt" cx="967" cy="481" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="1114" cy="736" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="1114" cy="764" r="5" fill="#121514" stroke="#2f7fc4" stroke-width="2"/><circle class="pt" cx="1480" cy="550" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="1480" cy="578" r="5" fill="#121514" stroke="#2f7fc4" stroke-width="2"/><circle class="pt" cx="1895" cy="392" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="1895" cy="420" r="5" fill="#121514" stroke="#2f7fc4" stroke-width="2"/><circle class="pt" cx="1895" cy="703" r="5" fill="#121514" stroke="#7fd0ff" stroke-width="2"/><circle class="pt" cx="1895" cy="731" r="5" fill="#121514" stroke="#2f7fc4" stroke-width="2"/><g id="pulses"></g></svg>
+      <svg viewBox="0 0 1920 860" style="width:1920px;height:860px"><defs><marker id="ar36c37a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 9 5 0 9z" fill="#f1f3ed"/></marker><marker id="are5484d" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 9 5 0 9z" fill="#7d8279"/></marker><marker id="ar3b9eff" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 1 9 5 0 9z" fill="#f1f3ed"/></marker></defs><path class="cn" id="c1" d="M317 523 H426" stroke="#f1f3ed" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(241,243,237,0.63))" data-mk="url(#ar36c37a)" opacity="0"/><path class="cn" id="c2" d="M727 508 H768 Q778 508 778 498 V259 Q778 249 788 249 H817" stroke="#f1f3ed" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(241,243,237,0.63))" data-mk="url(#ar36c37a)" opacity="0"/><path class="cn" id="c3" d="M727 536 H768 Q778 536 778 546 V742 Q778 752 788 752 H818" stroke="#7d8279" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(241,243,237,0.63))" data-mk="url(#are5484d)" opacity="0"/><path class="cn" id="c4" d="M967 481 V522 Q967 532 977 532 H1122 Q1132 532 1132 542 V561 Q1132 571 1142 571 H1178" stroke="#f1f3ed" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(241,243,237,0.63))" data-mk="url(#ar3b9eff)" opacity="0"/><path class="cn" id="c5" d="M1480 550 H1535 Q1545 550 1545 540 V417 Q1545 407 1555 407 H1594" stroke="#f1f3ed" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(241,243,237,0.63))" data-mk="url(#ar36c37a)" opacity="0"/><path class="cn" id="c6" d="M1480 578 H1535 Q1545 578 1545 588 V707 Q1545 717 1555 717 H1594" stroke="#7d8279" stroke-width="2" fill="none" pathLength="1" style="filter:drop-shadow(0 0 6px rgba(241,243,237,0.63))" data-mk="url(#are5484d)" opacity="0"/><circle class="pt" cx="317" cy="523" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="727" cy="508" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="727" cy="536" r="5" fill="#121514" stroke="#7d8279" stroke-width="2"/><circle class="pt" cx="1114" cy="237" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="1114" cy="265" r="5" fill="#121514" stroke="#7d8279" stroke-width="2"/><circle class="pt" cx="967" cy="481" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="1114" cy="736" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="1114" cy="764" r="5" fill="#121514" stroke="#7d8279" stroke-width="2"/><circle class="pt" cx="1480" cy="550" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="1480" cy="578" r="5" fill="#121514" stroke="#7d8279" stroke-width="2"/><circle class="pt" cx="1895" cy="392" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="1895" cy="420" r="5" fill="#121514" stroke="#7d8279" stroke-width="2"/><circle class="pt" cx="1895" cy="703" r="5" fill="#121514" stroke="#f1f3ed" stroke-width="2"/><circle class="pt" cx="1895" cy="731" r="5" fill="#121514" stroke="#7d8279" stroke-width="2"/><g id="pulses"></g></svg>
       <div class="mmA" id="nMM" style="left:328px;top:415px"></div>
       <div class="nd" id="nStart" style="left:24px;top:415px;height:217px"><div class="nh"><span class="ni"><svg viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg></span><span class="nl">trigger</span></div><div class="nb"><i style="width:55%"></i><i style="width:80%"></i><i style="width:45%"></i><i style="width:70%"></i><i style="width:35%"></i></div></div><div class="nd" id="nFilter" style="left:434px;top:451px;height:143px"><div class="nh"><span class="ni"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 7.5V19l-4 2v-8.5z"/></svg></span><span class="nl">filter</span></div><div class="nb"><i style="width:85%"></i><i style="width:65%"></i></div></div><div class="nd" id="nReport" style="left:821px;top:21px;height:460px"><div class="nh"><span class="ni"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6"/></svg></span><span class="nl">query</span></div><div class="nb"><i style="width:60%"></i><i style="width:40%"></i><i style="width:70%"></i><i style="width:50%"></i><i style="width:80%"></i><i style="width:45%"></i><i style="width:65%"></i><i style="width:30%"></i><i style="width:55%"></i><i style="width:70%"></i><i style="width:40%"></i><i style="width:60%"></i><i style="width:50%"></i><i style="width:75%"></i></div></div><div class="nd" id="nCalc" style="left:822px;top:667px;height:168px"><div class="nh"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 8h4M8 6v4M14 8h4M6 16h4M14 15h4M14 17.5h4"/></svg></span><span class="nl">calculate</span></div><div class="nb"><i style="width:50%"></i><i style="width:70%"></i><i style="width:40%"></i></div></div><div class="nd" id="nTemp" style="left:1188px;top:471px;height:188px"><div class="nh"><span class="ni"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="5" rx="1.5"/><rect x="4" y="14" width="16" height="5" rx="1.5"/><path d="M7.5 7.5h.01M7.5 16.5h.01"/></svg></span><span class="nl">store</span></div><div class="nb"><i style="width:45%"></i><i style="width:90%"></i><i style="width:75%"></i><i style="width:60%"></i></div></div><div class="nd" id="nSend" style="left:1602px;top:343px;height:127px"><div class="nh"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 11.5 21 4l-6.5 17-3-7.5zM11.5 13.5 21 4"/></svg></span><span class="nl">send</span></div><div class="nb"><i style="width:55%"></i></div></div><div class="nd" id="nTag" style="left:1602px;top:655px;height:127px"><div class="nh"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg></span><span class="nl">tag</span></div><div class="nb"><i style="width:40%"></i></div></div>
     </div>
@@ -120,33 +120,33 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 09 Systems Thinking. — a field of hairlines turns, in a wave, towards one point -->
-<div class="sc lt" id="j09">
+<div class="sc dk" id="j09">
   <div class="abs mono" style="right:120px;top:150px">02 / 03</div>
   <div class="title serif" id="stT"><span>Systems <i>Thinking.</i></span></div>
   <canvas class="abs" id="mlC" width="1920" height="1080" style="left:0;top:0;width:1920px;height:1080px"></canvas>
 </div>
 
 <!-- 10 AI-Driven Design. — a grid of restless glyphs resolves, left to right, into calm order -->
-<div class="sc dk" id="j10" style="background:radial-gradient(95% 70% at 50% 115%,rgba(13,153,255,.26),rgba(13,153,255,0) 65%),#121514">
+<div class="sc dk" id="j10" style="background:radial-gradient(95% 70% at 50% 115%,rgba(241,243,237,0.18),rgba(241,243,237,0.0) 65%),#121514">
   <div class="abs" id="aiView" style="left:0;top:0;width:1920px;height:1080px;perspective:1600px">
     <div class="gen" id="g1" style="left:1060px;top:300px;width:560px;height:340px"><i style="width:40%"></i><i style="width:78%"></i><i style="width:62%"></i><b></b><b></b><b></b></div>
     <div class="gen" id="g2" style="left:1180px;top:520px;width:520px;height:300px"><i style="width:55%"></i><i style="width:84%"></i><b></b><b></b></div>
     <div class="gen" id="g3" style="left:940px;top:600px;width:420px;height:260px"><i style="width:48%"></i><i style="width:70%"></i><i style="width:36%"></i></div>
-    <div class="abs" id="aiCard" style="left:520px;top:420px;width:880px;height:250px;border-radius:24px;background:rgba(16,34,52,.62);border:1.5px solid rgba(13,153,255,.9);box-shadow:0 0 0 1px rgba(13,153,255,.2),0 0 70px rgba(13,153,255,.38),inset 0 0 50px rgba(13,153,255,.08)">
-      <svg viewBox="0 0 24 24" style="left:38px;top:40px;width:40px;height:40px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#7fd0ff"/><path d="M19 1.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" fill="#bfe6ff"/></svg>
-      <div class="abs" style="left:100px;top:44px;font-family:var(--mono);font-size:34px;color:#e9f4ff;letter-spacing:.01em;white-space:nowrap"><span id="aiPT"></span><span class="cur" id="aiC" style="opacity:0;width:.09em;box-shadow:0 0 14px #0d99ff"></span></div>
-      <div class="abs" id="aiChip" style="left:38px;bottom:34px;padding:9px 20px 9px 12px;border-radius:30px;border:1.5px solid rgba(13,153,255,.7);box-shadow:0 0 18px rgba(13,153,255,.35);font-size:22px;font-weight:500;color:#e9f4ff;display:flex;align-items:center;gap:12px"><i style="width:26px;height:26px;border-radius:13px;background:linear-gradient(135deg,#7fd0ff,#0d99ff)"></i>Designer</div>
-      <svg id="aiSend" viewBox="0 0 24 24" style="left:auto;right:40px;top:auto;bottom:36px;width:40px;height:40px;inset:auto 40px 36px auto"><path d="M3 11.5 21 4l-6.5 17-3-7.5z" fill="none" stroke="#e9f4ff" stroke-width="1.6" stroke-linejoin="round"/><path d="M11.5 13.5 21 4" stroke="#e9f4ff" stroke-width="1.6"/></svg>
+    <div class="abs" id="aiCard" style="left:520px;top:420px;width:880px;height:250px;border-radius:24px;background:rgba(28,32,30,.62);border:1.5px solid rgba(241,243,237,0.63);box-shadow:0 0 0 1px rgba(241,243,237,0.14),0 0 70px rgba(241,243,237,0.27),inset 0 0 50px rgba(241,243,237,0.06)">
+      <svg viewBox="0 0 24 24" style="left:38px;top:40px;width:40px;height:40px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/><path d="M19 1.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" fill="#d9ddd5"/></svg>
+      <div class="abs" style="left:100px;top:44px;font-family:var(--mono);font-size:34px;color:#f1f3ed;letter-spacing:.01em;white-space:nowrap"><span id="aiPT"></span><span class="cur" id="aiC" style="opacity:0;width:.09em;box-shadow:0 0 14px #f1f3ed"></span></div>
+      <div class="abs" id="aiChip" style="left:38px;bottom:34px;padding:9px 20px 9px 12px;border-radius:30px;border:1.5px solid rgba(241,243,237,0.49);box-shadow:0 0 18px rgba(241,243,237,0.24);font-size:22px;font-weight:500;color:#f1f3ed;display:flex;align-items:center;gap:12px"><i style="width:26px;height:26px;border-radius:13px;background:linear-gradient(135deg,#f1f3ed,#8d948c)"></i>Designer</div>
+      <svg id="aiSend" viewBox="0 0 24 24" style="left:auto;right:40px;top:auto;bottom:36px;width:40px;height:40px;inset:auto 40px 36px auto"><path d="M3 11.5 21 4l-6.5 17-3-7.5z" fill="none" stroke="#f1f3ed" stroke-width="1.6" stroke-linejoin="round"/><path d="M11.5 13.5 21 4" stroke="#f1f3ed" stroke-width="1.6"/></svg>
     </div>
-    <div class="abs" id="aiFlare" style="left:1340px;top:614px;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,1) 0,rgba(190,232,255,.85) 6%,rgba(127,208,255,.45) 16%,rgba(13,153,255,.16) 36%,rgba(13,153,255,0) 62%);opacity:0;mix-blend-mode:screen"></div>
-    <div class="abs" id="aiStreak" style="left:1340px;top:614px;width:1800px;height:10px;margin:-5px 0 0 -900px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.95) 0,rgba(127,208,255,.6) 30%,rgba(13,153,255,0) 70%);filter:blur(2px);opacity:0;mix-blend-mode:screen"></div>
+    <div class="abs" id="aiFlare" style="left:1340px;top:614px;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,1) 0,rgba(190,232,255,.85) 6%,rgba(241,243,237,.45) 16%,rgba(241,243,237,0.11) 36%,rgba(241,243,237,0.0) 62%);opacity:0;mix-blend-mode:screen"></div>
+    <div class="abs" id="aiStreak" style="left:1340px;top:614px;width:1800px;height:10px;margin:-5px 0 0 -900px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.95) 0,rgba(241,243,237,.6) 30%,rgba(241,243,237,0.0) 70%);filter:blur(2px);opacity:0;mix-blend-mode:screen"></div>
   </div>
   <div class="abs mono" style="right:120px;top:150px">03 / 03</div>
   <div class="title serif" id="aiT"><span>AI-Driven <i>Design.</i></span></div>
 </div>
 
 <!-- 11 3 promotions in 5 years. -->
-<div class="sc lt" id="j11">
+<div class="sc dk" id="j11">
   <div class="abs sans" id="sofar" style="left:150px;top:90px;font-size:64px;font-weight:500;letter-spacing:-.035em">So far:</div>
   <div class="abs serif" id="n3" style="left:140px;top:170px;font-size:500px;line-height:1">3</div>
   <div class="abs sans" id="pr" style="left:470px;top:450px;font-size:84px;font-weight:500;letter-spacing:-.035em">promotions</div>
@@ -159,7 +159,7 @@ svg{position:absolute;inset:0;overflow:visible}
 <div class="sc dk" id="j12"><div class="abs sans" id="learn" style="left:180px;top:470px;font-size:86px;font-weight:500;letter-spacing:-.035em"><span class="w">I’ve</span> <span class="w">learned</span> <span class="w">that</span> <span class="w">great</span> <span class="w">products</span> <span class="w" id="need">need</span></div></div>
 
 <!-- 13 clear thinking, — horizontal pass through the oversized words -->
-<div class="sc lt" id="j13"><div class="abs serif" id="clear" style="left:0;top:200px;font-size:620px;white-space:nowrap;line-height:1;letter-spacing:-.01em">clear <span class="stroke" style="-webkit-text-stroke-width:5px">thinking,</span></div></div>
+<div class="sc dk" id="j13"><div class="abs serif" id="clear" style="left:0;top:200px;font-size:620px;white-space:nowrap;line-height:1;letter-spacing:-.01em">clear <span class="stroke" style="-webkit-text-stroke-width:5px">thinking,</span></div></div>
 
 <!-- 14 strong collaboration, — perspective roll stack over a ghost copy -->
 <div class="sc dk" id="j14" style="perspective:1400px">
@@ -168,7 +168,7 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 15 and thoughtful execution. — echo marquee -->
-<div class="sc lt" id="j15">
+<div class="sc dk" id="j15">
   <div class="abs serif stroke" id="ex1" style="left:0;top:220px;font-size:120px;white-space:nowrap">thoughtful execution. thoughtful execution. thoughtful execution.</div>
   <div class="abs serif" id="ex2" style="left:0;top:470px;font-size:120px;white-space:nowrap"><span class="stroke">thoughtful execution. </span><span id="exS">and thoughtful <i>execution.</i></span><span class="stroke"> thoughtful execution.</span></div>
   <div class="abs serif stroke" id="ex3" style="left:0;top:720px;font-size:120px;white-space:nowrap">thoughtful execution. thoughtful execution. thoughtful execution.</div>
@@ -176,14 +176,14 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 16 Turning complexity into clarity. — scattered letters orbit, then snap into one clean word -->
 <div class="sc dk" id="j16">
-  <div class="abs" id="cxDot" style="left:953px;top:633px;width:14px;height:14px;border-radius:7px;background:#0d99ff;transform:scale(0)"></div>
+  <div class="abs" id="cxDot" style="left:953px;top:633px;width:14px;height:14px;border-radius:7px;background:#f1f3ed;transform:scale(0)"></div>
   <div class="abs sans" id="tur" style="left:180px;top:300px;font-size:70px;font-weight:500;letter-spacing:-.035em">Turning</div>
   <div class="abs serif it" id="cx" style="left:170px;top:400px;font-size:250px;white-space:nowrap"></div>
   <div class="abs sans" id="cla" style="left:180px;top:720px;font-size:70px;font-weight:500;letter-spacing:-.035em">into <span style="font-weight:700">clarity.</span></div>
 </div>
 
 <!-- 17 So, what's next? -->
-<div class="sc lt" id="j17">
+<div class="sc dk" id="j17">
   <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next?</span></span></div>
 </div>
 
@@ -191,7 +191,7 @@ svg{position:absolute;inset:0;overflow:visible}
 <div class="sc dk" id="j18"><div class="abs serif" id="lets" style="left:160px;top:380px;font-size:124px;line-height:1.04"><span class="mask"><span class="w">Let’s build something</span></span><br><span class="mask"><span class="w">great <i>together.</i></span></span></div></div>
 
 <!-- 19 javierortizalmagro.com — the address is typed into a minimal bar; the bar falls away and the address stays -->
-<div class="sc lt" id="j19">
+<div class="sc dk" id="j19">
   <div class="abs" id="uBar" style="left:390px;top:466px;width:1140px;height:148px;border-radius:74px;background:var(--bar);outline:1px solid var(--line);box-shadow:0 18px 50px rgba(17,17,17,.08);outline-offset:-1px"></div>
   <div class="abs sans" id="uTxt" style="left:470px;top:502px;font-size:60px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;transform-origin:0 50%"><span id="uT"></span><span class="cur" id="uC" style="opacity:0"></span></div>
 </div>
@@ -270,9 +270,9 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 // 08 Product Strategy. — his LogicX rule flow builds itself block by block while the camera travels along it (Netlify-style glow)
 { const [a, b] = T.j08; const lx = $("#lx");
   const cam = (bx, by, sx, sy, sc) => ({ x: sx - bx * sc, y: sy - by * sc, scale: sc });
-  const glow = (sel, at) => { tl.fromTo(sel, { opacity: 0, scale: .9, y: 24, boxShadow: "0 0 70px rgba(13,153,255,.75), inset 0 0 40px rgba(13,153,255,.25)" },
+  const glow = (sel, at) => { tl.fromTo(sel, { opacity: 0, scale: .9, y: 24, boxShadow: "0 0 70px rgba(241,243,237,0.52), inset 0 0 40px rgba(241,243,237,0.17)" },
       { opacity: 1, scale: 1, y: 0, duration: .45, ease: ex }, at);
-    tl.to(sel, { boxShadow: "0 0 22px rgba(13,153,255,.18), inset 0 0 24px rgba(13,153,255,.05)", duration: .9, ease: "power2.out" }, at + .35);
+    tl.to(sel, { boxShadow: "0 0 22px rgba(241,243,237,0.13), inset 0 0 24px rgba(241,243,237,0.03)", duration: .9, ease: "power2.out" }, at + .35);
     tl.from(sel + " .nb i", { scaleX: 0, transformOrigin: "0 50%", duration: .35, stagger: .03, ease: "power2.out" }, at + .15); };
   // light pulses travel along each wire once it is drawn, like data moving through the flow
   const pulse = (id, at, n) => { const path = $(id), g = $("#pulses");
@@ -286,9 +286,9 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   gsap.set(".pt", { opacity: 0 });
   tl.fromTo("#j08", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#psT", a + .1);
-  tl.fromTo(lx, { ...cam(170, 523, 760, 690, 1.2), rotationX: 16, transformPerspective: 1800 }, { ...cam(170, 523, 760, 690, 1.2), rotationX: 16, duration: .01 }, a);
-  tl.to(lx, { ...cam(720, 470, 960, 760, 1.0), rotationX: 12, duration: .85, ease: "power2.inOut" }, a + .95);
-  tl.to(lx, { ...cam(1330, 560, 1060, 720, .98), rotationX: 9, duration: .85, ease: "power2.inOut" }, a + 1.95);
+  tl.fromTo(lx, { ...cam(170, 523, 760, 690, 1.2), rotationX: 0 }, { ...cam(170, 523, 760, 690, 1.2), rotationX: 0, duration: .01 }, a);
+  tl.to(lx, { ...cam(720, 470, 960, 760, 1.0), rotationX: 0, duration: .85, ease: "power2.inOut" }, a + .95);
+  tl.to(lx, { ...cam(1330, 560, 1060, 720, .98), rotationX: 0, duration: .85, ease: "power2.inOut" }, a + 1.95);
   tl.to(lx, { ...cam(960, 430, 960, 700, .8), rotationX: 0, duration: .95, ease: "expo.inOut" }, a + 2.9);
   glow("#nStart", a + .3); tl.to(".pt:nth-of-type(1)", { opacity: 1, duration: .2 }, a + .5);
   tl.fromTo("#nMM", { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(2.5)" }, a + .55);
@@ -317,9 +317,9 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
       const kk = e3(cl((st.rad - l.x - 150) / 420));
       const near = Math.max(0, 1 - d / 330), an = free + diff * kk, len = L * (1 + 1.1 * near * kk);
       const c = Math.round(64 + 150 * kk * (.35 + .65 * near) + 40 * near * kk);
-      const v = Math.min(1, (c - 40) / 215), q = Math.round(235 - 218 * v); g.strokeStyle = `rgba(${q},${q},${q - 2},${st.show})`; g.lineWidth = 2 + near * kk;
+      const v = Math.min(1, (c - 40) / 215), q = Math.round(70 + 175 * v); g.strokeStyle = `rgba(${q},${q + 2},${q - 2},${st.show})`; g.lineWidth = 2 + near * kk;
       const ux = Math.cos(an) * len, uy = Math.sin(an) * len; g.beginPath(); g.moveTo(l.x - ux, l.y - uy); g.lineTo(l.x + ux, l.y + uy); g.stroke(); }
-    if (st.dot > 0) { g.fillStyle = "#0d99ff"; g.beginPath(); g.arc(st.px, st.py, 10 * st.dot, 0, 7); g.fill(); } };
+    if (st.dot > 0) { g.fillStyle = "#f1f3ed"; g.beginPath(); g.arc(st.px, st.py, 10 * st.dot, 0, 7); g.fill(); } };
   tl.fromTo("#j09", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#stT", a + .1);
   tl.fromTo(st, { t: 0 }, { t: b - a, duration: b - a, ease: "none", onUpdate: draw }, a);
@@ -334,15 +334,15 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 { const [a, b] = T.j10;
   tl.fromTo("#j10", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#aiT", a + .1);
-  tl.fromTo("#aiCard", { y: 160, opacity: 0, rotationX: 28, rotationY: -16, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 8, rotationY: -8, duration: .75, ease: ex }, a + .15);
+  tl.fromTo("#aiCard", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: .75, ease: ex }, a + .15);
   const e = typeIn("#aiPT", "Prototype a calmer rule builder.", a + .6, .034); caret("#aiC", a + .5, e + .3);
   tl.to("#aiSend", { scale: .8, duration: .1, transformOrigin: "50% 50%" }, e + .2); tl.to("#aiSend", { scale: 1, duration: .2 }, e + .3);
   tl.fromTo("#aiFlare", { opacity: 0, scale: .2 }, { opacity: 1, scale: 1.3, duration: .25, ease: "power2.out" }, e + .3);
   tl.to("#aiFlare", { opacity: 0, scale: 1.8, duration: .5, ease: "power2.in" }, e + .55);
   tl.fromTo("#aiStreak", { opacity: 0, scaleX: .1 }, { opacity: 1, scaleX: 1, duration: .25, ease: "power2.out" }, e + .3);
   tl.to("#aiStreak", { opacity: 0, scaleX: 1.3, duration: .45, ease: "power2.in" }, e + .55);
-  tl.to("#aiCard", { x: -330, scale: .82, rotationY: 14, rotationX: 4, duration: .8, ease: "expo.inOut" }, e + .35);
-  tl.fromTo(["#g1", "#g2", "#g3"], { opacity: 0, z: -700, rotationY: -22, transformPerspective: 1600 }, { opacity: 1, z: 0, rotationY: -12, duration: .7, stagger: .1, ease: ex }, e + .5);
+  tl.to("#aiCard", { x: -330, scale: .82, duration: .8, ease: "expo.inOut" }, e + .35);
+  tl.fromTo(["#g1", "#g2", "#g3"], { opacity: 0, scale: .82, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: .7, stagger: .1, ease: ex }, e + .5);
   tl.from(".gen i, .gen b", { scaleX: 0, transformOrigin: "0 50%", duration: .4, stagger: .025, ease: "power2.out" }, e + .7);
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
