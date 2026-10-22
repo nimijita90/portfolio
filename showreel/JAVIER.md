@@ -4,7 +4,7 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 
     PAGE=javier.html node showreel/render.mjs 1 30 showreel/out/javier.mp4
 
-Copy is Javier's script, word for word. There is no footage, logo or product imagery for this profile, so every scene is typographic or abstract. Silent for now (37 s).
+Copy is Javier's script, word for word. There is no footage, logo or product imagery for this profile, so every scene is typographic or abstract. Light theme (warm white #f7f6f3, ink #111) to set it apart from María's black version; the typography is still Silk + Onest until Javier's own type is confirmed. Silent for now (37 s).
 
 | # | Time (s) | On screen | Motion (reused from María's scene) |
 |---|---|---|---|
