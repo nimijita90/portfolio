@@ -426,12 +426,16 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.from("#drv .w", { yPercent: 110, duration: .9, ease: ex }, a + .05);
   tl.to("#drv .w", { yPercent: -110, duration: .55, ease: "power3.in" }, b - .6); }
 
-// 17 So, what's next? — the words drop in one by one and bounce, the question mark swings like a sign on a hinge, then everything falls away
-{ const [a, b] = T.j17;
-  tl.from("#sowhat .w", { y: -760, duration: .75, stagger: .22, ease: "bounce.out" }, a + .05);
-  const sw = { t: 0 };
-  tl.fromTo(sw, { t: 0 }, { t: 1.6, duration: 1.6, ease: "none", onUpdate: () => gsap.set("#qm", { rotation: 22 * Math.exp(-2.3 * sw.t) * Math.sin(9 * sw.t), transformOrigin: "50% 92%" }) }, a + .95);
-  tl.to("#sowhat .w", { y: 900, duration: .45, stagger: .06, ease: "power2.in" }, b - .55); }
+// 17 So, what's next? — one word at a time, alone and centred ("So," → "what's" → "next?"), then "next?" glides into the line as the others appear
+{ const [a] = T.j17, so = $("#sowhat"), ws = gsap.utils.toArray("#sowhat .w");
+  const toCentre = (w) => -(w.offsetLeft + w.offsetWidth / 2 - so.offsetWidth / 2);
+  ws.forEach((w, i) => {
+    tl.set(w, { x: () => toCentre(w), scale: 1.45, opacity: 0 }, a);
+    tl.fromTo(w, { opacity: 0, scale: 1.55 }, { opacity: 1, scale: 1.45, duration: .35, ease: "power2.out", immediateRender: false }, a + .1 + i * .5);
+    if (i < ws.length - 1) tl.set(w, { opacity: 0 }, a + .6 + i * .5); });
+  // "next?" glides from the centre to its place; "So," and "what's" fade in already in position as it arrives
+  tl.to(ws[2], { x: 0, scale: 1, duration: .75, ease: "expo.inOut" }, a + 1.6);
+  ws.slice(0, 2).forEach((w, i) => { tl.set(w, { x: -40, scale: 1 }, a + 1.6); tl.to(w, { opacity: 1, x: 0, duration: .55, ease: "power3.out" }, a + 1.95 + i * .08); }); }
 
 // 18 Closing — the viewer answers "what's next?" by writing to Javier: To, Subject and "Hey, Javier! Let’s talk." are typed,
 // the pointer hits Send, the window flies off, and his address glides to centre stage 

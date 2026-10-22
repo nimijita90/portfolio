@@ -38,7 +38,7 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 15 | 31.85–33.70 | black | and thoughtful *execution.* | Echo marquee |
 | 16 | 33.65–36.25 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
 | 16b | 36.25–38.25 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
-| 17 | 38.20–41.30 | black | So, what's *next?* | The words drop in one by one and bounce; the question mark swings like a sign on a hinge, then everything falls away |
+| 17 | 38.20–41.30 | black | So, what's *next?* | One word at a time, alone, big and centred: "So," → "what's" → "*next?*"; then "next?" glides into the line as "So," and "what's" appear in place |
 | 18 | 41.25–52.75 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above — nothing else | Typed at a calm pace, with a caret per line; the final frame holds |
 
 
