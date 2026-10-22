@@ -126,14 +126,14 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="abs serif" id="stRow" style="left:0;top:430px;width:1920px;text-align:center;font-size:210px;line-height:1;white-space:nowrap"><span id="stA">Systems</span> <i id="stB">Thinking</i><i id="stDot" style="display:inline-block;opacity:0">.</i><span id="stBase" style="display:inline-block;width:0;height:0"></span><div class="abs" id="ball" style="left:0;top:0;background:#f1f3ed;opacity:0"></div></div>
 </div>
 
-<!-- 10 AI-Driven Design. — a prompt is typed; the AI draws an interface in wireframe; then it is refined -->
+<!-- 10 AI-Driven Design. — "Connect …": Claude becomes the hub and his tools connect around it -->
 <div class="sc dk" id="j10">
-  <div class="abs" id="pBar" style="left:410px;top:300px;width:1100px;height:88px;border:1.5px solid rgba(241,243,237,.6);border-radius:44px">
-    <svg viewBox="0 0 24 24" style="position:absolute;inset:auto;left:30px;top:26px;width:36px;height:36px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/></svg>
-    <div class="abs sans" style="left:86px;top:18px;font-size:40px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;line-height:1.3"><span id="pT"></span><span class="cur" id="pC" style="opacity:0"></span></div>
-    <div class="abs" id="pSend" style="right:14px;top:13px;width:60px;height:60px;border-radius:30px;border:1.5px solid rgba(241,243,237,.6);display:grid;place-items:center"><svg viewBox="0 0 24 24" style="position:static;width:26px;height:26px"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="#f1f3ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="abs" id="pBar" style="left:310px;top:290px;width:1300px;height:84px;border:1.5px solid rgba(241,243,237,.6);border-radius:42px">
+    <svg viewBox="0 0 24 24" style="position:absolute;inset:auto;left:30px;top:24px;width:34px;height:34px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/></svg>
+    <div class="abs sans" style="left:82px;top:19px;font-size:34px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;line-height:1.3"><span id="pT"></span><span class="cur" id="pC" style="opacity:0"></span></div>
+    <div class="abs" id="pSend" style="right:12px;top:12px;width:58px;height:58px;border-radius:29px;border:1.5px solid rgba(241,243,237,.6);display:grid;place-items:center"><svg viewBox="0 0 24 24" style="position:static;width:24px;height:24px"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="#f1f3ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
-  <svg id="wf" viewBox="0 0 1920 1080" style="width:1920px;height:1080px"></svg>
+  <svg id="hubG" viewBox="0 0 1920 1080" style="width:1920px;height:1080px"></svg>
   <div class="title serif" id="aiT"><span>AI-Driven <i>Design.</i></span></div>
 </div>
 
@@ -209,8 +209,8 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
   j01: [0.0, 1.95], j02: [1.9, 3.35], j03: [3.3, 6.2], j04: [6.15, 7.55], j05: [7.5, 8.55], j06: [8.5, 11.1], j07: [11.05, 13.5],
-  jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 27.85], j12: [27.8, 29.8], j13: [29.75, 30.85], j14: [30.8, 31.9],
-  j15: [31.85, 33.7], j16: [33.65, 36.25], j16b: [36.25, 38.25], j17: [38.2, 41.3], j18: [41.25, 52.75],
+  jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 28.65], j12: [28.6, 30.6], j13: [30.55, 31.65], j14: [31.6, 32.7],
+  j15: [32.65, 34.5], j16: [34.45, 37.05], j16b: [37.05, 39.05], j17: [39.0, 42.1], j18: [42.05, 53.55],
 };
 // the film closes on the mail (default); ?end=web gives a short loopable cut that closes on "Let's talk."; ?end=mail keeps the mail closing for sending
 if (new URLSearchParams(location.search).get("end") === "web") { T.j19 = [T.j18[0], T.j18[0] + 3.5]; delete T.j18; }
@@ -358,33 +358,43 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.to(dot, { opacity: 1, duration: .2 }, t3 + .5); tl.to(ball, { opacity: 0, duration: .2 }, t3 + .5);
   tl.to("#j09", { x: -1920, duration: .35, ease: exi }, b - .3); };
 
-// 10 AI-Driven Design. — "Design a calmer rule builder." is typed and sent; the AI draws an interface in wireframe line by line
-// (frame, header, three rule rows with toggles, a primary button); then it is refined: the toggles switch on and the button fills
-{ const [a, b] = T.j10, ink = "#f1f3ed", ln = 'fill="none" stroke="#f1f3ed" stroke-width="1.6" pathLength="1" class="wl"';
-  const X = 560, Y = 440, W = 800, H = 560, rows = [0, 1, 2].map((i) => Y + 150 + i * 110);
-  $("#wf").innerHTML =
-    `<rect x="${X}" y="${Y}" width="${W}" height="${H}" rx="22" ${ln}/>` +
-    `<path d="M${X} ${Y + 84}H${X + W}" ${ln}/><rect x="${X + 36}" y="${Y + 32}" width="190" height="20" rx="10" ${ln}/>` +
-    `<circle cx="${X + W - 52}" cy="${Y + 42}" r="16" ${ln}/>` +
-    rows.map((y) => `<g class="row"><rect x="${X + 36}" y="${y}" width="${W - 72}" height="84" rx="16" ${ln}/><rect x="${X + 66}" y="${y + 26}" width="260" height="14" rx="7" class="bar" fill="rgba(241,243,237,.35)"/><rect x="${X + 66}" y="${y + 50}" width="170" height="10" rx="5" class="bar" fill="rgba(241,243,237,.2)"/>` +
-      `<rect x="${X + W - 150}" y="${y + 24}" width="76" height="38" rx="19" class="tg" fill="none" stroke="#f1f3ed" stroke-width="1.6"/><circle cx="${X + W - 131}" cy="${y + 43}" r="13" class="kn" fill="#f1f3ed"/></g>`).join("") +
-    `<rect id="wBtn" x="${X + W - 236}" y="${Y + H - 84}" width="200" height="56" rx="28" fill="none" stroke="#f1f3ed" stroke-width="1.6"/><text id="wBtnT" x="${X + W - 136}" y="${Y + H - 48}" text-anchor="middle" font-family="Instrument Sans" font-weight="600" font-size="22" fill="#f1f3ed">Save rule</text>`;
+// 10 AI-Driven Design. — Claude as his hub: "Connect Figma, FigJam, Miro, Jira, Confluence, FullStory and Codex." is typed and sent;
+// Claude appears in the centre and his tools connect around it one by one, then a pulse runs out to all of them. Line icons and names only, no logos
+{ const [a, b] = T.j10, ink = "#f1f3ed", C = [960, 715], R = 46;
+  const I = {
+    pen: '<path d="M15.7 21.3a1 1 0 0 1-1.4 0l-1.6-1.6a1 1 0 0 1 0-1.4l5.6-5.6a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4z"/><path d="m18 13-1.4-6.9a1 1 0 0 0-.7-.8L3.2 2a1 1 0 0 0-1.2 1.2l3.3 12.7a1 1 0 0 0 .8.7L13 18"/><path d="m2.3 2.3 7.3 7.3"/><circle cx="11" cy="11" r="2"/>',
+    note: '<path d="M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/>',
+    board: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h4M7 12h7M7 16h3M16 7l2 2-2 2"/>',
+    kanban: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v7M12 7v4M16 7v9"/>',
+    doc: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>',
+    eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    code: '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>' };
+  const N = [["Figma", I.pen], ["FigJam", I.note], ["Miro", I.board], ["Jira", I.kanban], ["Confluence", I.doc], ["FullStory", I.eye], ["Codex", I.code]]
+    .map(([t, ic], i) => { const th = -Math.PI / 2 + i * 2 * Math.PI / 7; return [t, ic, C[0] + Math.cos(th) * 580, C[1] + Math.sin(th) * 235]; }); // a ring around Claude
+  $("#hubG").innerHTML =
+    N.map(([, , x, y]) => `<path class="hl" d="M${C[0]} ${C[1]} L${x} ${y}" pathLength="1" fill="none" stroke="rgba(241,243,237,.5)" stroke-width="1.4"/>`).join("") +
+    N.map(([, , x, y]) => `<circle class="hp" cx="${C[0]}" cy="${C[1]}" r="5" fill="${ink}" opacity="0"/>`).join("") +
+    `<g id="hub"><circle cx="${C[0]}" cy="${C[1]}" r="78" fill="#121514" stroke="${ink}" stroke-width="1.8"/><text x="${C[0]}" y="${C[1] + 11}" text-anchor="middle" font-family="Instrument Sans" font-weight="600" font-size="32" letter-spacing="-.5" fill="${ink}">Claude</text></g>` +
+    N.map(([t, ic, x, y]) => `<g class="tn"><circle cx="${x}" cy="${y}" r="${R}" fill="#121514" stroke="${ink}" stroke-opacity=".85" stroke-width="1.6"/><g transform="translate(${x - 17} ${y - 17}) scale(1.417)" fill="none" stroke="${ink}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${ic}</g><text x="${x}" y="${y + R + 34}" text-anchor="middle" font-family="Fragment Mono" font-size="20" fill="#d9ddd5">${t}</text></g>`).join("");
+  const tn = gsap.utils.toArray("#hubG .tn"), hl = gsap.utils.toArray("#hubG .hl"), hp = gsap.utils.toArray("#hubG .hp");
   tl.fromTo("#j10", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#aiT", a + .1);
   tl.from("#pBar", { opacity: 0, y: 30, duration: .5, ease: ex }, a + .35);
-  const e = typeIn("#pT", "Design a calmer rule builder.", a + .65, .035); caret("#pC", a + .5, e + .25);
+  const e = typeIn("#pT", "Connect Figma, FigJam, Miro, Jira, Confluence, FullStory and Codex.", a + .6, .022); caret("#pC", a + .5, e + .25);
   tl.to("#pSend", { backgroundColor: ink, duration: .12 }, e + .2); tl.to("#pSend path", { attr: { stroke: "#121514" }, duration: .12 }, e + .2);
   tl.to("#pSend", { scale: .9, duration: .08, yoyo: true, repeat: 1 }, e + .25);
-  const d0 = e + .45;
-  tl.fromTo("#wf .wl", { attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: .55, stagger: .07, ease: "power2.inOut" }, d0);
-  tl.from("#wf .bar", { scaleX: 0, transformOrigin: "0 50%", duration: .4, stagger: .05, ease: "power2.out" }, d0 + .45);
-  tl.from(["#wf .tg", "#wf .kn"], { opacity: 0, duration: .25, stagger: .04 }, d0 + .6);
-  tl.from(["#wBtn", "#wBtnT"], { opacity: 0, duration: .3 }, d0 + .8);
-  // refined: the toggles switch on one by one, the button fills
-  gsap.utils.toArray("#wf .row").forEach((r, i) => { const t = d0 + 1.25 + i * .15;
-    tl.to(r.querySelector(".kn"), { attr: { cx: X + W - 93 }, duration: .3, ease: "power3.inOut" }, t);
-    tl.to(r.querySelector(".tg"), { attr: { fill: "rgba(241,243,237,.25)" }, duration: .3 }, t); });
-  tl.to("#wBtn", { attr: { fill: ink }, duration: .25 }, d0 + 1.8); tl.to("#wBtnT", { attr: { fill: "#121514" }, duration: .25 }, d0 + 1.8);
+  const h0 = e + .45;
+  tl.from("#hub", { scale: 0, transformOrigin: "50% 50%", duration: .5, ease: "back.out(2)" }, h0);
+  tn.forEach((n, i) => { const t = h0 + .35 + i * .14;
+    tl.fromTo(hl[i], { attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: .35, ease: "power2.inOut" }, t);
+    tl.from(n, { opacity: 0, scale: .6, transformOrigin: "50% 50%", duration: .4, ease: "back.out(2)" }, t + .25); });
+  // connected: one pulse runs from Claude out to every tool, and each lights up as it arrives
+  const p0 = h0 + .35 + tn.length * .14 + .55;
+  hp.forEach((c, i) => { const [, , x, y] = N[i];
+    tl.set(c, { attr: { opacity: 1 } }, p0); tl.fromTo(c, { attr: { cx: C[0], cy: C[1] } }, { attr: { cx: x, cy: y }, duration: .45, ease: "power2.in", immediateRender: false }, p0); tl.set(c, { attr: { opacity: 0 } }, p0 + .45);
+    const ring = tn[i].querySelector("circle");
+    tl.to(ring, { attr: { fill: ink }, duration: .1 }, p0 + .45); tl.to(tn[i].querySelector("g"), { attr: { stroke: "#121514" }, duration: .1 }, p0 + .45);
+    tl.to(ring, { attr: { fill: "#121514" }, duration: .45 }, p0 + .8); tl.to(tn[i].querySelector("g"), { attr: { stroke: ink }, duration: .45 }, p0 + .8); });
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
 // 12 I've learned that great products need — the sentence builds word by word
