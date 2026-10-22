@@ -195,7 +195,7 @@ svg{position:absolute;inset:0;overflow:visible}
     <div class="abs sans" id="mSend" style="right:44px;bottom:40px;padding:16px 38px;border-radius:40px;background:#f1f3ed;color:#121514;font-size:26px;font-weight:600">Send</div>
   </div>
   <div class="abs sans" id="mTo" style="left:580px;top:290px;font-size:32px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;transform-origin:0 50%"><span id="mToT"></span><span class="cur" id="mToC" style="opacity:0"></span></div>
-  <div class="abs mono c" id="mSent" style="top:440px;font-size:20px;opacity:0">Sent ✓</div>
+  <div class="abs mono c" id="mSent" style="top:630px;font-size:20px;opacity:0">Sent ✓</div>
   <svg class="abs" id="mPtr" viewBox="0 0 24 24" style="left:0;top:0;width:44px;height:44px;overflow:visible"><path d="M3 2 L3 19 L7.6 14.8 L10.6 21.4 L13.4 20.2 L10.4 13.7 L16.6 13.4 Z" fill="#f1f3ed" stroke="#121514" stroke-width="1.2" stroke-linejoin="round"/></svg>
 </div>
 </div>
@@ -457,7 +457,7 @@ if (T.j18) { const [a, b] = T.j18;
   tl.to("#mCard", { y: -1000, x: 260, rotation: -7, scale: .72, duration: .6, ease: "expo.in" }, tc + .3);
   tl.to("#mPtr", { x: 1900, y: 1150, duration: .5, ease: "power2.in" }, tc + .35);
   tl.to("#mTo", { x: () => 960 - 580 - $("#mTo").offsetWidth * 2 / 2, y: 540 - 290 - 24, scale: 2, duration: 1.0, ease: "expo.inOut" }, tc + .65);
-  tl.fromTo("#mSent", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .5, ease: "power2.out" }, tc + 1.4);
+  tl.fromTo("#mSent", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: .5, ease: "power2.out" }, tc + 1.4);
   tl.set({}, {}, b); }
 
 // 19 web closing — "Let's talk." rises from its masks, holds, and fades to black
