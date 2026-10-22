@@ -25,9 +25,9 @@ The copy is Javier's script, plus two connectors that add no new facts. They are
 | 06 | 8.05–9.50 | dark | I'm Javier Ortiz. | Letters rise from a mask; the full stop pops |
 | 07 | 9.45–11.65 | light | Designing *complex* digital products. | Masked lines rise and drift |
 | 07b | 11.60–12.60 | light | Bringing together *(added)* | Letter cascade |
-| 08 | 12.55–16.75 | dark | Product *Strategy.* · 01 / 03 | His real LogicX rule flow (from his case study) builds itself block by block: Start → Filter → Report Block / Calculate → Temp Store → Send Message / Add Player Tag. Wires draw in green, red and blue, each block lights up blue as it lands, the camera travels along the flow and pulls back to show it whole |
+| 08 | 12.55–16.75 | dark | Product *Strategy.* · 01 / 03 | The structure of his rule-editor flow drawn as a line infographic (no product UI or data): outlined blocks with line icons, skeleton bars and generic Fragment Mono labels (trigger, filter, query, calculate, store, send, tag) build one by one. Glowing blue wires draw between them, light pulses travel along the wires, and the camera travels along the flow and pulls back to show it whole |
 | 09 | 16.70–18.60 | light | Systems *Thinking.* · 02 / 03 | Push; the magnet-lines field turns towards one point |
-| 10 | 18.55–21.95 | dark | AI-Driven *Design.* · 03 / 03 | A glass prompt card with a glowing edge tilts in. "Prototype a calmer rule builder." (illustrative prompt, *added*) is typed in Fragment Mono; Send triggers a burst and a light streak; generated UI cards materialise in depth |
+| 10 | 18.55–21.95 | dark | AI-Driven *Design.* · 03 / 03 | A glass prompt card with a glowing edge tilts in. "Prototype a calmer rule builder." (illustrative prompt, *added*) is typed in Fragment Mono; Send triggers a burst and a light streak; generated UI cards (line art) materialise in depth |
 | 11 | 21.90–24.00 | light | So far: *(added)* 3 promotions in *5* years. | Two numbers at contrasting scales |
 | 12 | 24.00–26.00 | dark | I've learned that great products need | Builds; all dims except "need" |
 | 13 | 25.95–27.05 | light | clear thinking, (outline) | Horizontal pass, dive into the comma |
