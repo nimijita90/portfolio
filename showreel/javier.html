@@ -256,7 +256,8 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
   // he looks towards his name, then turns to camera as it settles (the clip runs from 0.5 s; see syncVid)
   tl.fromTo("#jv", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: .7, ease: "power2.out" }, a);
-  tl.to("#jv", { opacity: 0, duration: .4, ease: "power2.in" }, a + 2.1);
+  // he leaves with the name: the clip lifts out of frame with the letters (no fade)
+  tl.to("#jv", { y: -1150, duration: .45, ease: "expo.in" }, a + 2.1);
   if (!new URLSearchParams(location.search).has("render")) tl.call(() => { const v = $("#jv"); v.currentTime = .5; v.play(); }, null, a);
   tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 2.15);
   tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 2.15);
