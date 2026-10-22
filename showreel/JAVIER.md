@@ -4,7 +4,7 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 
     PAGE=javier.html node showreel/render.mjs 1 30 showreel/out/javier.mp4
 
-Copy is Javier's script, word for word. There is no footage, logo or product imagery for this profile, so every scene is typographic or abstract. Light theme (warm white #f7f6f3, ink #111) to set it apart from María's black version; the typography is still Silk + Onest until Javier's own type is confirmed. Silent for now (37 s).
+Copy is Javier's script, word for word. There is no footage, logo or product imagery for this profile, so every scene is typographic or abstract. Visual identity taken from javierortizalmagro.com: Instrument Sans throughout (semibold 600, −0.045em tracking, weight contrast instead of italics), Fragment Mono for the "01 / 03" counters, his light palette (#f7f7f3 / #171817 / #555750) and his blue #0d99ff as the single accent (the travelling point, the last milestone, the complexity point, the caret). His name is set in capitals over two lines, as on his site's hero. Fonts in `fonts/javier/` (SIL OFL 1.1, licences included). Silent for now (37 s).
 
 | # | Time (s) | On screen | Motion (reused from María's scene) |
 |---|---|---|---|
