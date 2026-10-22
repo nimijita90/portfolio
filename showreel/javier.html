@@ -31,7 +31,6 @@ i,.it{font-style:italic;font-weight:600} /* highlight = italic semibold, or outl
 .c{left:50%;top:50%;white-space:nowrap}
 .w,.ch,.lc{display:inline-block;will-change:transform}
 .mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;padding-right:.14em;margin-right:-.14em}
-.aw{display:inline-block}
 .cur{display:inline-block;width:.07em;height:.95em;background:var(--accent);vertical-align:-.12em;margin-left:.06em}
 .stroke{font-family:"Instrument Sans Outline","Instrument Sans",sans-serif;color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--ink) 55%,transparent)}
 img,video{display:block}
@@ -103,7 +102,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 07 Designing complex digital products. -->
 <div class="sc dk" id="j07">
-  <div class="abs serif" id="dd" style="left:140px;top:250px;font-size:160px;line-height:.98"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it" id="cplx">complex</span></span><br><span class="mask"><span class="w">products.</span></span></div>
+  <div class="abs serif" id="dd" style="left:140px;top:250px;font-size:160px;line-height:.98"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w">complex</span></span><br><span class="mask"><span class="w">products.</span></span></div>
 </div>
 
 <!-- 07b Bringing together — letter cascade (added connector) -->
@@ -127,16 +126,14 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="abs serif" id="stRow" style="left:0;top:430px;width:1920px;text-align:center;font-size:210px;line-height:1;white-space:nowrap"><span id="stA">Systems</span> <i id="stB">Thinking</i><i id="stDot" style="display:inline-block;opacity:0">.</i><span id="stBase" style="display:inline-block;width:0;height:0"></span><div class="abs" id="ball" style="left:0;top:0;background:#f1f3ed;opacity:0"></div></div>
 </div>
 
-<!-- 10 AI-Driven Design. — a chat: someone asks the AI for the best product designer in Spain; it answers with Javier -->
+<!-- 10 AI-Driven Design. — a prompt is typed; the AI draws an interface in wireframe; then it is refined -->
 <div class="sc dk" id="j10">
-  <div class="abs" id="chat" style="left:360px;top:330px;width:1200px;height:520px">
-    <div class="abs mono" id="uL" style="right:6px;top:0;font-size:18px">you</div>
-    <div class="abs" id="uB" style="right:0;top:34px;padding:22px 34px 24px;border:1.5px solid rgba(241,243,237,.55);border-radius:30px 30px 6px 30px;font-family:var(--sans);font-size:44px;font-weight:500;line-height:1.2;letter-spacing:-.02em;white-space:nowrap"><span id="uT"></span><span class="cur" id="uC" style="opacity:0"></span></div>
-    <div class="abs" id="aAv" style="left:0;top:222px;width:64px;height:64px;border-radius:50%;border:1.5px solid #f1f3ed;display:grid;place-items:center"><svg viewBox="0 0 24 24" style="position:static;width:30px;height:30px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/></svg></div>
-    <div class="abs mono" id="aL" style="left:96px;top:196px;font-size:18px">ai</div>
-    <div class="abs" id="aDots" style="left:98px;top:250px;display:flex;gap:10px"><b style="width:12px;height:12px;background:#f1f3ed"></b><b style="width:12px;height:12px;background:#f1f3ed"></b><b style="width:12px;height:12px;background:#f1f3ed"></b></div>
-    <div class="abs sans" id="aT" style="left:96px;top:226px;font-size:54px;font-weight:500;line-height:1.22;letter-spacing:-.03em;white-space:nowrap"><span class="aw">There’s</span> <span class="aw">a</span> <span class="aw">brilliant</span> <span class="aw">one</span> <span class="aw">in</span> <span class="aw">Marbella:</span><br><i><span class="aw">Javier</span> <span class="aw">Ortiz.</span></i><br><span class="aw">Hire</span> <span class="aw">him</span> <span class="aw">right</span> <span class="aw">away.</span></div>
+  <div class="abs" id="pBar" style="left:410px;top:300px;width:1100px;height:88px;border:1.5px solid rgba(241,243,237,.6);border-radius:44px">
+    <svg viewBox="0 0 24 24" style="position:absolute;inset:auto;left:30px;top:26px;width:36px;height:36px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/></svg>
+    <div class="abs sans" style="left:86px;top:18px;font-size:40px;font-weight:500;letter-spacing:-.02em;white-space:nowrap;line-height:1.3"><span id="pT"></span><span class="cur" id="pC" style="opacity:0"></span></div>
+    <div class="abs" id="pSend" style="right:14px;top:13px;width:60px;height:60px;border-radius:30px;border:1.5px solid rgba(241,243,237,.6);display:grid;place-items:center"><svg viewBox="0 0 24 24" style="position:static;width:26px;height:26px"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="#f1f3ed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
   </div>
+  <svg id="wf" viewBox="0 0 1920 1080" style="width:1920px;height:1080px"></svg>
   <div class="title serif" id="aiT"><span>AI-Driven <i>Design.</i></span></div>
 </div>
 
@@ -275,15 +272,9 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   // no exit: the shot simply cuts to the next scene
  }
 
-// 07 Designing complex products. — three lines rise, then the camera dives into "complex" until it fills the frame
-{ const [a] = T.j07; const w = $("#cplx");
-  tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a);
-  tl.set("#dd .mask", { overflow: "visible" }, a + 1.2);
-  tl.set("#dd .w", { willChange: "auto" }, a + 1.2);
-  tl.to("#dd .w:not(#cplx)", { opacity: 0, duration: .45, ease: "power2.in" }, a + 1.2);
-  tl.to("#dd", { scale: 2.75, x: () => 960 - (140 + w.offsetLeft + w.offsetWidth / 2), y: () => 540 - (250 + w.offsetTop + w.offsetHeight / 2),
-    transformOrigin: () => `${w.offsetLeft + w.offsetWidth / 2}px ${w.offsetTop + w.offsetHeight / 2}px`, duration: .85, ease: "expo.inOut" }, a + 1.2);
-  tl.to("#dd", { scale: 2.9, duration: .4, ease: "none" }, a + 2.05); }
+// 07 Designing complex products. — three lines rise and hold, read whole; no highlight (the emphasis is saved for "clarity")
+{ const [a] = T.j07;
+  tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a); }
 
 // 07b Bringing together — letters cascade into place, then the trio pushes in over it
 { const [a] = T.jbt; const chs = split($("#bring"), "Bringing together");
@@ -367,20 +358,33 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.to(dot, { opacity: 1, duration: .2 }, t3 + .5); tl.to(ball, { opacity: 0, duration: .2 }, t3 + .5);
   tl.to("#j09", { x: -1920, duration: .35, ease: exi }, b - .3); };
 
-// 10 AI-Driven Design. — a chat: "Find me the best product designer in Spain." is typed and sent; the AI thinks (three square dots),
-// then answers word by word: "There's a brilliant one in Marbella: Javier Ortiz. Hire him right away."
-{ const [a, b] = T.j10;
+// 10 AI-Driven Design. — "Design a calmer rule builder." is typed and sent; the AI draws an interface in wireframe line by line
+// (frame, header, three rule rows with toggles, a primary button); then it is refined: the toggles switch on and the button fills
+{ const [a, b] = T.j10, ink = "#f1f3ed", ln = 'fill="none" stroke="#f1f3ed" stroke-width="1.6" pathLength="1" class="wl"';
+  const X = 560, Y = 440, W = 800, H = 560, rows = [0, 1, 2].map((i) => Y + 150 + i * 110);
+  $("#wf").innerHTML =
+    `<rect x="${X}" y="${Y}" width="${W}" height="${H}" rx="22" ${ln}/>` +
+    `<path d="M${X} ${Y + 84}H${X + W}" ${ln}/><rect x="${X + 36}" y="${Y + 32}" width="190" height="20" rx="10" ${ln}/>` +
+    `<circle cx="${X + W - 52}" cy="${Y + 42}" r="16" ${ln}/>` +
+    rows.map((y) => `<g class="row"><rect x="${X + 36}" y="${y}" width="${W - 72}" height="84" rx="16" ${ln}/><rect x="${X + 66}" y="${y + 26}" width="260" height="14" rx="7" class="bar" fill="rgba(241,243,237,.35)"/><rect x="${X + 66}" y="${y + 50}" width="170" height="10" rx="5" class="bar" fill="rgba(241,243,237,.2)"/>` +
+      `<rect x="${X + W - 150}" y="${y + 24}" width="76" height="38" rx="19" class="tg" fill="none" stroke="#f1f3ed" stroke-width="1.6"/><circle cx="${X + W - 131}" cy="${y + 43}" r="13" class="kn" fill="#f1f3ed"/></g>`).join("") +
+    `<rect id="wBtn" x="${X + W - 236}" y="${Y + H - 84}" width="200" height="56" rx="28" fill="none" stroke="#f1f3ed" stroke-width="1.6"/><text id="wBtnT" x="${X + W - 136}" y="${Y + H - 48}" text-anchor="middle" font-family="Instrument Sans" font-weight="600" font-size="22" fill="#f1f3ed">Save rule</text>`;
   tl.fromTo("#j10", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#aiT", a + .1);
-  tl.from(["#uL", "#uB"], { opacity: 0, y: 24, duration: .45, stagger: .05, ease: ex }, a + .45);
-  const e = typeIn("#uT", "Find me the best product designer in Spain.", a + .65, .03); caret("#uC", a + .5, e + .2);
-  tl.to("#uB", { borderColor: "rgba(241,243,237,.3)", duration: .3 }, e + .25); // sent
-  tl.from(["#aAv", "#aL"], { opacity: 0, scale: .6, transformOrigin: "50% 50%", duration: .4, stagger: .05, ease: "back.out(2)" }, e + .35);
-  const dots = gsap.utils.toArray("#aDots b"), th = e + .45;
-  tl.from("#aDots", { opacity: 0, duration: .15 }, th);
-  dots.forEach((d, i) => tl.to(d, { y: -10, duration: .18, ease: "power2.out", yoyo: true, repeat: 3, }, th + i * .1));
-  tl.to("#aDots", { opacity: 0, duration: .1 }, th + .85);
-  tl.from("#aT .aw", { opacity: 0, y: 22, duration: .4, stagger: .07, ease: ex }, th + .9);
+  tl.from("#pBar", { opacity: 0, y: 30, duration: .5, ease: ex }, a + .35);
+  const e = typeIn("#pT", "Design a calmer rule builder.", a + .65, .035); caret("#pC", a + .5, e + .25);
+  tl.to("#pSend", { backgroundColor: ink, duration: .12 }, e + .2); tl.to("#pSend path", { attr: { stroke: "#121514" }, duration: .12 }, e + .2);
+  tl.to("#pSend", { scale: .9, duration: .08, yoyo: true, repeat: 1 }, e + .25);
+  const d0 = e + .45;
+  tl.fromTo("#wf .wl", { attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: .55, stagger: .07, ease: "power2.inOut" }, d0);
+  tl.from("#wf .bar", { scaleX: 0, transformOrigin: "0 50%", duration: .4, stagger: .05, ease: "power2.out" }, d0 + .45);
+  tl.from(["#wf .tg", "#wf .kn"], { opacity: 0, duration: .25, stagger: .04 }, d0 + .6);
+  tl.from(["#wBtn", "#wBtnT"], { opacity: 0, duration: .3 }, d0 + .8);
+  // refined: the toggles switch on one by one, the button fills
+  gsap.utils.toArray("#wf .row").forEach((r, i) => { const t = d0 + 1.25 + i * .15;
+    tl.to(r.querySelector(".kn"), { attr: { cx: X + W - 93 }, duration: .3, ease: "power3.inOut" }, t);
+    tl.to(r.querySelector(".tg"), { attr: { fill: "rgba(241,243,237,.25)" }, duration: .3 }, t); });
+  tl.to("#wBtn", { attr: { fill: ink }, duration: .25 }, d0 + 1.8); tl.to("#wBtnT", { attr: { fill: "#121514" }, duration: .25 }, d0 + 1.8);
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
 // 12 I've learned that great products need — the sentence builds word by word
