@@ -2,7 +2,7 @@
 
 Source: `javier.html` (same system as `index.html`). Render it with:
 
-    PAGE=javier.html node showreel/render.mjs 1 60 showreel/out/javier.mp4                     # the film (52.05 s, mail closing)
+    PAGE=javier.html node showreel/render.mjs 1 60 showreel/out/javier.mp4                     # the film (52.75 s, mail closing)
     PAGE=javier.html QUERY=end=web node showreel/render.mjs 1 60 showreel/out/javier-web.mp4   # optional short loop that closes on "Let's talk."
 
 **One film.** It closes on the mail. A short loopable variant that ends on "Let's *talk.*" is kept behind `?end=web`, but only the mail film is exported.
@@ -35,11 +35,11 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 12 | 27.80–29.80 | black | I've learned that great products need | The sentence builds word by word |
 | 13 | 29.75–30.85 | black | clear thinking, (outline) | Horizontal pass, dive into the comma |
 | 14 | 30.80–31.90 | black | strong collaboration, | Perspective roll over an outline ghost |
-| 15 | 31.85–33.00 | black | and thoughtful *execution.* | Echo marquee |
-| 16 | 32.95–35.55 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
-| 16b | 35.55–37.55 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
-| 17 | 37.50–40.60 | black | So, what's *next?* | The words drop in one by one and bounce; the question mark swings like a sign on a hinge, then everything falls away |
-| 18 | 40.55–52.05 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed at a calm pace, with a caret per line; the final frame holds |
+| 15 | 31.85–33.70 | black | and thoughtful *execution.* | Echo marquee |
+| 16 | 33.65–36.25 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
+| 16b | 36.25–38.25 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
+| 17 | 38.20–41.30 | black | So, what's *next?* | The words drop in one by one and bounce; the question mark swings like a sign on a hinge, then everything falls away |
+| 18 | 41.25–52.75 | black | Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed at a calm pace, with a caret per line; the final frame holds |
 
 
 "3 promotions in 5 years." (and its added lead-in "So far:") was removed from Javier's script at María's request.

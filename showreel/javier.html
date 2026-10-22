@@ -214,7 +214,7 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 const T = {
   j01: [0.0, 1.95], j02: [1.9, 3.35], j03: [3.3, 6.2], j04: [6.15, 7.55], j05: [7.5, 8.55], j06: [8.5, 11.1], j07: [11.05, 13.5],
   jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 27.85], j12: [27.8, 29.8], j13: [29.75, 30.85], j14: [30.8, 31.9],
-  j15: [31.85, 33.0], j16: [32.95, 35.55], j16b: [35.55, 37.55], j17: [37.5, 40.6], j18: [40.55, 52.05],
+  j15: [31.85, 33.7], j16: [33.65, 36.25], j16b: [36.25, 38.25], j17: [38.2, 41.3], j18: [41.25, 52.75],
 };
 // the film closes on the mail (default); ?end=web gives a short loopable cut that closes on "Let's talk."; ?end=mail keeps the mail closing for sending
 if (new URLSearchParams(location.search).get("end") === "web") { T.j19 = [T.j18[0], T.j18[0] + 3.5]; delete T.j18; }
@@ -402,7 +402,7 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
 
 // 15 and thoughtful execution. — echo marquee: outlined rows drift one way, the solid line settles in the centre
 { const [a] = T.j15; const mid = () => 960 - ($("#exS").offsetLeft + $("#exS").offsetWidth / 2);
-  tl.fromTo(["#ex1", "#ex3"], { x: -300 }, { x: -1300, duration: 1.1, ease: "none" }, a);
+  tl.fromTo(["#ex1", "#ex3"], { x: -300 }, { x: -1940, duration: 1.8, ease: "none" }, a); // keeps drifting through the longer hold
   tl.fromTo("#ex2", { x: () => mid() - 420 }, { x: mid, duration: 1.0, ease: "power2.out" }, a);
   tl.from("#j15 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
