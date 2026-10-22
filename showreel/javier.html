@@ -31,8 +31,6 @@ i,.it{font-style:italic;font-weight:600} /* highlight = italic semibold, or outl
 .c{left:50%;top:50%;white-space:nowrap}
 .w,.ch,.lc{display:inline-block;will-change:transform}
 .mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;padding-right:.14em;margin-right:-.14em}
-.gl{display:inline-block;position:relative}.bm{display:inline-block;width:0;height:0}.qc{position:absolute;background:var(--bg)}
-.bl{position:absolute;left:0;top:0;background:var(--ink);opacity:0} /* the ball: the dot of the i in "Javier" — square, like Instrument Sans' dots */
 .cur{display:inline-block;width:.07em;height:.95em;background:var(--accent);vertical-align:-.12em;margin-left:.06em}
 .stroke{font-family:"Instrument Sans Outline","Instrument Sans",sans-serif;color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--ink) 55%,transparent)}
 img,video{display:block}
@@ -78,7 +76,7 @@ svg{position:absolute;inset:0;overflow:visible}
 <div id="stage">
 
 <!-- 01 Hi. -->
-<div class="sc dk" id="j01"><div class="abs serif c" id="hi" style="font-size:700px">H<span class="gl">ı<span class="bm"></span></span>.</div></div>
+<div class="sc dk" id="j01"><div class="abs serif c" id="hi" style="font-size:700px">Hi.</div></div>
 
 <!-- 02 If you're looking for — typewriter -->
 <div class="sc dk" id="j02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
@@ -89,7 +87,7 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 04 I think — tracking compresses -->
-<div class="sc dk" id="j04"><div class="abs serif c" id="think" style="font-size:150px">I think<span class="d gl">.<span class="bm"></span></span><span class="d gl">.<span class="bm"></span></span><span class="d gl">.<span class="bm"></span></span></div></div>
+<div class="sc dk" id="j04"><div class="abs serif c" id="think" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
 
 <!-- 05 I know one. — extreme close-up punch -->
 <div class="sc dk" id="j05"><div class="abs sans c" id="know" style="font-size:250px;font-weight:600;letter-spacing:-.045em">I know one.</div></div>
@@ -169,12 +167,12 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 17 So, what's next? -->
 <div class="sc dk" id="j17">
-  <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next<span class="gl">?<span class="bm"></span><span class="qc"></span></span></span></span></div>
+  <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next?</span></span></div>
 </div>
 
-<!-- 19 Closing (web) — "Let's build something great together.": the ball bounces in, lands as the full stop, then glides to centre and grows into the opening dot of "Hi." -->
+<!-- 19 Closing (web) — "Let's build something great together." rises, holds and fades to black, so the loop returns to "Hi." -->
 <div class="sc dk" id="j19">
-  <div class="abs serif" id="clRow" style="left:0;top:380px;width:1920px;text-align:center;font-size:150px;line-height:1.05;white-space:nowrap"><span class="mask"><span class="w" id="cl1">Let’s build something</span></span><br><span id="cl2"><span id="clG">great</span> <i id="clT">together</i><span class="gl" id="clP" style="opacity:0">.<span class="bm"></span></span></span></div>
+  <div class="abs serif" id="clRow" style="left:0;top:380px;width:1920px;text-align:center;font-size:150px;line-height:1.05;white-space:nowrap"><span class="mask"><span class="w" id="cl1">Let’s build something</span></span><br><span class="mask"><span class="w" id="cl2">great <i>together.</i></span></span></div>
 </div>
 
 <!-- 18 Closing — the viewer answers "what's next?": a mail to Javier is written and sent; his address and site stay -->
@@ -213,7 +211,7 @@ const T = {
   jbt: [12.9, 13.9], j08: [13.85, 18.05], j09: [18.0, 20.6], j10: [20.55, 24.55], j12: [24.5, 26.5], j13: [26.45, 27.55],
   j14: [27.5, 28.6], j15: [28.55, 29.7], j16: [29.65, 32.25], j16b: [32.25, 34.25], j17: [34.2, 36.95], j18: [36.9, 46.85],
 };
-// two cuts: the web cut closes on "Let's build something great together." and loops; ?end=mail keeps the mail closing for sending
+// two cuts: the web cut closes on "Let's build something great together." and fades out so it can loop; ?end=mail keeps the mail closing for sending
 if (new URLSearchParams(location.search).get("end") !== "mail") { delete T.j18; T.j19 = [36.9, 40.9]; }
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
@@ -221,26 +219,11 @@ const typeIn = (sel, text, at, step) => { const chs = split($(sel), text); gsap.
 const caret = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); for (let t = from + .5; t < to; t += .5) tl.set(sel, { opacity: Math.round((t - from) / .5) % 2 ? 0 : 1 }, t); tl.set(sel, { opacity: 0 }, to); };
 const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
 
-// the ball — the dot of the i in "Javier", a square like every dot in Instrument Sans — travels through the film. Glyph features as [centre x, height above baseline, diameter] in em (Instrument Sans 600)
-const BL = { tit: [.130, .6635, .138], dot: [.1375, .072, .145], qIt: [.2635, .072, .145], dotIt: [.095, .072, .15] };
-const offIn = (el, root) => { let x = 0, y = 0; while (el && el !== root) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return [x, y]; };
-const anchor = (gl, root, fs, g) => { const [ox] = offIn(gl, root), [, by] = offIn(gl.querySelector(".bm"), root); return { x: ox + g[0] * fs, y: by - g[1] * fs, d: g[2] * fs }; };
-const mkBall = (root, d) => { const b = document.createElement("div"); b.className = "bl"; root.appendChild(b); gsap.set(b, { width: d, height: d }); return b; };
-const squash = (b, t, k, pre) => { // stretch into the landing, squash, recover (scaled about the centre, yPercent keeps the bottom on the baseline)
-  tl.to(b, { scaleX: 1 - .2 * k, scaleY: 1 + .3 * k, yPercent: -15 * k, duration: pre, ease: "power1.in" }, t - pre);
-  tl.to(b, { scaleX: 1 + .35 * k, scaleY: 1 - .3 * k, yPercent: 15 * k, duration: .08, ease: "power2.out" }, t);
-  tl.to(b, { scaleX: 1, scaleY: 1, yPercent: 0, duration: .32, ease: "back.out(2)" }, t + .08); };
-// p = { x, y, t }: start centre and time; each leg lands at (x, y) at time t after an arc h px above the higher end; k = squash strength
-const fly = (b, d, p, legs) => { tl.set(b, { x: p.x - d / 2, y: p.y - d / 2, opacity: 1 }, p.t);
-  for (const L of legs) { const top = Math.min(p.y, L.y) - (L.h || 0), dt = L.t - p.t, u = Math.sqrt(p.y - top), w = Math.sqrt(L.y - top), tu = u + w ? dt * u / (u + w) : 0;
-    tl.to(b, { x: L.x - d / 2, duration: dt, ease: "none" }, p.t);
-    if (tu > .001) tl.to(b, { y: top - d / 2, duration: tu, ease: "power2.out" }, p.t);
-    if (dt - tu > .001) tl.to(b, { y: L.y - d / 2, duration: dt - tu, ease: "power2.in" }, p.t + tu);
-    if (L.k) squash(b, L.t, L.k, Math.min(.07, (dt - tu) * .6));
-    p = L.k ? { ...L, t: L.t + .08 } : L; } }; // stays on the ground while it squashes
-const mid = (els) => { const f = els[0], l = els[els.length - 1]; return (f.offsetLeft + l.offsetLeft + l.offsetWidth) / 2; };
-const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offsetWidth / 2, k = Math.abs(c - x); // letters spring out of the impact point
-  tl.fromTo(e, { opacity: 0, x: (x - c) * .55, y: 46, scale: .35 }, { opacity: 1, x: 0, y: 0, scale: 1, duration: .55, ease: "expo.out" }, t + k * .00045); });
+
+// 01 Hi. — extreme close-up of the H pulls back to the word, then lifts out of frame
+{ const [a] = T.j01;
+  tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
+  tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
 
 // 02 If you're looking for — typewriter with cursor
 { const [a] = T.j02; const e = typeIn("#lookT", "If you’re looking for", a + .05, .04); caret("#lookC", e, a + 1.15);
@@ -267,11 +250,11 @@ const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offs
   tl.to("#know", { x: -1500, duration: .3, ease: exi }, a + .75); }
 
 // 06 I'm Javier Ortiz. — letters rise from a mask, the full stop pops; Javier on the right turns to camera
-{ const [a] = T.j06; const chs = split($("#name"), "Javier Ortiz."); chs[3].innerHTML = 'ı<span class="bm"></span>'; chs[3].classList.add("gl");
+{ const [a] = T.j06; const chs = split($("#name"), "Javier Ortiz.");
   tl.from("#im", { x: -80, opacity: 0, duration: .3, ease: ex }, a);
   tl.fromTo(chs, { yPercent: 115 }, { yPercent: 0, duration: .5, stagger: .025, ease: "expo.out" }, a + .12);
   tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
-  // he looks towards his name, and turns to camera just as the dot lands on his i (the clip runs from 0.5 s; see syncVid)
+  // he looks towards his name, then turns to camera as it settles (the clip runs from 0.5 s; see syncVid)
   tl.fromTo("#jv", { opacity: 0, scale: 1.04 }, { opacity: 1, scale: 1, duration: .7, ease: "power2.out" }, a);
   tl.to("#jv", { opacity: 0, duration: .4, ease: "power2.in" }, a + 2.1);
   if (!new URLSearchParams(location.search).has("render")) tl.call(() => { const v = $("#jv"); v.currentTime = .5; v.play(); }, null, a);
@@ -336,7 +319,7 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   const A = split($("#stA"), "Systems"), B = split($("#stB"), "Thinking");
   const base = $("#stBase").offsetTop, dot = $("#stDot");
   const cx = document.createElement("canvas").getContext("2d"); cx.font = 'italic 600 210px "Instrument Sans"';
-  const m = cx.measureText("."), d = BL.dot[2] * 210; // a square, the height of the italic dot
+  const m = cx.measureText("."), d = .145 * 210; // a square, the height of the full stop (Instrument Sans dots are square)
   const px = dot.offsetLeft + (m.actualBoundingBoxRight - m.actualBoundingBoxLeft) / 2, py = base - (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2;
   const mid = (els) => { const f = els[0], l = els[els.length - 1]; return (f.offsetLeft + l.offsetLeft + l.offsetWidth) / 2; };
   const x1 = mid(A), x2 = mid(B);
@@ -478,36 +461,10 @@ if (T.j18) { const [a, b] = T.j18;
   tl.fromTo("#mSite", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: "power2.out" }, tc + 1.6);
   tl.set({}, {}, b); }
 
-// ---------- the ball in the typographic scenes (built once the fonts have loaded: landing points are measured on the set type) ----------
-const buildBalls = () => {
-  // 01 Hi. — starts on the dot of the i (the same dot the web cut ends on), pulls back to the word; the dot hops off and leaves the i bare
-  { const [a] = T.j01, hi = $("#hi"), g = anchor($("#hi .gl"), hi, 700, BL.tit), b = mkBall(hi, g.d);
-    tl.fromTo(hi, { scale: 7, x: hi.offsetWidth / 2 - g.x, y: hi.offsetHeight / 2 - g.y, transformOrigin: `${g.x}px ${g.y}px` }, { scale: 1, x: 0, y: 0, duration: .75, ease: ex }, a);
-    tl.to(hi, { y: -1100, duration: .4, ease: exi }, a + .95);
-    tl.set(b, { x: g.x - g.d / 2, y: g.y - g.d / 2, opacity: 1 }, a);
-    fly(b, g.d, { x: g.x, y: g.y, t: a + .72 }, [{ x: g.x + 1100, y: g.y + 700, t: a + 1.3, h: 200 }]); }
-  // 06 I'm Javier Ortiz. — the name rises with a bare i; the ball drops onto it and settles as its dot, then hops away as the name leaves
-  { const [a] = T.j06, sc = $("#j06"), g = anchor($("#name .gl"), sc, 170, BL.tit), b = mkBall(sc, g.d);
-    fly(b, g.d, { x: g.x - 60, y: -60, t: a + .45 }, [{ x: g.x, y: g.y, t: a + .85, k: .8 }, { x: g.x, y: g.y, t: a + 1.25, h: 40 }]);
-    fly(b, g.d, { x: g.x, y: g.y, t: a + 1.95 }, [{ x: g.x + 420, y: -140, t: a + 2.45, h: 90 }]); }
-  // 17 So, what's next? — the ball lands as the dot of the question mark, then leaps off as the words sink
-  { const [a, e] = T.j17, so = $("#sowhat"), gl = $("#sowhat .gl"), fs = 150, g = anchor(gl, so, fs, BL.qIt), bm = gl.querySelector(".bm");
-    Object.assign(gl.querySelector(".qc").style, { left: .16 * fs + "px", width: .22 * fs + "px", top: bm.offsetTop - .165 * fs + "px", height: .18 * fs + "px" });
-    const b = mkBall(so, g.d);
-    fly(b, g.d, { x: g.x - 520, y: g.y - 520, t: a + .7 }, [{ x: g.x, y: g.y, t: a + 1.15, k: .7 }, { x: g.x, y: g.y, t: a + 1.5, h: 30 }]);
-    tl.to(b, { skewX: -12.5, duration: .4, ease: "power2.inOut" }, a + 1.5); tl.to(b, { skewX: 0, duration: .3 }, e - .9); // leans into the italic
-    fly(b, g.d, { x: g.x, y: g.y, t: e - .85 }, [{ x: g.x + 320, y: g.y - 900, t: e - .3 }]); }
-  // 19 web closing — "great" and "together" spring from the ball's landings; it settles as the full stop, then glides to centre and grows into the opening dot
-  if (T.j19) { const [a] = T.j19, row = $("#clRow"), fs = 150, g = anchor($("#clP"), row, fs, BL.dot), d = g.d, b = mkBall(row, d);
-    const Gs = split($("#clG"), "great"), Ts = split($("#clT"), "together"), x1 = mid(Gs), x2 = mid(Ts);
-    tl.from("#cl1", { yPercent: 110, duration: .8, ease: ex }, a + .05);
-    fly(b, d, { x: x1 - 460, y: g.y - 760, t: a + .3 }, [{ x: x1, y: g.y, t: a + .78, k: .9 }, { x: x2, y: g.y, t: a + 1.38, h: 230, k: .8 },
-      { x: g.x, y: g.y, t: a + 1.83, h: 120, k: .6 }, { x: g.x, y: g.y, t: a + 2.13, h: 26 }]);
-    grow(Gs, x1, a + .78); grow(Ts, x2, a + 1.38);
-    tl.to(["#cl1", "#cl2"], { opacity: 0, duration: .45, ease: "power2.in" }, a + 2.9);
-    tl.set(b, { transformOrigin: "50% 50%" }, a + 2.92);
-    tl.to(b, { x: 960 - d / 2, y: 540 - row.offsetTop - d / 2, scale: 676 / d, duration: 1.0, ease: "expo.inOut" }, a + 2.95); } // 676 px = the i-dot of "Hi." at 7x
-};
+// 19 web closing — the two lines rise from their masks, hold, and fade to black
+if (T.j19) { const [a, b] = T.j19;
+  tl.from("#clRow .w", { yPercent: 110, duration: .9, stagger: .2, ease: "power3.out" }, a + .05);
+  tl.to("#clRow", { opacity: 0, duration: .6, ease: "power2.in" }, b - .9); }
 
 /* ---------- preview and render hooks ---------- */
 window.DURATION = (T.j19 || T.j18)[1];
@@ -516,7 +473,7 @@ const syncVid = (t) => { const v = $("#jv"), [a, b] = T.j06; if (t < a - .1 || t
   const vt = Math.min(Math.max(t - a + .5, 0), v.duration - .02); if (Math.abs(v.currentTime - vt) < 1e-3) return;
   return new Promise((r) => { v.addEventListener("seeked", r, { once: true }); setTimeout(r, 3000); v.currentTime = vt; }); };
 window.seek = async (t) => { tl.seek(Math.max(t, 1e-4), false); await syncVid(t); }; // never exactly 0: a seek to the current time renders nothing
-window.ready = Promise.all([document.fonts.load('600 210px "Instrument Sans"'), document.fonts.load('italic 600 210px "Instrument Sans"')]).then(() => document.fonts.ready).then(() => { buildJ09(); buildBalls(); })
+window.ready = Promise.all([document.fonts.load('600 210px "Instrument Sans"'), document.fonts.load('italic 600 210px "Instrument Sans"')]).then(() => document.fonts.ready).then(buildJ09)
   .then(() => new Promise((r) => { const v = $("#jv"); v.readyState >= 2 ? r() : (v.addEventListener("loadeddata", r, { once: true }), setTimeout(r, 5000)); }));
 const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); $("#stage").style.transform = `scale(${s})`; };
 if (!new URLSearchParams(location.search).has("render")) {

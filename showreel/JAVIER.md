@@ -5,9 +5,9 @@ Source: `javier.html` (same system as `index.html`). Render it with:
     PAGE=javier.html node showreel/render.mjs 1 30 showreel/out/javier.mp4                     # web cut (40.9 s, loops)
     PAGE=javier.html QUERY=end=mail node showreel/render.mjs 1 30 showreel/out/javier-mail.mp4  # cut for sending (46.85 s, mail closing)
 
-**Two cuts.** The web cut ends on "Let's build something great *together.*" and loops: its last frame (a square dot at 676 px, centred) is the first frame of "Hi." (the dot of the i at 7×). The mail cut keeps the mail closing; open the page with `?end=mail`.
+**Two cuts.** The web cut ends on "Let's build something great *together.*", which rises, holds and fades to black so the video can loop. The mail cut keeps the mail closing; open the page with `?end=mail`. Render at 60 fps (`render.mjs 1 60`).
 
-**The ball.** The dot of the i in "Javier" appears at five moments only, so it stays a wink rather than a pattern. Instrument Sans' dots are squares, so the ball is a square too: when it lands it *is* the glyph's dot (sizes and positions come from the font's outlines, `BL` in the source). It hops off the i of "Hi." (leaving it bare), lands as the dot of the i in "Javier", builds "Systems *Thinking.*", becomes the dot of "next?" and, in the web cut, the full stop of "together.", then grows into the opening dot. Render at 60 fps (`render.mjs 1 60`) so its arcs stay smooth.
+**The dot.** Only Systems Thinking keeps the bouncing square (Instrument Sans' dots are square): it builds the two words and lands as the full stop. The travelling i-dot tried in v14–v16 was removed at María's request.
 
 **Visual identity, taken from javierortizalmagro.com**
 - **Theme:** every scene is black (#121514 with #f1f3ed). There is no colour accent and no glow or blur: flat white line art.
@@ -21,12 +21,12 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 
 | # | Time (s) | Theme | On screen | Motion |
 |---|---|---|---|---|
-| 01 | 0.00–1.35 | black | Hi. | Opens on the square dot of the i at 7×, pulls back to the word; the dot hops off and leaves the i bare |
+| 01 | 0.00–1.35 | black | Hi. | Extreme close-up of the H pulls back |
 | 02 | 1.30–2.75 | black | If you're looking for | Typewriter and cursor |
 | 03 | 2.70–5.60 | black | a Senior Product Designer | Camera stops on each word, then pulls back to the line |
 | 04 | 5.55–6.95 | black | I think… | Tracking compresses; the dots arrive one by one |
 | 05 | 6.90–7.95 | black | I know one. | Extreme close-up punch |
-| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask with a bare i; the ball drops onto it, rebounds once and settles as its dot. On the right Javier (clip, graded to the black and faded into it) looks towards his name and turns to camera with a smile just as the dot lands |
+| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask; the full stop pops. On the right Javier (clip, graded to the black and faded into it) looks towards his name, then turns to camera with a smile |
 | 07 | 10.45–12.90 | black | Designing *complex* products. | Masked lines rise; the other lines fade and the camera zooms into "complex" |
 | 07b | 12.90–13.90 | black | Bringing together *(added)* | Letter cascade |
 | 08 | 13.85–18.05 | black | Product *Strategy.* · 01 / 03 | The structure of his rule-editor flow drawn as a line infographic (no product UI or data): outlined blocks with line icons, skeleton bars and generic Fragment Mono labels (trigger, filter, query, calculate, store, send, tag) build one by one. White wires draw between them, small flat pulses run along the wires, and the camera travels along the flow and pulls back to show it whole |
@@ -38,9 +38,9 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 15 | 28.55–29.70 | black | and thoughtful *execution.* | Echo marquee |
 | 16 | 29.65–32.25 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
 | 16b | 32.25–34.25 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
-| 17 | 34.20–36.95 | black | So, what's *next?* | Masked rise and sink; the ball lands as the dot of the question mark and leaps off as the words sink |
+| 17 | 34.20–36.95 | black | So, what's *next?* | Masked rise and sink |
 | 18 | 36.90–46.85 | black | (mail cut) Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's build something / great *together.*" (his own closing line). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed, with a caret per line |
-| 19 | 36.90–40.90 | black | (web cut) Let's build something / great *together.* | The first line rises; the ball falls in and each landing springs a word out ("great", "together"), it settles as the full stop, the text fades and the dot glides to centre and grows into the opening frame |
+| 19 | 36.90–40.90 | black | (web cut) Let's build something / great *together.* | Both lines rise from masks, hold, and fade to black for the loop |
 
 
 "3 promotions in 5 years." (and its added lead-in "So far:") was removed from Javier's script at María's request.
