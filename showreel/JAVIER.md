@@ -17,7 +17,7 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 
 Fonts are in `fonts/javier/` (SIL OFL 1.1, licences included). Outlined words use `instrument-sans-latin-600-outline.woff2`, a static 600 instance with its overlapping contours merged (fontTools removeOverlaps), so strokes show no internal joins.
 
-The copy is Javier's script, plus connectors that add no new facts. They are marked "added" below; Javier should approve them. The only image is his portrait (`media/javier/portrait-badge.jpg`, a crop of `hero-system.jpg` from his site) on the badge in scene 06; every other scene is typographic or line art. Silent for now. Product Strategy is a flat line infographic (style reference: Netlify's "What is Netlify?" film, without its glow); AI-Driven Design is a hub-and-spoke map after "how AI agents work" diagrams.
+The copy is Javier's script, plus connectors that add no new facts. They are marked "added" below; Javier should approve them. The only footage is in scene 06: `media/javier/javier-turn.webm` (and an `.mp4` fallback), an AI-generated 3 s clip of Javier made from his portrait, supplied by María, mirrored so he first looks towards his name. Javier must approve its use. Renders drive the clip frame by frame (`syncVid`). `portrait-badge.jpg` (the earlier badge) is kept for reference but no longer used. Every other scene is typographic or line art. Silent for now. Product Strategy is a flat line infographic (style reference: Netlify's "What is Netlify?" film, without its glow); AI-Driven Design is a hub-and-spoke map after "how AI agents work" diagrams.
 
 | # | Time (s) | Theme | On screen | Motion |
 |---|---|---|---|---|
@@ -26,7 +26,7 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 03 | 2.70–5.60 | black | a Senior Product Designer | Camera stops on each word, then pulls back to the line |
 | 04 | 5.55–6.95 | black | I think… | Tracking compresses; the dots arrive one by one |
 | 05 | 6.90–7.95 | black | I know one. | Extreme close-up punch |
-| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask with a bare i; the ball drops onto it, rebounds once and settles as its dot. A lanyard badge with his portrait, name and "Senior Product Designer" drops in on the right and swings to rest |
+| 06 | 7.90–10.50 | black | I'm Javier Ortiz. | Letters rise from a mask with a bare i; the ball drops onto it, rebounds once and settles as its dot. On the right Javier (clip, graded to the black and faded into it) looks towards his name and turns to camera with a smile just as the dot lands |
 | 07 | 10.45–12.90 | black | Designing *complex* products. | Masked lines rise; the other lines fade and the camera zooms into "complex" |
 | 07b | 12.90–13.90 | black | Bringing together *(added)* | Letter cascade |
 | 08 | 13.85–18.05 | black | Product *Strategy.* · 01 / 03 | The structure of his rule-editor flow drawn as a line infographic (no product UI or data): outlined blocks with line icons, skeleton bars and generic Fragment Mono labels (trigger, filter, query, calculate, store, send, tag) build one by one. White wires draw between them, small flat pulses run along the wires, and the camera travels along the flow and pulls back to show it whole |
