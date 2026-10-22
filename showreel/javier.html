@@ -103,11 +103,15 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 07 Designing complex digital products. -->
 <div class="sc dk" id="j07">
-  <div class="abs serif" id="dd" style="left:140px;top:250px;font-size:160px;line-height:.98"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w">complex</span></span><br><span class="mask"><span class="w">products.</span></span></div>
+  <div class="abs" id="dd" style="left:0;top:0;width:1920px;height:1080px">
+    <div class="abs serif" style="left:120px;top:130px;font-size:220px;line-height:1"><span class="mask"><span class="w">Designing</span></span></div>
+    <div class="abs serif" style="left:560px;top:390px;font-size:220px;line-height:1"><span class="mask"><span class="w">complex</span></span></div>
+    <div class="abs serif" style="right:120px;top:650px;font-size:220px;line-height:1"><span class="mask"><span class="w">products.</span></span></div>
+  </div>
 </div>
 
 <!-- 07b Bringing together — letter cascade (added connector) -->
-<div class="sc dk" id="jbt"><div class="abs sans" id="bring" style="left:180px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"></div></div>
+<div class="sc dk" id="jbt"><div class="abs sans c" id="bring" style="top:540px;font-size:120px;font-weight:500;letter-spacing:-.035em"><span class="w" id="bgA">Bringing</span> <span class="w" id="bgB">together</span></div></div>
 
 <!-- 08 Product Strategy. — one connected path, milestone by milestone -->
 <div class="sc dk" id="j08">
@@ -170,7 +174,7 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 16b is what drives me. -->
-<div class="sc dk" id="j16b"><div class="abs serif" id="drv" style="left:180px;top:430px;font-size:150px;line-height:1.02"><span class="mask"><span class="w">is what <i>drives</i> me.</span></span></div></div>
+<div class="sc dk" id="j16b"><div class="abs serif" id="drv" style="left:180px;top:430px;font-size:150px;line-height:1.02"><span class="mask"><span class="w"><span class="o">is what </span><i id="drvW">drives</i><span class="o"> me.</span></span></span></div></div>
 
 <!-- 17 So, what's next? -->
 <div class="sc dk" id="j17">
@@ -215,7 +219,7 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 const T = {
   j01: [0.0, 1.95], j02: [1.9, 3.35], j03: [3.3, 6.2], j04: [6.15, 7.55], j05: [7.5, 8.55], j06: [8.5, 11.1], j07: [11.05, 13.5],
   jbt: [13.5, 15.3], j08: [15.25, 20.35], j09: [20.3, 22.9], j10: [22.85, 28.15], j12: [28.1, 30.1], j13: [30.05, 31.15], j14: [31.1, 32.2],
-  j15: [32.15, 34.0], j16: [33.95, 36.55], j16b: [36.55, 38.55], j17: [38.5, 41.6], j18: [41.55, 53.05],
+  j15: [32.15, 34.0], j16: [33.95, 36.55], j16b: [36.55, 39.05], j17: [39.0, 42.1], j18: [42.05, 53.55],
 };
 // the film closes on the mail (default); ?end=web gives a short loopable cut that closes on "Let's talk."; ?end=mail keeps the mail closing for sending
 if (new URLSearchParams(location.search).get("end") === "web") { T.j19 = [T.j18[0], T.j18[0] + 3.5]; delete T.j18; }
@@ -277,13 +281,17 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   // no exit: the shot simply cuts to the next scene
  }
 
-// 07 Designing complex products. — three lines rise and hold, read whole; no highlight (the emphasis is saved for "clarity")
-{ const [a] = T.j07;
-  tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a); }
+// 07 Designing complex products. — set big as a diagonal staircase across the frame; each line rises from its mask while sliding in,
+// then the camera drifts slowly in. No word is highlighted (the emphasis is saved for "clarity")
+{ const [a, b] = T.j07;
+  tl.from("#dd .w", { yPercent: 110, x: (i) => [-120, 0, 120][i], duration: .8, stagger: .14, ease: ex }, a);
+  tl.fromTo("#dd", { scale: 1 }, { scale: 1.05, transformOrigin: "50% 50%", duration: b - a, ease: "none" }, a); }
 
-// 07b Bringing together — letters cascade into place, then the trio pushes in over it
-{ const [a] = T.jbt; const chs = split($("#bring"), "Bringing together");
-  tl.from(chs, { y: (i) => -220 - (i % 5) * 60, opacity: 0, duration: .45, stagger: .018, ease: ex }, a); }
+// 07b Bringing together — the two words arrive from opposite edges and meet in the middle, with a small settle on contact
+{ const [a] = T.jbt;
+  tl.from("#bgA", { x: -1400, duration: .8, ease: "expo.inOut" }, a + .05);
+  tl.from("#bgB", { x: 1400, duration: .8, ease: "expo.inOut" }, a + .05);
+  tl.fromTo("#bring", { scale: 1.04 }, { scale: 1, duration: .5, ease: "power3.out", immediateRender: false }, a + .82); }
 
 // 08 Product Strategy. — the title lands big and centred, moves to its place, then the structure of his rule flow builds itself block by block while the camera travels along it; data pulses run the wires
 { let [a, b] = T.j08; const lx = $("#lx");
@@ -420,10 +428,14 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.from("#cla", { opacity: 0, y: 24, duration: .5, ease: ex }, s0 + 1.5);
   tl.to("#j16", { y: -200, opacity: 0, duration: .4, ease: "power2.in" }, b - .4); }
 
-// 16b is what drives me. — completes "Turning complexity into clarity": the line rises slowly and holds
-{ const [a, b] = T.j16b;
+// 16b is what drives me. — the line rises and holds, then the other words fall away and the camera dives into "drives"
+{ const [a] = T.j16b, w = $("#drvW");
   tl.from("#drv .w", { yPercent: 110, duration: .9, ease: ex }, a + .05);
-  tl.to("#drv .w", { yPercent: -110, duration: .55, ease: "power3.in" }, b - .6); }
+  tl.set("#drv .mask", { overflow: "visible" }, a + 1.1);
+  tl.to("#drv .o", { opacity: 0, duration: .4, ease: "power2.in" }, a + 1.1);
+  tl.to("#drv", { scale: 2.6, x: () => 960 - (180 + w.offsetLeft + w.offsetWidth / 2), y: () => 540 - (430 + w.offsetTop + w.offsetHeight / 2),
+    transformOrigin: () => `${w.offsetLeft + w.offsetWidth / 2}px ${w.offsetTop + w.offsetHeight / 2}px`, duration: .9, ease: "expo.inOut" }, a + 1.1);
+  tl.to("#drv", { scale: 2.75, duration: .5, ease: "none" }, a + 2.0); }
 
 // 17 So, what's next? — one word at a time, alone and centred ("So," → "what's" → "next?"), then "next?" glides into the line as the others appear
 { const [a] = T.j17, so = $("#sowhat"), ws = gsap.utils.toArray("#sowhat .w");
