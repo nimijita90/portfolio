@@ -1,4 +1,4 @@
-// Renders showreel/index.html to MP4: node showreel/render.mjs [scale=0.5] [fps=25] [out=showreel/out/draft.mp4] [from] [to]
+// Renders showreel/index.html (or PAGE=other.html) to MP4: node showreel/render.mjs [scale=0.5] [fps=25] [out=showreel/out/draft.mp4] [from] [to]
 const { chromium } = await import(process.env.PLAYWRIGHT ?? "playwright");
 import { spawn } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -10,7 +10,7 @@ const dir = path.dirname(fileURLToPath(import.meta.url));
 fs.mkdirSync(path.dirname(path.resolve(out)), { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: Number(scale) });
-await page.goto(pathToFileURL(path.join(dir, "index.html")).href + "?render");
+await page.goto(pathToFileURL(path.join(dir, process.env.PAGE ?? "index.html")).href + "?render"); // PAGE=javier.html renders another profile
 await page.evaluate(() => window.ready);
 const duration = await page.evaluate(() => window.DURATION);
 const start = Number(from ?? 0), end = Number(to ?? duration);
