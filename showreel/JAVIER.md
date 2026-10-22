@@ -4,11 +4,12 @@ Source: `javier.html` (same system as `index.html`). Render it with:
 
     PAGE=javier.html node showreel/render.mjs 1 30 showreel/out/javier.mp4
 
-Copy is Javier's script, word for word. There is no footage, logo or product imagery for this profile, so every scene is typographic or abstract. Visual identity taken from javierortizalmagro.com: Instrument Sans throughout (semibold 600, −0.045em tracking, weight contrast instead of italics), Fragment Mono for the "01 / 03" counters, his light palette (#f7f7f3 / #171817 / #555750) and his blue #0d99ff as the single accent (the travelling point, the last milestone, the complexity point, the caret). His name is set in capitals over two lines, as on his site's hero. Fonts in `fonts/javier/` (SIL OFL 1.1, licences included). Silent for now (37 s).
+Copy is Javier's script, word for word. There is no footage, logo or product imagery for this profile, so every scene is typographic or abstract. Visual identity taken from javierortizalmagro.com: Instrument Sans throughout (semibold 600, −0.045em tracking, his true Instrument Sans italic for accent words, as in "I design the *calm*…"), Fragment Mono for the "01 / 03" counters, his light palette (#f7f7f3 / #171817 / #555750) and his blue #0d99ff as the single accent (the travelling point, the last milestone, the complexity point, the caret). His name is set in capitals over two lines, as on his site's hero. Fonts in `fonts/javier/` (SIL OFL 1.1, licences included). Silent for now (39.1 s). Two signatures from his site: his monogram (the exact brand-mark SVG) builds after "Hi.", and in the name scene the R is selected Figma-style — dashed outline, bounding box with handles and its size in Fragment Mono — like the tech overlay on his hero.
 
 | # | Time (s) | On screen | Motion (reused from María's scene) |
 |---|---|---|---|
 | 01 | 0.00–1.35 | Hi. | Extreme close-up pulls back (01) |
+| 01b | 1.35–2.60 | His monogram | The square lands, the J rises, the dot pops; pushed out |
 | 02 | 1.30–2.75 | If you're looking for | Typewriter and cursor (02) |
 | 03 | 2.70–5.60 | a Senior Product Designer, | Camera stops on each word, then pulls back to the line (03) |
 | 04 | 5.60–6.75 | I think | Tracking compresses (04) |

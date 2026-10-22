@@ -10,6 +10,7 @@
 -->
 <style>
 @font-face{font-family:"Instrument Sans";src:url("fonts/javier/instrument-sans-latin-wdth-normal.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%}
+@font-face{font-family:"Instrument Sans";src:url("fonts/javier/instrument-sans-latin-wdth-italic.woff2") format("woff2");font-weight:400 700;font-stretch:75% 100%;font-style:italic}
 @font-face{font-family:"Fragment Mono";src:url("fonts/javier/fragment-mono-latin-400-normal.woff2") format("woff2");font-weight:400}
 :root{--bg:#f7f7f3;--ink:#171817;--mute:#555750;--line:#d8dad3;--accent:#0d99ff;--serif:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif;--mono:"Fragment Mono",Menlo,monospace}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,7 +20,8 @@ html,body{background:var(--bg);overflow:hidden}
 .abs{position:absolute}
 .serif{font-family:var(--serif);font-weight:600;letter-spacing:-.045em;line-height:.92}
 .mono{font-family:var(--mono);font-size:26px;letter-spacing:.06em;color:var(--mute)}
-i,.it{font-style:normal;font-weight:400}
+i,.it{font-style:italic}
+.hdl{position:absolute;width:13px;height:13px;background:var(--bg);border:1.5px solid var(--ink)}
 
 .cap{font-family:var(--sans);font-size:24px;letter-spacing:.32em;text-transform:uppercase;color:#e9e6e0}
 .c{left:50%;top:50%;white-space:nowrap}
@@ -57,6 +59,9 @@ svg{position:absolute;inset:0;overflow:visible}
 <!-- 01 Hi. -->
 <div class="sc" id="j01"><div class="abs serif c" id="hi" style="font-size:700px">Hi.</div></div>
 
+<!-- 01b His monogram (the brand mark from javierortizalmagro.com) -->
+<div class="sc" id="j01b"><svg id="jMark" viewBox="0 0 100 100" style="left:810px;top:390px;width:300px;height:300px"><rect id="jSq" width="100" height="100" fill="#171817"/><path id="jJ" d="M39 32.6 65.5 22.4 65.3 23.5 57.6 26.4v33.7c0 8.4-4.4 14.1-13.4 17.5 3.2-4.8 4-10.1 4-17.7V29.7L39 33.5Z" fill="#f7f7f3"/><circle id="jDot" cx="38.2" cy="74.3" r="3.8" fill="#f7f7f3"/></svg></div>
+
 <!-- 02 If you're looking for — typewriter -->
 <div class="sc" id="j02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:300;letter-spacing:-.02em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
 
@@ -74,6 +79,9 @@ svg{position:absolute;inset:0;overflow:visible}
 <!-- 06 I'm Javier Ortiz. -->
 <div class="sc" id="j06">
   <div class="abs sans" id="im" style="left:240px;top:330px;font-size:56px;font-weight:500;letter-spacing:-.02em">I’m</div>
+  <svg id="selR" style="left:0;top:0;width:10px;height:10px;opacity:0"><text id="selRt" x="0" y="0" font-family="Instrument Sans" font-weight="600" font-size="300" fill="none" stroke="#171817" stroke-width="2.2" stroke-dasharray="11 8">R</text></svg>
+  <div class="abs" id="selBox" style="border:1.5px solid #8f928b;opacity:0"><i class="hdl" style="left:-7px;top:-7px"></i><i class="hdl" style="right:-7px;top:-7px"></i><i class="hdl" style="left:-7px;bottom:-7px"></i><i class="hdl" style="right:-7px;bottom:-7px"></i></div>
+  <div class="abs mono" id="selLab" style="font-size:22px;opacity:0;white-space:pre"></div>
   <div class="abs serif" id="name" style="left:222px;top:420px;font-size:300px;line-height:.8;white-space:nowrap;text-transform:uppercase"><div style="overflow:hidden;padding-bottom:.04em" id="nm1"></div><div style="overflow:hidden;padding-bottom:.04em;margin-left:.9em" id="nm2"></div></div>
 </div>
 
@@ -172,10 +180,10 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
-  j01: [0.0, 1.35], j02: [1.3, 2.75], j03: [2.7, 5.6], j04: [5.6, 6.75], j05: [6.75, 7.8], j06: [7.8, 9.25],
-  j07: [9.2, 11.4], j08: [11.35, 13.05], j09: [13.0, 14.9], j10: [14.85, 16.65], j11: [16.6, 18.4],
-  j12: [18.4, 20.4], j13: [20.35, 21.45], j14: [21.4, 22.5], j15: [22.45, 23.6], j16: [23.55, 26.15],
-  j17: [26.15, 28.4], j18: [28.4, 31.2], j19: [31.2, 37.0],
+  j01: [0.0, 1.35], j01b: [1.35, 2.6], j02: [2.55, 4.0], j03: [3.95, 6.85], j04: [6.85, 8.0], j05: [8.0, 9.05], j06: [9.05, 11.35],
+  j07: [11.3, 13.5], j08: [13.45, 15.15], j09: [15.1, 17.0], j10: [16.95, 18.75], j11: [18.7, 20.5],
+  j12: [20.5, 22.5], j13: [22.45, 23.55], j14: [23.5, 24.6], j15: [24.55, 25.7], j16: [25.65, 28.25],
+  j17: [28.25, 30.5], j18: [30.5, 33.3], j19: [33.3, 39.1],
 };
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
@@ -189,6 +197,13 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
 
 // 02 If you're looking for — typewriter with cursor
+// 01b His monogram: the square lands, the J rises inside it, the dot pops; then it is pushed out like the logo in María's version
+{ const [a] = T.j01b;
+  tl.fromTo("#jSq", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: .5, ease: ex }, a);
+  tl.fromTo("#jJ", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: .55, ease: ex }, a + .2);
+  tl.fromTo("#jDot", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: .35, ease: "back.out(3)" }, a + .5);
+  tl.to("#jMark", { x: -1900, duration: .35, ease: exi }, a + .95); }
+
 { const [a] = T.j02; const e = typeIn("#lookT", "If you’re looking for", a + .05, .04); caret("#lookC", e, a + 1.15);
   tl.to("#look", { x: -1500, duration: .3, ease: exi }, a + 1.15); }
 
@@ -212,12 +227,28 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.to("#know", { x: -1500, duration: .3, ease: exi }, a + .75); }
 
 // 06 I'm Javier Ortiz. — letters rise from a mask, the full stop pops
-{ const [a] = T.j06; const chs = [...split($("#nm1"), "Javier"), ...split($("#nm2"), "Ortiz.")];
+{ const [a] = T.j06; const n1 = split($("#nm1"), "Javier"), n2 = split($("#nm2"), "Ortiz."), chs = [...n1, ...n2], R = n2[1];
+  // the selection overlay is measured from the real layout of the "R" the first time it renders
+  const place = () => { const st = $("#stage").getBoundingClientRect(), k = st.width / 1920, r = R.getBoundingClientRect();
+    const x = (r.left - st.left) / k, y = (r.top - st.top) / k, w = r.width / k, h = r.height / k;
+    const c = document.createElement("canvas").getContext("2d"); c.font = "600 300px 'Instrument Sans'"; const m = c.measureText("R");
+    const gx = x - m.actualBoundingBoxLeft, gy = y + (h - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2 + m.fontBoundingBoxAscent;
+    const bx = gx - 6, by = gy - m.actualBoundingBoxAscent - 6, bw = m.actualBoundingBoxRight + m.actualBoundingBoxLeft + 12, bh = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent + 12;
+    gsap.set("#selR", { left: 0, top: 0, width: 1920, height: 1080 }); $("#selRt").setAttribute("x", gx + m.actualBoundingBoxLeft); $("#selRt").setAttribute("y", gy);
+    gsap.set("#selBox", { left: bx, top: by, width: bw, height: bh });
+    gsap.set("#selLab", { left: bx, top: by + bh + 16 }); $("#selLab").textContent = `R  ${Math.round(bw)} × ${Math.round(bh)}`; };
   tl.from("#im", { x: -80, opacity: 0, duration: .3, ease: ex }, a);
   tl.fromTo(chs, { yPercent: 115 }, { yPercent: 0, duration: .5, stagger: .025, ease: "expo.out" }, a + .12);
   tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
-  tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 1.05);
-  tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 1.05); }
+  // the R is selected, Figma-style: it turns into a dashed outline inside a bounding box with handles and its size
+  tl.fromTo(R, { color: "#171817" }, { color: "rgba(23,24,23,0)", duration: .2, onStart: place }, a + .85);
+  tl.fromTo("#selR", { opacity: 0 }, { opacity: 1, duration: .2 }, a + .85);
+  tl.fromTo("#selBox", { opacity: 0, scale: 1.12, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .35, ease: ex }, a + .9);
+  tl.fromTo("#selBox .hdl", { scale: 0 }, { scale: 1, duration: .25, stagger: .04, ease: "back.out(3)" }, a + 1.0);
+  tl.fromTo("#selLab", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .3 }, a + 1.1);
+  tl.to(["#selR", "#selBox", "#selLab"], { opacity: 0, duration: .15 }, a + 1.85);
+  tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 1.9);
+  tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 1.9); }
 
 // 07 Designing complex digital products. — three lines rise, drift, and leave together
 { const [a] = T.j07;
