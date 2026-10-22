@@ -208,11 +208,11 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
   j01: [0.0, 1.35], j02: [1.3, 2.75], j03: [2.7, 5.6], j04: [5.55, 6.95], j05: [6.9, 7.95], j06: [7.9, 10.5], j07: [10.45, 12.9],
-  jbt: [12.9, 13.9], j08: [13.85, 18.05], j09: [18.0, 20.6], j10: [20.55, 24.55], j12: [24.5, 26.5], j13: [26.45, 27.55],
-  j14: [27.5, 28.6], j15: [28.55, 29.7], j16: [29.65, 32.25], j16b: [32.25, 34.25], j17: [34.2, 36.95], j18: [36.9, 45.85],
+  jbt: [12.9, 14.7], j08: [14.65, 18.85], j09: [18.8, 21.4], j10: [21.35, 25.35], j12: [25.3, 27.3], j13: [27.25, 28.35],
+  j14: [28.3, 29.4], j15: [29.35, 30.5], j16: [30.45, 33.05], j16b: [33.05, 35.05], j17: [35.0, 37.75], j18: [37.7, 46.65],
 };
 // two cuts: the web cut closes on "Let's talk." and fades out so it can loop; ?end=mail keeps the mail closing for sending
-if (new URLSearchParams(location.search).get("end") !== "mail") { delete T.j18; T.j19 = [36.9, 40.4]; }
+if (new URLSearchParams(location.search).get("end") !== "mail") { delete T.j18; T.j19 = [37.7, 41.2]; }
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
 const typeIn = (sel, text, at, step) => { const chs = split($(sel), text); gsap.set(chs, { display: "none" }); chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step)); return at + chs.length * step; };
