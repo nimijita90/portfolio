@@ -3,9 +3,9 @@
 Source: `javier.html` (same system as `index.html`). Render it with:
 
     PAGE=javier.html node showreel/render.mjs 1 30 showreel/out/javier.mp4                     # web cut (40.9 s, loops)
-    PAGE=javier.html QUERY=end=mail node showreel/render.mjs 1 30 showreel/out/javier-mail.mp4  # cut for sending (46.85 s, mail closing)
+    PAGE=javier.html QUERY=end=mail node showreel/render.mjs 1 30 showreel/out/javier-mail.mp4  # cut for sending (45.85 s, mail closing)
 
-**Two cuts.** The web cut ends on "Let's build something great *together.*", which rises, holds and fades to black so the video can loop. The mail cut keeps the mail closing; open the page with `?end=mail`. Render at 60 fps (`render.mjs 1 60`).
+**Two cuts.** The web cut ends on "Let's *talk.*", which rises, holds and fades to black so the video can loop. The mail cut keeps the mail closing; open the page with `?end=mail`. Render at 60 fps (`render.mjs 1 60`).
 
 **The dot.** Only Systems Thinking keeps the bouncing square (Instrument Sans' dots are square): it builds the two words and lands as the full stop. The travelling i-dot tried in v14–v16 was removed at María's request.
 
@@ -39,8 +39,8 @@ The copy is Javier's script, plus connectors that add no new facts. They are mar
 | 16 | 29.65–32.25 | black | Turning *complexity* into **clarity** | A point bursts into orbiting letters that snap into the word |
 | 16b | 32.25–34.25 | black | is what *drives* me. *(added, completes the line)* | Masked rise, hold, sink |
 | 17 | 34.20–36.95 | black | So, what's *next?* | Masked rise and sink |
-| 18 | 36.90–46.85 | black | (mail cut) Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's build something / great *together.*" (his own closing line). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed, with a caret per line |
-| 19 | 36.90–40.90 | black | (web cut) Let's build something / great *together.* | Both lines rise from masks, hold, and fade to black for the loop |
+| 18 | 36.90–45.85 | black | (mail cut) Closing, after María's: a mail composer (his dark style). To: javier6165@gmail.com (his public contact address, from his site), Subject: Senior Product Designer, body: "Hey, Javier! / Let's *talk.*" (replaces his "Let's build something great together." at María's request). The pointer clicks Send, the window flies off, his address glides to centre with "Sent ✓" above and javierortizalmagro.com beneath | Typed, with a caret per line |
+| 19 | 36.90–40.40 | black | (web cut) Let's *talk.* (replaces "Let's build something great together." at María's request) | Both words rise from masks, hold, and fade to black for the loop |
 
 
 "3 promotions in 5 years." (and its added lead-in "So far:") was removed from Javier's script at María's request.
