@@ -10,7 +10,7 @@ const dir = path.dirname(fileURLToPath(import.meta.url));
 fs.mkdirSync(path.dirname(path.resolve(out)), { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH });
 const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: Number(scale) });
-await page.goto(pathToFileURL(path.join(dir, process.env.PAGE ?? "index.html")).href + "?render"); // PAGE=javier.html renders another profile
+await page.goto(pathToFileURL(path.join(dir, process.env.PAGE ?? "index.html")).href + "?render" + (process.env.QUERY ? "&" + process.env.QUERY : "")); // PAGE=javier.html renders another profile
 await page.evaluate(() => window.ready);
 const duration = await page.evaluate(() => window.DURATION);
 const start = Number(from ?? 0), end = Number(to ?? duration);

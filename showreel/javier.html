@@ -31,6 +31,8 @@ i,.it{font-style:italic;font-weight:600} /* highlight = italic semibold, or outl
 .c{left:50%;top:50%;white-space:nowrap}
 .w,.ch,.lc{display:inline-block;will-change:transform}
 .mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;padding-right:.14em;margin-right:-.14em}
+.gl{display:inline-block;position:relative}.bm{display:inline-block;width:0;height:0}.qc{position:absolute;background:var(--bg)}
+.bl{position:absolute;left:0;top:0;background:var(--ink);opacity:0} /* the ball: the dot of the i in "Javier" — square, like Instrument Sans' dots */
 .cur{display:inline-block;width:.07em;height:.95em;background:var(--accent);vertical-align:-.12em;margin-left:.06em}
 .stroke{font-family:"Instrument Sans Outline","Instrument Sans",sans-serif;color:transparent;-webkit-text-stroke:2px color-mix(in srgb,var(--ink) 55%,transparent)}
 img,video{display:block}
@@ -76,7 +78,7 @@ svg{position:absolute;inset:0;overflow:visible}
 <div id="stage">
 
 <!-- 01 Hi. -->
-<div class="sc dk" id="j01"><div class="abs serif c" id="hi" style="font-size:700px">Hi.</div></div>
+<div class="sc dk" id="j01"><div class="abs serif c" id="hi" style="font-size:700px">H<span class="gl">ı<span class="bm"></span></span>.</div></div>
 
 <!-- 02 If you're looking for — typewriter -->
 <div class="sc dk" id="j02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:500;letter-spacing:-.035em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
@@ -87,7 +89,7 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 04 I think — tracking compresses -->
-<div class="sc dk" id="j04"><div class="abs serif c" id="think" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
+<div class="sc dk" id="j04"><div class="abs serif c" id="think" style="font-size:150px">I think<span class="d gl">.<span class="bm"></span></span><span class="d gl">.<span class="bm"></span></span><span class="d gl">.<span class="bm"></span></span></div></div>
 
 <!-- 05 I know one. — extreme close-up punch -->
 <div class="sc dk" id="j05"><div class="abs sans c" id="know" style="font-size:250px;font-weight:600;letter-spacing:-.045em">I know one.</div></div>
@@ -133,27 +135,12 @@ svg{position:absolute;inset:0;overflow:visible}
 <!-- 09 Systems Thinking. — a field of hairlines turns, in a wave, towards one point -->
 <div class="sc dk" id="j09">
   <div class="abs mono" id="stN" style="right:120px;top:150px">02 / 03</div>
-  <div class="abs serif" id="stRow" style="left:0;top:430px;width:1920px;text-align:center;font-size:210px;line-height:1;white-space:nowrap"><span id="stA">Systems</span> <i id="stB">Thinking</i><i id="stDot" style="display:inline-block;opacity:0">.</i><span id="stBase" style="display:inline-block;width:0;height:0"></span><div class="abs" id="ball" style="left:0;top:0;border-radius:50%;background:#f1f3ed;opacity:0"></div></div>
+  <div class="abs serif" id="stRow" style="left:0;top:430px;width:1920px;text-align:center;font-size:210px;line-height:1;white-space:nowrap"><span id="stA">Systems</span> <i id="stB">Thinking</i><i id="stDot" style="display:inline-block;opacity:0">.</i><span id="stBase" style="display:inline-block;width:0;height:0"></span><div class="abs" id="ball" style="left:0;top:0;background:#f1f3ed;opacity:0"></div></div>
 </div>
 
-<!-- 10 AI-Driven Design. — a prompt is typed and sent; the prototype streams out as code -->
+<!-- 10 AI-Driven Design. — his toolchain as a hub-and-spoke map: AI in the centre, his tools grouped around it -->
 <div class="sc dk" id="j10">
-  <div class="abs" id="aiView" style="left:0;top:0;width:1920px;height:1080px;perspective:1600px">
-    <div class="abs" id="code" style="left:1030px;top:360px;width:780px;height:480px;border-radius:22px;background:rgba(28,32,30,.6);border:1.5px solid rgba(241,243,237,.4);box-shadow:0 0 50px rgba(241,243,237,.08);opacity:0">
-      <div class="abs" style="left:26px;top:24px;display:flex;gap:9px"><i style="width:11px;height:11px;border-radius:6px;background:#39403b"></i><i style="width:11px;height:11px;border-radius:6px;background:#39403b"></i><i style="width:11px;height:11px;border-radius:6px;background:#39403b"></i></div>
-      <div class="abs mono" style="right:28px;top:18px;font-size:18px">rule.ts</div>
-      <div class="abs" id="codeB" style="left:34px;top:76px;font-family:var(--mono);font-size:25px;line-height:46px;white-space:pre;color:#d9ddd5"></div>
-      <div class="abs mono" id="codeOk" style="left:34px;bottom:26px;font-size:20px;color:#f1f3ed;opacity:0">✓ prototype ready</div>
-    </div>
-    <div class="abs" id="aiCard" style="left:520px;top:420px;width:880px;height:250px;border-radius:24px;background:rgba(28,32,30,.62);border:1.5px solid rgba(241,243,237,0.63);box-shadow:0 0 0 1px rgba(241,243,237,0.14),0 0 70px rgba(241,243,237,0.27),inset 0 0 50px rgba(241,243,237,0.06)">
-      <svg viewBox="0 0 24 24" style="left:38px;top:40px;width:40px;height:40px"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="#f1f3ed"/><path d="M19 1.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" fill="#d9ddd5"/></svg>
-      <div class="abs" style="left:100px;top:44px;font-family:var(--mono);font-size:34px;color:#f1f3ed;letter-spacing:.01em;white-space:nowrap"><span id="aiPT"></span><span class="cur" id="aiC" style="opacity:0;width:.09em;box-shadow:0 0 14px #f1f3ed"></span></div>
-      <div class="abs" id="aiChip" style="left:38px;bottom:34px;padding:9px 20px 9px 12px;border-radius:30px;border:1.5px solid rgba(241,243,237,0.49);box-shadow:0 0 18px rgba(241,243,237,0.24);font-size:22px;font-weight:500;color:#f1f3ed;display:flex;align-items:center;gap:12px"><i style="width:26px;height:26px;border-radius:13px;background:linear-gradient(135deg,#f1f3ed,#8d948c)"></i>Designer</div>
-      <svg id="aiSend" viewBox="0 0 24 24" style="left:auto;right:40px;top:auto;bottom:36px;width:40px;height:40px;inset:auto 40px 36px auto"><path d="M3 11.5 21 4l-6.5 17-3-7.5z" fill="none" stroke="#f1f3ed" stroke-width="1.6" stroke-linejoin="round"/><path d="M11.5 13.5 21 4" stroke="#f1f3ed" stroke-width="1.6"/></svg>
-    </div>
-    <div class="abs" id="aiFlare" style="left:1340px;top:614px;width:900px;height:900px;margin:-450px 0 0 -450px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,1) 0,rgba(190,232,255,.85) 6%,rgba(241,243,237,.45) 16%,rgba(241,243,237,0.11) 36%,rgba(241,243,237,0.0) 62%);opacity:0;mix-blend-mode:screen"></div>
-    <div class="abs" id="aiStreak" style="left:1340px;top:614px;width:1800px;height:10px;margin:-5px 0 0 -900px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(255,255,255,.95) 0,rgba(241,243,237,.6) 30%,rgba(241,243,237,0.0) 70%);filter:blur(2px);opacity:0;mix-blend-mode:screen"></div>
-  </div>
+  <svg id="aiG" viewBox="0 0 1920 1080" style="width:1920px;height:1080px"></svg>
   <div class="abs mono" style="right:120px;top:150px">03 / 03</div>
   <div class="title serif" id="aiT"><span>AI-Driven <i>Design.</i></span></div>
 </div>
@@ -179,7 +166,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 16 Turning complexity into clarity. — scattered letters orbit, then snap into one clean word -->
 <div class="sc dk" id="j16">
-  <div class="abs" id="cxDot" style="left:953px;top:633px;width:14px;height:14px;border-radius:7px;background:#f1f3ed;transform:scale(0)"></div>
+  <div class="bl" id="cxDot" style="width:22px;height:22px"></div>
   <div class="abs sans" id="tur" style="left:180px;top:300px;font-size:70px;font-weight:500;letter-spacing:-.035em">Turning</div>
   <div class="abs serif it" id="cx" style="left:170px;top:400px;font-size:250px;white-space:nowrap"></div>
   <div class="abs sans" id="cla" style="left:180px;top:720px;font-size:70px;font-weight:500;letter-spacing:-.035em">into <span style="font-weight:700">clarity</span></div>
@@ -190,7 +177,12 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 17 So, what's next? -->
 <div class="sc dk" id="j17">
-  <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next?</span></span></div>
+  <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next<span class="gl">?<span class="bm"></span><span class="qc"></span></span></span></span></div>
+</div>
+
+<!-- 19 Closing (web) — "Let's build something great together.": the ball bounces in, lands as the full stop, then glides to centre and grows into the opening dot of "Hi." -->
+<div class="sc dk" id="j19">
+  <div class="abs serif" id="clRow" style="left:0;top:380px;width:1920px;text-align:center;font-size:150px;line-height:1.05;white-space:nowrap"><span class="mask"><span class="w" id="cl1">Let’s build something</span></span><br><span id="cl2"><span id="clG">great</span> <i id="clT">together</i><span class="gl" id="clP" style="opacity:0">.<span class="bm"></span></span></span></div>
 </div>
 
 <!-- 18 Closing — the viewer answers "what's next?": a mail to Javier is written and sent; his address and site stay -->
@@ -227,18 +219,37 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 const T = {
   j01: [0.0, 1.35], j02: [1.3, 2.75], j03: [2.7, 5.6], j04: [5.55, 6.95], j05: [6.9, 7.95], j06: [7.9, 10.5], j07: [10.45, 12.9],
   jbt: [12.9, 13.9], j08: [13.85, 18.05], j09: [18.0, 20.6], j10: [20.55, 24.55], j12: [24.5, 26.5], j13: [26.45, 27.55],
-  j14: [27.5, 28.6], j15: [28.55, 29.7], j16: [29.65, 32.25], j16b: [32.25, 34.25], j17: [34.2, 36.45], j18: [36.4, 46.35],
+  j14: [27.5, 28.6], j15: [28.55, 29.7], j16: [29.65, 32.25], j16b: [32.25, 34.25], j17: [34.2, 36.95], j18: [36.9, 46.85],
 };
+// two cuts: the web cut closes on "Let's build something great together." and loops; ?end=mail keeps the mail closing for sending
+if (new URLSearchParams(location.search).get("end") !== "mail") { delete T.j18; T.j19 = [36.9, 40.9]; }
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
 const typeIn = (sel, text, at, step) => { const chs = split($(sel), text); gsap.set(chs, { display: "none" }); chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step)); return at + chs.length * step; };
 const caret = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); for (let t = from + .5; t < to; t += .5) tl.set(sel, { opacity: Math.round((t - from) / .5) % 2 ? 0 : 1 }, t); tl.set(sel, { opacity: 0 }, to); };
 const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
 
-// 01 Hi. — extreme close-up of the H pulls back to the word, then lifts out of frame
-{ const [a] = T.j01;
-  tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
-  tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
+// the ball — the dot of the i in "Javier", a square like every dot in Instrument Sans — travels through the film. Glyph features as [centre x, height above baseline, diameter] in em (Instrument Sans 600)
+const BL = { tit: [.130, .6635, .138], dot: [.1375, .072, .145], qIt: [.2635, .072, .145], dotIt: [.095, .072, .15] };
+const offIn = (el, root) => { let x = 0, y = 0; while (el && el !== root) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return [x, y]; };
+const anchor = (gl, root, fs, g) => { const [ox] = offIn(gl, root), [, by] = offIn(gl.querySelector(".bm"), root); return { x: ox + g[0] * fs, y: by - g[1] * fs, d: g[2] * fs }; };
+const mkBall = (root, d) => { const b = document.createElement("div"); b.className = "bl"; root.appendChild(b); gsap.set(b, { width: d, height: d }); return b; };
+const squash = (b, t, k, pre) => { // stretch into the landing, squash, recover (scaled about the centre, yPercent keeps the bottom on the baseline)
+  tl.to(b, { scaleX: 1 - .2 * k, scaleY: 1 + .3 * k, yPercent: -15 * k, duration: pre, ease: "power1.in" }, t - pre);
+  tl.to(b, { scaleX: 1 + .45 * k, scaleY: 1 - .4 * k, yPercent: 20 * k, duration: .05, ease: "power1.out" }, t);
+  tl.to(b, { scaleX: 1, scaleY: 1, yPercent: 0, duration: .14, ease: "back.out(3)" }, t + .05); };
+// p = { x, y, t }: start centre and time; each leg lands at (x, y) at time t after an arc h px above the higher end; k = squash strength
+const fly = (b, d, p, legs) => { tl.set(b, { x: p.x - d / 2, y: p.y - d / 2, opacity: 1 }, p.t);
+  for (const L of legs) { const top = Math.min(p.y, L.y) - (L.h || 0), dt = L.t - p.t, u = Math.sqrt(p.y - top), w = Math.sqrt(L.y - top), tu = u + w ? dt * u / (u + w) : 0;
+    tl.to(b, { x: L.x - d / 2, duration: dt, ease: "none" }, p.t);
+    if (tu > .001) tl.to(b, { y: top - d / 2, duration: tu, ease: "power2.out" }, p.t);
+    if (dt - tu > .001) tl.to(b, { y: L.y - d / 2, duration: dt - tu, ease: "power2.in" }, p.t + tu);
+    if ((L.h || 0) >= 100) tl.to(b, { rotation: (b._r = (b._r || 0) + 180), duration: dt, ease: "power1.inOut" }, p.t); // a half flip on the big hops
+    if (L.k) squash(b, L.t, L.k, Math.min(.07, (dt - tu) * .6));
+    p = L.k ? { ...L, t: L.t + .05 } : L; } }; // stays on the ground while it squashes
+const mid = (els) => { const f = els[0], l = els[els.length - 1]; return (f.offsetLeft + l.offsetLeft + l.offsetWidth) / 2; };
+const grow = (els, x, t) => els.forEach((e) => { const c = e.offsetLeft + e.offsetWidth / 2, k = Math.abs(c - x); // letters spring out of the impact point
+  tl.fromTo(e, { opacity: 0, x: (x - c) * .55, y: 46, scale: .35 }, { opacity: 1, x: 0, y: 0, scale: 1, duration: .55, ease: "expo.out" }, t + k * .00045); });
 
 // 02 If you're looking for — typewriter with cursor
 { const [a] = T.j02; const e = typeIn("#lookT", "If you’re looking for", a + .05, .04); caret("#lookC", e, a + 1.15);
@@ -257,7 +268,8 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 // 04 I think — tracking compresses
 { const [a] = T.j04;
   tl.fromTo("#think", { letterSpacing: ".5em", opacity: 0 }, { letterSpacing: "-.045em", opacity: 1, duration: .8, ease: io }, a);
-  tl.from("#think .d", { opacity: 0, duration: .05, stagger: .28 }, a + .55); }
+  // the three dots are left by the ball, bounce by bounce (see buildBalls)
+}
 
 // 05 I know one. — extreme close-up of the "o", snaps out to the full line
 { const [a] = T.j05;
@@ -265,7 +277,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.to("#know", { x: -1500, duration: .3, ease: exi }, a + .75); }
 
 // 06 I'm Javier Ortiz. — letters rise from a mask, the full stop pops
-{ const [a] = T.j06; const chs = split($("#name"), "Javier Ortiz.");
+{ const [a] = T.j06; const chs = split($("#name"), "Javier Ortiz."); chs[3].innerHTML = 'ı<span class="bm"></span>'; chs[3].classList.add("gl");
   tl.from("#im", { x: -80, opacity: 0, duration: .3, ease: ex }, a);
   tl.fromTo(chs, { yPercent: 115 }, { yPercent: 0, duration: .5, stagger: .025, ease: "expo.out" }, a + .12);
   tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
@@ -291,17 +303,23 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
 { const [a] = T.jbt; const chs = split($("#bring"), "Bringing together");
   tl.from(chs, { y: (i) => -220 - (i % 5) * 60, opacity: 0, duration: .45, stagger: .018, ease: ex }, a); }
 
-// 08 Product Strategy. — his LogicX rule flow builds itself block by block while the camera travels along it (Netlify-style glow)
+// 08 Product Strategy. — the structure of his rule flow builds itself block by block while the camera travels along it; the ball runs the flow
 { const [a, b] = T.j08; const lx = $("#lx");
   const cam = (bx, by, sx, sy, sc) => ({ x: sx - bx * sc, y: sy - by * sc, scale: sc });
   const glow = (sel, at) => { tl.fromTo(sel, { opacity: 0, scale: .9, y: 24 },
       { opacity: 1, scale: 1, y: 0, duration: .45, ease: ex }, at);
     tl.from(sel + " .nb i", { scaleX: 0, transformOrigin: "0 50%", duration: .35, stagger: .03, ease: "power2.out" }, at + .15); };
-  // light pulses travel along each wire once it is drawn, like data moving through the flow
-  const pulse = (id, at, n) => { const path = $(id), g = $("#pulses");
-    for (let k = 0; k < n; k++) { const c = document.createElementNS("http://www.w3.org/2000/svg", "circle"); c.setAttribute("r", 4.5); c.setAttribute("class", "pulse"); c.setAttribute("opacity", 0); g.appendChild(c);
-      const st = { p: 0 }; const put = () => { const L = path.getTotalLength(), pt = path.getPointAtLength(st.p * L); c.setAttribute("cx", pt.x); c.setAttribute("cy", pt.y); };
-      tl.fromTo(st, { p: 0 }, { p: 1, duration: .7, ease: "power1.inOut", onUpdate: put, onStart: () => c.setAttribute("opacity", 1), onComplete: () => c.setAttribute("opacity", 0) }, at + k * .9); } };
+  // the ball travels the flow: along a wire, then a hop over each block onto the next wire
+  const ball = document.createElementNS("http://www.w3.org/2000/svg", "rect"), B = { x: 0, y: 0 };
+  ball.setAttribute("width", 18); ball.setAttribute("height", 18); ball.setAttribute("fill", "#f1f3ed"); ball.setAttribute("opacity", 0); $("#pulses").appendChild(ball);
+  const put = () => { ball.setAttribute("x", B.x - 9); ball.setAttribute("y", B.y - 9); };
+  const end = (id, f) => $(id).getPointAtLength(f * $(id).getTotalLength());
+  const along = (id, t0, dur) => { const q = { p: 0 }, path = $(id), L = path.getTotalLength();
+    tl.fromTo(q, { p: 0 }, { p: 1, duration: dur, ease: "power1.inOut", immediateRender: false, onUpdate: () => { const pt = path.getPointAtLength(q.p * L); B.x = pt.x; B.y = pt.y; put(); } }, t0); };
+  const hop = (from, to, t0, dur, h) => { const top = Math.min(from.y, to.y) - h, u = Math.sqrt(from.y - top), w = Math.sqrt(to.y - top), tu = dur * u / (u + w);
+    tl.fromTo(B, { x: from.x }, { x: to.x, duration: dur, ease: "none", immediateRender: false, onUpdate: put }, t0);
+    tl.fromTo(B, { y: from.y }, { y: top, duration: tu, ease: "power2.out", immediateRender: false, onUpdate: put }, t0);
+    tl.fromTo(B, { y: top }, { y: to.y, duration: dur - tu, ease: "power2.in", immediateRender: false, onUpdate: put }, t0 + tu); };
   const wire = (ids, at) => { [].concat(ids).forEach((id) => {
       tl.set(id, { opacity: 1 }, at);
       tl.fromTo(id, { attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: .4, ease: "power2.inOut" }, at);
@@ -322,7 +340,11 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   wire("#c4", a + 1.9); glow("#nTemp", a + 2.1);
   tl.to(".pt:nth-of-type(n+9):nth-of-type(-n+10)", { opacity: 1, duration: .2 }, a + 2.35);
   wire(["#c5", "#c6"], a + 2.4); glow("#nSend", a + 2.6); glow("#nTag", a + 2.7);
-  pulse("#c1", a + 1.0, 3); pulse("#c2", a + 1.6, 2); pulse("#c3", a + 1.8, 2); pulse("#c4", a + 2.35, 2); pulse("#c5", a + 2.85, 1); pulse("#c6", a + 3.0, 1);
+  tl.set(ball, { attr: { opacity: 1 } }, a + 1.0);
+  along("#c1", a + 1.0, .4); hop(end("#c1", 1), end("#c2", 0), a + 1.4, .22, 50);
+  along("#c2", a + 1.62, .43); hop(end("#c2", 1), end("#c4", 0), a + 2.05, .3, 90);
+  along("#c4", a + 2.35, .4); hop(end("#c4", 1), end("#c5", 0), a + 2.75, .2, 50);
+  along("#c5", a + 2.95, .35);
   tl.to(".pt:nth-of-type(n+11)", { opacity: 1, duration: .2 }, a + 2.9);
   tl.to("#j08", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
@@ -334,7 +356,7 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   const A = split($("#stA"), "Systems"), B = split($("#stB"), "Thinking");
   const base = $("#stBase").offsetTop, dot = $("#stDot");
   const cx = document.createElement("canvas").getContext("2d"); cx.font = 'italic 600 210px "Instrument Sans"';
-  const m = cx.measureText("."), d = m.actualBoundingBoxLeft + m.actualBoundingBoxRight;
+  const m = cx.measureText("."), d = BL.dot[2] * 210; // a square, the height of the italic dot
   const px = dot.offsetLeft + (m.actualBoundingBoxRight - m.actualBoundingBoxLeft) / 2, py = base - (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2;
   const mid = (els) => { const f = els[0], l = els[els.length - 1]; return (f.offsetLeft + l.offsetLeft + l.offsetWidth) / 2; };
   const x1 = mid(A), x2 = mid(B);
@@ -360,34 +382,50 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   const t3 = t2 + .38; hop(t2 + .02, px, 170, .18); land(t3, false);
   hop(t3 + .02, px, 46, .1); hop(t3 + .24, px, 12, .055);
   // the ball becomes the full stop
+  tl.to(ball, { skewX: -12.5, duration: .2, ease: "power2.out" }, t3 + .32); // leans into the italic, then hands over to the real full stop
   tl.to(dot, { opacity: 1, duration: .2 }, t3 + .5); tl.to(ball, { opacity: 0, duration: .2 }, t3 + .5);
   tl.to("#j09", { x: -1920, duration: .35, ease: exi }, b - .3); };
 
-// 10 AI-Driven Design. — Netlify-style: a glowing glass prompt card, a typed prompt, a flash of light, generated UI materialising in depth
-{ const [a, b] = T.j10;
+// 10 AI-Driven Design. — his toolchain as a hub-and-spoke map (after "how AI agents work" diagrams): AI in the centre, tools grouped by
+// design, build, ship & learn. The ball hops from tool to tool and comes back to the hub. Line icons only, no brand logos
+{ const [a, b] = T.j10, H = [960, 600], R = 46, ink = "#f1f3ed";
+  const I = {
+    pen: '<path d="M15.7 21.3a1 1 0 0 1-1.4 0l-1.6-1.6a1 1 0 0 1 0-1.4l5.6-5.6a1 1 0 0 1 1.4 0l1.6 1.6a1 1 0 0 1 0 1.4z"/><path d="m18 13-1.4-6.9a1 1 0 0 0-.7-.8L3.2 2a1 1 0 0 0-1.2 1.2l3.3 12.7a1 1 0 0 0 .8.7L13 18"/><path d="m2.3 2.3 7.3 7.3"/><circle cx="11" cy="11" r="2"/>',
+    note: '<path d="M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5z"/><path d="M15 3v4a2 2 0 0 0 2 2h4"/>',
+    chat: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+    code: '<path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/>',
+    film: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 3v18M17 3v18M3 12h18M3 7.5h4M3 16.5h4M17 7.5h4M17 16.5h4"/>',
+    eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    board: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7v7M12 7v4M16 7v9"/>',
+    doc: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>' };
+  const N = [["Figma", 380, 520, I.pen, "L"], ["FigJam", 380, 730, I.note, "L"], ["Claude", 1540, 440, I.chat, "R"], ["Codex", 1540, 630, I.code, "R"],
+    ["Higgsfield", 1540, 820, I.film, "R"], ["FullStory", 780, 900, I.eye, "B"], ["Jira", 960, 900, I.board, "B"], ["Confluence", 1140, 900, I.doc, "B"]];
+  const G = [["design", 200, 400, 360, 460], ["build", 1360, 330, 360, 600], ["ship & learn", 680, 812, 560, 205]];
+  const edge = ([, x, y, , s]) => s === "L" ? `M${H[0] - 62} ${H[1]} C${H[0] - 200} ${H[1]} ${x + 240} ${y} ${x + R} ${y}`
+    : s === "R" ? `M${H[0] + 62} ${H[1]} C${H[0] + 200} ${H[1]} ${x - 240} ${y} ${x - R} ${y}` : `M${H[0]} ${H[1] + 62} C${H[0]} ${H[1] + 150} ${x} ${y - 140} ${x} ${y - R}`;
+  $("#aiG").innerHTML =
+    G.map(([t, x, y, w, h]) => `<g class="grp"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="26" fill="none" stroke="rgba(241,243,237,.3)" stroke-width="1.2" stroke-dasharray="3 7"/><text x="${x + 26}" y="${y + 36}" font-family="Fragment Mono" font-size="17" fill="#b6beb6">${t}</text></g>`).join("") +
+    N.map((n) => `<path class="ed" d="${edge(n)}" pathLength="1" fill="none" stroke="rgba(241,243,237,.5)" stroke-width="1.4"/>`).join("") +
+    `<circle id="hub" cx="${H[0]}" cy="${H[1]}" r="62" fill="#121514" stroke="${ink}" stroke-width="1.8"/><path id="hubS" d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z" fill="${ink}" transform="translate(${H[0] - 28} ${H[1] - 26}) scale(2.33)"/>` +
+    N.map(([t, x, y, ic]) => `<g class="nod"><circle cx="${x}" cy="${y}" r="${R}" fill="#121514" stroke="${ink}" stroke-opacity=".85" stroke-width="1.6"/><g class="ic" transform="translate(${x - 17} ${y - 17}) scale(1.417)" fill="none" stroke="${ink}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${ic}</g><text x="${x}" y="${y + R + 34}" text-anchor="middle" font-family="Fragment Mono" font-size="20" fill="#d9ddd5">${t}</text></g>`).join("");
+  const nodes = gsap.utils.toArray("#aiG .nod");
   tl.fromTo("#j10", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
   roll("#aiT", a + .1);
-  tl.fromTo("#aiCard", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: .75, ease: ex }, a + .15);
-  const e = typeIn("#aiPT", "Prototype a calmer rule builder.", a + .6, .034); caret("#aiC", a + .5, e + .3);
-  tl.to("#aiSend", { scale: .8, duration: .1, transformOrigin: "50% 50%" }, e + .2); tl.to("#aiSend", { scale: 1, duration: .2 }, e + .3);
-  tl.fromTo("#aiFlare", { opacity: 0, scale: .2 }, { opacity: 1, scale: 1.3, duration: .25, ease: "power2.out" }, e + .3);
-  tl.to("#aiFlare", { opacity: 0, scale: 1.8, duration: .5, ease: "power2.in" }, e + .55);
-  tl.fromTo("#aiStreak", { opacity: 0, scaleX: .1 }, { opacity: 1, scaleX: 1, duration: .25, ease: "power2.out" }, e + .3);
-  tl.to("#aiStreak", { opacity: 0, scaleX: 1.3, duration: .45, ease: "power2.in" }, e + .55);
-  tl.to("#aiCard", { x: -330, y: 60, scale: .82, duration: .8, ease: "expo.inOut" }, e + .35);
-  tl.fromTo("#code", { opacity: 0, scale: .9, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: .55, ease: ex }, e + .45);
-  // the code streams in, token by token, with quiet syntax colours (white keywords, grey strings, dim punctuation)
-  const K = "#ffffff", S = "#9aa29a", P = "#6f766e", I = "#d9ddd5";
-  const code = [[["const ", K], ["rule ", I], ["= ", P], ["createRule", K], ["({", P]],
-    [["  trigger", I], [": ", P], ['"first_payment"', S], [",", P]],
-    [["  filter", I], [": ", P], ["(p) ", I], ["=> ", P], ["p.", I], ["isFan", K], [",", P]],
-    [["  then", I], [": [", P], ["send", K], ["(msg), ", P], ["tag", K], ["(p)]", P], [",", P]],
-    [["});", P]]];
-  const box = $("#codeB"); const chars = [];
-  code.forEach((line, li) => { line.forEach(([txt, col]) => { [...txt].forEach((ch) => { const sp = document.createElement("span"); sp.textContent = ch; sp.style.color = col; sp.style.display = "none"; box.appendChild(sp); chars.push(sp); }); });
-    if (li < code.length - 1) { const br = document.createElement("br"); box.appendChild(br); } });
-  chars.forEach((c, i) => tl.set(c, { display: "inline" }, e + .75 + i * .0065));
-  tl.fromTo("#codeOk", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: .35 }, e + .75 + chars.length * .0065 + .15);
+  tl.from("#hub", { attr: { r: 0 }, duration: .45, ease: "back.out(2)" }, a + .3);
+  tl.from("#hubS", { rotation: -120, scale: 0, svgOrigin: `${H[0]} ${H[1]}`, duration: .6, ease: ex }, a + .35);
+  tl.from(".grp", { opacity: 0, duration: .4, stagger: .08 }, a + .45);
+  tl.fromTo(".ed", { attr: { "stroke-dasharray": "1 1", "stroke-dashoffset": 1 } }, { attr: { "stroke-dashoffset": 0 }, duration: .4, stagger: .04, ease: "power2.inOut" }, a + .5);
+  tl.from(nodes, { opacity: 0, scale: .6, transformOrigin: "50% 50%", duration: .4, stagger: .045, ease: "back.out(2)" }, a + .65);
+  // the ball pops out of the hub and hops through the toolchain: design → build → ship & learn → back to the hub
+  const d = 22, ball = mkBall($("#j10"), d), top = (i) => ({ x: N[i][1], y: N[i][2] - R - d / 2 });
+  const light = (i, t) => { const c = nodes[i].querySelector("circle"), ic = nodes[i].querySelector(".ic");
+    tl.to(c, { attr: { fill: ink }, duration: .06 }, t); tl.to(ic, { attr: { stroke: "#121514" }, duration: .06 }, t);
+    tl.to(c, { attr: { fill: "#121514" }, duration: .3 }, t + .3); tl.to(ic, { attr: { stroke: ink }, duration: .3 }, t + .3); };
+  tl.fromTo(ball, { scale: 0 }, { scale: 1, duration: .2, ease: "back.out(3)" }, a + 1.15);
+  const seq = [[0, 1.45, 130], [1, 1.68, 60], [2, 2.08, 170], [3, 2.3, 60], [4, 2.52, 60], [7, 2.8, 90], [6, 3.0, 70], [5, 3.2, 70]];
+  fly(ball, d, { x: H[0], y: H[1] - 62 - d / 2, t: a + 1.15 }, [...seq.map(([i, t, h]) => ({ ...top(i), t: a + t, h, k: .6 })), { x: H[0], y: H[1] - 62 - d / 2, t: a + 3.48, h: 120, k: .8 }]);
+  seq.forEach(([i, t]) => light(i, a + t));
+  tl.to("#hub", { attr: { fill: ink }, duration: .06 }, a + 3.48); tl.to("#hubS", { attr: { fill: "#121514" }, duration: .06 }, a + 3.48);
   tl.to("#j10", { x: -1920, duration: .35, ease: exi }, b - .3); }
 
 // 12 I've learned that great products need — sentence builds, everything dims except "need"
@@ -413,14 +451,14 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.fromTo("#ex2", { x: () => mid() - 420 }, { x: mid, duration: 1.0, ease: "power2.out" }, a);
   tl.from("#j15 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
-// 16 Turning complexity into clarity. — a point bursts into scattered letters, they orbit, then snap into one clean word
+// 16 Turning complexity into clarity. — the ball drops in and bursts into scattered letters, they orbit, then snap into one clean word
 { const [a, b] = T.j16; const chs = split($("#cx"), "complexity"); const rnd = gsap.utils.random;
   const ring = (i, spin) => { const th = i / chs.length * Math.PI * 2 + [.1, -.15, .2, 0, -.1, .15, -.2, .05, .1, -.05][i] + spin, rr = 1 + [.08, -.1, .05, .12, -.06, 0, .1, -.08, .04, -.12][i]; return { x: Math.cos(th) * 560 * rr, y: Math.sin(th) * 300 * rr }; };
   const scat = [...chs].map((c, i) => ({ ...ring(i, 0), r: rnd(-60, 60), s: rnd(.55, 1.25), x2: ring(i, .32).x, y2: ring(i, .32).y }));
   const fromPt = (el, axis) => axis === "x" ? 960 - (170 + el.offsetLeft + el.offsetWidth / 2) : 640 - (400 + el.offsetTop + el.offsetHeight / 2);
-  const s0 = a + .25;
-  tl.fromTo("#cxDot", { scale: 0 }, { scale: 1, duration: .15, ease: "back.out(2)" }, a);
-  tl.to("#cxDot", { scale: 0, duration: .1 }, s0);
+  const s0 = a + .38;
+  fly($("#cxDot"), 22, { x: 760, y: -40, t: a }, [{ x: 960, y: 640, t: a + .18, k: .8 }]);
+  tl.to("#cxDot", { scale: 0, transformOrigin: "50% 50%", duration: .1 }, s0);
   tl.fromTo(chs, { x: (i, el) => fromPt(el, "x"), y: (i, el) => fromPt(el, "y"), scale: 0, rotation: 0, opacity: 1 },
     { x: (i, el) => fromPt(el, "x") + scat[i].x, y: (i, el) => fromPt(el, "y") + scat[i].y, rotation: (i) => scat[i].r, scale: (i) => scat[i].s, opacity: .5, duration: .5, ease: "expo.out", stagger: .012 }, s0);
   tl.to(chs, { x: (i, el) => fromPt(el, "x") + scat[i].x2, y: (i, el) => fromPt(el, "y") + scat[i].y2, rotation: (i) => scat[i].r * .6, duration: .3, ease: "none" }, s0 + .5);
@@ -441,7 +479,7 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
 
 // 18 Closing — the viewer answers "what's next?" by writing to Javier: To, Subject and "Hey, Javier! Let's build something great together." are typed,
 // the pointer hits Send, the window flies off, and his address glides to centre stage with his site beneath it
-{ const [a, b] = T.j18;
+if (T.j18) { const [a, b] = T.j18;
   tl.fromTo("#mCard", { clipPath: "inset(100% 0 0 0 round 24px)", y: 60 }, { clipPath: "inset(0% 0 0 0 round 24px)", y: 0, duration: .7, ease: ex }, a);
   tl.fromTo("#mTo", { y: 60 }, { y: 0, duration: .7, ease: ex }, a);
   const t1 = typeIn("#mToT", "javier6165@gmail.com", a + .55, .03); caret("#mToC", a + .45, t1 + .25);
@@ -464,10 +502,48 @@ const buildJ09 = () => { const [a, b] = T.j09; const row = $("#stRow"), ball = $
   tl.fromTo("#mSite", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: .7, ease: "power2.out" }, tc + 1.6);
   tl.set({}, {}, b); }
 
+// ---------- the ball in the typographic scenes (built once the fonts have loaded: landing points are measured on the set type) ----------
+const buildBalls = () => {
+  // 01 Hi. — starts on the dot of the i (the same dot the web cut ends on), pulls back to the word; the dot hops off and leaves the i bare
+  { const [a] = T.j01, hi = $("#hi"), g = anchor($("#hi .gl"), hi, 700, BL.tit), b = mkBall(hi, g.d);
+    tl.fromTo(hi, { scale: 7, x: hi.offsetWidth / 2 - g.x, y: hi.offsetHeight / 2 - g.y, transformOrigin: `${g.x}px ${g.y}px` }, { scale: 1, x: 0, y: 0, duration: .75, ease: ex }, a);
+    tl.to(hi, { y: -1100, duration: .4, ease: exi }, a + .95);
+    tl.set(b, { x: g.x - g.d / 2, y: g.y - g.d / 2, opacity: 1 }, a);
+    fly(b, g.d, { x: g.x, y: g.y, t: a + .74 }, [{ x: g.x + 1300, y: g.y + 520, t: a + 1.2, h: 240 }]); }
+  // 04 I think… — the ball bounces three times; every bounce leaves one of the dots
+  { const [a] = T.j04, th = $("#think"), ds = [...th.querySelectorAll(".gl")], ls = th.style.letterSpacing;
+    th.style.letterSpacing = "-.045em"; const P = ds.map((e) => anchor(e, th, 150, BL.dot)); th.style.letterSpacing = ls;
+    const d = P[0].d, b = mkBall(th, d), at = [a + .95, a + 1.1, a + 1.25];
+    gsap.set(ds, { opacity: 0 }); ds.forEach((e, i) => tl.set(e, { opacity: 1 }, at[i]));
+    fly(b, d, { x: P[0].x - 900, y: P[0].y - 380, t: a + .7 }, [{ ...P[0], t: at[0], k: .8 }, { ...P[1], t: at[1], h: 45, k: .4 }, { ...P[2], t: at[2], h: 45, k: .4 },
+      { x: P[2].x + 780, y: P[2].y + 220, t: a + 1.42, h: 90 }]); }
+  // 06 I'm Javier Ortiz. — the name rises with a bare i; the ball drops onto it and settles as its dot, then hops away as the name leaves
+  { const [a] = T.j06, sc = $("#j06"), g = anchor($("#name .gl"), sc, 170, BL.tit), b = mkBall(sc, g.d);
+    fly(b, g.d, { x: g.x - 70, y: -60, t: a + .5 }, [{ x: g.x, y: g.y, t: a + .85, k: 1 }, { x: g.x, y: g.y, t: a + 1.1, h: 50, k: .4 }, { x: g.x, y: g.y, t: a + 1.26, h: 14 }]);
+    fly(b, g.d, { x: g.x, y: g.y, t: a + 2.05 }, [{ x: g.x + 380, y: -120, t: a + 2.4, h: 60 }]); }
+  // 17 So, what's next? — the ball lands as the dot of the question mark, then leaps off as the words sink
+  { const [a, e] = T.j17, so = $("#sowhat"), gl = $("#sowhat .gl"), fs = 150, g = anchor(gl, so, fs, BL.qIt), bm = gl.querySelector(".bm");
+    Object.assign(gl.querySelector(".qc").style, { left: .16 * fs + "px", width: .22 * fs + "px", top: bm.offsetTop - .165 * fs + "px", height: .18 * fs + "px" });
+    const b = mkBall(so, g.d);
+    fly(b, g.d, { x: g.x - 800, y: g.y - 420, t: a + .85 }, [{ x: g.x, y: g.y, t: a + 1.15, k: 1 }, { x: g.x, y: g.y, t: a + 1.36, h: 34, k: .3 }]);
+    tl.to(b, { skewX: -12.5, duration: .2, ease: "power2.out" }, a + 1.4); tl.to(b, { skewX: 0, duration: .15 }, e - .85); // leans into the italic
+    fly(b, g.d, { x: g.x, y: g.y, t: e - .85 }, [{ x: g.x + 260, y: g.y - 900, t: e - .45 }]); }
+  // 19 web closing — "great" and "together" spring from the ball's landings; it settles as the full stop, then glides to centre and grows into the opening dot
+  if (T.j19) { const [a] = T.j19, row = $("#clRow"), fs = 150, g = anchor($("#clP"), row, fs, BL.dot), d = g.d, b = mkBall(row, d);
+    const Gs = split($("#clG"), "great"), Ts = split($("#clT"), "together"), x1 = mid(Gs), x2 = mid(Ts);
+    tl.from("#cl1", { yPercent: 110, duration: .8, ease: ex }, a + .05);
+    fly(b, d, { x: x1 - 520, y: g.y - 760, t: a + .35 }, [{ x: x1, y: g.y, t: a + .75, k: 1 }, { x: x2, y: g.y, t: a + 1.25, h: 240, k: 1 },
+      { x: g.x, y: g.y, t: a + 1.58, h: 130, k: .6 }, { x: g.x, y: g.y, t: a + 1.78, h: 36 }, { x: g.x, y: g.y, t: a + 1.9, h: 10 }]);
+    grow(Gs, x1, a + .75); grow(Ts, x2, a + 1.25);
+    tl.to(["#cl1", "#cl2"], { opacity: 0, duration: .45, ease: "power2.in" }, a + 2.9);
+    tl.set(b, { transformOrigin: "50% 50%" }, a + 2.92);
+    tl.to(b, { x: 960 - d / 2, y: 540 - row.offsetTop - d / 2, scale: 676 / d, duration: 1.0, ease: "expo.inOut" }, a + 2.95); } // 676 px = the i-dot of "Hi." at 7x
+};
+
 /* ---------- preview and render hooks ---------- */
-window.DURATION = T.j18[1];
-window.seek = async (t) => { tl.seek(t, false); };
-window.ready = Promise.all([document.fonts.load('600 210px "Instrument Sans"'), document.fonts.load('italic 600 210px "Instrument Sans"')]).then(() => document.fonts.ready).then(buildJ09);
+window.DURATION = (T.j19 || T.j18)[1];
+window.seek = async (t) => { tl.seek(Math.max(t, 1e-4), false); }; // never exactly 0: a seek to the current time renders nothing
+window.ready = Promise.all([document.fonts.load('600 210px "Instrument Sans"'), document.fonts.load('italic 600 210px "Instrument Sans"')]).then(() => document.fonts.ready).then(() => { buildJ09(); buildBalls(); });
 const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); $("#stage").style.transform = `scale(${s})`; };
 if (!new URLSearchParams(location.search).has("render")) {
   addEventListener("resize", fit); fit();
