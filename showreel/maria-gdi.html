@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>[Garaje de Ideas cut] María Mora — Showreel</title>
+<!--
+  Editable showreel composition. Every scene lives in one GSAP timeline; scene times are in the T object.
+  Open in a browser to preview (space = play/pause, ←/→ = ±1 s), or render frames with render.mjs.
+  Stage is a fixed 1920×1080 canvas; the renderer scales it down for draft output.
+  Kinetic type vocabulary (after the Envato reference): typewriter + cursor, echo roll, extreme close-up punch,
+  horizontal pass through oversized words, perspective roll, echo marquee, letter cascade, glow reveal.
+-->
+<style>
+@font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Regular%20Italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Onest";src:url("../node_modules/@fontsource-variable/onest/files/onest-latin-wght-normal.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:"Onest";src:url("../node_modules/@fontsource-variable/onest/files/onest-latin-ext-wght-normal.woff2") format("woff2");font-weight:100 900;unicode-range:U+0100-02AF,U+1E00-1EFF}
+:root{--ink:#f5f4f1;--mute:#8d8a84;--line:rgba(245,244,241,.22);--serif:"Silk",Georgia,serif;--sans:"Onest",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;background:#000;color:var(--ink);font-family:var(--sans);overflow:hidden;transform-origin:0 0}
+.sc{position:absolute;inset:0;visibility:hidden}
+.abs{position:absolute}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;line-height:.9}
+.it{font-style:italic}
+.cap{font-family:var(--sans);font-size:24px;letter-spacing:.32em;text-transform:uppercase;color:#e9e6e0}
+.c{left:50%;top:50%;white-space:nowrap}
+.w,.ch,.lc{display:inline-block;will-change:transform}
+.mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;padding-right:.14em;margin-right:-.14em}
+.cur{display:inline-block;width:.07em;height:.95em;background:var(--ink);vertical-align:-.12em;margin-left:.06em}
+.stroke{color:transparent;-webkit-text-stroke:2px rgba(245,244,241,.55)}
+img,video{display:block}
+.shot{position:absolute;object-fit:cover}
+.frame{position:absolute;border-radius:18px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.rule{position:absolute;height:1px;background:var(--line)}
+.row{position:absolute;left:0;display:flex;gap:110px;align-items:center;white-space:nowrap}
+.row img{object-fit:contain;filter:brightness(0) invert(1);opacity:.92}
+.node{position:absolute;border:1px solid var(--line);border-radius:14px;padding:26px 30px;font-size:32px;background:#0b0b0b;min-width:250px}
+.node small{display:block;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+svg{position:absolute;inset:0;overflow:visible}
+.cmp{position:absolute;border-radius:12px;background:#141414;border:1px solid #2a2a2a;font-size:22px;display:flex;align-items:center;padding:0 22px}
+.btn{background:var(--ink);color:#000;font-weight:600;justify-content:center}
+.tok{font-family:ui-monospace,Menlo,monospace;font-size:18px;color:#cfcac2}
+.sw{width:22px;height:22px;border-radius:6px;margin-right:12px}
+.ava{position:absolute;width:64px;height:64px;border-radius:50%;background:#1d1d1d;border:1px solid #3a3a3a;overflow:hidden}
+.ava::before{content:"";position:absolute;left:50%;top:15px;width:20px;height:20px;border-radius:50%;background:#5c5a56;transform:translateX(-50%)}
+.ava::after{content:"";position:absolute;left:50%;top:39px;width:40px;height:30px;border-radius:50% 50% 0 0;background:#5c5a56;transform:translateX(-50%)}
+.disc{position:absolute;font-size:30px;padding:14px 28px;border:1px solid var(--line);border-radius:999px;background:#0a0a0a;white-space:nowrap}
+.disc.ai{border-style:dashed;color:#bdb8b0}
+.page{position:absolute;overflow:hidden;border-radius:16px;background:#0b0f1a;box-shadow:0 50px 140px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.page img{width:100%;height:auto;display:block}
+.title{position:absolute;left:120px;top:100px;font-size:150px;perspective:900px}
+.title > span{display:inline-block;transform-origin:50% 100%}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 01 Hi. -->
+<div class="sc" id="s01"><div class="abs serif it c" id="hi" style="font-size:760px">Hi.</div></div>
+
+<!-- 01b Garaje de Ideas — the imagotype "G." slams in, then the full stop slides right and uncovers "araje" (logo traced from María's files in media/garaje/) -->
+<div class="sc" id="s01b"><div class="abs" id="gdiHalo" style="left:160px;top:140px;width:1600px;height:800px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(245,244,241,.10) 0%,rgba(245,244,241,.04) 45%,rgba(0,0,0,0) 75%);opacity:0"></div>
+  <svg id="gdi" viewBox="0 0 1437 517" style="inset:auto;left:460px;top:360px;width:1000px;height:360px;fill:#f5f4f1;overflow:visible"><g id="gdiW"><path class="gl g0" fill-rule="evenodd" d="M138.0 400.0C116.4 396.9 95.1 390.4 85.0 384.0C84.2 383.4 81.5 381.9 79.0 380.5C70.7 375.8 52.9 361.7 50.1 357.6C49.3 356.4 47.0 353.7 45.0 351.5C26.4 330.9 12.8 299.1 6.0 260.9C3.3 245.4 3.0 192.0 5.6 177.5C7.7 165.0 12.9 143.2 14.7 139.0C15.5 137.1 16.8 133.5 17.7 131.0C18.5 128.5 21.2 122.7 23.6 117.9C26.0 113.2 28.0 109.0 28.0 108.6C28.0 107.4 38.8 91.2 40.1 90.4C40.7 90.1 41.9 88.5 42.9 87.0C44.7 83.9 50.6 76.6 53.0 74.3C60.8 67.0 83.6 50.9 88.0 49.5C89.4 49.1 91.5 48.2 92.6 47.4C95.1 45.9 104.7 42.3 110.5 40.8C112.7 40.2 115.0 39.4 115.5 38.9C116.5 38.2 130.8 35.5 142.0 33.9C149.9 32.9 177.6 32.9 184.5 33.9C195.6 35.6 207.7 38.3 210.3 39.6C211.9 40.4 213.8 41.0 214.6 41.0C217.8 41.0 239.3 50.9 246.0 55.5C264.5 68.2 274.0 77.8 288.1 98.5C296.9 111.3 304.5 130.8 307.7 148.2C310.4 163.3 313.7 162.0 272.1 162.0C232.2 162.0 233.8 162.3 232.5 155.3C230.8 146.1 225.3 136.0 215.6 124.7C197.4 103.5 146.7 99.7 119.0 117.6C102.0 128.5 87.8 150.7 83.6 173.0C83.2 174.9 82.2 179.4 81.3 183.0C78.8 193.0 78.8 239.0 81.3 252.0C84.6 269.1 90.2 284.7 96.3 293.8C101.1 301.1 110.7 311.5 115.3 314.6C117.6 316.1 120.6 318.1 122.0 319.0C124.5 320.6 131.3 323.2 142.0 326.6C153.7 330.2 184.7 328.5 196.2 323.6C198.0 322.8 201.5 321.5 204.0 320.6C213.9 317.1 233.1 299.6 237.6 290.0C239.2 286.7 240.3 282.5 240.4 279.5L240.5 274.5L207.5 274.2C189.4 274.1 174.2 273.6 173.8 273.2C172.7 272.1 172.4 204.8 173.4 203.2C174.5 201.4 310.6 201.5 311.7 203.3C313.3 205.8 313.1 392.2 311.4 394.8C310.0 397.0 310.0 397.0 280.1 397.0C254.6 397.0 250.1 396.8 249.0 395.5C247.7 394.0 247.2 392.1 244.9 380.0C243.2 370.9 242.0 369.9 237.7 373.6C222.8 386.2 207.8 393.5 186.5 398.3C176.7 400.5 148.5 401.5 138.0 400.0Z"/><path class="gl g1" fill-rule="evenodd" d="M402.0 400.4C357.6 393.8 332.4 366.1 329.3 320.7C328.1 302.4 336.4 275.3 346.8 263.8C353.2 256.7 369.6 245.0 373.2 245.0C373.9 245.0 375.7 244.4 377.2 243.6C386.7 238.6 401.8 236.2 434.0 234.5C437.6 234.3 442.9 233.8 445.7 233.4C449.2 233.0 453.2 233.3 457.7 234.3C480.2 239.6 479.0 240.1 479.0 224.3C479.0 210.5 477.5 204.4 472.2 197.6C465.0 188.0 450.0 182.4 442.4 186.3C440.8 187.1 437.2 188.1 434.5 188.5C427.6 189.5 422.0 192.1 417.0 196.6C412.8 200.4 408.0 209.1 408.0 212.8C408.0 216.9 406.6 217.0 372.9 216.8L340.5 216.5L340.2 209.5C339.3 187.0 355.4 156.8 375.7 142.8C388.9 133.8 412.6 125.7 429.2 124.5C434.5 124.1 439.9 123.2 441.7 122.3C445.7 120.2 466.3 121.7 478.2 124.9C488.8 127.8 503.8 134.1 509.6 138.1C521.1 145.9 537.0 162.4 537.0 166.3C537.0 166.6 538.5 169.1 540.3 171.8C542.1 174.6 544.5 179.9 545.7 183.7C546.8 187.4 548.6 193.0 549.6 196.0C551.3 201.1 551.4 208.1 551.8 296.4C552.0 357.5 551.8 391.6 551.1 392.3C549.8 393.6 488.2 393.4 486.5 392.0C485.8 391.4 484.7 387.5 484.0 383.3C483.4 379.1 482.3 374.6 481.7 373.3C480.5 370.7 477.2 370.2 476.4 372.5C475.2 375.5 462.5 385.0 453.6 389.6C448.6 392.1 443.9 394.9 443.3 395.8C439.9 400.1 417.2 402.6 402.0 400.4ZM442.8 337.0C445.9 335.4 451.8 332.6 455.8 330.8C466.1 326.3 473.1 318.4 476.5 307.3C480.3 295.1 479.5 293.0 469.5 289.8C455.6 285.4 449.7 284.6 443.9 286.3C440.9 287.2 434.8 288.1 430.3 288.4C417.6 289.2 408.8 294.1 403.9 303.1C400.1 310.0 399.6 312.9 401.5 318.1C402.4 320.5 403.4 323.4 403.7 324.5C405.2 329.7 412.8 335.2 422.2 338.0C431.7 340.7 436.2 340.5 442.8 337.0Z"/><path class="gl g2" fill-rule="evenodd" d="M592.0 393.3C589.0 393.1 586.2 392.5 585.7 392.1C584.3 390.7 584.7 126.8 586.2 125.9C588.4 124.4 642.4 124.8 644.2 126.2C645.8 127.5 647.1 133.5 649.0 149.4C650.8 164.2 653.1 165.7 658.4 155.2C665.8 140.8 683.8 126.7 699.8 122.9C707.9 120.9 730.6 120.0 733.0 121.5C733.6 121.9 734.0 134.5 734.0 157.0C734.0 192.0 734.0 192.0 731.8 192.4C730.5 192.7 722.3 193.1 713.5 193.3C696.6 193.8 693.5 194.5 681.5 200.3C674.4 203.8 660.0 220.3 660.0 225.0C660.0 225.7 659.2 228.1 658.1 230.4C653.8 239.9 653.0 254.0 653.0 325.2C653.0 361.9 652.7 392.1 652.2 392.3C651.2 393.0 598.6 393.8 592.0 393.3Z"/><path class="gl g3" fill-rule="evenodd" d="M958.5 511.9C949.4 510.1 949.9 512.3 950.2 473.6L950.5 439.5L964.5 439.5C978.5 439.5 978.5 439.5 985.0 435.8C992.1 431.7 995.7 426.5 997.9 416.7C998.7 413.4 999.0 369.0 999.0 269.4C999.0 173.1 999.3 126.2 1000.0 124.9C1001.6 121.9 1070.3 121.9 1071.9 124.9C1073.4 127.7 1073.4 414.9 1071.9 431.2C1070.5 446.9 1068.1 455.9 1062.5 467.4C1052.2 488.4 1033.0 504.4 1011.1 510.3C1002.4 512.6 967.5 513.7 958.5 511.9ZM803.0 395.5C800.5 394.6 796.5 393.5 794.0 393.0C786.1 391.5 773.3 383.4 764.2 374.3C759.7 369.7 756.0 365.4 756.0 364.6C756.0 363.9 755.4 362.7 754.6 362.1C753.8 361.4 751.4 357.2 749.2 352.6C737.9 329.3 738.9 292.9 751.3 271.2C760.4 255.2 783.6 239.3 802.5 236.1C810.0 234.8 817.1 233.0 820.5 231.4C827.7 228.0 860.9 230.1 887.1 235.6C890.8 236.4 891.2 235.3 891.5 223.2C892.2 198.6 884.4 187.3 864.2 183.5C855.3 181.8 850.0 181.6 845.0 182.9C843.1 183.5 839.5 184.4 837.2 185.0C832.3 186.2 824.8 192.5 822.2 197.4C821.4 199.1 820.4 203.4 820.1 207.0L819.5 213.5L786.3 213.8C747.3 214.1 750.5 215.2 752.0 201.6C753.2 191.2 759.4 171.4 762.6 167.9C763.4 167.1 764.0 165.8 764.0 165.2C764.0 164.5 765.5 162.3 767.3 160.3C769.1 158.2 771.8 154.8 773.3 152.8C779.8 144.0 797.1 132.7 811.0 128.0C814.6 126.8 818.5 124.9 819.8 123.7C821.4 122.3 824.1 121.3 828.8 120.8C864.4 116.4 891.6 120.2 917.0 133.0C927.9 138.5 943.7 153.1 949.2 162.7C950.8 165.5 952.7 168.3 953.5 169.0C955.3 170.5 962.3 193.6 963.4 201.5C964.2 207.1 964.2 389.8 963.5 391.0C962.8 392.2 902.1 392.4 900.3 391.2C899.2 390.5 897.1 383.4 894.6 371.8C893.8 368.1 891.1 368.2 887.4 372.1C878.9 381.0 862.8 390.5 852.5 392.8C849.8 393.4 845.3 394.4 842.6 395.0C833.9 396.9 808.2 397.2 803.0 395.5ZM857.0 333.0C858.9 332.5 863.3 331.2 866.6 330.0C879.1 325.7 890.0 311.0 890.8 297.3C891.2 291.2 891.2 291.0 888.4 290.0C886.8 289.4 884.1 288.3 882.5 287.5C873.0 283.1 843.2 281.2 831.6 284.4C824.9 286.2 822.7 287.8 820.9 292.3C820.2 294.1 818.7 296.4 817.5 297.5C809.7 304.7 813.2 325.0 823.2 330.1C830.3 333.7 848.5 335.3 857.0 333.0ZM1022.0 93.6C1010.4 90.2 1006.1 86.9 998.5 75.5C995.0 70.3 992.8 58.7 993.3 48.0C994.3 26.0 1002.3 13.3 1018.9 7.2C1027.9 3.9 1046.3 3.7 1053.4 6.9C1055.9 8.1 1058.2 9.0 1058.6 9.0C1061.0 9.0 1069.2 15.8 1072.3 20.3C1080.4 32.1 1082.7 51.9 1077.8 68.6C1071.8 89.4 1046.4 100.8 1022.0 93.6Z"/><path class="gl g4" fill-rule="evenodd" d="M1192.0 393.5C1177.8 391.4 1160.2 385.4 1153.5 380.5C1151.8 379.3 1149.1 377.8 1147.5 377.1C1142.7 375.3 1129.8 363.9 1128.7 360.6C1128.2 359.0 1125.5 354.9 1122.8 351.6C1120.1 348.2 1117.0 343.9 1115.9 342.0C1114.8 340.1 1113.5 337.8 1113.0 337.0C1111.7 334.9 1105.1 320.3 1103.3 315.5C1095.9 295.9 1092.7 266.9 1094.9 240.0C1096.1 225.4 1100.0 205.8 1102.6 200.8C1103.4 199.4 1104.0 197.4 1104.0 196.5C1104.0 191.6 1115.8 170.7 1123.6 161.8C1126.3 158.7 1127.9 155.7 1128.4 153.2C1129.1 148.4 1138.6 139.1 1147.0 134.8C1150.0 133.3 1153.2 131.6 1154.0 131.1C1155.7 130.0 1164.7 125.9 1170.2 123.7C1172.2 122.9 1177.0 121.7 1180.8 121.1C1184.7 120.5 1189.0 119.6 1190.5 119.0C1194.7 117.4 1223.4 117.8 1234.1 119.6C1247.2 121.8 1264.7 127.8 1269.0 131.5C1269.8 132.3 1273.2 134.5 1276.5 136.5C1292.7 146.2 1310.0 167.3 1317.7 186.6C1323.6 201.4 1324.8 206.0 1327.6 223.5C1329.4 235.1 1329.6 275.0 1327.8 276.8C1326.9 277.7 1307.4 278.0 1246.3 278.0C1153.0 278.0 1162.1 276.3 1166.0 293.0C1173.0 322.8 1191.9 334.6 1224.7 329.9C1236.0 328.2 1247.8 320.2 1252.6 310.7C1254.0 308.1 1255.6 305.7 1256.3 305.4C1259.1 304.4 1322.3 304.5 1323.8 305.6C1326.0 307.2 1323.7 319.6 1319.4 329.1C1317.5 333.3 1316.0 337.1 1316.0 337.6C1316.0 341.6 1296.4 365.4 1288.8 370.6C1286.4 372.2 1282.9 374.7 1281.0 376.2C1276.8 379.4 1266.5 385.0 1264.7 385.0C1264.1 385.0 1262.3 385.7 1260.7 386.5C1247.8 393.2 1213.5 396.7 1192.0 393.5ZM1254.0 226.5C1254.7 225.7 1255.0 224.0 1254.7 222.8C1254.4 221.5 1253.6 218.2 1253.0 215.5C1251.4 208.4 1247.4 200.7 1242.5 195.2C1223.9 174.5 1182.8 179.8 1171.1 204.3C1165.6 215.9 1163.8 224.4 1166.2 226.8C1168.2 228.8 1252.3 228.5 1254.0 226.5Z"/><path class="gl g5" fill-rule="evenodd" d="M1378.0 393.6C1367.6 391.2 1360.9 386.2 1354.7 376.3C1347.8 365.2 1346.3 342.5 1351.6 328.6C1354.3 321.4 1364.5 309.0 1367.6 309.0C1368.2 309.0 1370.9 308.0 1373.6 306.8C1377.8 304.9 1380.2 304.5 1391.0 304.5C1403.6 304.5 1403.6 304.5 1411.0 308.2C1415.1 310.3 1419.2 312.6 1420.0 313.2C1432.7 323.8 1436.8 349.7 1429.4 371.5C1427.1 378.4 1417.7 388.0 1409.7 391.5C1402.6 394.8 1387.2 395.7 1378.0 393.6Z"/></g></svg>
+</div>
+
+<!-- 02 If you're looking for — typewriter -->
+<div class="sc" id="s02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:300;letter-spacing:-.02em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
+
+<!-- 03 a Design Manager. — the camera stops on each word, then pulls back to the line -->
+<div class="sc" id="s03">
+  <div class="abs serif" id="dlStrip" style="left:0;top:90px;font-size:900px;line-height:900px;white-space:nowrap;transform-origin:0 50%"><span id="dlA">a</span> <span id="dlD">Design</span> <span id="dlL">Manager<span id="lpDot">.</span></span></div>
+</div>
+
+<!-- 04 I think… — tracking compresses, dots arrive -->
+<div class="sc" id="s04"><div class="abs serif it c" id="think" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
+
+<!-- 05 I know one. — extreme close-up punch -->
+<div class="sc" id="s05"><div class="abs sans c" id="know" style="font-size:250px;font-weight:500;letter-spacing:-.025em">I know one.</div></div>
+
+<!-- 06 I'm María Mora. — glow reveal -->
+<div class="sc" id="s06">
+  <div class="abs sans" id="im" style="left:240px;top:340px;font-size:60px;font-weight:300">I’m</div>
+  <div class="abs serif" id="name" style="left:230px;top:430px;font-size:250px;white-space:nowrap;overflow:hidden;padding:0 .05em .12em 0"></div>
+</div>
+
+<!-- 07 10+ years. -->
+<div class="sc" id="s07">
+  <div class="abs serif" id="ten" style="left:80px;top:-40px;font-size:1180px;line-height:1"><span id="tenN">0</span>+</div>
+  <div class="abs sans" id="years" style="right:150px;bottom:150px;font-size:96px;font-weight:300">years.</div>
+</div>
+
+<!-- 08 Designing digital products. -->
+<div class="sc" id="s08">
+  <div class="page" id="ddImgF" style="left:1040px;top:120px;width:740px;height:840px"><img id="ddImg" src="media/xsite-casino-page.webp"></div>
+  <div class="abs serif" id="dd" style="left:140px;top:300px;font-size:150px;line-height:.95"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it">digital</span></span><br><span class="mask"><span class="w">products.</span></span></div>
+</div>
+
+<!-- 09 I've learned that great products need -->
+<div class="sc" id="s09"><div class="abs sans" id="learn" style="left:180px;top:470px;font-size:86px;font-weight:300;letter-spacing:-.02em"><span class="w">I’ve</span> <span class="w">learned</span> <span class="w">that</span> <span class="w">great</span> <span class="w">products</span> <span class="w" id="need">need</span></div></div>
+
+<!-- 10 Evidence. — horizontal pass through the oversized word -->
+<div class="sc" id="s10"><div class="abs serif" id="evi" style="left:0;top:180px;font-size:760px;white-space:nowrap;line-height:1;letter-spacing:-.01em">Evidence.</div></div>
+
+<!-- 11 Evidence visual -->
+<div class="sc" id="s11">
+  <div class="frame" id="cfgF" style="left:1000px;top:200px;width:1200px;height:675px;border-radius:20px"><video class="shot" id="vPlugin" src="media/plugin-variables.webm" muted playsinline preload="auto" data-in="0" style="inset:0;width:100%;height:100%"></video></div>
+  <div class="abs cap" id="kCap" style="left:140px;top:230px;color:var(--mute)">Delivery efficiency</div>
+  <div class="abs serif" id="kNum" style="left:120px;top:300px;font-size:340px;line-height:1"><span id="kN">0</span>%</div>
+  <div class="abs sans" id="kTxt" style="left:140px;top:690px;font-size:64px;font-weight:500;letter-spacing:-.03em">faster client delivery</div>
+</div>
+
+<!-- 12 Direction. — perspective roll stack -->
+<div class="sc" id="s12" style="perspective:1400px">
+  <div class="abs sans c" id="dir0" style="font-size:300px;font-weight:500;letter-spacing:-.025em"><span class="stroke">Direction.</span></div>
+  <div class="abs sans c" id="dir" style="font-size:300px;font-weight:500;letter-spacing:-.025em">Direction.</div>
+</div>
+
+<!-- 13 Nordice -->
+<div class="sc" id="s13">
+  <video class="shot" id="vNordice" src="clips/nordice.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" id="nCap" style="left:120px;bottom:90px">Nordice</div>
+</div>
+
+<!-- 14 Runar — viking -->
+<div class="sc" id="s14">
+  <video class="shot" id="vViking" src="clips/runar-viking.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" id="rCap" style="left:120px;bottom:90px">Runar</div>
+</div>
+
+<!-- 15 Runar — rune (first second of the original only) -->
+<div class="sc" id="s15">
+  <video class="shot" id="vRune" src="clips/runar-rune.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" style="left:120px;bottom:90px">Runar</div>
+</div>
+
+<!-- 16 XSITE -->
+<div class="sc" id="s16">
+  <div class="page" id="pgN" style="left:150px;top:60px;width:780px;height:880px"><img id="pgNi" src="media/nordice-page.webp"></div>
+  <div class="page" id="pgR" style="left:990px;top:60px;width:780px;height:880px"><img id="pgRi" src="media/runar-page.webp"></div>
+  <div class="abs cap" id="xsCap" style="left:150px;bottom:50px">XSITE · One platform, multiple brands — Nordice &amp; Runar</div>
+</div>
+
+<!-- 17 Craft. — echo marquee -->
+<div class="sc" id="s17">
+  <div class="abs serif stroke" id="cr1" style="left:0;top:40px;font-size:330px;white-space:nowrap">Craft. Craft. Craft. Craft. Craft.</div>
+  <div class="abs serif" id="cr2" style="left:0;top:370px;font-size:330px;white-space:nowrap"><span class="stroke">Craft. Craft. </span>Craft.<span class="stroke"> Craft. Craft.</span></div>
+  <div class="abs serif stroke" id="cr3" style="left:0;top:700px;font-size:330px;white-space:nowrap">Craft. Craft. Craft. Craft. Craft.</div>
+</div>
+
+<!-- 18 WAND Cashier -->
+<div class="sc" id="s18">
+  <div style="position:absolute;inset:0;perspective:1800px"><div class="page" id="cash" style="left:515px;top:40px;width:890px;height:1000px"><img id="cashI" src="media/xsite-sports-page.webp"></div></div>
+  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">XSITE · Sportsbook</div>
+</div>
+
+<!-- 19 XSITE gamification -->
+<div class="sc" id="s19">
+  <div class="abs" id="gamWrap" style="inset:0;transform-origin:960px 512px">
+    <div class="page" id="gam" style="left:260px;top:15px;width:1400px;height:995px"><img id="gamI" src="media/xsite-lobby-desktop.webp"></div>
+    <div class="abs" id="gamDim" style="left:260px;top:15px;width:1400px;height:995px;border-radius:16px;background:rgba(4,6,20,.62);opacity:0"></div>
+    <img class="abs" id="gamModal" src="media/xsite-signup-modal.webp" style="left:560px;top:168px;width:801px;height:688px;box-shadow:0 40px 120px rgba(0,0,0,.6);border-radius:13px">
+  </div>
+  <div class="abs cap" id="gamCap" style="left:260px;top:1030px">XSITE · Casino lobby &amp; sign-up</div>
+</div>
+
+<!-- 20 My work spans — letter-spaced compress -->
+<div class="sc" id="s20"><div class="abs sans c" id="spans" style="font-size:84px;font-weight:300">My work spans</div></div>
+
+<!-- 21 43 operator brands. -->
+<div class="sc" id="s21">
+  <div class="abs serif" id="n43" style="left:90px;top:40px;font-size:1000px;line-height:1">43</div>
+  <div class="abs sans" id="ob" style="left:1330px;top:620px;font-size:92px;font-weight:500;letter-spacing:-.035em;line-height:1">operator<br>brands.</div>
+</div>
+
+<!-- 22 22 launched across 15 markets. -->
+<div class="sc" id="s22">
+  <div class="abs serif" id="n22" style="left:140px;top:120px;font-size:500px;line-height:1">22</div>
+  <div class="abs sans" id="l22" style="left:720px;top:400px;font-size:84px;font-weight:300">launched</div>
+  <div class="abs sans" id="a15" style="left:140px;top:720px;font-size:84px;font-weight:300">across</div>
+  <div class="abs serif it" id="n15" style="left:520px;top:560px;font-size:330px;line-height:1">15</div>
+  <div class="abs sans" id="m15" style="left:960px;top:720px;font-size:84px;font-weight:300">markets.</div>
+</div>
+
+<!-- 23 Logos -->
+<div class="sc" id="s23">
+  <div class="row" id="r1" style="top:250px"></div>
+  <div class="row" id="r2" style="top:510px"></div>
+  <div class="row" id="r3" style="top:770px"></div>
+</div>
+
+<!-- 24 And I bring together — letter cascade -->
+<div class="sc" id="s24"><div class="abs sans" id="bring" style="left:180px;top:480px;font-size:96px;font-weight:300"></div></div>
+
+<!-- 25 Product strategy. -->
+<div class="sc" id="s25">
+  <div class="title serif" id="psT"><span>Product <i>strategy.</i></span></div>
+  <div class="frame" id="road" style="left:300px;top:300px;width:1320px;height:720px;border-radius:16px"><img id="roadI" src="media/xsite-roadmap.png" style="width:1320px;height:auto"></div>
+  <div class="abs cap" id="roadCap" style="left:300px;top:1030px;color:var(--mute)">XSITE · Delivery roadmap</div>
+</div>
+
+<!-- 26 Design systems. -->
+<div class="sc" id="s26">
+  <div class="frame" id="kitF" style="left:300px;top:70px;width:1320px;height:742px;border-radius:16px"><video class="shot" id="kit" src="media/wand-ui-kit.webm" muted playsinline preload="auto" data-in="0" style="inset:0;width:100%;height:100%"></video></div>
+  <div class="title serif" id="dsT" style="left:296px;top:850px"><span>Design <i>systems.</i></span></div>
+</div>
+
+<!-- 27 Design leadership. -->
+<div class="sc" id="s27">
+  <div class="title serif" id="dlT"><span>Design <i>leadership.</i></span></div>
+  <canvas class="abs" id="mlC" width="1920" height="1080" style="left:0;top:0;width:1920px;height:1080px"></canvas>
+</div>
+
+<!-- 28 Because making complexity feel simple -->
+<div class="sc" id="s28">
+  <div class="abs sans" id="bec" style="left:180px;top:300px;font-size:70px;font-weight:300">Because making</div>
+  <div class="abs serif it" id="cx" style="left:170px;top:400px;font-size:250px;white-space:nowrap"></div>
+  <div class="abs sans" id="fs" style="left:180px;top:720px;font-size:70px;font-weight:300">feel <span style="font-weight:500">simple</span></div>
+</div>
+
+<!-- 29 Is the kind of design problem I love. -->
+<div class="sc" id="s29"><div class="abs serif" id="love" style="left:180px;top:330px;font-size:150px;line-height:1.02"><span class="mask"><span class="w">Is the kind of design</span></span><br><span class="mask"><span class="w">problem <span id="loveI" style="display:inline-block">I <span class="it">love.</span></span></span></span></div></div>
+
+<!-- 30 So, what's next? — centred serif line, words rise from masks and sink back: the film starts to slow down -->
+<div class="sc" id="s30">
+  <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next?</span></span></div>
+</div>
+
+<!-- 31 Closing — "what's next?" answered by the viewer: a minimal mail composer writes to María ("Hey María! You're hired."), the pointer hits Send, the window flies off and only her address stays -->
+<div class="sc" id="s31">
+  <div class="abs" id="mCard" style="left:400px;top:230px;width:1120px;height:620px;border-radius:24px;background:#0c0c0c;outline:1px solid rgba(245,244,241,.16);outline-offset:-1px;overflow:hidden">
+    <div class="abs sans" style="left:44px;top:30px;font-size:22px;color:var(--mute);letter-spacing:.04em">New message</div>
+    <div class="abs" style="right:44px;top:40px;width:68px;height:12px;display:flex;gap:10px"><i style="width:12px;height:12px;border-radius:6px;background:#2a2928"></i><i style="width:12px;height:12px;border-radius:6px;background:#2a2928"></i><i style="width:12px;height:12px;border-radius:6px;background:#2a2928"></i></div>
+    <div class="abs" style="left:44px;right:44px;top:84px;height:1px;background:rgba(245,244,241,.12)"></div>
+    <div class="abs sans" style="left:44px;top:106px;font-size:26px;color:var(--mute)">To</div>
+    <div class="abs" style="left:44px;right:44px;top:168px;height:1px;background:rgba(245,244,241,.12)"></div>
+    <div class="abs sans" style="left:44px;top:190px;font-size:26px;color:var(--mute)">Subject</div>
+    <div class="abs sans" style="left:180px;top:184px;font-size:32px;font-weight:400"><span id="mSub"></span><span class="cur" id="mSubC" style="opacity:0"></span></div>
+    <div class="abs" style="left:44px;right:44px;top:252px;height:1px;background:rgba(245,244,241,.12)"></div>
+    <div class="abs serif" style="left:44px;top:300px;font-size:84px;line-height:1.15;white-space:nowrap"><span id="mBody1"></span><br><span id="mBody2" class="it"></span><span class="cur" id="mBodyC" style="opacity:0"></span></div>
+    <div class="abs sans" id="mSend" style="right:44px;bottom:40px;padding:16px 38px;border-radius:40px;background:#f5f4f1;color:#0a0a0a;font-size:26px;font-weight:500">Send</div>
+  </div>
+  <div class="abs sans" id="mTo" style="left:580px;top:330px;font-size:32px;font-weight:400;white-space:nowrap;transform-origin:0 50%"><span id="mToT"></span><span class="cur" id="mToC" style="opacity:0"></span></div>
+  <div class="abs sans c" id="mSent" style="top:625px;font-size:24px;color:var(--mute);letter-spacing:.08em;opacity:0">Sent&nbsp;&nbsp;✓</div>
+  <svg class="abs" id="mPtr" viewBox="0 0 24 24" style="left:0;top:0;width:44px;height:44px;overflow:visible"><path d="M3 2 L3 19 L7.6 14.8 L10.6 21.4 L13.4 20.2 L10.4 13.7 L16.6 13.4 Z" fill="#f5f4f1" stroke="#0a0a0a" stroke-width="1.2" stroke-linejoin="round"/></svg>
+</div>
+
+</div>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const split = (el, text, cls = "ch") => { el.innerHTML = [...text].map((c) => c === " " ? `<span class="${cls}">&nbsp;</span>` : `<span class="${cls}">${c}</span>`).join(""); return el.querySelectorAll("." + cls); };
+gsap.utils.random = ((r) => { let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647; return (a, b) => a + rnd() * (b - a); })(); // deterministic "random" so every render matches
+
+gsap.set(".c", { xPercent: -50, yPercent: -50 });
+const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
+
+/* ---------- SCENES (start, end in seconds) ---------- */
+const T = {
+  s01: [0.0, 1.35], s01b: [1.35, 3.55], s02: [3.5, 4.95], s03: [4.9, 7.55], s04: [7.55, 8.8], s05: [8.8, 9.85],
+  s06: [9.85, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6], s10: [17.55, 18.55],
+  s11: [18.5, 21.1], s12: [21.05, 22.0], s13: [21.95, 24.1], s14: [23.75, 25.1], s15: [25.05, 26.75],
+  s16: [26.5, 29.0], s17: [28.95, 29.85], s18: [29.8, 31.5], s19: [31.45, 33.5], s20: [33.35, 34.3],
+  s21: [34.3, 35.7], s22: [35.65, 37.4], s23: [37.35, 39.2], s24: [39.2, 40.05], s25: [40.0, 41.6],
+  s26: [41.55, 43.25], s27: [43.2, 45.4], s28: [45.35, 47.95], s29: [47.95, 50.65], s30: [50.65, 53.4],
+  s31: [53.35, 62.8],
+};
+for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
+
+// typewriter: chars appear one per step, cursor blinks after
+const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.set(chs, { display: "none" });
+  chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step));
+  for (let k = 0; k < 8; k++) tl.set(cur, { opacity: k % 2 ? 1 : 0 }, at + chs.length * step + .1 + k * .22);
+  return at + chs.length * step; };
+
+// 01 Hi. — extreme close-up of the H pulls back to the word, then lifts out of frame
+{ const [a] = T.s01;
+  tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
+  tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
+
+// 01b Garaje de Ideas — "G." (the imagotype) slams in on the score's first hit; then the full stop slides to its place and
+// uncovers the letters of "Garaje." one by one as it passes (the logotype); the word stays centred throughout
+const syncLogo = () => {}; // (the over99 cut drove a Web Animations logo here)
+{ const [a] = T.s01b, U = 1000 / 1437; // svg units → px
+  const dot = "#gdi .g5", rest = ["#gdi .g1", "#gdi .g2", "#gdi .g3", "#gdi .g4"];
+  const dotStart = 330 - 1348; // the dot sits right after the G, as in the imagotype
+  const shift = (1437 - (330 + 85)) / 2; // keeps "G." centred, then the full word
+  gsap.set(rest, { opacity: 0 }); gsap.set(dot, { x: dotStart }); gsap.set("#gdiW", { x: shift });
+  tl.fromTo("#gdi", { scale: 1.25, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: .5, ease: ex }, a);
+  tl.fromTo("#gdiHalo", { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" }, a + .1);
+  tl.to(dot, { x: 0, duration: .7, ease: "expo.inOut" }, a + .55);
+  tl.to("#gdiW", { x: 0, duration: .7, ease: "expo.inOut" }, a + .55);
+  rest.forEach((g, i) => tl.fromTo(g, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: .4, ease: ex, immediateRender: false }, a + .68 + i * .09));
+  tl.to("#gdi", { x: -1900, duration: .35, ease: exi }, a + 1.85);
+  tl.to("#gdiHalo", { x: -1900, opacity: 0, duration: .35, ease: exi }, a + 1.85); }
+
+// 02 If you're looking for — typewriter with cursor
+{ const [a] = T.s02; type($("#lookT"), "#lookC", "If you’re looking for", a + .05, .04);
+  tl.to("#look", { x: -1500, duration: .3, ease: exi }, a + 1.15); }
+
+// 03 a Design Manager. — the camera stops on each word, framing it whole (it pulls back as far as a long word needs), then pulls back to the line
+{ const [a] = T.s03; const strip = $("#dlStrip");
+  const fit = (id) => Math.min(1, 1640 / $(id).offsetWidth);
+  const at = (id) => () => { const w = $(id); return 960 - fit(id) * (w.offsetLeft + w.offsetWidth / 2); };
+  const stop = (id) => ({ x: at(id), scale: () => fit(id) });
+  const k = () => 1720 / strip.offsetWidth;
+  tl.fromTo(strip, { x: () => at("#dlA")() + 500, scale: 1 }, { ...stop("#dlA"), duration: .35, ease: ex, immediateRender: false }, a);
+  tl.to(strip, { ...stop("#dlD"), duration: .4, ease: "expo.inOut" }, a + .4);
+  tl.to(strip, { ...stop("#dlL"), duration: .4, ease: "expo.inOut" }, a + .9);
+  tl.to(strip, { scale: k, x: () => (1920 - strip.offsetWidth * k()) / 2, duration: .5, ease: "expo.inOut" }, a + 1.35);
+}
+
+// 04 I think… — tracking compresses, dots arrive one by one
+{ const [a] = T.s04;
+  tl.fromTo("#think", { letterSpacing: ".5em", opacity: 0 }, { letterSpacing: "-.02em", opacity: 1, duration: .8, ease: io }, a);
+  tl.from("#think .d", { opacity: 0, duration: .05, stagger: .28 }, a + .55); }
+
+// 05 I know one. — starts as an extreme close-up of the "o", snaps out to the full line
+{ const [a] = T.s05;
+  tl.fromTo("#know", { scale: 9, transformOrigin: "55% 55%" }, { scale: 1, duration: .5, ease: ex }, a);
+  tl.to("#know", { x: -1500, duration: .3, ease: exi }, a + .8); }
+
+// 06 I'm María Mora. — letters glow in from blur, tracking tightens
+{ const [a] = T.s06; const chs = split($("#name"), "María Mora.");
+  tl.from("#im", { x: -80, opacity: 0, duration: .3, ease: ex }, a);
+  tl.fromTo(chs, { yPercent: 115 }, { yPercent: 0, duration: .5, stagger: .025, ease: "expo.out" }, a + .12);
+  tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
+  tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 1.05);
+  tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 1.05); }
+
+// 07 10+ years. — oversized number bleeds off the frame, slides out left
+{ const [a] = T.s07;
+  const n = { v: 0 };
+  tl.fromTo("#ten", { y: 700 }, { y: 0, duration: .6, ease: ex }, a);
+  tl.fromTo(n, { v: 0 }, { v: 10, duration: .9, ease: "none", onUpdate: () => { $("#tenN").textContent = Math.round(n.v); } }, a + .1);
+  tl.from("#years", { opacity: 0, x: 80, duration: .5 }, a + 1.0);
+  tl.to(["#ten", "#years"], { x: -1900, duration: .4, ease: exi }, a + 1.45); }
+
+// 08 Designing digital products. — type and product at different speeds; product takes the frame
+{ const [a] = T.s08;
+  tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a);
+  tl.fromTo("#ddImgF", { y: 1100 }, { y: 0, duration: .8, ease: ex }, a);
+  tl.fromTo("#ddImg", { y: 0 }, { y: -1300, duration: 2.5, ease: "power1.inOut" }, a + .2);
+  tl.to("#dd", { x: -30, duration: 2.5, ease: "none" }, a);
+  tl.to(["#dd", "#ddImgF"], { x: -1900, duration: .4, ease: exi }, a + 2.15); }
+
+// 09 I've learned that great products need — sentence builds, everything dims except "need"
+{ const [a] = T.s09;
+  tl.from("#learn .w", { opacity: 0, y: 30, duration: .4, stagger: .13 }, a);
+  tl.to("#learn .w:not(#need)", { opacity: .25, duration: .3 }, a + 1.55);
+  tl.to("#learn", { x: -1600, duration: .3, ease: exi }, a + 1.7); }
+
+// 10 Evidence. — the camera passes along the oversized word, then dives into its full stop
+{ const [a] = T.s10; const w = () => $("#evi").offsetWidth;
+  tl.fromTo("#evi", { x: 900 }, { x: () => 1920 - w() - 60, duration: .75, ease: "power2.inOut" }, a);
+  tl.to("#evi", { scale: 6, transformOrigin: "97% 80%", opacity: 0, duration: .25, ease: exi }, a + .75); }
+
+// 11 Evidence visual — one real KPI beside the real Figma variables it came from
+{ const [a] = T.s11; const n = { v: 0 };
+  tl.from("#cfgF", { x: 600, opacity: 0, duration: .9, ease: ex }, a);
+  tl.from("#kCap", { opacity: 0, duration: .4 }, a + .15);
+  tl.from("#kNum", { y: 200, opacity: 0, duration: .7, ease: ex }, a + .1);
+  tl.to(n, { v: 40, duration: .7, ease: "power2.out", onUpdate: () => { $("#kN").textContent = Math.round(n.v); } }, a + .1);
+  tl.from("#kTxt", { opacity: 0, y: 30, duration: .5 }, a + .55);
+  tl.to("#s11", { y: -1080, duration: .4, ease: exi }, a + 2.2); }
+
+// 12 Direction. — rolls over a ghost copy like a drum, then pushes into the footage
+{ const [a] = T.s12;
+  tl.fromTo("#dir", { rotationX: -90, y: 160, transformOrigin: "50% 50% -150px" }, { rotationX: 0, y: 0, duration: .55, ease: ex }, a);
+  tl.fromTo("#dir0", { rotationX: 0, opacity: .8, transformOrigin: "50% 50% -150px" }, { rotationX: 90, y: -160, opacity: 0, duration: .55, ease: ex }, a);
+  tl.to("#dir", { scale: 4, opacity: 0, duration: .3, ease: exi }, a + .65); }
+
+// 13–15 Nordice and Runar — real campaign footage; only the opening second of the rune shot
+{ let [a] = T.s13;
+  tl.fromTo("#vNordice", { scale: 1.0 }, { scale: 1.04, duration: 1.9, ease: "none" }, a);
+  tl.from("#nCap", { opacity: 0, duration: .3 }, a + .3);
+  [a] = T.s14;
+  tl.fromTo("#s14", { clipPath: "inset(0 0 0 100%)" }, { clipPath: "inset(0 0 0 0%)", duration: .35, ease: io }, a - .05);
+  tl.from("#rCap", { opacity: 0, duration: .3 }, a + .3);
+  [a] = T.s15;
+  tl.fromTo("#s15", { opacity: 0 }, { opacity: 1, duration: .12 }, a);
+  tl.to("#s15", { opacity: 0, duration: .15 }, a + 1.52); }
+
+// 16 XSITE — wipe reveal, slow lateral camera
+{ const [a] = T.s16;
+  tl.fromTo("#pgN", { y: -1100 }, { y: 0, duration: .5, ease: ex }, a);
+  tl.fromTo("#pgR", { y: 1100 }, { y: 0, duration: .5, ease: ex }, a);
+  tl.fromTo("#pgNi", { scale: 1.9, transformOrigin: "50% 0%" }, { scale: 1, duration: .6, ease: "expo.inOut" }, a + .9);
+  tl.fromTo("#pgNi", { y: 0 }, { y: -760, duration: 1.1, ease: "power2.inOut" }, a + 1.3);
+  tl.fromTo("#pgRi", { scale: 1.9, transformOrigin: "50% 0%" }, { scale: 1, duration: .6, ease: "expo.inOut" }, a + .9);
+  tl.fromTo("#pgRi", { y: 0 }, { y: -560, duration: 1.1, ease: "power2.inOut" }, a + 1.3);
+  tl.from("#xsCap", { opacity: 0, y: 20, duration: .5 }, a + .4);
+  tl.to("#s16", { scale: .6, opacity: 0, duration: .35, ease: exi }, a + 2.15); }
+
+// 17 Craft. — echo marquee: outlined rows drift one way, the solid row the other
+{ const [a] = T.s17;
+  tl.fromTo(["#cr1", "#cr3"], { x: -200 }, { x: -1100, duration: .9, ease: "none" }, a);
+  tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
+  tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
+
+// 18 WAND Cashier — close-up on the UI, pull back to the full flow
+{ const [a] = T.s18;
+  tl.fromTo("#cash", { rotationY: -18, rotationX: 6, scale: 1.25 }, { rotationY: 8, rotationX: 0, scale: 1, duration: 1.6, ease: "power2.inOut" }, a);
+  tl.fromTo("#cashI", { y: 0 }, { y: -640, duration: 1.6, ease: "power1.inOut" }, a);
+  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
+  tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
+
+// 19 XSITE casino — the lobby lands, then the sign-up modal pops over it and the camera leans in
+{ const [a] = T.s19;
+  tl.fromTo("#s19", { x: 1920 }, { x: 0, duration: .45, ease: ex }, a - .05);
+  tl.fromTo("#gamWrap", { scale: 1 }, { scale: 1.04, duration: .8, ease: "none" }, a);
+  tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .4);
+  tl.to("#gamCap", { opacity: 0, duration: .2 }, a + .8);
+  tl.to("#gamDim", { opacity: 1, duration: .25, ease: "power2.out" }, a + .8);
+  tl.fromTo("#gamModal", { scale: .78, y: 90, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, y: 0, opacity: 1, duration: .6, ease: "back.out(1.6)" }, a + .85);
+  tl.to("#gamWrap", { scale: 1.16, duration: 1.1, ease: "power3.out" }, a + .85);
+  tl.to("#s19", { y: -1080, duration: .35, ease: "expo.in" }, a + 1.7);
+}
+
+// 20 My work spans — tracking compresses
+{ const [a] = T.s20; tl.fromTo("#s20", { y: 1080 }, { y: 0, duration: .45, ease: ex }, a);
+  tl.fromTo("#spans", { letterSpacing: ".35em" }, { letterSpacing: "0em", duration: .6, ease: ex }, a); }
+
+// 21 43 operator brands. — the number dominates and bleeds off frame (no count-up, so no wrong numbers on screen)
+{ const [a] = T.s21;
+  tl.fromTo("#n43", { scale: .2, opacity: 0, transformOrigin: "30% 60%" }, { scale: 1, opacity: 1, duration: .55, ease: ex }, a);
+  tl.from("#ob", { opacity: 0, x: 80, duration: .5 }, a + .35);
+  tl.to("#s21", { y: 1080, duration: .35, ease: exi }, a + 1.05); }
+
+// 22 22 launched across 15 markets. — two numbers at contrasting scales; footnote keeps the claim accurate
+{ const [a] = T.s22;
+  tl.from("#n22", { y: -900, duration: .55, ease: ex }, a);
+  tl.from("#l22", { opacity: 0, x: 60, duration: .4 }, a + .3);
+  tl.from("#a15", { opacity: 0, x: -60, duration: .4 }, a + .55);
+  tl.from("#n15", { scale: 1.8, opacity: 0, duration: .5, ease: ex }, a + .65);
+  tl.from("#m15", { opacity: 0, x: 60, duration: .4 }, a + .8);
+  tl.to("#s22", { opacity: 0, duration: .25 }, a + 1.5); }
+
+// 23 Logos — three rows, middle row opposed
+{ const [a, b] = T.s23; const L = ["williamhill.png","rizk.svg","skycity.svg","thrills.svg","casinotime.svg","dunder.svg","kaboo.svg","netbet.svg","superlenny.svg","thepools.svg","slotbox.svg","jugadon.png","kingbilly.png","hardrock.png","solaire.svg","splash.png","kirgo.png","eleven.svg"];
+  const src = (f) => f === "rizk.svg" ? "media/logos/rizk.svg" : `../public/portfolio/operators/${f}`;
+  const D = {"williamhill.png":[271,55],"rizk.svg":[218,69],"skycity.svg":[209,72],"thrills.svg":[263,57],"casinotime.svg":[277,54],"dunder.svg":[290,52],"kaboo.svg":[307,49],"netbet.svg":[287,52],"superlenny.svg":[319,47],"thepools.svg":[183,82],"slotbox.svg":[188,80],"jugadon.png":[248,61],"kingbilly.png":[268,56],"hardrock.png":[157,95],"solaire.svg":[164,92],"splash.png":[193,78],"kirgo.png":[337,44],"eleven.svg":[182,82]}; // [width, height] at equal visual area
+  const fill = (row, list) => { row.innerHTML = [...list, ...list].map((f) => `<img src="${src(f)}" style="width:${D[f][0]}px;height:${D[f][1]}px">`).join(""); };
+  fill($("#r1"), L.slice(0, 6).concat(L.slice(12, 15))); fill($("#r2"), L.slice(6, 12).concat(L.slice(15))); fill($("#r3"), L.slice(12).concat(L.slice(0, 4)));
+  const d = b - a;
+  tl.fromTo("#r1", { x: 0 }, { x: -1500, duration: d, ease: "none" }, a);
+  tl.fromTo("#r2", { x: -1700 }, { x: -200, duration: d, ease: "none" }, a);
+  tl.fromTo("#r3", { x: -300 }, { x: -1800, duration: d, ease: "none" }, a);
+  tl.from(".row", { opacity: 0, duration: .4, stagger: .1 }, a);
+  tl.to(".row", { opacity: 0, duration: .3 }, b - .3); }
+
+// 24 And I bring together — letters cascade into place
+{ const [a] = T.s24; const chs = split($("#bring"), "And I bring together");
+  tl.from(chs, { y: (i) => -220 - (i % 5) * 60, opacity: 0, duration: .45, stagger: .018, ease: ex }, a); }
+
+// 25–27 — the three titles share one move: a perspective roll up from the baseline
+const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
+
+// 25 Product strategy. — insight → opportunity → prioritisation → roadmap, one connected path
+{ const [a] = T.s25;
+  roll("#psT", a);
+  tl.fromTo("#road", { y: 500, opacity: 0, rotationX: 20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1);
+  tl.fromTo("#roadI", { x: 0, y: 0 }, { x: -200, y: -170, scale: 1.12, transformOrigin: "0 0", duration: 1.5, ease: "power1.inOut" }, a + .1);
+  tl.from("#roadCap", { opacity: 0, duration: .4 }, a + .5);
+  tl.to("#s25", { x: -1920, duration: .35, ease: exi }, a + 1.25); }
+
+// 26 Design systems. — the real WAND UI kit footage, title over it
+{ const [a] = T.s26;
+  tl.fromTo("#s26", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
+  roll("#dsT", a + .1);
+  tl.fromTo("#kitF", { y: -500, opacity: 0, rotationX: -20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1); }
+
+// 27 Design leadership. — "magnet lines" (after React Bits' MagnetLines, MIT + Commons Clause): a restless field of hairlines, each pointing its own way. An ivory point crosses the field; as it passes, the lines turn to face it, stretching and brightening in its wake. Then the whole field converges on the point, which hands over to the next scene.
+{ const [a, b] = T.s27; const cv = $("#mlC"), g = cv.getContext("2d");
+  const C = 26, R = 10, SP = 62, X0 = 960 - (C - 1) * SP / 2, Y0 = 360, L = 14, OX = 960, OY = 640;
+  const lines = [];
+  for (let r = 0; r < R; r++) for (let c = 0; c < C; c++) { const h = Math.sin(c * 12.9898 + r * 78.233) * 43758.5453; lines.push({ x: X0 + c * SP, y: Y0 + r * SP, a0: (h - Math.floor(h)) * Math.PI, ph: (h * 7) % 6.28 }); }
+  const st = { px: -40, py: 700, dot: 0, rad: 0, show: 0, t: 0, conv: 0 };
+  const e3 = gsap.parseEase("power3.inOut"), e2 = gsap.parseEase("power2.in"), cl = gsap.utils.clamp(0, 1);
+  const draw = () => { g.clearRect(0, 0, 1920, 1080); g.lineCap = "round";
+    for (const l of lines) { const d0 = Math.hypot(OX - l.x, OY - l.y), kc = e2(cl((st.conv * 1.5 - d0 / 1500) / .5));
+      const x = l.x + (st.px - l.x) * kc, y = l.y + (st.py - l.y) * kc, dx = st.px - x, dy = st.py - y, d = Math.hypot(dx, dy);
+      const free = l.a0 + Math.sin(st.t * 2.2 + l.ph) * .35;
+      const diff = ((Math.atan2(dy, dx) - free) % Math.PI + Math.PI * 1.5) % Math.PI - Math.PI / 2;
+      const kk = e3(cl((st.rad - l.x - 150) / 420));
+      const near = Math.max(0, 1 - d / 330), an = free + diff * kk, len = L * (1 + 1.1 * near * kk) * (1 - .75 * kc);
+      const c = Math.round(64 + 150 * kk * (.35 + .65 * near) + 40 * near * kk);
+      g.strokeStyle = `rgba(${Math.min(245, c + 30)},${Math.min(244, c + 28)},${Math.min(241, c + 24)},${st.show * (1 - kc * kc)})`; g.lineWidth = 2 + near * kk;
+      const ux = Math.cos(an) * len, uy = Math.sin(an) * len; g.beginPath(); g.moveTo(x - ux, y - uy); g.lineTo(x + ux, y + uy); g.stroke(); }
+    if (st.dot > 0) { g.fillStyle = "#f5f4f1"; g.beginPath(); g.arc(st.px, st.py, 10 * st.dot, 0, 7); g.fill(); } };
+  tl.to("#s26", { x: -1920, duration: .35, ease: exi }, a - .3);
+  tl.fromTo("#s27", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
+  roll("#dlT", a + .1);
+  tl.fromTo(st, { t: 0 }, { t: b - a, duration: b - a, ease: "none", onUpdate: draw }, a);
+  tl.fromTo(st, { show: 0 }, { show: 1, duration: .35, ease: "power2.out", onUpdate: draw }, a);
+  tl.fromTo(st, { dot: 0 }, { dot: 1, duration: .2, ease: "power2.out", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { px: -40 }, { px: OX, duration: 1.2, ease: "power2.inOut", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { py: 760 }, { py: OY, duration: 1.2, ease: "sine.inOut", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { rad: 0 }, { rad: 2700, duration: 1.35, ease: "power2.inOut", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { conv: 0 }, { conv: 1, duration: .55, ease: "none", onUpdate: draw }, b - .6);
+  tl.to(st, { dot: 1.6, duration: .2, ease: "power2.in", onUpdate: draw }, b - .2);
+  tl.to("#dlT", { opacity: 0, duration: .25 }, b - .3); }
+
+// 28 Because making complexity feel simple — the point left by the leadership field bursts into scattered letters; they hang in disorder, then snap into one clean word
+{ const [a, b] = T.s28; const box = $("#cx"), chs = split(box, "complexity"); const rnd = gsap.utils.random;
+  const ring = (i, spin) => { const th = i / chs.length * Math.PI * 2 + [.1, -.15, .2, 0, -.1, .15, -.2, .05, .1, -.05][i] + spin, rr = 1 + [.08, -.1, .05, .12, -.06, 0, .1, -.08, .04, -.12][i]; return { x: Math.cos(th) * 560 * rr, y: Math.sin(th) * 300 * rr }; };
+  const scat = [...chs].map((c, i) => ({ ...ring(i, 0), r: rnd(-60, 60), s: rnd(.55, 1.25), x2: ring(i, .32).x, y2: ring(i, .32).y }));
+  const fromPt = (el, axis) => axis === "x" ? 960 - (170 + el.offsetLeft + el.offsetWidth / 2) : 640 - (400 + el.offsetTop + el.offsetHeight / 2);
+  tl.fromTo(chs, { x: (i, el) => fromPt(el, "x"), y: (i, el) => fromPt(el, "y"), scale: 0, rotation: 0, opacity: 1 },
+    { x: (i, el) => fromPt(el, "x") + scat[i].x, y: (i, el) => fromPt(el, "y") + scat[i].y, rotation: (i) => scat[i].r, scale: (i) => scat[i].s, opacity: .5, duration: .5, ease: "expo.out", stagger: .012 }, a);
+  tl.to(chs, { x: (i, el) => fromPt(el, "x") + scat[i].x2, y: (i, el) => fromPt(el, "y") + scat[i].y2, rotation: (i) => scat[i].r * .6, duration: .3, ease: "none" }, a + .5);
+  tl.to(chs, { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: .85, ease: "power4.inOut", stagger: .025 }, a + .78);
+  tl.from("#bec", { opacity: 0, y: 24, duration: .5, ease: ex }, a + 1.35);
+  tl.from("#fs", { opacity: 0, y: 24, duration: .5, ease: ex }, a + 1.55);
+  tl.to("#s28", { y: -200, opacity: 0, duration: .4, ease: "power2.in" }, b - .4); }
+
+// 29 Is the kind of design problem I love. — slow, deliberate, room to breathe
+{ const [a] = T.s29;
+  tl.from("#love .w", { yPercent: 110, duration: 1.0, stagger: .25, ease: ex }, a + .05);
+  // "I love." grows to fill the frame: zoom anchored on its centre, the rest of the line leaves the edges
+  gsap.set("#love", { transformOrigin: "722px 242px" });
+  tl.to("#love", { scale: 1.03, duration: 1.3, ease: "none" }, a);
+  // before the zoom: let the glyphs overflow their masks (the italic "l" rises above them) and drop the
+  // will-change layers so the text is re-rasterised sharp at every scale instead of stretched from a small bitmap
+  tl.set("#love .mask", { overflow: "visible" }, a + 1.3);
+  tl.set("#love .w", { willChange: "auto" }, a + 1.3);
+  tl.to("#love", { scale: 5.1, x: 58, y: 40, duration: .8, ease: "expo.inOut" }, a + 1.3);
+  tl.to("#love", { scale: 5.35, duration: .6, ease: "none" }, a + 2.1); }
+
+// 30 So, what's next? — typed, then the question mark lands and carries the cut
+{ const [a, b] = T.s30;
+  tl.from("#sowhat .w", { yPercent: 110, duration: .9, stagger: .18, ease: "power3.out" }, a + .05);
+  tl.to("#sowhat .w", { yPercent: -110, duration: .6, stagger: .1, ease: "power3.in" }, b - .75); }
+
+// 31 Closing — the viewer answers "what's next?": a mail to María is written and sent; only her address remains
+{ const [a, b] = T.s31;
+  const typeIn = (sel, text, at, step) => { const chs = split($(sel), text); gsap.set(chs, { display: "none" }); chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step)); return at + chs.length * step; };
+  const caret = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); for (let t = from + .5; t < to; t += .5) tl.set(sel, { opacity: Math.round((t - from) / .5) % 2 ? 0 : 1 }, t); tl.set(sel, { opacity: 0 }, to); };
+  // the composer rises in
+  tl.fromTo("#mCard", { clipPath: "inset(100% 0 0 0 round 24px)", y: 60 }, { clipPath: "inset(0% 0 0 0 round 24px)", y: 0, duration: .7, ease: ex }, a);
+  tl.fromTo("#mTo", { y: 60 }, { y: 0, duration: .7, ease: ex }, a);
+  // To · Subject · body, typed
+  const t1 = typeIn("#mToT", "design@mariamoragarcia.com", a + .55, .028); caret("#mToC", a + .45, t1 + .25);
+  const t2 = typeIn("#mSub", "Design Manager", t1 + .3, .045); caret("#mSubC", t1 + .25, t2 + .2);
+  const t3 = typeIn("#mBody1", "Hey, María!", t2 + .3, .05);
+  const t4 = typeIn("#mBody2", "Welcome on board.", t3 + .35, .05); caret("#mBodyC", t2 + .3, t4 + .55);
+  // pointer glides to Send and clicks
+  const tc = a + 5.68; // 59.03 s: the final hit of the score lands on the click
+  tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 770, duration: .65, ease: "power3.inOut" }, tc - .85);
+  tl.to("#mSend", { scale: .92, duration: .08, ease: "power2.out" }, tc);
+  tl.to("#mSend", { scale: 1, duration: .2, ease: "power2.out" }, tc + .08);
+  tl.to("#mPtr", { scale: .85, duration: .08, transformOrigin: "10% 10%" }, tc);
+  tl.to("#mPtr", { scale: 1, duration: .2 }, tc + .08);
+  // sent: the window flies off, the pointer leaves, the address stays and glides to centre stage
+  tl.to("#mCard", { y: -980, x: 260, rotation: -7, scale: .72, duration: .6, ease: "expo.in" }, tc + .3);
+  tl.to("#mPtr", { x: 1900, y: 1150, duration: .5, ease: "power2.in" }, tc + .35);
+  tl.to("#mTo", { x: () => 960 - 580 - $("#mTo").offsetWidth * 1.9 / 2, y: 540 - 330 - 24, scale: 1.9, duration: 1.0, ease: "expo.inOut" }, tc + .65);
+  tl.fromTo("#mSent", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .6, ease: "power2.out" }, tc + 1.5);
+  tl.set({}, {}, b); }
+
+/* ---------- video sync, preview and render hooks ---------- */
+const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
+const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
+  if (t < start - .2 || t > end) return null;
+  const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
+  if (Math.abs(el.currentTime - target) < .001) return null;
+  el.currentTime = target;
+  return wait ? new Promise((r) => el.addEventListener("seeked", r, { once: true })) : null;
+}));
+window.DURATION = T.s31[1];
+window.seek = async (t) => { tl.seek(t, false); syncLogo(t); await syncVideos(t, true); };
+window.ready = document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {})).concat(videos.map(({ el }) => el.readyState >= 1 ? 0 : new Promise((r) => el.addEventListener("loadedmetadata", r, { once: true }))))));
+const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); $("#stage").style.transform = `scale(${s})`; };
+if (!new URLSearchParams(location.search).has("render")) {
+  addEventListener("resize", fit); fit();
+  tl.eventCallback("onUpdate", () => { syncLogo(tl.time()); syncVideos(tl.time(), false); });
+  addEventListener("keydown", (e) => { if (e.code === "Space") tl.paused() ? tl.play() : tl.pause(); if (e.code === "ArrowRight") tl.seek(tl.time() + 1); if (e.code === "ArrowLeft") tl.seek(Math.max(0, tl.time() - 1)); });
+  window.ready.then(() => tl.play());
+}
+</script>
+</body>
+</html>
