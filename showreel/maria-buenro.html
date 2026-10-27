@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>[Head of Design cut] María Mora — Showreel</title>
+<title>[Buenro cut] María Mora — Showreel</title>
 <!--
   Editable showreel composition. Every scene lives in one GSAP timeline; scene times are in the T object.
   Open in a browser to preview (space = play/pause, ←/→ = ±1 s), or render frames with render.mjs.
@@ -61,7 +61,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 01b over99 logo (María's supplied animation, driven by the timeline) -->
 <div class="sc" id="s01b"><div class="abs" id="bHalo" style="left:160px;top:140px;width:1600px;height:800px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(245,244,241,.10) 0%,rgba(245,244,241,.04) 45%,rgba(0,0,0,0) 75%);opacity:0"></div>
-  <svg id="bLogo" viewBox="0 0 161 161" style="inset:auto;left:770px;top:350px;width:380px;height:380px;fill:#f5f4f1;overflow:visible" role="img" aria-label="B logo"><rect class="bp bS1" x="0" y="0" width="75" height="75"/><rect class="bp bS2" x="0" y="86" width="75" height="75"/><path class="bp bR" d="M86 0H120.5A40.25 40.25 0 0 1 120.5 80.5A40.25 40.25 0 0 1 120.5 161H86Z"/></svg></div>
+  <svg id="bLogo" viewBox="0 0 161 161" style="inset:auto;left:770px;top:350px;width:380px;height:380px;fill:#f5f4f1;overflow:visible" role="img" aria-label="Buenro"><rect class="bp bS1" x="0" y="0" width="75" height="75"/><rect class="bp bS2" x="0" y="86" width="75" height="75"/><path class="bp bR" d="M86 0H120.5A40.25 40.25 0 0 1 120.5 80.5A40.25 40.25 0 0 1 120.5 161H86Z"/></svg></div>
 <div class="sc" id="s02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:300;letter-spacing:-.02em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
 
 <!-- 03 A Lead Product Designer. — echo roll + opposing slab -->
@@ -276,7 +276,7 @@ const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.se
   tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
   tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
 
-// 01b B — the bowl slams in on the hit; the two blocks slide in and lock into place
+// 01b Buenro — the bowl slams in on the hit; the two blocks slide in and lock into place
 const syncLogo = () => {};
 { const [a] = T.s01b;
   tl.fromTo("#bLogo", { scale: 1.25, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: .5, ease: ex }, a);
