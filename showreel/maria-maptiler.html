@@ -537,7 +537,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   const t1 = typeIn("#mToT", "design@mariamoragarcia.com", a + .55, .028); caret("#mToC", a + .45, t1 + .25);
   const t2 = typeIn("#mSub", "Head of Design", t1 + .3, .045); caret("#mSubC", t1 + .25, t2 + .2);
   const t3 = typeIn("#mBody1", "Hey, María!", t2 + .3, .05);
-  const t4 = typeIn("#mBody2", "Welcome on board.", t3 + .35, .05); caret("#mBodyC", t2 + .3, t4 + .55);
+  const t4 = typeIn("#mBody2", "You’re on our map. Let’s talk.", t3 + .35, .04); caret("#mBodyC", t2 + .3, t4 + .55);
   // pointer glides to Send and clicks
   const tc = a + 5.68; // 59.03 s: the final hit of the score lands on the click
   tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 770, duration: .65, ease: "power3.inOut" }, tc - .85);
