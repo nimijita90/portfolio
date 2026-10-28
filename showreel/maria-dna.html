@@ -236,7 +236,7 @@ svg{position:absolute;inset:0;overflow:visible}
     <div class="abs sans" style="left:44px;top:190px;font-size:26px;color:var(--mute)">Subject</div>
     <div class="abs sans" style="left:180px;top:184px;font-size:32px;font-weight:400"><span id="mSub"></span><span class="cur" id="mSubC" style="opacity:0"></span></div>
     <div class="abs" style="left:44px;right:44px;top:252px;height:1px;background:rgba(245,244,241,.12)"></div>
-    <div class="abs serif" style="left:44px;top:300px;font-size:84px;line-height:1.15;white-space:nowrap"><span id="mBody1"></span><br><span id="mBody2" class="it"></span><span class="cur" id="mBodyC" style="opacity:0"></span></div>
+    <div class="abs serif" style="left:44px;top:300px;font-size:84px;line-height:1.15;white-space:nowrap"><span id="mBody1"></span><br><span id="mBody2" class="it"></span><br><span id="mBody3" class="it"></span><span class="cur" id="mBodyC" style="opacity:0"></span></div>
     <div class="abs sans" id="mSend" style="right:44px;bottom:40px;padding:16px 38px;border-radius:40px;background:#f5f4f1;color:#0a0a0a;font-size:26px;font-weight:500">Send</div>
   </div>
   <div class="abs sans" id="mTo" style="left:580px;top:330px;font-size:32px;font-weight:400;white-space:nowrap;transform-origin:0 50%"><span id="mToT"></span><span class="cur" id="mToC" style="opacity:0"></span></div>
@@ -537,7 +537,8 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   const t1 = typeIn("#mToT", "design@mariamoragarcia.com", a + .55, .028); caret("#mToC", a + .45, t1 + .25);
   const t2 = typeIn("#mSub", "Lead Product Designer", t1 + .3, .045); caret("#mSubC", t1 + .25, t2 + .2);
   const t3 = typeIn("#mBody1", "Hey, María!", t2 + .3, .05);
-  const t4 = typeIn("#mBody2", "Let’s talk.", t3 + .35, .05); caret("#mBodyC", t2 + .3, t4 + .55);
+  const t4a = typeIn("#mBody2", "Design is in your DNA.", t3 + .35, .035);
+  const t4 = typeIn("#mBody3", "Let’s talk.", t4a + .12, .04); caret("#mBodyC", t2 + .3, t4 + .55);
   // pointer glides to Send and clicks
   const tc = a + 5.68; // 59.03 s: the final hit of the score lands on the click
   tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 770, duration: .65, ease: "power3.inOut" }, tc - .85);
