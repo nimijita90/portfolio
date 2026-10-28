@@ -147,11 +147,10 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 18 WAND Cashier -->
 <div class="sc" id="s18">
-  <div style="position:absolute;inset:0;perspective:1800px"><div class="page" id="cash" style="left:515px;top:40px;width:890px;height:1000px"><img id="cashI" src="media/xsite-sports-page.webp"></div></div>
-  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">XSITE · Sportsbook</div>
+  <div class="abs" id="cashW" style="left:0;top:0;width:1920px;height:1080px;transform-origin:958px 760px"><img src="media/wand-cashier-flow.png" style="width:1920px;height:1080px;display:block"></div>
+  <div class="abs" id="cashTap" style="left:923px;top:864px;width:70px;height:70px;border-radius:50%;border:3px solid #f5f4f1;background:rgba(18,21,20,.45);box-shadow:0 0 0 2px rgba(18,21,20,.5);opacity:0"></div>
+  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">WAND · Cashier</div>
 </div>
-
-<!-- 19 XSITE gamification -->
 <div class="sc" id="s19">
   <div class="abs" id="gamWrap" style="inset:0;transform-origin:960px 512px">
     <div class="page" id="gam" style="left:260px;top:15px;width:1400px;height:995px"><img id="gamI" src="media/xsite-lobby-desktop.webp"></div>
@@ -385,10 +384,12 @@ const syncLogo = () => {};
   tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
   tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
-// 18 WAND Cashier — close-up on the UI, pull back to the full flow
+// 18 WAND Cashier — the prototype read up close: a tap on "Deposit €50", then the camera pulls back to the whole flow
 { const [a] = T.s18;
-  tl.fromTo("#cash", { rotationY: -18, rotationX: 6, scale: 1.25 }, { rotationY: 8, rotationX: 0, scale: 1, duration: 1.6, ease: "power2.inOut" }, a);
-  tl.fromTo("#cashI", { y: 0 }, { y: -640, duration: 1.6, ease: "power1.inOut" }, a);
+  tl.fromTo("#cashW", { scale: 1.7 }, { scale: 1.6, duration: .45, ease: "none" }, a);
+  tl.fromTo("#cashTap", { scale: .4, opacity: 0 }, { scale: 1, opacity: .9, duration: .12, ease: "power2.out" }, a + .3);
+  tl.to("#cashTap", { scale: 1.8, opacity: 0, duration: .35, ease: "power2.out" }, a + .42);
+  tl.to("#cashW", { scale: 1, duration: .7, ease: "expo.inOut" }, a + .45);
   tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
   tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
 
