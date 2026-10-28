@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="15 15 425 135" fill="#fff" stroke="#fff" stroke-width="8" stroke-linejoin="round">
+<path class="dl dl-d" d="M23 27H110.34L146 62.66V106.34L110.34 142H23Z"/>
+<path class="dl dl-n" d="M167 27H224.34L253 55.66V27H290V142H233.66L203 111.34V142H167Z"/>
+<path class="dl dl-a" d="M347.66 27H396.34L433 63.66V142H397V124H346V142H310V64.66Z"/>
+<text class="dl dl-inc" x="413" y="33" stroke="none" font-family="Onest, sans-serif" font-size="12.5" font-weight="600" letter-spacing=".6">INC</text>
+</svg>
