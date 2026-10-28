@@ -87,7 +87,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 08 Designing digital products. -->
 <div class="sc" id="s08">
-  <div class="page" id="ddImgF" style="left:960px;top:280px;width:860px;height:519px"><video class="shot" id="vBuilder" src="clips/xsite-builder-themes.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:860px;height:519px"></video></div>
+  <div class="page" id="ddImgF" style="left:1040px;top:120px;width:740px;height:840px"><img id="ddImg" src="media/xsite-casino-page.webp"></div>
   <div class="abs serif" id="dd" style="left:140px;top:300px;font-size:150px;line-height:.95"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it">digital</span></span><br><span class="mask"><span class="w">products.</span></span></div>
 </div>
 
@@ -147,9 +147,11 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 18 WAND Cashier -->
 <div class="sc" id="s18">
-  <div class="page" id="cash" style="left:664px;top:60px;width:593px;height:942px"><video class="shot" id="vCash" src="clips/cashier-deposit.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:593px;height:942px"></video></div>
-  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">Cashier · Deposit flow</div>
+  <div style="position:absolute;inset:0;perspective:1800px"><div class="page" id="cash" style="left:515px;top:40px;width:890px;height:1000px"><img id="cashI" src="media/xsite-sports-page.webp"></div></div>
+  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">XSITE · Sportsbook</div>
 </div>
+
+<!-- 19 XSITE gamification -->
 <div class="sc" id="s19">
   <div class="abs" id="gamWrap" style="inset:0;transform-origin:960px 512px">
     <div class="page" id="gam" style="left:260px;top:15px;width:1400px;height:995px"><img id="gamI" src="media/xsite-lobby-desktop.webp"></div>
@@ -256,7 +258,7 @@ const T = {
   s01: [0.0, 1.35], s02: [1.35, 2.8], s03: [2.75, 5.4], s04: [5.4, 6.65], s05: [6.65, 7.7],
   s06: [7.7, 9.3], s07: [9.25, 11.1], s08: [11.05, 13.6], s09: [13.6, 15.6], s10: [15.55, 16.55],
   s11: [16.5, 19.1], s12: [19.05, 20.0], s13: [19.95, 22.0], s13b: [21.95, 24.1], s14: [23.75, 25.1], s15: [25.05, 26.75],
-  s16: [26.5, 29.0], s17: [28.95, 29.85], s18: [29.8, 32.3], s19: [32.25, 33.5], s20: [33.35, 34.3],
+  s16: [26.5, 29.0], s17: [28.95, 29.85], s18: [29.8, 31.5], s19: [31.45, 33.5], s20: [33.35, 34.3],
   s21: [34.3, 35.7], s22: [35.65, 37.4], s23: [37.35, 39.2], s24: [39.2, 40.05], s25: [40.0, 41.6],
   s26: [41.55, 43.25], s27: [43.2, 45.4], s28: [45.35, 47.95], s29: [47.95, 50.65], s30: [50.65, 53.4],
   s31: [53.35, 62.8],
@@ -319,10 +321,11 @@ const syncLogo = () => {};
   tl.from("#years", { opacity: 0, x: 80, duration: .5 }, a + 1.0);
   tl.to(["#ten", "#years"], { x: -1900, duration: .4, ease: exi }, a + 1.45); }
 
-// 08 Designing digital products. — type on the left; beside it the XSITE builder recolours a whole site, theme after theme
+// 08 Designing digital products. — type and product at different speeds; product takes the frame
 { const [a] = T.s08;
   tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a);
   tl.fromTo("#ddImgF", { y: 1100 }, { y: 0, duration: .8, ease: ex }, a);
+  tl.fromTo("#ddImg", { y: 0 }, { y: -1300, duration: 2.5, ease: "power1.inOut" }, a + .2);
   tl.to("#dd", { x: -30, duration: 2.5, ease: "none" }, a);
   tl.to(["#dd", "#ddImgF"], { x: -1900, duration: .4, ease: exi }, a + 2.15); }
 
@@ -382,22 +385,23 @@ const syncLogo = () => {};
   tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
   tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
-// 18 Cashier — the real prototype: choose an amount, the bonus activates, successful deposit
+// 18 WAND Cashier — close-up on the UI, pull back to the full flow
 { const [a] = T.s18;
-  tl.fromTo("#cash", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: .35, ease: ex }, a);
-  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .5);
-  tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 2.1); }
+  tl.fromTo("#cash", { rotationY: -18, rotationX: 6, scale: 1.25 }, { rotationY: 8, rotationX: 0, scale: 1, duration: 1.6, ease: "power2.inOut" }, a);
+  tl.fromTo("#cashI", { y: 0 }, { y: -640, duration: 1.6, ease: "power1.inOut" }, a);
+  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
+  tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
 
-// 19 XSITE casino — the lobby slides in and the sign-up modal pops straight over it while the camera leans in
+// 19 XSITE casino — the lobby lands, then the sign-up modal pops over it and the camera leans in
 { const [a] = T.s19;
-  tl.fromTo("#s19", { x: 1920 }, { x: 0, duration: .4, ease: ex }, a - .05);
-  tl.fromTo("#gamWrap", { scale: 1 }, { scale: 1.03, duration: .35, ease: "none" }, a);
-  tl.from("#gamCap", { opacity: 0, duration: .25 }, a + .1);
-  tl.to("#gamCap", { opacity: 0, duration: .2 }, a + .4);
-  tl.to("#gamDim", { opacity: 1, duration: .25, ease: "power2.out" }, a + .3);
-  tl.fromTo("#gamModal", { scale: .78, y: 90, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, y: 0, opacity: 1, duration: .5, ease: "back.out(1.6)" }, a + .35);
-  tl.to("#gamWrap", { scale: 1.14, duration: .9, ease: "power3.out" }, a + .35);
-  tl.to("#s19", { y: -1080, duration: .35, ease: "expo.in" }, a + .9);
+  tl.fromTo("#s19", { x: 1920 }, { x: 0, duration: .45, ease: ex }, a - .05);
+  tl.fromTo("#gamWrap", { scale: 1 }, { scale: 1.04, duration: .8, ease: "none" }, a);
+  tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .4);
+  tl.to("#gamCap", { opacity: 0, duration: .2 }, a + .8);
+  tl.to("#gamDim", { opacity: 1, duration: .25, ease: "power2.out" }, a + .8);
+  tl.fromTo("#gamModal", { scale: .78, y: 90, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, y: 0, opacity: 1, duration: .6, ease: "back.out(1.6)" }, a + .85);
+  tl.to("#gamWrap", { scale: 1.16, duration: 1.1, ease: "power3.out" }, a + .85);
+  tl.to("#s19", { y: -1080, duration: .35, ease: "expo.in" }, a + 1.7);
 }
 
 // 20 My work spans — tracking compresses
@@ -542,7 +546,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.set({}, {}, b); }
 
 /* ---------- video sync, preview and render hooks ---------- */
-const videos = [["#vBuilder", "s08", 0], ["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vCouple", "s13b", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#vCash", "s18", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
+const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vCouple", "s13b", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
 const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
   if (t < start - .2 || t > end) return null;
   const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
