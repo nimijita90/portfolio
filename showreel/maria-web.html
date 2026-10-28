@@ -170,17 +170,16 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 21 43 operator brands. -->
 <div class="sc" id="s21">
-  <div class="abs serif" id="n43" style="left:90px;top:40px;font-size:1000px;line-height:1">43</div>
-  <div class="abs sans" id="ob" style="left:1330px;top:620px;font-size:92px;font-weight:500;letter-spacing:-.035em;line-height:1">operator<br>brands.</div>
+  <div class="abs serif" id="n43" style="left:140px;top:40px;font-size:1000px;line-height:1">7</div>
+  <div class="abs sans" id="ob" style="left:760px;top:620px;font-size:92px;font-weight:500;letter-spacing:-.035em;line-height:1">designers<br>led.</div>
 </div>
 
 <!-- 22 22 launched across 15 markets. -->
 <div class="sc" id="s22">
   <div class="abs serif" id="n22" style="left:140px;top:120px;font-size:500px;line-height:1">22</div>
-  <div class="abs sans" id="l22" style="left:720px;top:400px;font-size:84px;font-weight:300">launched</div>
-  <div class="abs sans" id="a15" style="left:140px;top:720px;font-size:84px;font-weight:300">across</div>
-  <div class="abs serif it" id="n15" style="left:520px;top:560px;font-size:330px;line-height:1">15</div>
-  <div class="abs sans" id="m15" style="left:960px;top:720px;font-size:84px;font-weight:300">markets.</div>
+  <div class="abs sans" id="l22" style="left:720px;top:400px;font-size:84px;font-weight:300">branded sites launched.</div>
+  <div class="abs serif it" id="n15" style="left:160px;top:560px;font-size:330px;line-height:1">5</div>
+  <div class="abs sans" id="m15" style="left:420px;top:720px;font-size:84px;font-weight:300">design systems managed.</div>
 </div>
 
 <!-- 23 Logos -->
@@ -427,17 +426,16 @@ const syncLogo = () => {};
 { const [a] = T.s20; tl.fromTo("#s20", { y: 1080 }, { y: 0, duration: .45, ease: ex }, a);
   tl.fromTo("#spans", { letterSpacing: ".35em" }, { letterSpacing: "0em", duration: .6, ease: ex }, a); }
 
-// 21 43 operator brands. — the number dominates and bleeds off frame (no count-up, so no wrong numbers on screen)
+// 21 7 designers led. — the number dominates the frame (no count-up, so no wrong numbers on screen)
 { const [a] = T.s21;
   tl.fromTo("#n43", { scale: .2, opacity: 0, transformOrigin: "30% 60%" }, { scale: 1, opacity: 1, duration: .55, ease: ex }, a);
   tl.from("#ob", { opacity: 0, x: 80, duration: .5 }, a + .35);
   tl.to("#s21", { y: 1080, duration: .35, ease: exi }, a + 1.05); }
 
-// 22 22 launched across 15 markets. — two numbers at contrasting scales; footnote keeps the claim accurate
+// 22 22 branded sites launched. 5 design systems managed. — two numbers at contrasting scales
 { const [a] = T.s22;
   tl.from("#n22", { y: -900, duration: .55, ease: ex }, a);
   tl.from("#l22", { opacity: 0, x: 60, duration: .4 }, a + .3);
-  tl.from("#a15", { opacity: 0, x: -60, duration: .4 }, a + .55);
   tl.from("#n15", { scale: 1.8, opacity: 0, duration: .5, ease: ex }, a + .65);
   tl.from("#m15", { opacity: 0, x: 60, duration: .4 }, a + .8);
   tl.to("#s22", { opacity: 0, duration: .25 }, a + 1.5); }
