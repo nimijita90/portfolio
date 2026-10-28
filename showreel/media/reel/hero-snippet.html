@@ -1,0 +1,82 @@
+<!-- María Mora — showreel button for the hero
+     Files (same folder as the page, or change the paths): maria-showreel-1080p.mp4, maria-showreel-720p.mp4, maria-showreel-poster.jpg
+     The button opens the video full screen over the page and it plays from the start with sound.
+     It closes with ×, the Esc key or a click outside the video. Nothing downloads until someone presses the button.
+     If the hero already has its own button, give it  data-reel-open  and delete the one below. -->
+
+<button class="reel-open" type="button" data-reel-open>
+  <span class="reel-open__icon" aria-hidden="true">▶</span> Watch showreel
+</button>
+
+<div class="reel" id="reel" role="dialog" aria-modal="true" aria-label="María Mora — showreel" hidden>
+  <div class="reel__frame">
+    <video id="reelVideo" controls playsinline preload="none" poster="maria-showreel-poster.jpg"
+           data-src="maria-showreel-1080p.mp4" data-src-small="maria-showreel-720p.mp4"></video>
+  </div>
+  <button class="reel__close" type="button" aria-label="Close showreel">×</button>
+</div>
+
+<style>
+  .reel-open {
+    display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 999px;
+    border: 1px solid currentColor; background: transparent; color: inherit;
+    font: inherit; font-size: 16px; cursor: pointer; transition: background .2s, color .2s;
+  }
+  .reel-open:hover { background: #f5f4f1; color: #000; }
+  .reel-open:focus-visible, .reel__close:focus-visible { outline: 2px solid #f5f4f1; outline-offset: 3px; }
+  .reel-open__icon { font-size: 12px; }
+
+  .reel {
+    position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 24px;
+    background: rgba(0,0,0,.92); opacity: 0; transition: opacity .3s ease;
+  }
+  .reel[hidden] { display: none; }
+  .reel.is-open { opacity: 1; }
+  .reel__frame { width: min(100%, calc((100vh - 48px) * 16 / 9)); aspect-ratio: 16 / 9; }
+  .reel video { width: 100%; height: 100%; display: block; background: #000; border-radius: 8px; }
+  .reel__close {
+    position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(245,244,241,.4); background: rgba(0,0,0,.5); color: #f5f4f1;
+    font-size: 26px; line-height: 1; cursor: pointer;
+  }
+  @media (prefers-reduced-motion: reduce) { .reel, .reel-open { transition: none; } }
+</style>
+
+<script>
+  (() => {
+    const reel = document.getElementById("reel"), video = document.getElementById("reelVideo");
+    const close = reel.querySelector(".reel__close");
+    let opener = null;
+
+    const open = (e) => {
+      opener = e.currentTarget;
+      reel.hidden = false;
+      requestAnimationFrame(() => reel.classList.add("is-open"));
+      document.documentElement.style.overflow = "hidden";
+      if (!video.src) video.src = matchMedia("(max-width: 900px)").matches ? video.dataset.srcSmall : video.dataset.src; // phones get the lighter file
+      video.currentTime = 0;
+      video.muted = false;
+      video.play().catch(() => {}); // started by the click, so the browser allows sound
+      close.focus();
+    };
+    const shut = () => {
+      video.pause();
+      reel.classList.remove("is-open");
+      reel.hidden = true;
+      document.documentElement.style.overflow = "";
+      if (opener) opener.focus();
+    };
+
+    document.querySelectorAll("[data-reel-open]").forEach((b) => b.addEventListener("click", open));
+    close.addEventListener("click", shut);
+    reel.addEventListener("click", (e) => { if (e.target === reel) shut(); });
+    document.addEventListener("keydown", (e) => {
+      if (reel.hidden) return;
+      if (e.key === "Escape") shut();
+      if (e.key === "Tab") { // keep keyboard focus inside the player
+        const f = [video, close], i = f.indexOf(document.activeElement);
+        e.preventDefault(); f[(i + (e.shiftKey ? f.length - 1 : 1)) % f.length].focus();
+      }
+    });
+  })();
+</script>
