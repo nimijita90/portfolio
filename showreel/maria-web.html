@@ -80,6 +80,11 @@ svg{position:absolute;inset:0;overflow:visible}
 </div>
 
 <!-- 07 10+ years. -->
+<div class="sc" id="s06m">
+  <video class="shot" id="vMaria" src="clips/maria-turn.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs" id="mMask" style="left:0;top:0;width:1920px;height:1080px;background:#000;mix-blend-mode:multiply"><div class="abs serif it" id="mWord" style="left:960px;top:540px;font-size:660px;line-height:1;color:#fff;white-space:nowrap;transform:translate(-50%,-55%)">María</div></div>
+  <div class="abs serif it" id="mLine" style="left:960px;top:540px;font-size:660px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(245,244,241,.5);white-space:nowrap;transform:translate(-50%,-55%)">María</div>
+</div>
 <div class="sc" id="s07">
   <div class="abs serif" id="ten" style="left:80px;top:40px;font-size:1060px;line-height:1"><span id="tenN">0</span>+</div>
   <div class="abs sans" id="years" style="right:150px;bottom:150px;font-size:96px;font-weight:300">years.</div>
@@ -255,13 +260,13 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
-  s01: [0.0, 1.35], s02: [1.35, 2.8], s03: [2.75, 5.4], s04: [5.4, 6.65], s05: [6.65, 7.7],
-  s06: [7.7, 9.3], s07: [9.25, 11.1], s08: [11.05, 13.6], s09: [13.6, 15.6], s10: [15.55, 16.55],
-  s11: [16.5, 19.1], s12: [19.05, 20.0], s13: [19.95, 22.0], s13b: [21.95, 24.1], s14: [23.75, 25.1], s15: [25.05, 26.75],
-  s16: [26.5, 29.0], s17: [28.95, 29.85], s18: [29.8, 31.5], s19: [31.45, 33.5], s20: [33.35, 34.3],
-  s21: [34.3, 35.7], s22: [35.65, 37.4], s23: [37.35, 39.2], s24: [39.2, 40.05], s25: [40.0, 41.6],
-  s26: [41.55, 43.25], s27: [43.2, 45.4], s28: [45.35, 47.95], s29: [47.95, 50.65], s30: [50.65, 53.4],
-  s31: [53.35, 62.8],
+  s01: [0, 1.35], s02: [1.35, 2.8], s03: [2.75, 5.4], s04: [5.4, 6.65], s05: [6.65, 7.7],
+  s06: [7.7, 9.3], s06m: [9.3, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6], s10: [17.55, 18.55],
+  s11: [18.5, 21.1], s12: [21.05, 22], s13: [21.95, 24], s13b: [23.95, 26.1], s14: [25.75, 27.1], s15: [27.05, 28.75],
+  s16: [28.5, 31], s17: [30.95, 31.85], s18: [31.8, 33.5], s19: [33.45, 35.5], s20: [35.35, 36.3],
+  s21: [36.3, 37.7], s22: [37.65, 39.4], s23: [39.35, 41.2], s24: [41.2, 42.05], s25: [42, 43.6],
+  s26: [43.55, 45.25], s27: [45.2, 47.4], s28: [47.35, 49.95], s29: [49.95, 52.65], s30: [52.65, 55.4],
+  s31: [55.35, 64.8],
 };
 for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
 
@@ -312,6 +317,14 @@ const syncLogo = () => {};
   tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
   tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 1.3);
   tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 1.3); }
+
+// 06m María — after the name, a glimpse of her: first only through the letters of "María", from behind, in the dark;
+// as she turns, the letters open into the full frame and she smiles; the beat returns on "10+ years."
+{ const [a] = T.s06m;
+  tl.fromTo("#vMaria", { scale: 1.0 }, { scale: 1.06, duration: 2.0, ease: "none" }, a);
+  tl.fromTo(["#mWord", "#mLine"], { scale: 1.12 }, { scale: 1.0, duration: 1.1, ease: "power2.out" }, a);
+  tl.to(["#mWord", "#mLine"], { scale: 2.4, duration: .55, ease: "expo.in" }, a + 1.0);
+  tl.to(["#mMask", "#mLine"], { opacity: 0, duration: .4, ease: "power2.in" }, a + 1.15); }
 
 // 07 10+ years. — oversized number, kept inside the frame, slides out left
 { const [a] = T.s07;
@@ -546,7 +559,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.set({}, {}, b); }
 
 /* ---------- video sync, preview and render hooks ---------- */
-const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vCouple", "s13b", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
+const videos = [["#vMaria", "s06m", 0], ["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vCouple", "s13b", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
 const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
   if (t < start - .2 || t > end) return null;
   const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
