@@ -87,7 +87,7 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 08 Designing digital products. -->
 <div class="sc" id="s08">
-  <div class="page" id="ddImgF" style="left:1040px;top:120px;width:740px;height:840px"><img id="ddImg" src="media/xsite-casino-page.webp"></div>
+  <div class="abs" id="ddImgF" style="left:960px;top:150px;width:860px;height:785px"><video class="shot" id="vLobbies" src="clips/wand-brand-lobbies.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:860px;height:785px;object-fit:contain"></video></div>
   <div class="abs serif" id="dd" style="left:140px;top:300px;font-size:150px;line-height:.95"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it">digital</span></span><br><span class="mask"><span class="w">products.</span></span></div>
 </div>
 
@@ -147,11 +147,9 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 18 WAND Cashier -->
 <div class="sc" id="s18">
-  <div style="position:absolute;inset:0;perspective:1800px"><div class="page" id="cash" style="left:515px;top:40px;width:890px;height:1000px"><img id="cashI" src="media/xsite-sports-page.webp"></div></div>
-  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">XSITE · Sportsbook</div>
+  <div class="page" id="cash" style="left:664px;top:60px;width:593px;height:942px"><video class="shot" id="vCash" src="clips/cashier-deposit.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:593px;height:942px"></video></div>
+  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">Cashier · Deposit flow</div>
 </div>
-
-<!-- 19 XSITE gamification -->
 <div class="sc" id="s19">
   <div class="abs" id="gamWrap" style="inset:0;transform-origin:960px 512px">
     <div class="page" id="gam" style="left:260px;top:15px;width:1400px;height:995px"><img id="gamI" src="media/xsite-lobby-desktop.webp"></div>
@@ -321,11 +319,10 @@ const syncLogo = () => {};
   tl.from("#years", { opacity: 0, x: 80, duration: .5 }, a + 1.0);
   tl.to(["#ten", "#years"], { x: -1900, duration: .4, ease: exi }, a + 1.45); }
 
-// 08 Designing digital products. — type and product at different speeds; product takes the frame
+// 08 Designing digital products. — type on the left; the WAND brand switcher runs lobby after lobby beside it
 { const [a] = T.s08;
   tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a);
   tl.fromTo("#ddImgF", { y: 1100 }, { y: 0, duration: .8, ease: ex }, a);
-  tl.fromTo("#ddImg", { y: 0 }, { y: -1300, duration: 2.5, ease: "power1.inOut" }, a + .2);
   tl.to("#dd", { x: -30, duration: 2.5, ease: "none" }, a);
   tl.to(["#dd", "#ddImgF"], { x: -1900, duration: .4, ease: exi }, a + 2.15); }
 
@@ -385,11 +382,10 @@ const syncLogo = () => {};
   tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
   tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
-// 18 WAND Cashier — close-up on the UI, pull back to the full flow
+// 18 Cashier — the real prototype: choose an amount, the bonus activates, successful deposit
 { const [a] = T.s18;
-  tl.fromTo("#cash", { rotationY: -18, rotationX: 6, scale: 1.25 }, { rotationY: 8, rotationX: 0, scale: 1, duration: 1.6, ease: "power2.inOut" }, a);
-  tl.fromTo("#cashI", { y: 0 }, { y: -640, duration: 1.6, ease: "power1.inOut" }, a);
-  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
+  tl.fromTo("#cash", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: .35, ease: ex }, a);
+  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .5);
   tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
 
 // 19 XSITE casino — the lobby lands, then the sign-up modal pops over it and the camera leans in
@@ -546,7 +542,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.set({}, {}, b); }
 
 /* ---------- video sync, preview and render hooks ---------- */
-const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vCouple", "s13b", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
+const videos = [["#vLobbies", "s08", 0], ["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vCouple", "s13b", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#vCash", "s18", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
 const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
   if (t < start - .2 || t > end) return null;
   const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
