@@ -61,6 +61,8 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 01b over99 logo (María's supplied animation, driven by the timeline) -->
 <div class="sc" id="s01b"><div class="abs" id="dnaHalo" style="left:160px;top:140px;width:1600px;height:800px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(245,244,241,.10) 0%,rgba(245,244,241,.04) 45%,rgba(0,0,0,0) 75%);opacity:0"></div>
+
+  <div class="abs" id="dnaFill" style="left:400px;top:362px;width:1120px;height:356px;overflow:hidden;background:#1e3f8a;opacity:0;-webkit-mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2215%2015%20425%20135%22%20preserveAspectRatio%3D%22none%22%20fill%3D%22%23fff%22%20stroke%3D%22%23fff%22%20stroke-width%3D%228%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M23%2027H110.34L146%2062.66V106.34L110.34%20142H23Z%22/%3E%3Cpath%20d%3D%22M167%2027H224.34L253%2055.66V27H290V142H233.66L203%20111.34V142H167Z%22/%3E%3Cpath%20d%3D%22M347.66%2027H396.34L433%2063.66V142H397V124H346V142H310V64.66Z%22/%3E%3C/svg%3E');mask-image:url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%2215%2015%20425%20135%22%20preserveAspectRatio%3D%22none%22%20fill%3D%22%23fff%22%20stroke%3D%22%23fff%22%20stroke-width%3D%228%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M23%2027H110.34L146%2062.66V106.34L110.34%20142H23Z%22/%3E%3Cpath%20d%3D%22M167%2027H224.34L253%2055.66V27H290V142H233.66L203%20111.34V142H167Z%22/%3E%3Cpath%20d%3D%22M347.66%2027H396.34L433%2063.66V142H397V124H346V142H310V64.66Z%22/%3E%3C/svg%3E');-webkit-mask-size:100% 100%;mask-size:100% 100%"><div class="abs dnaBlob" style="left:-200px;top:-300px;width:820px;height:820px;border-radius:50%;background:radial-gradient(circle,#38c6e0 0%,#38c6e0 22%,rgba(0,0,0,0) 66%)"></div><div class="abs dnaBlob" style="left:500px;top:-150px;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,#b5604a 0%,#b5604a 22%,rgba(0,0,0,0) 66%)"></div><div class="abs dnaBlob" style="left:250px;top:-250px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,#f4efe8 0%,#f4efe8 22%,rgba(0,0,0,0) 66%)"></div><div class="abs dnaBlob" style="left:780px;top:0px;width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,#2a5aa0 0%,#2a5aa0 22%,rgba(0,0,0,0) 66%)"></div><div class="abs dnaBlob" style="left:-100px;top:50px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,#e9a07a 0%,#e9a07a 22%,rgba(0,0,0,0) 66%)"></div><div class="abs dnaBlob" style="left:900px;top:-350px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,#38c6e0 0%,#38c6e0 22%,rgba(0,0,0,0) 66%)"></div></div>
   <svg id="dnaLogo" viewBox="15 15 425 135" style="inset:auto;left:400px;top:362px;width:1120px;height:356px;fill:#f5f4f1;stroke:#f5f4f1;stroke-width:8;stroke-linejoin:round;overflow:visible" role="img" aria-label="DNA Inc"><path class="dl dl-d" d="M23 27H110.34L146 62.66V106.34L110.34 142H23Z"/>
 <path class="dl dl-n" d="M167 27H224.34L253 55.66V27H290V142H233.66L203 111.34V142H167Z"/>
 <path class="dl dl-a" d="M347.66 27H396.34L433 63.66V142H397V124H346V142H310V64.66Z"/>
@@ -278,7 +280,8 @@ const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.se
   tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
   tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
 
-// 01b DNA — the logo lands on the hit; D, N and A lock in from alternating sides like a strand, INC last
+// 01b DNA — the logo lands on the hit, D, N and A locking in from alternating sides like a strand; then the white opens
+// onto a moving colour field in DNA's palette (after the colour video on their site), the logo pushes in and leaves
 const syncLogo = () => {};
 { const [a] = T.s01b;
   gsap.set("#dnaLogo .dl", { transformOrigin: "50% 50%" });
@@ -286,7 +289,12 @@ const syncLogo = () => {};
   tl.fromTo("#dnaHalo", { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" }, a + .1);
   ["#dnaLogo .dl-d", "#dnaLogo .dl-n", "#dnaLogo .dl-a"].forEach((g, i) => tl.fromTo(g, { y: i % 2 ? 90 : -90, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: ex, immediateRender: true }, a + i * .08));
   tl.fromTo("#dnaLogo .dl-inc", { opacity: 0 }, { opacity: 1, duration: .3, immediateRender: true }, a + .6);
-  tl.to("#dnaLogo", { x: -1900, duration: .35, ease: exi }, a + 1.85);
+  // the colour field drifts the whole time; it shows through once the letters have landed
+  gsap.utils.toArray("#dnaFill .dnaBlob").forEach((b, i) => tl.fromTo(b, { x: 0, y: 0 }, { x: [260, -220, 180, -300, 240, -160][i], y: [140, 90, -120, 60, -100, 150][i], duration: 2.3, ease: "sine.inOut" }, a));
+  tl.set("#dnaFill", { opacity: 1 }, a + .5);
+  tl.to(["#dnaLogo .dl-d", "#dnaLogo .dl-n", "#dnaLogo .dl-a"], { fillOpacity: 0, strokeOpacity: 0, duration: .35, stagger: .07, ease: "power2.in" }, a + .55);
+  tl.to(["#dnaLogo", "#dnaFill"], { scale: 1.06, transformOrigin: "50% 50%", duration: .9, ease: "power1.inOut" }, a + .95);
+  tl.to(["#dnaLogo", "#dnaFill"], { x: -1900, duration: .35, ease: exi }, a + 1.85);
   tl.to("#dnaHalo", { x: -1900, opacity: 0, duration: .35, ease: exi }, a + 1.85); }
 
 // 02 If you're looking for — typewriter with cursor
