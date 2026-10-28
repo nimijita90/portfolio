@@ -543,19 +543,20 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.fromTo("#mTo", { y: 60 }, { y: 0, duration: .7, ease: ex }, a);
   // To · Subject · body, typed
   const t1 = typeIn("#mToT", "design@mariamoragarcia.com", a + .55, .028); caret("#mToC", a + .45, t1 + .25);
-  const t2 = typeIn("#mSub", "Lead Product Designer", t1 + .3, .045); caret("#mSubC", t1 + .25, t2 + .2);
-  const t3 = typeIn("#mBody1", "Hey, María!", t2 + .3, .05);
-  const t4a = typeIn("#mBody2", "We found our curious mind.", t3 + .35, .033);
-  const t4 = typeIn("#mBody3", "Let’s talk.", t4a + .12, .04); caret("#mBodyC", t2 + .3, t4 + .55);
+  const t2 = typeIn("#mSub", "Lead Product Designer", t1 + .25, .035); caret("#mSubC", t1 + .2, t2 + .2);
+  const t3 = typeIn("#mBody1", "Hey, María!", t2 + .25, .045);
+  const t4a = typeIn("#mBody2", "We found our curious mind.", t3 + .25, .028);
+  const t4 = typeIn("#mBody3", "Let’s talk.", t4a + .1, .035); caret("#mBodyC", t2 + .25, t4 + .55);
   // pointer glides to Send and clicks
   const tc = a + 5.68; // 59.03 s: the final hit of the score lands on the click
-  tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 770, duration: .65, ease: "power3.inOut" }, tc - .85);
+  tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 770, duration: .55, ease: "power3.inOut" }, tc - .75);
   tl.to("#mSend", { scale: .92, duration: .08, ease: "power2.out" }, tc);
   tl.to("#mSend", { scale: 1, duration: .2, ease: "power2.out" }, tc + .08);
   tl.to("#mPtr", { scale: .85, duration: .08, transformOrigin: "10% 10%" }, tc);
   tl.to("#mPtr", { scale: 1, duration: .2 }, tc + .08);
   // sent: the window flies off, the pointer leaves, the address stays and glides to centre stage
   tl.to("#mCard", { y: -980, x: 260, rotation: -7, scale: .72, duration: .6, ease: "expo.in" }, tc + .3);
+  tl.to("#mCard", { opacity: 0, duration: .35, ease: "power2.in" }, tc + .35);
   tl.to("#mPtr", { x: 1900, y: 1150, duration: .5, ease: "power2.in" }, tc + .35);
   tl.to("#mTo", { x: () => 960 - 580 - $("#mTo").offsetWidth * 1.9 / 2, y: 540 - 330 - 24, scale: 1.9, duration: 1.0, ease: "expo.inOut" }, tc + .65);
   tl.fromTo("#mSent", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .6, ease: "power2.out" }, tc + 1.5);
