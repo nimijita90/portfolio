@@ -81,9 +81,8 @@ svg{position:absolute;inset:0;overflow:visible}
 
 <!-- 07 10+ years. -->
 <div class="sc" id="s06m">
-  <video class="shot" id="vMaria" src="clips/maria-turn.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
-  <div class="abs" id="mMask" style="left:0;top:0;width:1920px;height:1080px;background:#000;mix-blend-mode:multiply"><div class="abs serif it" id="mWord" style="left:960px;top:540px;font-size:660px;line-height:1;color:#fff;white-space:nowrap;transform:translate(-50%,-55%)">María</div></div>
-  <div class="abs serif it" id="mLine" style="left:960px;top:540px;font-size:660px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(245,244,241,.5);white-space:nowrap;transform:translate(-50%,-55%)">María</div>
+  <video class="shot" id="vMaria" src="clips/maria-back.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs" id="mDust" style="left:0;top:0;width:1920px;height:1080px"></div>
 </div>
 <div class="sc" id="s07">
   <div class="abs serif" id="ten" style="left:80px;top:40px;font-size:1060px;line-height:1"><span id="tenN">0</span>+</div>
@@ -261,7 +260,7 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
   s01: [0, 1.35], s02: [1.35, 2.8], s03: [2.75, 5.4], s04: [5.4, 6.65], s05: [6.65, 7.7],
-  s06: [7.7, 9.3], s06m: [9.3, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6], s10: [17.55, 18.55],
+  s06m: [7.7, 9.35], s06: [9.35, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6], s10: [17.55, 18.55],
   s11: [18.5, 21.1], s12: [21.05, 22], s13: [21.95, 24], s13b: [23.95, 26.1], s14: [25.75, 27.1], s15: [27.05, 28.75],
   s16: [28.5, 31], s17: [30.95, 31.85], s18: [31.8, 33.5], s19: [33.45, 35.5], s20: [35.35, 36.3],
   s21: [36.3, 37.7], s22: [37.65, 39.4], s23: [39.35, 41.2], s24: [41.2, 42.05], s25: [42, 43.6],
@@ -315,16 +314,24 @@ const syncLogo = () => {};
   tl.from("#im", { x: -80, opacity: 0, duration: .3, ease: ex }, a);
   tl.fromTo(chs, { yPercent: 115 }, { yPercent: 0, duration: .5, stagger: .025, ease: "expo.out" }, a + .12);
   tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
-  tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 1.3);
-  tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 1.3); }
+  tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 1.6);
+  tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 1.6); }
 
-// 06m María — after the name, a glimpse of her: first only through the letters of "María", from behind, in the dark;
-// as she turns, the letters open into the full frame and she smiles; the beat returns on "10+ years."
-{ const [a] = T.s06m;
-  tl.fromTo("#vMaria", { scale: 1.0 }, { scale: 1.06, duration: 2.0, ease: "none" }, a);
-  tl.fromTo(["#mWord", "#mLine"], { scale: 1.12 }, { scale: 1.0, duration: 1.1, ease: "power2.out" }, a);
-  tl.to(["#mWord", "#mLine"], { scale: 2.4, duration: .55, ease: "expo.in" }, a + 1.0);
-  tl.to(["#mMask", "#mLine"], { opacity: 0, duration: .4, ease: "power2.in" }, a + 1.15); }
+// 06m María from behind, hair moving — her face never shows; fine particles lift off her back and drift left,
+// then the beat returns with "I'm María Mora."
+{ const [a, b] = T.s06m; const dust = $("#mDust");
+  tl.fromTo("#vMaria", { scale: 1.0 }, { scale: 1.04, duration: b - a, ease: "none" }, a);
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let k = 0; k < 70; k++) {
+    const p = document.createElement("div"), size = 2 + rnd() * 3.5;
+    Object.assign(p.style, { position: "absolute", left: 1150 + rnd() * 110 + "px", top: 330 + rnd() * 680 + "px", width: size + "px", height: size + "px", borderRadius: "50%", background: "#f5f4f1" });
+    dust.appendChild(p);
+    const t0 = a + .1 + rnd() * 1.0, d = .9 + rnd() * .6, peak = .35 + rnd() * .55;
+    gsap.set(p, { opacity: 0 });
+    tl.fromTo(p, { x: 0, y: 0 }, { x: -(260 + rnd() * 700), y: -(20 + rnd() * 160), duration: d, ease: "power1.out" }, t0);
+    tl.to(p, { opacity: peak, duration: .2, ease: "none" }, t0);
+    tl.to(p, { opacity: 0, duration: .45, ease: "power1.in" }, t0 + d - .45);
+  } }
 
 // 07 10+ years. — oversized number, kept inside the frame, slides out left
 { const [a] = T.s07;
@@ -342,10 +349,9 @@ const syncLogo = () => {};
   tl.to("#dd", { x: -30, duration: 2.5, ease: "none" }, a);
   tl.to(["#dd", "#ddImgF"], { x: -1900, duration: .4, ease: exi }, a + 2.15); }
 
-// 09 I've learned that great products need — sentence builds, everything dims except "need"
+// 09 I've learned that great products need — the sentence builds word by word
 { const [a] = T.s09;
   tl.from("#learn .w", { opacity: 0, y: 30, duration: .4, stagger: .13 }, a);
-  tl.to("#learn .w:not(#need)", { opacity: .25, duration: .3 }, a + 1.55);
   tl.to("#learn", { x: -1600, duration: .3, ease: exi }, a + 1.7); }
 
 // 10 Evidence. — the camera passes along the oversized word, then dives into its full stop

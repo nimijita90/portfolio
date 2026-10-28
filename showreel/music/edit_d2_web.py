@@ -1,6 +1,7 @@
-"""Web cut (maria-web.html): the edit_d2.py score with one extra bar after "I'm María Mora." — a strings-only bar
-(source 37.535-39.535, the break) under María's reveal, so the beat slams back in on "10+ years." Every later hit moves
-2.0 s later with the picture; the final hit lands on the Send click at 61.03 s and the track ends at 64.8 s.
+"""Web cut (maria-web.html): the edit_d2.py score with one extra bar after "I know one." — a strings-only bar
+(source 37.535-39.535, the break) under the shot of María from behind, so the beat slams back in with "I'm María Mora."
+Every later hit moves 2.0 s later with the picture; the final hit lands on the Send click at 61.03 s and the track ends
+at 64.8 s.
 
 Same method as edit_d2.py: cuts 12 ms before a downbeat, 8 ms equal-power crossfades, normalised to -1 dBFS.
 
@@ -22,9 +23,9 @@ LENGTH = 64.8
 # source spans (seconds); bars start at 1.535 + 2k
 SEGMENTS = [
     (0.185, 1.535),    # strings alone, trimmed so the slam lands at 1.35
-    (23.535, 31.535),  # bars 11-14: the beat, up to "I'm María Mora."
-    (37.535, 39.535),  # the strings-only bar from the break: María's reveal
-    (31.535, 35.535),  # bars 15-16: the beat slams back on "10+ years."
+    (23.535, 29.535),  # bars 11-13: the beat, up to "I know one."
+    (37.535, 39.535),  # the strings-only bar from the break: María from behind
+    (29.535, 35.535),  # bars 14-16: the beat slams back with "I'm María Mora."
     (43.535, 59.535),  # bars 21-28: the densest section
     (19.535, 43.535),  # bars 9-20: two extra bars of beat, the last hit (bar 17) and the strings-only break
     (49.535, 51.535),  # bar 23: the beat comes back
