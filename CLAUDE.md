@@ -36,3 +36,7 @@ This package is an independent working copy of María Mora's portfolio. It is no
 - Verify both routes at desktop, mobile and reduced-motion settings.
 - Review the asset and licensing notes.
 - Publish only to a newly approved destination.
+
+## Showreel job applications
+
+- New company cuts of María's showreel start from `showreel/maria-dna.html` (her chosen template). Follow `showreel/CANDIDATURAS.md`: what stays, what changes per company, the preview-first workflow and her feedback rules.
