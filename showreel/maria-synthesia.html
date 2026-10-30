@@ -234,7 +234,7 @@ svg{position:absolute;inset:0;overflow:visible}
     <div class="abs sans" style="left:44px;top:190px;font-size:26px;color:var(--mute)">Subject</div>
     <div class="abs sans" style="left:180px;top:184px;font-size:32px;font-weight:400"><span id="mSub"></span><span class="cur" id="mSubC" style="opacity:0"></span></div>
     <div class="abs" style="left:44px;right:44px;top:252px;height:1px;background:rgba(245,244,241,.12)"></div>
-    <div class="abs serif" style="left:44px;top:300px;font-size:84px;line-height:1.15;white-space:nowrap"><span id="mBody1"></span><span class="cur" id="mBodyC1" style="opacity:0"></span><br><span id="mBody2" class="it"></span><span class="cur" id="mBodyC2" style="opacity:0"></span><br><span id="mBody3" class="it"></span><span class="cur" id="mBodyC" style="opacity:0"></span></div>
+    <div class="abs serif" style="left:44px;top:300px;font-size:84px;line-height:1.15;white-space:nowrap"><span id="mBody1"></span><span class="cur" id="mBodyC1" style="opacity:0"></span><br><span id="mBody2" class="it" style="font-size:.92em"></span><span class="cur" id="mBodyC2" style="opacity:0"></span><br><span id="mBody3" class="it"></span><span class="cur" id="mBodyC" style="opacity:0"></span></div>
     <div class="abs sans" id="mSend" style="right:44px;bottom:40px;padding:16px 38px;border-radius:40px;background:#f5f4f1;color:#0a0a0a;font-size:26px;font-weight:500">Send</div>
   </div>
   <div class="abs sans" id="mTo" style="left:580px;top:330px;font-size:32px;font-weight:400;white-space:nowrap;transform-origin:0 50%"><span id="mToT"></span><span class="cur" id="mToC" style="opacity:0"></span></div>
@@ -524,7 +524,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   const t1 = typeIn("#mToT", "design@mariamoragarcia.com", a + .55, .028); caret("#mToC", a + .45, t1 + .25);
   const t2 = typeIn("#mSub", "Product Designer, AI-Native Products", t1 + .25, .028); caret("#mSubC", t1 + .2, t2 + .2);
   const t3 = typeIn("#mBody1", "Hey, María!", t2 + .25, .045);
-  const t4a = typeIn("#mBody2", "We found our human touch.", t3 + .25, .028);
+  const t4a = typeIn("#mBody2", "You love AI too much to say no.", t3 + .25, .026);
   const t4 = typeIn("#mBody3", "Let’s talk.", t4a + .1, .035);
   // the text cursor follows the line being typed
   caret("#mBodyC1", t2 + .2, t3 + .15); caret("#mBodyC2", t3 + .15, t4a + .05); caret("#mBodyC", t4a + .05, t4 + .55);
