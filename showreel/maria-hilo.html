@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>[hilo cut] María Mora — Showreel</title>
+<!--
+  Editable showreel composition. Every scene lives in one GSAP timeline; scene times are in the T object.
+  Open in a browser to preview (space = play/pause, ←/→ = ±1 s), or render frames with render.mjs.
+  Stage is a fixed 1920×1080 canvas; the renderer scales it down for draft output.
+  Kinetic type vocabulary (after the Envato reference): typewriter + cursor, echo roll, extreme close-up punch,
+  horizontal pass through oversized words, perspective roll, echo marquee, letter cascade, glow reveal.
+-->
+<style>
+@font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Silk";src:url("../public/portfolio/fonts/Silk%20Serif%20Regular%20Italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Onest";src:url("../node_modules/@fontsource-variable/onest/files/onest-latin-wght-normal.woff2") format("woff2");font-weight:100 900}
+@font-face{font-family:"Onest";src:url("../node_modules/@fontsource-variable/onest/files/onest-latin-ext-wght-normal.woff2") format("woff2");font-weight:100 900;unicode-range:U+0100-02AF,U+1E00-1EFF}
+:root{--ink:#f5f4f1;--mute:#8d8a84;--line:rgba(245,244,241,.22);--serif:"Silk",Georgia,serif;--sans:"Onest",Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#000;overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:1920px;height:1080px;background:#000;color:var(--ink);font-family:var(--sans);overflow:hidden;transform-origin:0 0}
+.sc{position:absolute;inset:0;visibility:hidden}
+.abs{position:absolute}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.025em;line-height:.9}
+.it{font-style:italic}
+.cap{font-family:var(--sans);font-size:24px;letter-spacing:.32em;text-transform:uppercase;color:#e9e6e0}
+.c{left:50%;top:50%;white-space:nowrap}
+.w,.ch,.lc{display:inline-block;will-change:transform}
+.mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;padding-right:.14em;margin-right:-.14em}
+.cur{display:inline-block;width:.07em;height:.95em;background:var(--ink);vertical-align:-.12em;margin-left:.06em}
+.stroke{color:transparent;-webkit-text-stroke:2px rgba(245,244,241,.55)}
+img,video{display:block}
+.shot{position:absolute;object-fit:cover}
+.frame{position:absolute;border-radius:18px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.6)}
+.rule{position:absolute;height:1px;background:var(--line)}
+.row{position:absolute;left:0;display:flex;gap:110px;align-items:center;white-space:nowrap}
+.row img{object-fit:contain;filter:brightness(0) invert(1);opacity:.92}
+.node{position:absolute;border:1px solid var(--line);border-radius:14px;padding:26px 30px;font-size:32px;background:#0b0b0b;min-width:250px}
+.node small{display:block;font-size:15px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:10px}
+svg{position:absolute;inset:0;overflow:visible}
+.cmp{position:absolute;border-radius:12px;background:#141414;border:1px solid #2a2a2a;font-size:22px;display:flex;align-items:center;padding:0 22px}
+.btn{background:var(--ink);color:#000;font-weight:600;justify-content:center}
+.tok{font-family:ui-monospace,Menlo,monospace;font-size:18px;color:#cfcac2}
+.sw{width:22px;height:22px;border-radius:6px;margin-right:12px}
+.ava{position:absolute;width:64px;height:64px;border-radius:50%;background:#1d1d1d;border:1px solid #3a3a3a;overflow:hidden}
+.ava::before{content:"";position:absolute;left:50%;top:15px;width:20px;height:20px;border-radius:50%;background:#5c5a56;transform:translateX(-50%)}
+.ava::after{content:"";position:absolute;left:50%;top:39px;width:40px;height:30px;border-radius:50% 50% 0 0;background:#5c5a56;transform:translateX(-50%)}
+.disc{position:absolute;font-size:30px;padding:14px 28px;border:1px solid var(--line);border-radius:999px;background:#0a0a0a;white-space:nowrap}
+.disc.ai{border-style:dashed;color:#bdb8b0}
+.page{position:absolute;overflow:hidden;border-radius:16px;background:#0b0f1a;box-shadow:0 50px 140px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.08)}
+.page img{width:100%;height:auto;display:block}
+.title{position:absolute;left:120px;top:100px;font-size:150px;perspective:900px}
+.title > span{display:inline-block;transform-origin:50% 100%}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 01 Hi. -->
+<div class="sc" id="s01"><div class="abs serif it c" id="hi" style="font-size:760px">Hi.</div></div>
+
+<!-- 01b over99 logo (María's supplied animation, driven by the timeline) -->
+<div class="sc" id="s01b"><div class="abs" id="hiloHalo" style="left:160px;top:140px;width:1600px;height:800px;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(245,244,241,.10) 0%,rgba(245,244,241,.04) 45%,rgba(0,0,0,0) 75%);opacity:0"></div>
+  <svg id="hiloLogo" viewBox="0 0 186 120" style="inset:auto;left:635px;top:330px;width:651px;height:420px;fill:#f5f4f1;overflow:visible" role="img" aria-label="hilo"><path class="hl hl0" fill-rule="evenodd" d="M3.24 88.75C2.57 88.55 1.74 87.96 1.12 87.25C0.77 86.84 0.38 86.48 0.24 86.44C0.00 86.36 0.00 85.85 0.00 44.43C0.00 13.47 0.04 2.50 0.14 2.50C0.31 2.50 2.17 0.63 2.37 0.26C2.51 0.00 2.56 0.00 9.44 0.00L16.37 0.00L16.55 0.34C16.65 0.53 16.99 0.90 17.31 1.17C17.62 1.43 18.03 1.87 18.20 2.15C18.90 3.26 18.87 2.47 18.88 18.11C18.88 30.87 18.91 32.61 19.07 32.85C19.35 33.24 19.67 33.19 20.15 32.68C20.51 32.30 21.19 31.75 22.69 30.66C24.61 29.26 29.94 27.43 33.00 27.12C34.55 26.97 37.75 26.97 39.23 27.13C40.76 27.29 44.23 28.14 45.33 28.63C46.63 29.21 48.66 30.26 48.94 30.50C49.08 30.62 49.36 30.81 49.56 30.91C50.15 31.21 52.37 33.13 53.04 33.92C54.36 35.46 55.72 37.54 56.07 38.53C56.18 38.82 56.37 39.24 56.50 39.47C56.64 39.70 56.89 40.38 57.07 40.98C57.25 41.57 57.50 42.41 57.63 42.84C58.30 45.11 58.30 45.01 58.34 65.84L58.38 85.11L58.12 85.90C57.75 87.00 57.00 87.83 55.87 88.41L54.97 88.88L48.96 88.88L42.94 88.88L42.25 88.53C41.34 88.08 40.22 86.95 39.92 86.17C39.70 85.59 39.69 84.83 39.62 69.62L39.56 53.69L39.21 52.08C38.17 47.24 34.69 44.47 29.62 44.47C24.83 44.48 21.31 46.78 19.66 51.00C18.88 52.99 18.88 53.12 18.88 70.32L18.88 85.46L18.48 86.26C17.97 87.27 17.27 87.97 16.26 88.48L15.46 88.88L9.51 88.86C6.24 88.86 3.42 88.81 3.24 88.75Z"/><path class="hl hl1" fill-rule="evenodd" d="M70.49 104.57C69.09 104.05 68.23 103.26 67.58 101.90L67.19 101.06L67.19 74.44L67.19 47.81L67.61 46.91C68.10 45.87 68.85 45.09 69.89 44.54L70.56 44.19L76.75 44.19L82.94 44.19L83.77 44.66C85.10 45.41 85.89 46.49 86.12 47.89C86.30 48.99 86.30 99.88 86.12 100.98C85.87 102.55 84.92 103.73 83.45 104.35L82.51 104.75L76.72 104.74C72.28 104.73 70.83 104.69 70.49 104.57ZM75.31 37.17C72.13 36.78 69.59 35.21 67.77 32.54C66.60 30.81 66.04 29.18 65.92 27.13C65.71 23.54 66.87 20.53 69.35 18.25C70.19 17.47 70.70 17.13 72.27 16.30C72.45 16.20 73.30 15.95 74.14 15.73C75.54 15.38 75.82 15.35 77.12 15.41C78.85 15.48 80.72 15.94 81.75 16.55C82.13 16.77 82.61 17.03 82.81 17.13C83.59 17.51 85.66 19.75 86.28 20.88C88.60 25.15 87.90 30.74 84.64 33.97C82.08 36.49 78.85 37.60 75.31 37.17Z"/><path class="hl hl2" fill-rule="evenodd" d="M97.65 119.69C97.57 119.53 97.22 119.17 96.87 118.91C96.37 118.54 96.13 118.23 95.74 117.45L95.25 116.47L95.25 60.01L95.25 3.55L95.74 2.54C96.12 1.74 96.35 1.45 96.81 1.11C97.14 0.88 97.48 0.53 97.58 0.34L97.76 0.00L104.75 -0.00L111.74 -0.00L111.89 0.27C111.97 0.42 112.42 0.92 112.88 1.38C113.59 2.08 113.78 2.35 113.96 2.96C114.18 3.66 114.19 6.02 114.19 60.00C114.19 114.30 114.18 116.34 113.96 117.06C113.76 117.70 113.59 117.94 112.74 118.77C112.20 119.30 111.75 119.79 111.75 119.87C111.75 119.96 109.61 120.00 104.77 120.00L97.79 120.00L97.65 119.69Z"/><path class="hl hl3" fill-rule="evenodd" d="M151.38 104.67C150.01 104.52 145.61 103.82 145.13 103.69C142.97 103.09 142.12 102.83 141.62 102.60C141.32 102.46 140.67 102.21 140.19 102.03C139.71 101.86 139.17 101.62 139.00 101.51C138.83 101.39 138.32 101.11 137.88 100.90C136.01 99.99 134.04 98.61 131.93 96.74C127.95 93.21 124.89 88.34 123.25 82.94C122.86 81.65 122.26 78.86 122.14 77.75C121.77 74.48 121.88 69.56 122.38 67.19C122.97 64.39 123.24 63.26 123.50 62.62C123.65 62.25 123.88 61.60 124.01 61.19C124.38 60.02 126.11 56.69 127.17 55.09C128.46 53.16 130.24 51.11 131.96 49.59C133.39 48.33 133.74 48.06 135.56 46.83C136.74 46.04 140.25 44.21 141.10 43.95C141.42 43.85 141.96 43.65 142.30 43.50C142.64 43.34 143.54 43.06 144.30 42.86C145.06 42.67 145.97 42.43 146.31 42.33C149.35 41.48 158.75 41.48 161.81 42.33C162.16 42.43 163.07 42.67 163.85 42.88C164.63 43.08 165.47 43.36 165.73 43.48C165.98 43.61 166.50 43.82 166.88 43.94C168.60 44.50 171.38 46.05 174.00 47.89C175.38 48.86 177.96 51.35 179.04 52.74C180.15 54.17 180.63 54.83 180.88 55.31C181.03 55.59 181.28 55.98 181.44 56.19C181.60 56.40 181.89 56.91 182.09 57.32C182.29 57.73 182.55 58.23 182.66 58.44C183.52 59.99 184.48 62.67 184.95 64.85C185.26 66.31 185.46 66.83 185.80 67.12C185.98 67.26 186.00 67.98 186.00 73.19C186.00 78.40 185.98 79.11 185.80 79.26C185.48 79.52 185.28 80.02 185.07 81.07C184.52 83.82 183.35 86.88 181.94 89.25C181.64 89.77 181.27 90.41 181.12 90.69C180.12 92.52 176.45 96.63 174.45 98.13C172.75 99.42 170.68 100.74 169.88 101.05C169.58 101.17 169.17 101.38 168.98 101.51C168.79 101.65 168.33 101.86 167.97 101.99C167.60 102.12 167.07 102.34 166.79 102.48C166.51 102.62 165.85 102.86 165.33 103.00C164.81 103.13 163.97 103.39 163.47 103.55C161.72 104.13 157.66 104.65 154.56 104.69C153.05 104.71 151.62 104.70 151.38 104.67ZM155.83 87.88C157.13 87.74 159.67 86.96 160.49 86.45C160.77 86.26 161.14 86.07 161.29 86.01C161.59 85.89 162.90 84.86 163.48 84.29C165.01 82.77 166.58 80.03 167.19 77.81C167.37 77.12 167.59 76.34 167.66 76.06C167.74 75.78 167.80 74.55 167.80 73.19C167.79 70.85 167.79 70.79 167.33 69.08C166.36 65.47 164.38 62.50 161.80 60.79C159.89 59.53 158.21 58.96 155.46 58.62C153.32 58.35 150.11 58.82 148.31 59.66C144.48 61.44 141.91 64.48 140.85 68.49C140.32 70.49 140.28 70.75 140.18 72.31C139.97 75.74 140.98 79.43 142.90 82.32C145.57 86.32 150.49 88.44 155.83 87.88Z"/></svg></div>
+<div class="sc" id="s02"><div class="abs sans" id="look" style="left:220px;top:470px;font-size:96px;font-weight:300;letter-spacing:-.02em"><span id="lookT"></span><span class="cur" id="lookC"></span></div></div>
+
+<!-- 03 A Lead Product Designer. — echo roll + opposing slab -->
+<div class="sc" id="s03">
+  <div class="abs serif" id="dlStrip" style="left:0;top:90px;font-size:900px;line-height:900px;white-space:nowrap;transform-origin:0 50%"><span id="dlA">a</span> <span id="dlL">Lead</span> <span id="dlP">Product</span> <span id="dlD">Designer<span id="lpDot">.</span></span></div>
+</div>
+
+<!-- 04 I think… — tracking compresses, dots arrive -->
+<div class="sc" id="s04"><div class="abs serif it c" id="think" style="font-size:150px">I think<span class="d">.</span><span class="d">.</span><span class="d">.</span></div></div>
+
+<!-- 05 I know one. — extreme close-up punch -->
+<div class="sc" id="s05"><div class="abs sans c" id="know" style="font-size:250px;font-weight:500;letter-spacing:-.025em">I know one.</div></div>
+
+<!-- 06 I'm María Mora. — glow reveal -->
+<div class="sc" id="s06">
+  <div class="abs sans" id="im" style="left:240px;top:340px;font-size:60px;font-weight:300">I’m</div>
+  <div class="abs serif" id="name" style="left:230px;top:430px;font-size:250px;white-space:nowrap;overflow:hidden;padding:0 .05em .12em 0"></div>
+</div>
+
+<!-- 07 10+ years. -->
+<div class="sc" id="s07">
+  <div class="abs serif" id="ten" style="left:80px;top:40px;font-size:1060px;line-height:1"><span id="tenN">0</span>+</div>
+  <div class="abs sans" id="years" style="right:150px;bottom:150px;font-size:96px;font-weight:300">years.</div>
+</div>
+
+<!-- 08 Designing digital products. -->
+<div class="sc" id="s08">
+  <div class="page" id="ddImgF" style="left:1040px;top:120px;width:740px;height:840px"><img id="ddImg" src="media/xsite-casino-page.webp"></div>
+  <div class="abs serif" id="dd" style="left:140px;top:300px;font-size:150px;line-height:.95"><span class="mask"><span class="w">Designing</span></span><br><span class="mask"><span class="w it">digital</span></span><br><span class="mask"><span class="w">products.</span></span></div>
+</div>
+
+<!-- 09 I've learned that great products need -->
+<div class="sc" id="s09"><div class="abs sans" id="learn" style="left:180px;top:470px;font-size:86px;font-weight:300;letter-spacing:-.02em"><span class="w">I’ve</span> <span class="w">learned</span> <span class="w">that</span> <span class="w">great</span> <span class="w">products</span> <span class="w" id="need">need</span></div></div>
+
+<!-- 10 Evidence. — horizontal pass through the oversized word -->
+<div class="sc" id="s10"><div class="abs serif" id="evi" style="left:0;top:180px;font-size:760px;white-space:nowrap;line-height:1;letter-spacing:-.01em">Evidence.</div></div>
+
+<!-- 11 Evidence visual -->
+<div class="sc" id="s11">
+  <div class="frame" id="cfgF" style="left:1000px;top:200px;width:1200px;height:675px;border-radius:20px"><video class="shot" id="vPlugin" src="media/plugin-variables.webm" muted playsinline preload="auto" data-in="0" style="inset:0;width:100%;height:100%"></video></div>
+  <div class="abs cap" id="kCap" style="left:140px;top:230px;color:var(--mute)">Delivery efficiency</div>
+  <div class="abs serif" id="kNum" style="left:120px;top:300px;font-size:340px;line-height:1"><span id="kN">0</span>%</div>
+  <div class="abs sans" id="kTxt" style="left:140px;top:690px;font-size:64px;font-weight:500;letter-spacing:-.03em">faster client delivery</div>
+</div>
+
+<!-- 12 Direction. — perspective roll stack -->
+<div class="sc" id="s12" style="perspective:1400px">
+  <div class="abs sans c" id="dir0" style="font-size:300px;font-weight:500;letter-spacing:-.025em"><span class="stroke">Direction.</span></div>
+  <div class="abs sans c" id="dir" style="font-size:300px;font-weight:500;letter-spacing:-.025em">Direction.</div>
+</div>
+
+<!-- 13 Nordice -->
+<div class="sc" id="s13">
+  <video class="shot" id="vNordice" src="clips/nordice.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" id="nCap" style="left:120px;bottom:90px">Nordice</div>
+</div>
+
+<!-- 14 Runar — viking -->
+<div class="sc" id="s14">
+  <video class="shot" id="vViking" src="clips/runar-viking.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" id="rCap" style="left:120px;bottom:90px">Runar</div>
+</div>
+
+<!-- 15 Runar — rune (first second of the original only) -->
+<div class="sc" id="s15">
+  <video class="shot" id="vRune" src="clips/runar-rune.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:1920px;height:1080px"></video>
+  <div class="abs cap" style="left:120px;bottom:90px">Runar</div>
+</div>
+
+<!-- 16 XSITE -->
+<div class="sc" id="s16">
+  <div class="page" id="pgN" style="left:150px;top:60px;width:780px;height:880px"><img id="pgNi" src="media/nordice-page.webp"></div>
+  <div class="page" id="pgR" style="left:990px;top:60px;width:780px;height:880px"><img id="pgRi" src="media/runar-page.webp"></div>
+  <div class="abs cap" id="xsCap" style="left:150px;bottom:50px">XSITE · One platform, multiple brands — Nordice &amp; Runar</div>
+</div>
+
+<!-- 17 Craft. — echo marquee -->
+<div class="sc" id="s17">
+  <div class="abs serif stroke" id="cr1" style="left:0;top:40px;font-size:330px;white-space:nowrap">Craft. Craft. Craft. Craft. Craft.</div>
+  <div class="abs serif" id="cr2" style="left:0;top:370px;font-size:330px;white-space:nowrap"><span class="stroke">Craft. Craft. </span>Craft.<span class="stroke"> Craft. Craft.</span></div>
+  <div class="abs serif stroke" id="cr3" style="left:0;top:700px;font-size:330px;white-space:nowrap">Craft. Craft. Craft. Craft. Craft.</div>
+</div>
+
+<!-- 18 WAND Cashier -->
+<div class="sc" id="s18">
+  <div style="position:absolute;inset:0;perspective:1800px"><div class="page" id="cash" style="left:515px;top:40px;width:890px;height:1000px"><img id="cashI" src="media/xsite-sports-page.webp"></div></div>
+  <div class="abs cap" id="cashCap" style="left:120px;bottom:60px">XSITE · Sportsbook</div>
+</div>
+
+<!-- 19 XSITE gamification -->
+<div class="sc" id="s19">
+  <div class="abs" id="gamWrap" style="inset:0;transform-origin:960px 512px">
+    <div class="page" id="gam" style="left:260px;top:15px;width:1400px;height:995px"><img id="gamI" src="media/xsite-lobby-desktop.webp"></div>
+    <div class="abs" id="gamDim" style="left:260px;top:15px;width:1400px;height:995px;border-radius:16px;background:rgba(4,6,20,.62);opacity:0"></div>
+    <img class="abs" id="gamModal" src="media/xsite-signup-modal.webp" style="left:560px;top:168px;width:801px;height:688px;box-shadow:0 40px 120px rgba(0,0,0,.6);border-radius:13px">
+  </div>
+  <div class="abs cap" id="gamCap" style="left:260px;top:1030px">XSITE · Casino lobby &amp; sign-up</div>
+</div>
+
+<!-- 20 My work spans — letter-spaced compress -->
+<div class="sc" id="s20"><div class="abs sans c" id="spans" style="font-size:84px;font-weight:300">My work spans</div></div>
+
+<!-- 21 43 operator brands. -->
+<div class="sc" id="s21">
+  <div class="abs serif" id="n43" style="left:140px;top:40px;font-size:1000px;line-height:1">7</div>
+  <div class="abs sans" id="ob" style="left:760px;top:620px;font-size:92px;font-weight:500;letter-spacing:-.035em;line-height:1">designers<br>led.</div>
+</div>
+
+<!-- 22 22 launched across 15 markets. -->
+<div class="sc" id="s22">
+  <div class="abs serif" id="n22" style="left:140px;top:120px;font-size:500px;line-height:1">22</div>
+  <div class="abs sans" id="l22" style="left:720px;top:400px;font-size:84px;font-weight:300">branded sites launched.</div>
+  <div class="abs serif it" id="n15" style="left:160px;top:560px;font-size:330px;line-height:1">5</div>
+  <div class="abs sans" id="m15" style="left:420px;top:720px;font-size:84px;font-weight:300">design systems managed.</div>
+</div>
+
+<!-- 23 Logos -->
+<div class="sc" id="s23">
+  <div class="row" id="r1" style="top:250px"></div>
+  <div class="row" id="r2" style="top:510px"></div>
+  <div class="row" id="r3" style="top:770px"></div>
+</div>
+
+<!-- 24 And I bring together — letter cascade -->
+<div class="sc" id="s24"><div class="abs sans" id="bring" style="left:180px;top:480px;font-size:96px;font-weight:300"></div></div>
+
+<!-- 25 Product strategy. -->
+<div class="sc" id="s25">
+  <div class="title serif" id="psT"><span>Product <i>strategy.</i></span></div>
+  <div class="frame" id="road" style="left:300px;top:300px;width:1320px;height:720px;border-radius:16px"><img id="roadI" src="media/xsite-roadmap.png" style="width:1320px;height:auto"></div>
+  <div class="abs cap" id="roadCap" style="left:300px;top:1030px;color:var(--mute)">XSITE · Delivery roadmap</div>
+</div>
+
+<!-- 26 Design systems. -->
+<div class="sc" id="s26">
+  <div class="frame" id="kitF" style="left:300px;top:70px;width:1320px;height:742px;border-radius:16px"><video class="shot" id="kit" src="media/wand-ui-kit.webm" muted playsinline preload="auto" data-in="0" style="inset:0;width:100%;height:100%"></video></div>
+  <div class="title serif" id="dsT" style="left:296px;top:850px"><span>Design <i>systems.</i></span></div>
+</div>
+
+<!-- 27 Design leadership. -->
+<div class="sc" id="s27">
+  <div class="title serif" id="dlT"><span>Design <i>leadership.</i></span></div>
+  <canvas class="abs" id="mlC" width="1920" height="1080" style="left:0;top:0;width:1920px;height:1080px"></canvas>
+</div>
+
+<!-- 28 Because making complexity feel simple -->
+<div class="sc" id="s28">
+  <div class="abs sans" id="bec" style="left:180px;top:300px;font-size:70px;font-weight:300">Because making</div>
+  <div class="abs serif it" id="cx" style="left:170px;top:400px;font-size:250px;white-space:nowrap"></div>
+  <div class="abs sans" id="fs" style="left:180px;top:720px;font-size:70px;font-weight:300">feel <span style="font-weight:500">simple</span></div>
+</div>
+
+<!-- 29 Is the kind of design problem I love. -->
+<div class="sc" id="s29"><div class="abs serif" id="love" style="left:180px;top:330px;font-size:150px;line-height:1.02"><span class="mask"><span class="w">Is the kind of design</span></span><br><span class="mask"><span class="w">problem <span id="loveI" style="display:inline-block">I <span class="it">love.</span></span></span></span></div></div>
+
+<!-- 30 So, what's next? — centred serif line, words rise from masks and sink back: the film starts to slow down -->
+<div class="sc" id="s30">
+  <div class="abs serif c" id="sowhat" style="top:540px;font-size:150px;line-height:1.1"><span class="mask"><span class="w">So,</span></span> <span class="mask"><span class="w">what’s</span></span> <span class="mask"><span class="w it">next?</span></span></div>
+</div>
+
+<!-- 31 Closing — "what's next?" answered by the viewer: a minimal mail composer writes to María ("Hey María! You're hired."), the pointer hits Send, the window flies off and only her address stays -->
+<div class="sc" id="s31">
+  <div class="abs" id="mCard" style="left:400px;top:230px;width:1120px;height:620px;border-radius:24px;background:#0c0c0c;outline:1px solid rgba(245,244,241,.16);outline-offset:-1px;overflow:hidden">
+    <div class="abs sans" style="left:44px;top:30px;font-size:22px;color:var(--mute);letter-spacing:.04em">New message</div>
+    <div class="abs" style="right:44px;top:40px;width:68px;height:12px;display:flex;gap:10px"><i style="width:12px;height:12px;border-radius:6px;background:#2a2928"></i><i style="width:12px;height:12px;border-radius:6px;background:#2a2928"></i><i style="width:12px;height:12px;border-radius:6px;background:#2a2928"></i></div>
+    <div class="abs" style="left:44px;right:44px;top:84px;height:1px;background:rgba(245,244,241,.12)"></div>
+    <div class="abs sans" style="left:44px;top:106px;font-size:26px;color:var(--mute)">To</div>
+    <div class="abs" style="left:44px;right:44px;top:168px;height:1px;background:rgba(245,244,241,.12)"></div>
+    <div class="abs sans" style="left:44px;top:190px;font-size:26px;color:var(--mute)">Subject</div>
+    <div class="abs sans" style="left:180px;top:184px;font-size:32px;font-weight:400"><span id="mSub"></span><span class="cur" id="mSubC" style="opacity:0"></span></div>
+    <div class="abs" style="left:44px;right:44px;top:252px;height:1px;background:rgba(245,244,241,.12)"></div>
+    <div class="abs serif" style="left:44px;top:300px;font-size:84px;line-height:1.15;white-space:nowrap"><span id="mBody1"></span><span class="cur" id="mBodyC1" style="opacity:0"></span><br><span id="mBody2" class="it"></span><span class="cur" id="mBodyC2" style="opacity:0"></span><br><span id="mBody3" class="it"></span><span class="cur" id="mBodyC" style="opacity:0"></span></div>
+    <div class="abs sans" id="mSend" style="right:44px;bottom:40px;padding:16px 38px;border-radius:40px;background:#f5f4f1;color:#0a0a0a;font-size:26px;font-weight:500">Send</div>
+  </div>
+  <div class="abs sans" id="mTo" style="left:580px;top:330px;font-size:32px;font-weight:400;white-space:nowrap;transform-origin:0 50%"><span id="mToT"></span><span class="cur" id="mToC" style="opacity:0"></span></div>
+  <div class="abs sans c" id="mSent" style="top:625px;font-size:24px;color:var(--mute);letter-spacing:.08em;opacity:0">Sent&nbsp;&nbsp;✓</div>
+  <svg class="abs" id="mPtr" viewBox="0 0 24 24" style="left:0;top:0;width:44px;height:44px;overflow:visible"><path d="M3 2 L3 19 L7.6 14.8 L10.6 21.4 L13.4 20.2 L10.4 13.7 L16.6 13.4 Z" fill="#f5f4f1" stroke="#0a0a0a" stroke-width="1.2" stroke-linejoin="round"/></svg>
+</div>
+
+</div>
+<script src="../node_modules/gsap/dist/gsap.min.js"></script>
+<script>
+const $ = (s) => document.querySelector(s);
+const split = (el, text, cls = "ch") => { el.innerHTML = [...text].map((c) => c === " " ? `<span class="${cls}">&nbsp;</span>` : `<span class="${cls}">${c}</span>`).join(""); return el.querySelectorAll("." + cls); };
+gsap.utils.random = ((r) => { let s = 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647; return (a, b) => a + rnd() * (b - a); })(); // deterministic "random" so every render matches
+
+gsap.set(".c", { xPercent: -50, yPercent: -50 });
+const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
+
+/* ---------- SCENES (start, end in seconds) ---------- */
+const T = {
+  s01: [0.0, 1.35], s01b: [1.35, 3.55], s02: [3.5, 4.95], s03: [4.9, 7.55], s04: [7.55, 8.8], s05: [8.8, 9.85],
+  s06: [9.85, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6], s10: [17.55, 18.55],
+  s11: [18.5, 21.1], s12: [21.05, 22.0], s13: [21.95, 24.1], s14: [23.75, 25.1], s15: [25.05, 26.75],
+  s16: [26.5, 29.0], s17: [28.95, 29.85], s18: [29.8, 31.5], s19: [31.45, 33.5], s20: [33.35, 34.3],
+  s21: [34.3, 35.7], s22: [35.65, 37.4], s23: [37.35, 39.2], s24: [39.2, 40.05], s25: [40.0, 41.6],
+  s26: [41.55, 43.25], s27: [43.2, 45.4], s28: [45.35, 47.95], s29: [47.95, 50.65], s30: [50.65, 53.4],
+  s31: [53.35, 62.8],
+};
+for (const [id, [a, b]] of Object.entries(T)) { tl.set("#" + id, { visibility: "visible" }, a); tl.set("#" + id, { visibility: "hidden" }, b); }
+
+// typewriter: chars appear one per step, cursor blinks after
+const type = (el, cur, text, at, step) => { const chs = split(el, text); gsap.set(chs, { display: "none" });
+  chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step));
+  for (let k = 0; k < 8; k++) tl.set(cur, { opacity: k % 2 ? 1 : 0 }, at + chs.length * step + .1 + k * .22);
+  return at + chs.length * step; };
+
+// 01 Hi. — extreme close-up of the H pulls back to the word, then lifts out of frame
+{ const [a] = T.s01;
+  tl.fromTo("#hi", { scale: 7, transformOrigin: "22% 55%" }, { scale: 1, duration: .75, ease: ex }, a);
+  tl.to("#hi", { y: -1100, duration: .4, ease: exi }, a + .95); }
+
+// 01b hilo — the word lands on the hit, its letters rising one after another
+const syncLogo = () => {};
+{ const [a] = T.s01b; const letters = gsap.utils.toArray("#hiloLogo .hl");
+  gsap.set(letters, { transformOrigin: "50% 100%" });
+  tl.fromTo("#hiloLogo", { scale: 1.2, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: .5, ease: ex }, a);
+  tl.fromTo("#hiloHalo", { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: 1.1, ease: "power2.out" }, a + .1);
+  letters.forEach((g, i) => tl.fromTo(g, { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: .5, ease: ex, immediateRender: true }, a + i * .07));
+  tl.to("#hiloLogo", { x: -1900, duration: .35, ease: exi }, a + 1.85);
+  tl.to("#hiloHalo", { x: -1900, opacity: 0, duration: .35, ease: exi }, a + 1.85); }
+
+// 02 If you're looking for — typewriter with cursor
+{ const [a] = T.s02; type($("#lookT"), "#lookC", "If you’re looking for", a + .05, .04);
+  tl.to("#look", { x: -1500, duration: .3, ease: exi }, a + 1.15); }
+
+// 03 a Lead Product Designer. — the camera stops on each word, framing it whole (it pulls back as far as a long word needs), then pulls back to the line
+{ const [a] = T.s03; const strip = $("#dlStrip");
+  const fit = (id) => Math.min(1, 1640 / $(id).offsetWidth);
+  const at = (id) => () => { const w = $(id); return 960 - fit(id) * (w.offsetLeft + w.offsetWidth / 2); };
+  const stop = (id) => ({ x: at(id), scale: () => fit(id) });
+  const k = () => 1720 / strip.offsetWidth;
+  tl.fromTo(strip, { x: () => at("#dlA")() + 500, scale: 1 }, { ...stop("#dlA"), duration: .35, ease: ex, immediateRender: false }, a);
+  tl.to(strip, { ...stop("#dlL"), duration: .4, ease: "expo.inOut" }, a + .4);
+  tl.to(strip, { ...stop("#dlP"), duration: .4, ease: "expo.inOut" }, a + .82);
+  tl.to(strip, { ...stop("#dlD"), duration: .4, ease: "expo.inOut" }, a + 1.24);
+  tl.to(strip, { scale: k, x: () => (1920 - strip.offsetWidth * k()) / 2, duration: .5, ease: "expo.inOut" }, a + 1.75);
+}
+
+// 04 I think… — tracking compresses, dots arrive one by one
+{ const [a] = T.s04;
+  tl.fromTo("#think", { letterSpacing: ".5em", opacity: 0 }, { letterSpacing: "-.02em", opacity: 1, duration: .8, ease: io }, a);
+  tl.from("#think .d", { opacity: 0, duration: .05, stagger: .28 }, a + .55); }
+
+// 05 I know one. — starts as an extreme close-up of the "o", snaps out to the full line
+{ const [a] = T.s05;
+  tl.fromTo("#know", { scale: 9, transformOrigin: "55% 55%" }, { scale: 1, duration: .5, ease: ex }, a);
+  tl.to("#know", { x: -1500, duration: .3, ease: exi }, a + .8); }
+
+// 06 I'm María Mora. — letters glow in from blur, tracking tightens
+{ const [a] = T.s06; const chs = split($("#name"), "María Mora.");
+  tl.from("#im", { x: -80, opacity: 0, duration: .3, ease: ex }, a);
+  tl.fromTo(chs, { yPercent: 115 }, { yPercent: 0, duration: .5, stagger: .025, ease: "expo.out" }, a + .12);
+  tl.fromTo(chs[chs.length - 1], { scale: 0 }, { scale: 1, duration: .3, ease: "back.out(3)" }, a + .45);
+  tl.to(chs, { yPercent: -115, duration: .3, stagger: .012, ease: "expo.in" }, a + 1.05);
+  tl.to("#im", { x: -80, opacity: 0, duration: .25, ease: exi }, a + 1.05); }
+
+// 07 10+ years. — oversized number, kept inside the frame, slides out left
+{ const [a] = T.s07;
+  const n = { v: 0 };
+  tl.fromTo("#ten", { y: 700 }, { y: 0, duration: .6, ease: ex }, a);
+  tl.fromTo(n, { v: 0 }, { v: 10, duration: .9, ease: "none", onUpdate: () => { $("#tenN").textContent = Math.round(n.v); } }, a + .1);
+  tl.from("#years", { opacity: 0, x: 80, duration: .5 }, a + 1.0);
+  tl.to(["#ten", "#years"], { x: -1900, duration: .4, ease: exi }, a + 1.45); }
+
+// 08 Designing digital products. — type and product at different speeds; product takes the frame
+{ const [a] = T.s08;
+  tl.from("#dd .w", { yPercent: 110, duration: .7, stagger: .12, ease: ex }, a);
+  tl.fromTo("#ddImgF", { y: 1100 }, { y: 0, duration: .8, ease: ex }, a);
+  tl.fromTo("#ddImg", { y: 0 }, { y: -1300, duration: 2.5, ease: "power1.inOut" }, a + .2);
+  tl.to("#dd", { x: -30, duration: 2.5, ease: "none" }, a);
+  tl.to(["#dd", "#ddImgF"], { x: -1900, duration: .4, ease: exi }, a + 2.15); }
+
+// 09 I've learned that great products need — the sentence builds word by word
+{ const [a] = T.s09;
+  tl.from("#learn .w", { opacity: 0, y: 30, duration: .4, stagger: .13 }, a);
+  tl.to("#learn", { x: -1600, duration: .3, ease: exi }, a + 1.7); }
+
+// 10 Evidence. — the camera passes along the oversized word, then dives into its full stop
+{ const [a] = T.s10; const w = () => $("#evi").offsetWidth;
+  tl.fromTo("#evi", { x: 900 }, { x: () => 1920 - w() - 60, duration: .75, ease: "power2.inOut" }, a);
+  tl.to("#evi", { scale: 6, transformOrigin: "97% 80%", opacity: 0, duration: .25, ease: exi }, a + .75); }
+
+// 11 Evidence visual — one real KPI beside the real Figma variables it came from
+{ const [a] = T.s11; const n = { v: 0 };
+  tl.from("#cfgF", { x: 600, opacity: 0, duration: .9, ease: ex }, a);
+  tl.from("#kCap", { opacity: 0, duration: .4 }, a + .15);
+  tl.from("#kNum", { y: 200, opacity: 0, duration: .7, ease: ex }, a + .1);
+  tl.to(n, { v: 40, duration: .7, ease: "power2.out", onUpdate: () => { $("#kN").textContent = Math.round(n.v); } }, a + .1);
+  tl.from("#kTxt", { opacity: 0, y: 30, duration: .5 }, a + .55);
+  tl.to("#s11", { y: -1080, duration: .4, ease: exi }, a + 2.2); }
+
+// 12 Direction. — rolls over a ghost copy like a drum, then pushes into the footage
+{ const [a] = T.s12;
+  tl.fromTo("#dir", { rotationX: -90, y: 160, transformOrigin: "50% 50% -150px" }, { rotationX: 0, y: 0, duration: .55, ease: ex }, a);
+  tl.fromTo("#dir0", { rotationX: 0, opacity: .8, transformOrigin: "50% 50% -150px" }, { rotationX: 90, y: -160, opacity: 0, duration: .55, ease: ex }, a);
+  tl.to("#dir", { scale: 4, opacity: 0, duration: .3, ease: exi }, a + .65); }
+
+// 13–15 Nordice and Runar — real campaign footage; only the opening second of the rune shot
+{ let [a] = T.s13;
+  tl.fromTo("#vNordice", { scale: 1.0 }, { scale: 1.04, duration: 1.9, ease: "none" }, a);
+  tl.from("#nCap", { opacity: 0, duration: .3 }, a + .3);
+  [a] = T.s14;
+  tl.fromTo("#s14", { clipPath: "inset(0 0 0 100%)" }, { clipPath: "inset(0 0 0 0%)", duration: .35, ease: io }, a - .05);
+  tl.from("#rCap", { opacity: 0, duration: .3 }, a + .3);
+  [a] = T.s15;
+  tl.fromTo("#s15", { opacity: 0 }, { opacity: 1, duration: .12 }, a);
+  tl.to("#s15", { opacity: 0, duration: .15 }, a + 1.52); }
+
+// 16 XSITE — wipe reveal, slow lateral camera
+{ const [a] = T.s16;
+  tl.fromTo("#pgN", { y: -1100 }, { y: 0, duration: .5, ease: ex }, a);
+  tl.fromTo("#pgR", { y: 1100 }, { y: 0, duration: .5, ease: ex }, a);
+  tl.fromTo("#pgNi", { scale: 1.9, transformOrigin: "50% 0%" }, { scale: 1, duration: .6, ease: "expo.inOut" }, a + .9);
+  tl.fromTo("#pgNi", { y: 0 }, { y: -760, duration: 1.1, ease: "power2.inOut" }, a + 1.3);
+  tl.fromTo("#pgRi", { scale: 1.9, transformOrigin: "50% 0%" }, { scale: 1, duration: .6, ease: "expo.inOut" }, a + .9);
+  tl.fromTo("#pgRi", { y: 0 }, { y: -560, duration: 1.1, ease: "power2.inOut" }, a + 1.3);
+  tl.from("#xsCap", { opacity: 0, y: 20, duration: .5 }, a + .4);
+  tl.to("#s16", { scale: .6, opacity: 0, duration: .35, ease: exi }, a + 2.15); }
+
+// 17 Craft. — echo marquee: outlined rows drift one way, the solid row the other
+{ const [a] = T.s17;
+  tl.fromTo(["#cr1", "#cr3"], { x: -200 }, { x: -1100, duration: .9, ease: "none" }, a);
+  tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
+  tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
+
+// 18 WAND Cashier — close-up on the UI, pull back to the full flow
+{ const [a] = T.s18;
+  tl.fromTo("#cash", { rotationY: -18, rotationX: 6, scale: 1.25 }, { rotationY: 8, rotationX: 0, scale: 1, duration: 1.6, ease: "power2.inOut" }, a);
+  tl.fromTo("#cashI", { y: 0 }, { y: -640, duration: 1.6, ease: "power1.inOut" }, a);
+  tl.from("#cashCap", { opacity: 0, duration: .4 }, a + .8);
+  tl.to("#s18", { x: -1920, duration: .4, ease: exi }, a + 1.3); }
+
+// 19 XSITE casino — the lobby lands, then the sign-up modal pops over it and the camera leans in
+{ const [a] = T.s19;
+  tl.fromTo("#s19", { x: 1920 }, { x: 0, duration: .45, ease: ex }, a - .05);
+  tl.fromTo("#gamWrap", { scale: 1 }, { scale: 1.04, duration: .8, ease: "none" }, a);
+  tl.from("#gamCap", { opacity: 0, duration: .4 }, a + .4);
+  tl.to("#gamCap", { opacity: 0, duration: .2 }, a + .8);
+  tl.to("#gamDim", { opacity: 1, duration: .25, ease: "power2.out" }, a + .8);
+  tl.fromTo("#gamModal", { scale: .78, y: 90, opacity: 0, transformOrigin: "50% 60%" }, { scale: 1, y: 0, opacity: 1, duration: .6, ease: "back.out(1.6)" }, a + .85);
+  tl.to("#gamWrap", { scale: 1.16, duration: 1.1, ease: "power3.out" }, a + .85);
+  tl.to("#s19", { y: -1080, duration: .35, ease: "expo.in" }, a + 1.7);
+}
+
+// 20 My work spans — tracking compresses
+{ const [a] = T.s20; tl.fromTo("#s20", { y: 1080 }, { y: 0, duration: .45, ease: ex }, a);
+  tl.fromTo("#spans", { letterSpacing: ".35em" }, { letterSpacing: "0em", duration: .6, ease: ex }, a); }
+
+// 21 7 designers led. — the number dominates the frame (no count-up, so no wrong numbers on screen)
+{ const [a] = T.s21;
+  tl.fromTo("#n43", { scale: .2, opacity: 0, transformOrigin: "30% 60%" }, { scale: 1, opacity: 1, duration: .55, ease: ex }, a);
+  tl.from("#ob", { opacity: 0, x: 80, duration: .5 }, a + .35);
+  tl.to("#s21", { y: 1080, duration: .35, ease: exi }, a + 1.05); }
+
+// 22 22 branded sites launched. 5 design systems managed. — two numbers at contrasting scales
+{ const [a] = T.s22;
+  tl.from("#n22", { y: -900, duration: .55, ease: ex }, a);
+  tl.from("#l22", { opacity: 0, x: 60, duration: .4 }, a + .3);
+  tl.from("#n15", { scale: 1.8, opacity: 0, duration: .5, ease: ex }, a + .65);
+  tl.from("#m15", { opacity: 0, x: 60, duration: .4 }, a + .8);
+  tl.to("#s22", { opacity: 0, duration: .25 }, a + 1.5); }
+
+// 23 Logos — three rows, middle row opposed
+{ const [a, b] = T.s23; const L = ["williamhill.png","rizk.svg","skycity.svg","thrills.svg","casinotime.svg","dunder.svg","kaboo.svg","netbet.svg","superlenny.svg","thepools.svg","slotbox.svg","jugadon.png","kingbilly.png","hardrock.png","solaire.svg","splash.png","kirgo.png","eleven.svg"];
+  const src = (f) => f === "rizk.svg" ? "media/logos/rizk.svg" : `../public/portfolio/operators/${f}`;
+  const D = {"williamhill.png":[271,55],"rizk.svg":[218,69],"skycity.svg":[209,72],"thrills.svg":[263,57],"casinotime.svg":[277,54],"dunder.svg":[290,52],"kaboo.svg":[307,49],"netbet.svg":[287,52],"superlenny.svg":[319,47],"thepools.svg":[183,82],"slotbox.svg":[188,80],"jugadon.png":[248,61],"kingbilly.png":[268,56],"hardrock.png":[157,95],"solaire.svg":[164,92],"splash.png":[193,78],"kirgo.png":[337,44],"eleven.svg":[182,82]}; // [width, height] at equal visual area
+  const fill = (row, list) => { row.innerHTML = [...list, ...list].map((f) => `<img src="${src(f)}" style="width:${D[f][0]}px;height:${D[f][1]}px">`).join(""); };
+  fill($("#r1"), L.slice(0, 6).concat(L.slice(12, 15))); fill($("#r2"), L.slice(6, 12).concat(L.slice(15))); fill($("#r3"), L.slice(12).concat(L.slice(0, 4)));
+  const d = b - a;
+  tl.fromTo("#r1", { x: 0 }, { x: -1500, duration: d, ease: "none" }, a);
+  tl.fromTo("#r2", { x: -1700 }, { x: -200, duration: d, ease: "none" }, a);
+  tl.fromTo("#r3", { x: -300 }, { x: -1800, duration: d, ease: "none" }, a);
+  tl.from(".row", { opacity: 0, duration: .4, stagger: .1 }, a);
+  tl.to(".row", { opacity: 0, duration: .3 }, b - .3); }
+
+// 24 And I bring together — letters cascade into place
+{ const [a] = T.s24; const chs = split($("#bring"), "And I bring together");
+  tl.from(chs, { y: (i) => -220 - (i % 5) * 60, opacity: 0, duration: .45, stagger: .018, ease: ex }, a); }
+
+// 25–27 — the three titles share one move: a perspective roll up from the baseline
+const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 0 }, { rotationX: 0, opacity: 1, duration: .55, ease: ex }, at);
+
+// 25 Product strategy. — insight → opportunity → prioritisation → roadmap, one connected path
+{ const [a] = T.s25;
+  roll("#psT", a);
+  tl.fromTo("#road", { y: 500, opacity: 0, rotationX: 20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1);
+  tl.fromTo("#roadI", { x: 0, y: 0 }, { x: -200, y: -170, scale: 1.12, transformOrigin: "0 0", duration: 1.5, ease: "power1.inOut" }, a + .1);
+  tl.from("#roadCap", { opacity: 0, duration: .4 }, a + .5);
+  tl.to("#s25", { x: -1920, duration: .35, ease: exi }, a + 1.25); }
+
+// 26 Design systems. — the real WAND UI kit footage, title over it
+{ const [a] = T.s26;
+  tl.fromTo("#s26", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
+  roll("#dsT", a + .1);
+  tl.fromTo("#kitF", { y: -500, opacity: 0, rotationX: -20, transformPerspective: 1600 }, { y: 0, opacity: 1, rotationX: 0, duration: .7, ease: ex }, a + .1); }
+
+// 27 Design leadership. — "magnet lines" (after React Bits' MagnetLines, MIT + Commons Clause): a restless field of hairlines, each pointing its own way. An ivory point crosses the field; as it passes, the lines turn to face it, stretching and brightening in its wake. Then the whole field converges on the point, which hands over to the next scene.
+{ const [a, b] = T.s27; const cv = $("#mlC"), g = cv.getContext("2d");
+  const C = 26, R = 10, SP = 62, X0 = 960 - (C - 1) * SP / 2, Y0 = 360, L = 14, OX = 960, OY = 640;
+  const lines = [];
+  for (let r = 0; r < R; r++) for (let c = 0; c < C; c++) { const h = Math.sin(c * 12.9898 + r * 78.233) * 43758.5453; lines.push({ x: X0 + c * SP, y: Y0 + r * SP, a0: (h - Math.floor(h)) * Math.PI, ph: (h * 7) % 6.28 }); }
+  const st = { px: -40, py: 700, dot: 0, rad: 0, show: 0, t: 0, conv: 0 };
+  const e3 = gsap.parseEase("power3.inOut"), e2 = gsap.parseEase("power2.in"), cl = gsap.utils.clamp(0, 1);
+  const draw = () => { g.clearRect(0, 0, 1920, 1080); g.lineCap = "round";
+    for (const l of lines) { const d0 = Math.hypot(OX - l.x, OY - l.y), kc = e2(cl((st.conv * 1.5 - d0 / 1500) / .5));
+      const x = l.x + (st.px - l.x) * kc, y = l.y + (st.py - l.y) * kc, dx = st.px - x, dy = st.py - y, d = Math.hypot(dx, dy);
+      const free = l.a0 + Math.sin(st.t * 2.2 + l.ph) * .35;
+      const diff = ((Math.atan2(dy, dx) - free) % Math.PI + Math.PI * 1.5) % Math.PI - Math.PI / 2;
+      const kk = e3(cl((st.rad - l.x - 150) / 420));
+      const near = Math.max(0, 1 - d / 330), an = free + diff * kk, len = L * (1 + 1.1 * near * kk) * (1 - .75 * kc);
+      const c = Math.round(64 + 150 * kk * (.35 + .65 * near) + 40 * near * kk);
+      g.strokeStyle = `rgba(${Math.min(245, c + 30)},${Math.min(244, c + 28)},${Math.min(241, c + 24)},${st.show * (1 - kc * kc)})`; g.lineWidth = 2 + near * kk;
+      const ux = Math.cos(an) * len, uy = Math.sin(an) * len; g.beginPath(); g.moveTo(x - ux, y - uy); g.lineTo(x + ux, y + uy); g.stroke(); }
+    if (st.dot > 0) { g.fillStyle = "#f5f4f1"; g.beginPath(); g.arc(st.px, st.py, 10 * st.dot, 0, 7); g.fill(); } };
+  tl.to("#s26", { x: -1920, duration: .35, ease: exi }, a - .3);
+  tl.fromTo("#s27", { x: 1920 }, { x: 0, duration: .35, ease: ex }, a - .05);
+  roll("#dlT", a + .1);
+  tl.fromTo(st, { t: 0 }, { t: b - a, duration: b - a, ease: "none", onUpdate: draw }, a);
+  tl.fromTo(st, { show: 0 }, { show: 1, duration: .35, ease: "power2.out", onUpdate: draw }, a);
+  tl.fromTo(st, { dot: 0 }, { dot: 1, duration: .2, ease: "power2.out", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { px: -40 }, { px: OX, duration: 1.2, ease: "power2.inOut", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { py: 760 }, { py: OY, duration: 1.2, ease: "sine.inOut", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { rad: 0 }, { rad: 2700, duration: 1.35, ease: "power2.inOut", onUpdate: draw }, a + .3);
+  tl.fromTo(st, { conv: 0 }, { conv: 1, duration: .55, ease: "none", onUpdate: draw }, b - .6);
+  tl.to(st, { dot: 1.6, duration: .2, ease: "power2.in", onUpdate: draw }, b - .2);
+  tl.to("#dlT", { opacity: 0, duration: .25 }, b - .3); }
+
+// 28 Because making complexity feel simple — the point left by the leadership field bursts into scattered letters; they hang in disorder, then snap into one clean word
+{ const [a, b] = T.s28; const box = $("#cx"), chs = split(box, "complexity"); const rnd = gsap.utils.random;
+  const ring = (i, spin) => { const th = i / chs.length * Math.PI * 2 + [.1, -.15, .2, 0, -.1, .15, -.2, .05, .1, -.05][i] + spin, rr = 1 + [.08, -.1, .05, .12, -.06, 0, .1, -.08, .04, -.12][i]; return { x: Math.cos(th) * 560 * rr, y: Math.sin(th) * 300 * rr }; };
+  const scat = [...chs].map((c, i) => ({ ...ring(i, 0), r: rnd(-60, 60), s: rnd(.55, 1.25), x2: ring(i, .32).x, y2: ring(i, .32).y }));
+  const fromPt = (el, axis) => axis === "x" ? 960 - (170 + el.offsetLeft + el.offsetWidth / 2) : 640 - (400 + el.offsetTop + el.offsetHeight / 2);
+  tl.fromTo(chs, { x: (i, el) => fromPt(el, "x"), y: (i, el) => fromPt(el, "y"), scale: 0, rotation: 0, opacity: 1 },
+    { x: (i, el) => fromPt(el, "x") + scat[i].x, y: (i, el) => fromPt(el, "y") + scat[i].y, rotation: (i) => scat[i].r, scale: (i) => scat[i].s, opacity: .5, duration: .5, ease: "expo.out", stagger: .012 }, a);
+  tl.to(chs, { x: (i, el) => fromPt(el, "x") + scat[i].x2, y: (i, el) => fromPt(el, "y") + scat[i].y2, rotation: (i) => scat[i].r * .6, duration: .3, ease: "none" }, a + .5);
+  tl.to(chs, { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1, duration: .85, ease: "power4.inOut", stagger: .025 }, a + .78);
+  tl.from("#bec", { opacity: 0, y: 24, duration: .5, ease: ex }, a + 1.35);
+  tl.from("#fs", { opacity: 0, y: 24, duration: .5, ease: ex }, a + 1.55);
+  tl.to("#s28", { y: -200, opacity: 0, duration: .4, ease: "power2.in" }, b - .4); }
+
+// 29 Is the kind of design problem I love. — slow, deliberate, room to breathe
+{ const [a] = T.s29;
+  tl.from("#love .w", { yPercent: 110, duration: 1.0, stagger: .25, ease: ex }, a + .05);
+  // "I love." grows to fill the frame: zoom anchored on its centre, the rest of the line leaves the edges
+  gsap.set("#love", { transformOrigin: "722px 242px" });
+  tl.to("#love", { scale: 1.03, duration: 1.3, ease: "none" }, a);
+  // before the zoom: let the glyphs overflow their masks (the italic "l" rises above them) and drop the
+  // will-change layers so the text is re-rasterised sharp at every scale instead of stretched from a small bitmap
+  tl.set("#love .mask", { overflow: "visible" }, a + 1.3);
+  tl.set("#love .w", { willChange: "auto" }, a + 1.3);
+  tl.to("#love", { scale: 5.1, x: 58, y: 40, duration: .8, ease: "expo.inOut" }, a + 1.3);
+  tl.to("#love", { scale: 5.35, duration: .6, ease: "none" }, a + 2.1); }
+
+// 30 So, what's next? — typed, then the question mark lands and carries the cut
+{ const [a, b] = T.s30;
+  tl.from("#sowhat .w", { yPercent: 110, duration: .9, stagger: .18, ease: "power3.out" }, a + .05);
+  tl.to("#sowhat .w", { yPercent: -110, duration: .6, stagger: .1, ease: "power3.in" }, b - .75); }
+
+// 31 Closing — the viewer answers "what's next?": a mail to María is written and sent; only her address remains
+{ const [a, b] = T.s31;
+  const typeIn = (sel, text, at, step) => { const chs = split($(sel), text); gsap.set(chs, { display: "none" }); chs.forEach((c, i) => tl.set(c, { display: "inline-block" }, at + i * step)); return at + chs.length * step; };
+  const caret = (sel, from, to) => { tl.set(sel, { opacity: 1 }, from); for (let t = from + .5; t < to; t += .5) tl.set(sel, { opacity: Math.round((t - from) / .5) % 2 ? 0 : 1 }, t); tl.set(sel, { opacity: 0 }, to); };
+  // the composer rises in
+  tl.fromTo("#mCard", { clipPath: "inset(100% 0 0 0 round 24px)", y: 60 }, { clipPath: "inset(0% 0 0 0 round 24px)", y: 0, duration: .7, ease: ex }, a);
+  tl.fromTo("#mTo", { y: 60 }, { y: 0, duration: .7, ease: ex }, a);
+  // To · Subject · body, typed
+  const t1 = typeIn("#mToT", "design@mariamoragarcia.com", a + .55, .028); caret("#mToC", a + .45, t1 + .25);
+  const t2 = typeIn("#mSub", "Lead Product Designer", t1 + .25, .035); caret("#mSubC", t1 + .2, t2 + .2);
+  const t3 = typeIn("#mBody1", "Hi, María!", t2 + .25, .045);
+  const t4a = typeIn("#mBody2", "We love your bold spirit.", t3 + .25, .028);
+  const t4 = typeIn("#mBody3", "Up for a chat?", t4a + .1, .035);
+  // the text cursor follows the line being typed
+  caret("#mBodyC1", t2 + .2, t3 + .15); caret("#mBodyC2", t3 + .15, t4a + .05); caret("#mBodyC", t4a + .05, t4 + .55);
+  // pointer glides to Send and clicks
+  const tc = a + 5.68; // 59.03 s: the final hit of the score lands on the click
+  tl.fromTo("#mPtr", { x: 1760, y: 1110 }, { x: 1400, y: 770, duration: .55, ease: "power3.inOut" }, tc - .75);
+  tl.to("#mSend", { scale: .92, duration: .08, ease: "power2.out" }, tc);
+  tl.to("#mSend", { scale: 1, duration: .2, ease: "power2.out" }, tc + .08);
+  tl.to("#mPtr", { scale: .85, duration: .08, transformOrigin: "10% 10%" }, tc);
+  tl.to("#mPtr", { scale: 1, duration: .2 }, tc + .08);
+  // sent: the window flies off, the pointer leaves, the address stays and glides to centre stage
+  tl.to("#mCard", { y: -980, x: 260, rotation: -7, scale: .72, duration: .6, ease: "expo.in" }, tc + .3);
+  tl.to("#mCard", { opacity: 0, duration: .35, ease: "power2.in" }, tc + .35);
+  tl.to("#mPtr", { x: 1900, y: 1150, duration: .5, ease: "power2.in" }, tc + .35);
+  tl.to("#mTo", { x: () => 960 - 580 - $("#mTo").offsetWidth * 1.9 / 2, y: 540 - 330 - 24, scale: 1.9, duration: 1.0, ease: "expo.inOut" }, tc + .65);
+  tl.fromTo("#mSent", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .6, ease: "power2.out" }, tc + 1.5);
+  tl.set({}, {}, b); }
+
+/* ---------- video sync, preview and render hooks ---------- */
+const videos = [["#vPlugin", "s11", 0], ["#vNordice", "s13", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
+const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
+  if (t < start - .2 || t > end) return null;
+  const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
+  if (Math.abs(el.currentTime - target) < .001) return null;
+  el.currentTime = target;
+  return wait ? new Promise((r) => el.addEventListener("seeked", r, { once: true })) : null;
+}));
+window.DURATION = T.s31[1];
+window.seek = async (t) => { tl.seek(t, false); syncLogo(t); await syncVideos(t, true); };
+window.ready = document.fonts.ready.then(() => Promise.all([...document.images].map((i) => i.decode().catch(() => {})).concat(videos.map(({ el }) => el.readyState >= 1 ? 0 : new Promise((r) => el.addEventListener("loadedmetadata", r, { once: true }))))));
+const fit = () => { const s = Math.min(innerWidth / 1920, innerHeight / 1080); $("#stage").style.transform = `scale(${s})`; };
+if (!new URLSearchParams(location.search).has("render")) {
+  addEventListener("resize", fit); fit();
+  tl.eventCallback("onUpdate", () => { syncLogo(tl.time()); syncVideos(tl.time(), false); });
+  addEventListener("keydown", (e) => { if (e.code === "Space") tl.paused() ? tl.play() : tl.pause(); if (e.code === "ArrowRight") tl.seek(tl.time() + 1); if (e.code === "ArrowLeft") tl.seek(Math.max(0, tl.time() - 1)); });
+  window.ready.then(() => tl.play());
+}
+</script>
+</body>
+</html>
