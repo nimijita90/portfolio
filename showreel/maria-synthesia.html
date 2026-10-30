@@ -139,6 +139,14 @@ svg{position:absolute;inset:0;overflow:visible}
   <div class="abs serif stroke" id="cr3" style="left:0;top:700px;font-size:330px;white-space:nowrap">AI-native. AI-native. AI-native. AI-native.</div>
 </div>
 
+<!-- 17b AI double shot -->
+<div class="sc" id="s17b">
+  <div class="abs" id="aiL" style="left:446px;top:95px;width:450px;height:800px;overflow:hidden"><video class="shot" id="vAvatar" src="clips/avatar-dance.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:450px;height:800px"></video></div>
+  <div class="abs" id="aiR" style="left:936px;top:95px;width:539px;height:800px;overflow:hidden"><video class="shot" id="vStage" src="clips/maria-stage.webm" muted playsinline preload="auto" data-in="0" style="left:0;top:0;width:539px;height:800px"></video></div>
+  <div class="abs cap" id="aiLc" style="left:446px;top:925px;width:450px;text-align:center;font-size:20px;color:#bdbab4">Fake avatar, real moves</div>
+  <div class="abs cap" id="aiRc" style="left:936px;top:925px;width:539px;text-align:center;font-size:20px;color:#bdbab4">Real me, new stage</div>
+</div>
+
 <!-- 18 WAND Cashier -->
 <div class="sc" id="s18">
   <div style="position:absolute;inset:0;perspective:1800px"><div class="page" id="cash" style="left:515px;top:40px;width:890px;height:1000px"><img id="cashI" src="media/xsite-sports-page.webp"></div></div>
@@ -373,6 +381,11 @@ const syncLogo = () => {};
   tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
   tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
+// 17b AI double shot — a made-up avatar dancing with transferred moves beside María's real footage on a new stage
+{ const [a] = T.s17b;
+  tl.from(["#aiL", "#aiR"], { y: 60, opacity: 0, duration: .35, ease: ex, stagger: .08 }, a);
+  tl.from(["#aiLc", "#aiRc"], { opacity: 0, duration: .3 }, a + .3); }
+
 // 18 WAND Cashier — close-up on the UI, pull back to the full flow
 { const [a] = T.s18;
   tl.fromTo("#cash", { rotationY: -18, rotationX: 6, scale: 1.25 }, { rotationY: 8, rotationX: 0, scale: 1, duration: 1.6, ease: "power2.inOut" }, a);
@@ -537,7 +550,7 @@ const roll = (sel, at) => tl.fromTo(sel + " > span", { rotationX: -95, opacity: 
   tl.set({}, {}, b); }
 
 /* ---------- video sync, preview and render hooks ---------- */
-const videos = [["#vNordice", "s13", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
+const videos = [["#vAvatar", "s17b", 0], ["#vStage", "s17b", 0], ["#vNordice", "s13", 0], ["#vViking", "s14", 0], ["#vRune", "s15", 0], ["#kit", "s26", 0]].map(([sel, sc, off]) => ({ el: $(sel), start: T[sc][0] + off, end: T[sc][1] }));
 const syncVideos = (t, wait) => Promise.all(videos.map(({ el, start, end }) => {
   if (t < start - .2 || t > end) return null;
   const target = Math.max(0, Math.min(el.duration - .01, Number(el.dataset.in) + (t - start)));
