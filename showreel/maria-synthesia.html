@@ -97,7 +97,6 @@ svg{position:absolute;inset:0;overflow:visible}
 <div class="sc" id="s09"><div class="abs sans" id="learn" style="left:180px;top:470px;font-size:86px;font-weight:300;letter-spacing:-.02em"><span class="w">I’ve</span> <span class="w">learned</span> <span class="w">that</span> <span class="w">great</span> <span class="w">products</span> <span class="w" id="need">need</span></div></div>
 
 <!-- 10 Evidence. — horizontal pass through the oversized word -->
-<div class="sc" id="s10"><div class="abs serif" id="evi" style="left:0;top:180px;font-size:760px;white-space:nowrap;line-height:1;letter-spacing:-.01em">Evidence.</div></div>
 
 <!-- 11 Evidence visual -->
 
@@ -257,9 +256,9 @@ const ex = "expo.out", exi = "expo.in", io = "power3.inOut";
 /* ---------- SCENES (start, end in seconds) ---------- */
 const T = {
   s01: [0, 1.35], s01b: [1.35, 3.55], s02: [3.5, 4.95], s03: [4.9, 7.55], s04: [7.55, 8.8], s05: [8.8, 9.85],
-  s06: [9.85, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6], s10: [17.55, 19.1],
-  s12: [19.05, 20], s13: [19.95, 22.1], s14: [21.75, 23.1], s15: [23.05, 24.75],
-  s16: [24.5, 27], s17: [26.95, 27.85], s17b: [27.85, 29.85], s18: [29.8, 31.5], s19: [31.45, 33.5], s20: [33.35, 34.3],
+  s06: [9.85, 11.3], s07: [11.25, 13.1], s08: [13.05, 15.6], s09: [15.6, 17.6],
+  s12: [17.55, 18.5], s13: [18.45, 20.6], s14: [20.25, 21.6], s15: [21.55, 23.25],
+  s16: [23, 25.5], s17: [25.45, 26.35], s17b: [26.35, 29.85], s18: [29.8, 31.5], s19: [31.45, 33.5], s20: [33.35, 34.3],
   s21: [34.3, 35.7], s22: [35.65, 37.4], s23: [37.35, 39.2], s24: [39.2, 40.05], s25: [40, 41.6],
   s26: [41.55, 43.25], s27: [43.2, 45.4], s28: [45.35, 47.95], s29: [47.95, 50.65], s30: [50.65, 53.4],
   s31: [53.35, 62.8],
@@ -342,11 +341,6 @@ const syncLogo = () => {};
   tl.from("#learn .w", { opacity: 0, y: 30, duration: .4, stagger: .13 }, a);
   tl.to("#learn", { x: -1600, duration: .3, ease: exi }, a + 1.7); }
 
-// 10 Evidence. — the camera passes along the oversized word, then dives into its full stop
-{ const [a] = T.s10; const w = () => $("#evi").offsetWidth;
-  tl.fromTo("#evi", { x: 900 }, { x: () => 1920 - w() - 60, duration: 1.15, ease: "power2.inOut" }, a);
-  tl.to("#evi", { scale: 6, transformOrigin: "97% 80%", opacity: 0, duration: .3, ease: exi }, a + 1.2); }
-
 // 12 Direction. — rolls over a ghost copy like a drum, then pushes into the footage
 { const [a] = T.s12;
   tl.fromTo("#dir", { rotationX: -90, y: 160, transformOrigin: "50% 50% -150px" }, { rotationX: 0, y: 0, duration: .55, ease: ex }, a);
@@ -381,7 +375,7 @@ const syncLogo = () => {};
   tl.fromTo("#cr2", { x: -1500 }, { x: -1150, duration: .9, ease: "power2.out" }, a);
   tl.from("#s17 .abs", { opacity: 0, duration: .2, stagger: .05 }, a); }
 
-// 17b AI double shot — a made-up avatar dancing with transferred moves beside María's real footage on a new stage
+// 17b AI double shot (3.5 s, it takes the time "Evidence." had) — a made-up avatar dancing with transferred moves beside María's real footage on a new stage
 { const [a] = T.s17b;
   tl.from(["#aiL", "#aiR"], { y: 60, opacity: 0, duration: .35, ease: ex, stagger: .08 }, a);
   tl.from(["#aiLc", "#aiRc"], { opacity: 0, duration: .3 }, a + .3); }
